@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+<head>
+    <title>HTML 5 Form Validation</title>
+</head>
+<body>
+<form method="get">
+    <fieldset>
+        <legend>Personal Info</legend>
+
+        <label for="mobile">Mobile Number:</label>
+        <input id="mobile"
+               type="tel"
+               required
+               pattern="\+[0-9]{3}\-[0-9]{4}\-[0-9]{4}"
+               placeholder="+974-8888-1582"/>
+        <br/>
+        <label for="url">Your Web Site:</label>
+        <input id="url"
+               type="url"
+               required
+               placeholder="http://sample.com"/>
+        <br/>
+        <label for="email">Your email:</label>
+        <input id="email"
+               type="email"
+               required
+               pattern="[a-zA-Z0-9_]{3,}@[a-zA-Z0-9_]{3,}.[a-zA-Z0-9_]{2,4}"
+               placeholder="sample@email.com"/>
+        <br/>
+        <input type="submit" value="submit"/>
+    </fieldset>
+</form>
+</body>
+</html>

@@ -1,0 +1,32 @@
+/** header */
+header {
+    text-align: center;
+}
+
+/** navigation */
+nav ul {
+    list-style-type: none;
+}
+
+nav ul li {
+    float: left;
+    margin: 5px;
+    padding: 5px;
+}
+
+/** sidebar */
+aside {
+    float: right;
+    width: 10%;
+}
+
+/** content */
+section {
+    display: block;
+    width: 85%;
+}
+
+/** footer */
+footer {
+    text-align: center;
+}

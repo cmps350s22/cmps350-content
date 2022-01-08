@@ -1,0 +1,217 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <title>Html Forms</title>
+    <meta name="keywords" content="HTML forms; input">
+    <meta name="description" content="Sample page showing a form for providing profile information.">
+    <style type="text/css">
+        fieldset {
+            margin-top: 10px;
+            width: 600px
+        }
+
+        .labelForCheckbox {
+            width: 300px;
+            text-align: left;
+            margin-left: 100px;
+        }
+
+        label {
+            /* To make sure that all label have the same size and are properly align */
+            display: inline-block;
+            width: 100px;
+            text-align: right;
+        }
+
+        select {
+            vertical-align: top;
+            width: 300px;
+        }
+
+        textarea {
+            /* To properly align multiline text fields with their labels */
+            vertical-align: top;
+
+            /* To give enough room to type some text */
+            height: 5em;
+            width: 300px;
+
+            /* To allow users to resize any textarea vertically
+               It does not work on every browsers */
+            resize: vertical;
+        }
+    </style>
+</head>
+
+<body>
+
+<fieldset>
+    <legend>Recommended readings</legend>
+    <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Forms">
+        Mozilla HTML forms guide
+    </a>
+    <br>
+    <a target="_blank" href="http://diveintohtml5.info/forms.html">
+        Dive Into HTML5: A Form of Madness
+    </a>
+    <br>
+    <a target="_blank" href="http://uxdesign.smashingmagazine.com/2011/11/08/extensive-guide-web-form-usability/">
+        An Extensive Guide To Web Form Usability
+    </a>
+</fieldset>
+
+<h1>Profile information</h1>
+
+<form method="get" action="">
+    <!-- Text inputs -->
+    <fieldset>
+        <legend>Contact Information</legend>
+        <label for="title">Title: </label>
+
+        <input type="text" id="title" name="title" list="titleDataList" autofocus autocomplete="off"
+               placeholder="Select a title">
+
+        <datalist id="titleDataList">
+            <option label="Mr." value="Mr."></option>
+            <option label="Mrs." value="Mrs."></option>
+            <option label="Ms." value="Ms."></option>
+        </datalist>
+
+        <br>
+        <label for="firstName">First name: </label>
+        <input type="text" maxlength="20" id="firstName" name="firstName" placeholder="Enter first name" required>
+        <br>
+        <label for="lastName">Last name: </label>
+        <input type="text" maxlength="20" id="lastName" name="lastName" required>
+        <br>
+        <label for="dob">Date of Birth: </label>
+        <input type="date" id="dob" name="dob">
+        <br>
+        <label for="hairColor">Hair Color: </label>
+        <input type="color" id="hairColor" name="hairColor"/> <br>
+        <label for="email">Email: </label>
+        <input type="email" id="email" name="email" required>
+        <br>
+
+        <legend>Login information</legend>
+        <label for="userName">Username: </label>
+        <input type="text" id="userName" name="userName" readonly="true"
+               value="user123">
+        <br>
+        <label for="disabledText">Disabled text:</label>
+        <input type="text" id="disabledText" name="disabledText" disabled value="foo">
+        <br>
+        <label for="userPassword">Password: </label>
+        <input type="password" id="userPassword" name="userPassword"><br>
+    </fieldset>
+
+
+    <fieldset>
+        <legend>Academic information</legend>
+        <label for="degree">Degree</label>
+        <select name="degree" id="degree" multiple size="3">
+            <option value="BA">Bachelor of Art</option>
+            <option value="BS" selected>Bachelor of Science</option>
+            <option value="MC" selected>Master of Computing</option>
+        </select>
+        <br>
+
+        <output id="selectedDegree" for="degree"></output>
+
+        <br>
+        <label for="university">University</label>
+        <select name="university" id="university" required>
+            <option value=""></option>
+            <option value="QU">Qatar University</option>
+            <option value="CMU">CMU</option>
+        </select>
+    </fieldset>
+
+    <fieldset>
+        <input type="hidden" value="hidden value" name="MyHiddenText">
+        <label for="bio">Bio: </label>
+        <textarea id="bio" name="bio" rows="5" cols="30"></textarea><br>
+
+        <!-- Multi Selections-->
+        <label for="occupation">Occupation:</label>
+        <select id="occupation" name="occupation" size="5" multiple>
+            <optgroup label="Technical">
+                <option value="dev">Developer</option>
+                <option value="C++">C++ Developer</option>
+                <option value="design">Web Designer</option>
+            </optgroup>
+            <optgroup label="Non-technical">
+                <option value="consult" selected>Consultant</option>
+                <option value="mgr">Manager</option>
+            </optgroup>
+
+            <option value="other">Other</option>
+        </select>
+
+        <br>
+        <label>Gender:</label>
+            <input type="radio" name="gender" value="male">
+            Male
+
+        <label style="text-align: left">
+            <input type="radio" name="gender" value="female" checked>
+            Female
+        </label>
+        <br>
+
+        <div>
+            <label>Preferences:</label><br>
+            <label class="labelForCheckbox">
+                <input type="checkbox" id="newsletter" name="prefs" value="newsletter">
+                Send me a newsletter
+            </label><br>
+            <label class="labelForCheckbox">
+                <input type="checkbox" id="partners" name="prefs" value="partners">
+                Send me partner offers
+            </label><br>
+            <label class="labelForCheckbox">
+                <input type="checkbox" id="marketing" name="prefs" value="marketing">
+                Send me marketing materials
+            </label><br>
+        </div>
+    </fieldset>
+
+    <div>
+        <input type="submit" name="submit" value="Submit">
+        <input type="reset" value="Start over">
+
+        <input type="button" value="Push button" onclick="alert('hello')">
+
+        <button type="submit" value="true" name="buttonSubmit">
+            <span style="text-decoration: underline; color: green">Button with content</span>
+        </button>
+
+        <input type="image" src="images/play.png" style="width: 25px; height: 25px" alt="play" name="imageSubmit"
+               value="true">
+    </div>
+</form>
+
+<fieldset>
+    <legend>Other Html 5 Input types</legend>
+    <label for="time-input">Enter a time:</label>
+    <input type="time" id="time-input"><br>
+    <label for="month-input">Select a month:</label>
+    <input type="month" id="month-input"> <br>
+    <label for="week-input">Select a week:</label>
+    <input type="week" id="week-input"><br>
+    <label for="yearsExperience">Years of experience: </label>
+    1<input type="range" id="yearsExperience" name="range-data"
+            min="1" max="30" value="1" step="2"
+            oninput="selectedExperience.value = yearsExperience.value"
+            >30
+    Selected Value:
+    <output id="selectedExperience" ></output>
+    <!--output id="selectedValue" for="yearsExperience">3</output-->
+    <br>
+    <label for="quantity">Quantity: </label>
+    <input type="number" id="quantity" name="quantity" min="1" max="10">(1 to 10)<br>
+    <label for="search-data">Search: </label>
+    <input type="search" id="search-data" placeholder="Enter search term"/><br>
+</fieldset>
+</body>
+</html>

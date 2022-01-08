@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Using HTML 5 audio and video tags</title>
+</head>
+<body>
+<p>
+    <img src="http://www.qu.edu.qa/static_file/qu/global/images/qulogo.svg" alt="Qu Logo">
+</p>
+
+<a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Using_HTML5_audio_and_video">
+    More info about how to embed media into HTML documents
+</a>
+
+<ol>
+    <li>C++</li>
+    <li>Java</li>
+    <li>JavaScript</li>
+</ol>
+
+<h1>Video player with controls</h1>
+<video controls width="360" height="240"
+    src="http://www.w3schools.com/html/movie.mp4">
+</video>
+
+<h1>Audio player with controls</h1>
+<audio controls
+       src="http://download.quranicaudio.com/quran/mahmood_khaleel_al-husaree_doori/001.mp3">
+</audio>
+
+<h1>Audio player with custom buttons</h1>
+<audio id="audioPlayer"
+       src="http://download.quranicaudio.com/quran/mahmood_khaleel_al-husaree_doori/001.mp3">
+</audio>
+<div>
+    <button onclick="document.querySelector('#audioPlayer').play()">Play the Audio</button>
+    <button onclick="document.querySelector('#audioPlayer').pause()">Pause the Audio</button>
+    <button onclick="document.querySelector('#audioPlayer').volume += 0.1">Increase Volume</button>
+    <button onclick="document.querySelector('#audioPlayer').volume -= 0.1">Decrease Volume</button>
+</div>
+</body>
+</html>

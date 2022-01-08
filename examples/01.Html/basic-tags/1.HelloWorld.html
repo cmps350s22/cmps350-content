@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>My first page</title>
+    <style>
+        td {
+            border: 1px solid blue;
+        }
+
+        #formTitle {
+            color: blue;
+        }
+
+        #age {
+            background: lightgoldenrodyellow;
+        }
+    </style>
+    <script>
+        function validateAge() {
+            let age = parseInt( document.querySelector("#age").value );
+            if (age < 16) {
+                alert("Age must be >= 16")
+            }
+        }
+    </script>
+</head>
+<body>
+<!--
+<h1>My preferred programming languages:</h1>
+<ol>
+    <li>JavaScript</li>
+    <li>Python</li>
+    <li>Java</li>
+</ol>
+-->
+
+<h1 style="direction: rtl;">السلام عليكم</h1>
+<h2 id="formTitle">Registration Form</h2>
+<form>
+    <label for="age">Your age</label>
+    <input type="number" name="age" id="age" min="1" max="99" step="10">
+
+    <br><br>
+
+    <label for="city" >City of birth
+    <input id="city" name="city"></label>
+
+    <br><br>
+    <label>Firstname
+        <input name="firstName">
+    </label>
+    <br><br>
+    <label for="lastName">Lastname</label>
+    <input name="lastName" type="text" id="lastName">
+
+    <br><br>
+    <label for="dob">DOB</label>
+    <input name="dob" type="date" id="dob">
+
+    <br><br>
+    <label for="hairColor">Hair color</label>
+    <input name="hairColor" type="color" id="hairColor">
+
+    <br><br>
+    <label>Gender</label><br>
+    <label>Male
+        <input name="gender" type="radio" id="male" value="M" checked>
+    </label>
+
+    <label>Female
+        <input name="gender" type="radio" id="female" value="F">
+    </label>
+
+    <br><br>
+    <label>
+        <input type="checkbox" name="contactPref" value="Email">
+        Email
+    </label>
+
+    <label>
+        <input type="checkbox" name="contactPref" value="جوال">
+        Mobile
+    </label>
+
+    <label>
+        <input type="checkbox" name="contactPref" value="واتس">
+        WhatsApp
+    </label>
+
+    <label>
+        <input type="checkbox" name="contactPref" value="Messenger">
+        Messenger
+    </label>
+
+    <br><br>
+    <input type="submit" onclick="validateAge()">
+
+</form>
+
+<br><br>
+
+<!--
+<img src="http://www.qu.edu.qa/static_file/qu/global/images/qulogo2.svg" alt="Qu Logo">
+
+<table>
+    <caption>QU Students by Gender</caption>
+    <tr>
+        <th>Gender</th>
+        <th>%</th>
+    </tr>
+    <tr>
+        <td colspan="2">100</td>
+    </tr>
+    <tr>
+        <td>Female</td>
+        <td>70</td>
+    </tr>
+    <tr>
+        <td>Male</td>
+        <td>30</td>
+    </tr>
+</table>
+-->
+<!--
+    <button style="color: blue" onclick="alert('Hello World!')">Click Me!</button>
+
+    <h1>السلام عليكم</h1>
+    <p>This is the content of the intro.</p>
+
+    <h1>Web Technologies</h1>
+    <h2>HTML</h2>
+    <p>HTML is used to define the local page structure</p>
+    <h2>CSS</h2>
+    <p>CSS is used for styling</p>
+    <h2>Javascript</h2>
+    <p>Javascript is used for client-side and server-side programming</p>
+    -->
+</body>
+</html>

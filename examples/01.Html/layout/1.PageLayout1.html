@@ -1,0 +1,102 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>HTML Page with layout</title>
+    <meta name="description" content="Welcome to basic layout example">
+    <style>
+
+        nav {
+            margin-bottom: 10px;
+        }
+
+        /*nav ul {
+            list-style-type: none;
+            font-size: 14pt;
+        }
+
+        nav ul li {
+            display: inline;
+        } */
+    </style>
+</head>
+<body>
+    <!-- Logical Structure vs. Physical Structure -->
+    <!-- Example semantic tags    -->
+    <header id="header">
+        <h1>Welcome -!هلا</h1>
+        <img src="http://www.qu.edu.qa/static_file/qu/global/images/qulogo.svg">
+        <nav>
+            <ul>
+                <li><a href="2.PageLayout2.html" target="_blank">Home</a></li>
+                <li><a href="about.html">About us</a></li>
+                <li><a href="../media/media.html">Contacts</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Gender</th>
+                    <th>%</th>
+                </tr>
+            </thead>
+            <tfoot>
+            <tr>
+                <td colspan="2">100</td>
+            </tr>
+            </tfoot>
+            <tbody>
+                <tr>
+                    <td>Female</td>
+                    <td>70</td>
+                    <td rowspan="2">Cool</td>
+                </tr>
+                <tr>
+                    <td>Male</td>
+                    <td>30</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <br><br>
+        <div style="background: yellow">
+            <a href="http://www.onextrapixel.com/2010/06/02/build-a-html5-css3-website-layout-without-images%E2%80%93part-1/"
+               target=_blank>Build a HTML5/CSS3 Website Layout - Part 1 (advanced)</a> <br>
+            <a href="http://www.onextrapixel.com/2010/06/03/build-a-html5-css3-website-layout-without-images-part-2/"
+               target=_blank>Build a HTML5/CSS3 Website Layout - Part 2 (advanced)</a>
+        </div>
+
+        <section id="left">
+            <p>some content here.</p>
+        </section>
+
+        <section id="right">
+            <p>but some here as well! <br/>
+                The quick brown fox jumped over the lazy sleeping dog.
+            </p>
+        </section>
+
+        <div id="studentInfo">
+            <p>
+                This is a paragraph.
+            </p>
+
+            <table>
+                <tr>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+    </main>
+
+   <footer>
+        <p>Footer - Some copyright and legal notices here</p>
+    </footer>
+
+
+</body>
+</html>
