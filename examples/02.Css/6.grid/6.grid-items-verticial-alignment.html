@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Grid Items Vertical Alignment</title>
+    <style>
+        /*
+            If you set box-sizing: border-box; allows us to include
+            the padding and border in an element's total width and height.
+            '* {' => Applying this to all elements
+        */
+
+        * {box-sizing: border-box;}
+
+        .container > div {
+            border: 2px solid #ffa94d;
+            border-radius: 5px;
+            background-color: #ffd8a8;
+            padding: 1em;
+            color: #d9480f;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            /* Vertically place the grid items  at the bottom of the row */
+            align-items: end;
+            grid-auto-rows: 200px;
+            border: 2px solid #f76707;
+            border-radius: 5px;
+            background-color: #fff4e6;
+        }
+
+        .box1 {
+            /* Override the container alignment
+            Vertically stretch the grid item */
+            align-self: stretch;
+        }
+        .box2 {
+            /* Override the container alignment
+            Vertically place the grid item at the top of the row */
+            align-self: start;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="box1">One</div>
+        <div class="box2">Two</div>
+        <div class="box3">Three</div>
+    </div>
+</body>
+</html>

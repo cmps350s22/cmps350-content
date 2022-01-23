@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Span multi tracks</title>
+    <style>
+        code {
+            color: #6F0505;
+            font-weight: bold;
+        }
+        .container{
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-gap: 10px;
+            text-align: center;
+        }
+
+        .container > div {
+            background-color: greenyellow;
+            border-radius: 5px;
+            padding: 20px;
+            font-size: 150%;
+        }
+
+        .a {
+            grid-column: 1 / 3;
+            grid-row: 1;
+        }
+        .b {
+            grid-column: 3 ;
+            grid-row: 1 / 3;
+        }
+        .c {
+            grid-column: 1 ;
+            grid-row: 2 ;
+        }
+        .d {
+            grid-column: 2;
+            grid-row: 2;
+        }
+
+        /* Or use span */
+        .a {
+            grid-column: 1 / span 2;
+        }
+        .b {
+            grid-column: 3 ;
+            grid-row: 1 / span 2;
+        }
+        .c {
+            grid-column: 1 ;
+            grid-row: 2 ;
+        }
+        .d {
+            grid-column: 2 ;
+            grid-row: 2 ;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <h1>Spanning elements on multiple tracks</h1>
+    <ul>
+        <li>
+            Positioning the elements (six divs with a class from a to f)
+            using line-based placement properties.
+        </li>
+        <li>
+            The column is decided using <code>grid-column</code> by specifying the column start line and end line.
+        </li>
+        <li>
+            The row is decided using <code>grid-row</code> by specifying the row start line and end line.
+        </li>
+        <li>
+            If an item will only span one grid cell you may omit the / and the end value.
+        </li>
+    </ul>
+</div>
+<div class="container">
+    <div class="a">A</div>
+    <div class="b">B</div>
+    <div class="c">C</div>
+    <div class="d">D</div>
+</div>
+</body>
+</html>

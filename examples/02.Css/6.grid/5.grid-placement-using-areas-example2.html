@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Placement using areas</title>
+    <style>
+        code {
+            color: #6F0505;
+            font-weight: bold;
+        }
+        .container{
+            display: grid;
+            /*grid-template-columns: 1fr 2fr; */
+            grid-template-areas:
+                    ".       header header"
+                    "sidebar content content";
+            grid-gap: 10px;
+            text-align: center;
+        }
+
+        .container > div {
+            background-color: greenyellow;
+            border-radius: 5px;
+            padding: 20px;
+            font-size: 150%;
+        }
+        .sidebar {
+            grid-area: sidebar;
+        }
+
+        .content {
+            grid-area: content;
+        }
+
+        .header {
+            grid-area: header;
+            background-color: yellow !important;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <h1>Placing elements using areas</h1>
+    <ul>
+        <li>
+            We can create named areas on the grid to put content into using
+            <code>grid-template-areas</code> to describe where on the Grid elements should sit.
+        </li>
+        <li>
+            Assign an element to a Grid Area using the <code>grid-area</code> property.
+        </li>
+        <li>
+            Repeating the name of an area indicates that the area spans that grid track.
+            Using a . indicates an empty track. Such as the very first cell on this grid.
+        </li>
+    </ul>
+</div>
+<div class="container">
+    <div class="header">Header</div>
+    <div class="sidebar">Sidebar</div>
+    <div class="content">Content</div>
+</div>
+</body>
+</html>

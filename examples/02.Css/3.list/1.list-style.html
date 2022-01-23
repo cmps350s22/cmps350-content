@@ -1,0 +1,178 @@
+<!Doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>List styles</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" >
+    <style>
+        .style-none {
+            list-style-type: none;
+        }
+
+        .style-circle {
+            list-style-type: circle;
+        }
+
+        .rocket-dot {
+            list-style-image: url("img/rocket.svg");
+        }
+
+        .style-alpha {
+            list-style-type: lower-alpha;
+        }
+
+        .style-roman {
+            list-style-type: upper-roman;
+        }
+
+        .style-tick li::before {
+            content: '✓';
+        }
+
+    </style>
+</head>
+
+<body>
+<p>
+    <i class="fas fa-language"></i> Languages <i class="fas fa-flag"></i>
+</p>
+
+<ul class="fa-ul">
+   <li>
+       <i class="fab fa-java"></i> Java
+   </li>
+    <li>
+        <i class="fab fa-js"></i></i> JavaScript
+    </li>
+</ul>
+
+<ul class="style-none">
+    <li>
+        Item 10
+    </li>
+    <li>
+        Item 20
+    </li>
+    <li>
+        Item 3
+    </li>
+    <li>
+        Item 4
+    </li>
+</ul>
+
+
+<ul class="style-circle">
+    <li>
+        Item 1
+    </li>
+    <li>
+        Item 2
+    </li>
+    <li>
+        Item 3
+    </li>
+    <li>
+        Item 4
+    </li>
+</ul>
+
+<ul class="rocket-dot">
+    <li>
+        Item 1
+    </li>
+    <li>
+        Item 2
+    </li>
+    <li>
+        Item 3
+    </li>
+    <li>
+        Item 4
+    </li>
+</ul>
+
+<ol class="style-alpha">
+    <li>
+        Item 1
+    </li>
+    <li>
+        Item 2
+    </li>
+    <li>
+        Item 3
+    </li>
+    <li>
+        Item 4
+    </li>
+</ol>
+
+
+<ol class="style-roman">
+    <li>
+        Item 1
+    </li>
+    <li>
+        Item 2
+    </li>
+    <li>
+        Item 3
+    </li>
+    <li>
+        Item 4
+    </li>
+</ol>
+
+<ul class="style-none style-tick">
+    <li>
+        Item 1
+    </li>
+    <li>
+        Item 2
+    </li>
+    <li>
+        Item 3
+    </li>
+    <li>
+        Item 4
+    </li>
+</ul>
+
+<p>QU Engineering study programs</p>
+<ul class="fa-ul style-program">
+    <li>
+
+        Architecture
+    </li>
+    <li>
+        <span class="fa-li" ><i class="fas fa-user-graduate"></i></span>
+        Chemical Engineering
+    </li>
+    <li>
+        <span class="fa-li" ><i class="fas fa-user-graduate"></i></span>
+        Civil Engineering
+    </li>
+    <li>
+        <span class="fa-li"><i class="fas fa-user-graduate"></i></span>
+        Computer Engineering
+    </li>
+    <li>
+        <span class="fa-li"><i class="fas fa-user-graduate"></i></span>
+        Computer Science
+    </li>
+    <li>
+        <span class="fa-li"><i class="fas fa-user-graduate"></i></span>
+        Electrical Engineering
+    </li>
+    <li>
+        <span class="fa-li"><i class="fas fa-user-graduate"></i></span>
+        Industrial and Systems Engineering
+    </li>
+    <li>
+        <span class="fa-li"><i class="fas fa-user-graduate"></i></span>
+        Mechanical Engineering
+    </li>
+</ul>
+</body>
+</html>
+

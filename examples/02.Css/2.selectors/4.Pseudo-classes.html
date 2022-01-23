@@ -1,0 +1,67 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8" >
+    <style>
+        input[type="text"]:enabled {
+            background: lightgoldenrodyellow;
+        }
+
+        input[type="text"]:disabled {
+            background: lightgray;
+        }
+
+        /* unvisited link */
+        a:link {
+            color: grey;
+        }
+
+        /* visited link */
+        a:visited {
+            color: green;
+        }
+
+        /* mouse over link */
+        a:hover {
+            color: red;
+        }
+
+        /* selected link */
+        a:active {
+            color: black;
+        }
+
+        h1:hover, a:hover {
+            background-color: yellow;
+        }
+
+        .quote {font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif}
+
+        /* More info @ https://developer.mozilla.org/en-US/docs/Web/CSS/::before */
+        .quote::before { content: "«";  color: lightskyblue;}
+        .quote::after { content: "»";  color: lightskyblue;}
+
+    </style>
+</head>
+<body>
+
+<form action="">
+    First name: <input type="text" value="Mickey"/><br/>
+    Last name: <input type="text" value="Mouse"/><br/>
+    Country: <input type="text" disabled="disabled" value="Disneyland"/><br/>
+
+    <h1>Links</h1>
+    <p>
+        Mouse over and click the link:
+        <a href="http://www.w3schools.com">w3schools.com</a>
+    </p>
+
+    <input type="text" id="fname" name="fname">
+
+    <p class="quote">
+        إن أقربكم مني مجلساً يوم القيامة أحسنكم أخلاقاً
+    </p>
+</form>
+
+</body>
+</html>

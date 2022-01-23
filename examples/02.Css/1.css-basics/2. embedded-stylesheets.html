@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Embedded Style Sheets</title>
+    <style>
+        body {
+            color: deeppink;
+        }
+
+        em {
+            background-color: yellow;
+            color: darkred;
+        }
+
+        h1 {
+            font-family: 'Comic Sans MS', Arial, sans-serif
+        }
+
+        p {
+            font-size: 18pt
+        }
+
+        .blue {
+            color: blue; font-size: 30px;  text-align: left }
+
+        #warning {
+            color: red; text-align: center; font-size: 60px; border: 1px solid red;
+        }
+    </style>
+</head>
+
+<body style="color: brown; text-align: center">
+    <div id="warning">*** Do not use inline styles ***
+        <span>This is a grand-child</span>
+    </div>
+    <p >This will be styled using a named style</p>
+
+    <h1 class="blue" style="text-decoration: none; ">A Heading</h1>
+    <p>
+        Here is some text. Here is some text. Here
+        is some text. Here is some text. Here is some text.
+    </p>
+    <h1>Another Heading</h1>
+    <p class="blue">
+        Here is some more text.
+        Here is some more text.
+    </p>
+    <p class="blue">
+        Here is some <em>more</em>
+        text. Here is some more text.
+    </p>
+</body>
+
+</html>

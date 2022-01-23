@@ -1,0 +1,161 @@
+<!--
+This example was adapted from
+https://itnext.io/how-to-build-a-responsive-navbar-using-flexbox-and-javascript-eb0af24f19bf
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Responsive Nav</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" >
+    <style>
+        * {
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            font-family: "Verdana", sans-serif;
+        }
+
+        .nav-bar {
+            font-size: 18px;
+            background-image: linear-gradient(260deg, #2376ae 0%, #c16ecf 100%);
+            border: 1px solid rgba(0, 0, 0, 0.2);
+            padding-bottom: 10px;
+        }
+
+        .main-menu {
+            list-style-type: none;
+        }
+
+        .main-menu li {
+            text-align: center;
+            margin: 15px auto;
+        }
+
+        .main-menu a {
+            text-decoration: none;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .main-menu a:hover {
+            color: rgba(255, 255, 255, 1);
+            text-decoration: overline;
+        }
+
+        .main-menu li i {
+            padding-right: 10px;
+        }
+
+        .logo {
+            margin-top: 10px;
+            margin-left: 20px;
+            width: 200px;
+        }
+
+        .logo img {
+            width: 200px;
+        }
+
+        .menu-toggle {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            cursor: pointer;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 24px;
+        }
+
+        /*This class is used by JavaScript to control the menu visibility */
+        .active {
+            display: block;
+        }
+
+         /* Mobile first design: make the main menu invisible
+         Only the menu toogle button (the 3 horizontal icon) will be visible
+         */
+        .main-menu {
+            display: none;
+        }
+
+        /* In case the screen width is >= 600px then display the main menu and define
+        its layout using flexbox */
+        @media screen and (min-width: 600px) {
+            /* the whole navbar is a flexbox */
+            .nav-bar {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding-bottom: 0;
+                min-height: 70px;
+            }
+
+            /* The main menu is nested flexbox within the navbar flexbox
+            to allow controlling the menu display separately */
+            .main-menu {
+                display: flex;
+                flex-wrap: wrap;
+                margin-right: 30px;
+            }
+
+            .main-menu li {
+                margin: 0px 0px 5px 0px;
+            }
+
+            .main-menu a {
+                margin-left: 40px;
+            }
+
+            /* Hide the menu toogle icon when the full menu is visible */
+            .menu-toggle {
+                display: none;
+            }
+        }
+    </style>
+    <script type="text/javascript">
+        //After the page load run the function
+        document.addEventListener("DOMContentLoaded", function () {
+            //Ge the main-menu and menu-toogle elements
+            let mainMenu = document.querySelector(".main-menu");
+            let menuToggle = document.querySelector(".menu-toggle");
+
+            //When the menuToggle is clicked toogle the active css class
+            //i.e., if the menu is visible make it invisible and vice-versa
+            menuToggle.addEventListener("click", function() {
+                mainMenu.classList.toggle("active");
+            });
+        });
+    </script>
+</head>
+<body>
+<nav class="nav-bar">
+    <!-- The Toggle Button is used to hide and show the menu for a Mobile Layout -->
+    <span class="menu-toggle">
+         <i class="fas fa-bars"></i>
+    </span>
+    <a href="#" class="logo">
+        <img src="http://www.qu.edu.qa/static_file/qu/global/images/qulogo.svg" alt="Logo">
+    </a>
+    <ul class="main-menu">
+        <li>
+            <a href="#"><i class="fas fa-home"></i>Home</a>
+        </li>
+        <li>
+            <a href="#"><i class="fas fa-university"></i>Colleges</a>
+        </li>
+        <li>
+            <a href="#"><i class="fas fa-info-circle"></i>About Us</a>
+        </li>
+        <li>
+            <a href="#"><i class="fas fa-headset"></i>Contact Us</a>
+        </li>
+        <li>
+            <a href="#"><i class="fas fa-blog"></i>Blog</a>
+        </li>
+    </ul>
+</nav>
+</body>
+</html>

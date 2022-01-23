@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .flex-container {
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: row;
+            /*flex-direction: row;*/
+            /*display: flex;
+            flex-wrap: wrap;
+            flex-direction: row;
+            justify-content: space-around;*/
+        }
+        .flex-container > div {
+            background-color: #8cffa0;
+            min-width: 100px;
+            margin: 10px;
+            text-align: center;
+            line-height: 50px;
+            font-size: 2rem;
+        }
+    </style>
+</head>
+<body>
+
+<p>
+    The Flexible Box Layout Module, makes it easier to design flexible responsive
+    layout that accommodate different screen sizes.
+</p>
+
+<main class="flex-container">
+    <div style="flex-grow: 10;">1</div>
+    <div>2</div>
+    <div>3</div>
+    <div style="order: 2;">4</div>
+    <div>5</div>
+    <div>6</div>
+    <div>7</div>
+    <div>8</div>
+    <div>9</div>
+</main>
+
+<p>A container with the justify-content property set to <em>center</em> will align its items at the center.</p>
+
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Placement using areas</title>
+    <style>
+        code {
+            color: #6F0505;
+            font-weight: bold;
+        }
+        .container{
+            display: grid;
+            grid-template-areas: "a a b"
+                                 "c d b";
+            grid-gap: 10px;
+            text-align: center;
+        }
+
+        .container > div {
+            background-color: greenyellow;
+            border-radius: 5px;
+            padding: 20px;
+            font-size: 150%;
+        }
+
+        .a {
+            grid-area: a;
+        }
+        .b {
+            grid-area: b;
+        }
+        .c {
+            grid-area: c;
+        }
+        .d {
+            grid-area: d;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <h1>Placing elements using areas</h1>
+    <ul>
+        <li>
+            We can create named areas on the grid to put content into using
+            <code>grid-template-areas</code> to describe where on the Grid elements should sit.
+        </li>
+        <li>
+            Assign an element to a Grid Area using the <code>grid-area</code> property.
+        </li>
+    </ul>
+</div>
+<div class="container">
+    <div class="a">A</div>
+    <div class="b">B</div>
+    <div class="c">C</div>
+    <div class="d">D</div>
+</div>
+</body>
+</html>

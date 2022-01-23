@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Page Layout</title>
+    <style>
+        .container {
+            display: grid;
+            width: 100%;
+            height: 250px;
+            grid-template-areas:  "head head head"
+                                  "nav  main sidebar"
+                                  "nav  foot foot";
+            grid-template-rows:  min-content auto  min-content;
+            /* minmax(100px, auto): min width is 100px
+            and maximum is enough space to fit the grid item content */
+            grid-template-columns: minmax(100px, auto) 1fr minmax(80px, auto);
+            height: 100vh;
+        }
+
+        .container > header {
+            grid-area: head;
+            background-color: #8ca0ff;
+        }
+
+        .container > nav {
+            grid-area: nav;
+            background-color: #ffa08c;
+        }
+
+        .container > main {
+            grid-area: main;
+            background-color: #ffff64;
+        }
+
+        .container > footer {
+            grid-area: foot;
+            background-color: #8cffa0;
+        }
+
+        .container > aside {
+            grid-area: sidebar;
+            background-color: darkorange;
+        }
+    </style>
+</head>
+<body>
+    <section class="container">
+        <header>Header</header>
+        <nav>Navigation</nav>
+        <main>Main area</main>
+        <footer>Footer</footer>
+        <aside>Side bar</aside>
+    </section>
+</body>
+</html>

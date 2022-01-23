@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Grid Items Vertical Alignment</title>
+    <style>
+        .container > div {
+            border: 2px solid #ffa94d;
+            border-radius: 5px;
+            background-color: #ffd8a8;
+            padding: 1em;
+            color: #d9480f;
+        }
+
+        .container {
+            display: flex;
+            /* Vertical alignment set the flex container level */
+            align-items: center;
+            min-height: 200px;
+            border: 2px solid #f76707;
+            border-radius: 5px;
+            background-color: #fff4e6;
+        }
+
+        .box1 {
+            /* Vertical alignment overridden at the flex item level */
+            align-self: stretch;
+        }
+        .box2 {
+            /* Vertical alignment overridden at the flex item level */
+            align-self: flex-start;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="box1">One</div>
+        <div class="box2">Two</div>
+        <div class="box3">Three</div>
+    </div>
+</body>
+</html>

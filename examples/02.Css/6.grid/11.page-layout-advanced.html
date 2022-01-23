@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Page layout using Grid and Flexbox</title>
+    <style>
+        /*--------------------------------------------------------------
+        Typography
+        --------------------------------------------------------------*/
+        body,
+        button,
+        input,
+        select,
+        textarea {
+            color: #404040;
+            font-family: 'Helvetica', Arial, sans-serif;
+            font-size: 18px;
+            line-height: 1.5;
+        }
+
+        h1,
+        h2,
+        h3 {
+            text-align: center;
+            margin: 0;
+            padding: 1em 0;
+        }
+
+        p {
+            margin: 0;
+            padding: 1em 0;
+        }
+
+        img {
+            display: block;
+            border: 0;
+            width: 100%;
+            height: auto;
+        }
+
+        /* Header section */
+        .site-title {
+            text-align: center;
+        }
+
+        .site-title::first-letter {
+            font-size: 5em;
+            color: tomato;
+        }
+
+        .logo-img {
+            max-width: 350px;
+            margin: auto;
+        }
+
+        /* Splash section */
+        .splash {
+            background: #FFF6E5;
+            padding-bottom: 1em;
+        }
+
+        .splash-content {
+            padding: 1.5em;
+        }
+
+        /* Listing section */
+        .listing {
+            padding: 2em 1em 1em;
+            background: #3E454C;
+        }
+
+        .listing ul {
+            margin: 0;
+            padding: 0;
+        }
+
+        .listing li {
+            margin-bottom: 1em;
+            background: white;
+            list-style-type: none;
+        }
+
+        .listing div {
+            padding: 1.5em;
+        }
+
+        /* Cards section */
+        .card {
+            padding: 2em;
+            background: #2185C5;
+            color: white;
+        }
+
+        .card:last-of-type {
+            background: #FF7F66;
+        }
+
+        /* Footer section */
+        .footer {
+            padding: 2em;
+            background: hsl(0, 0%, 10%);
+            color: white;
+            text-align: center;
+        }
+
+        .footer a {
+            color: white;
+        }
+
+        .footer a:hover,
+        .footer a:focus {
+            border-bottom: 1px solid lightgoldenrodyellow;
+        }
+
+        /*---------------------------------
+        CSS Grid layout for wider screens:
+        ------------------------------------*/
+        @media screen and (min-width: 600px) {
+            .page {
+                display: grid;
+                grid-template-areas:  "head"
+                                      "splah"
+                                      "listing"
+                                      "cards"
+                                      "footer";
+            }
+
+            header {
+                grid-area: head;
+            }
+
+            .listing {
+                grid-area: listing;
+            }
+
+            .cards {
+                display: flex;
+                grid-area: cards;
+            }
+
+            .footer {
+                grid-area: footer;
+            }
+
+            .listing ul {
+                display: flex;
+                justify-content: space-around;
+            }
+
+            .listing li {
+                width: 31%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="page">
+    <header class="page-header">
+        <h2 class="site-title">Qatar</h2>
+        <img class="logo-img"
+             src="http://www.qu.edu.qa/static_file/qu/about/newsroom/Media/underwater%20Tamim%20Al%20Majd%20glorious%20Tamim%20billboard%20launched_thumb_320.jpg"
+             alt="Tamim Al Majd symbol of pride and defiance.">
+    </header>
+
+    <section class="splash">
+        <div class="splash-content">
+            <h2>Full Bleed CSS Grid</h2>
+            <div>
+                <p>CSS Grid provides a trivial solution to a complex problem: How to display full-bleed content mixed with center-aligned width-constrained content. This solution elimiates the need for auto-margins and floats while allowing the developer to change the grid globally and see those changes apply to each element individually.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="listing">
+        <ul>
+            <li>
+                <img src="https://www.cruisemapper.com/images/ports/1305-large-8c5d1a6af5dcd3e28466d12a9a5f5528.jpg" alt="">
+                <div>
+                    <h3>Grid is great</h3>
+                    <p>CSS Grid is a two-dimensional layout tool. It is great for layout out content in a grid, and for laying out content in two dimensions.</p>
+                </div>
+            </li>
+            <li>
+                <img src="http://static.qatarliving.com/post/2015/10/01/fanar01.jpg"
+                     alt="Fanar Mosque">
+                <div>
+                    <h3>Flex is great too</h3>
+                    <p>That said, Grid is not always the right option for layouts.
+                       If for example you need to lay out a series of identical boxes like those you see here,
+                       Flex may be a better option.
+                    </p>
+                </div>
+            </li>
+            <li>
+                <img src="http://static.qatarliving.com/post/2015/10/01/grand%20mosque.jpg"
+                     alt="The State Mosque">
+                <div>
+                    <h3>Know what tool to use</h3>
+                    <p>In some cases Grid and Flex are interchangeable. In other cases one is definitely better than the other. The choice usually comes down to whether you are laying out a list of items (Flex) or creating a more nuanced layout (Grid).</p>
+                </div>
+            </li>
+        </ul>
+    </section><!-- .listing -->
+
+   <section class="cards">
+        <section class="card">
+            <h2>Grid lets you do unusual things</h2>
+            <p>Creating this layout, where two items share the total available viewport width evenly alongside full-width and centered content, is suprisingly complex if you don't have CSS Grid available.</p>
+        </section>
+        <section class="card">
+            <h2>Grid requires a rethink</h2>
+            <p>Seeing this layout you may still think it's better to just use old methods with auto-margins and max-widths. And you <em>can</em>, but looking at the CSS you'll see the Grid approach is both cleaner and easier to understand.</p>
+        </section>
+    </section>
+
+    <footer class="footer">
+        Design based on
+            <a href="https://codepen.io/mor10/pen/xdYoNO" target="_blank">
+                this example
+            </a>
+            by <a href="https://twitter.com/mor10" target="_blank" rel="nofollow">
+                Morten Rand-Hendriksen
+            </a>.
+    </footer>
+</div>
+</body>
+</html>

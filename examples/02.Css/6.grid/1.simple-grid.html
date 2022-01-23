@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Simple Grid</title>
+    <style>
+        code {
+            color: #6F0505;
+            font-weight: bold;
+        }
+       .container{
+            display: grid;
+            grid-template-columns: 1fr;
+            /*
+                Rows are implicit: the browser will define them
+                You can sepecify the number of rows using
+                grid-template-rows
+                grid-auto-rows: 100px;
+            */
+            grid-gap: 10px;
+            text-align: center;
+        }
+
+        .container > div {
+            background-color: greenyellow;
+            border-radius: 5px;
+            font-size: 150%;
+            padding: 20px;
+        }
+
+       @media screen and (min-width: 600px){
+            .container {
+                grid-template-columns: 1fr 1fr ;
+            }
+        }
+
+        @media screen and (min-width: 900px){
+            .container {
+                grid-template-columns: 1fr 1fr 1fr;
+            }
+        }
+
+    </style>
+</head>
+<body>
+<div>
+    <h1>Defining a Grid</h1>
+    <ul>
+        <li>To define a Grid use <code>display:grid</code> on the parent element.
+            You can then create a grid using the <code>grid-template-columns</code>
+            and <code>grid-template-rows</code> properties.
+        </li>
+
+        <li><code>grid-gap</code> property is used to create a gap between the grid columns and rows.
+            This property is a shorthand for <code>grid-column-gap</code> and <code>grid-row-gap</code>
+            that can be used to set these values individually.
+        </li>
+
+        <li>All direct children of the parent become <em>grid items</em> and they are auto-placed in the grid cells.
+           Extra rows are auto-created as needed.
+        </li>
+    </ul>
+</div>
+<div class="container">
+    <div>A</div>
+    <div>B</div>
+    <div>C</div>
+    <div>D</div>
+    <div>E</div>
+    <div>F</div>
+</div>
+</body>
+</html>

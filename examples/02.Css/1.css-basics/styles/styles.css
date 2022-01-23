@@ -1,0 +1,36 @@
+/* CSS Document */
+a {
+	text-decoration: none;
+}
+
+a:hover { 
+	text-decoration: underline;
+	color: firebrick;
+	background-color: lightgoldenrodyellow;
+}
+
+li em   { 
+	color: red; 
+	font-weight: bold 
+}
+
+ul  {
+	margin-left: 2cm
+}
+
+ul ul  {
+	text-decoration: underline; 
+	margin-left: .5cm 
+}
+
+#dueDate {
+	color: red;
+}
+
+em {
+	background-color: lightyellow;
+}
+
+.redBorder {
+	border: 1px solid red;
+}

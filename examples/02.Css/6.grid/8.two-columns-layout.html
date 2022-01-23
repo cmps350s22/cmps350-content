@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Page layout example</title>
+    <style>
+
+        /*--------------------------------------------------------------
+        General styles
+        --------------------------------------------------------------*/
+        header,
+        main,
+        .sidebar,
+        footer {
+            padding: 1em 2em;
+        }
+
+        main {
+            background: white;
+        }
+
+        header {
+            background: #2185C5;
+            color: white;
+        }
+
+        .sidebar {
+            background: #FF7F66;
+        }
+
+        footer {
+            padding: 2em;
+            background: #3E454C;
+            color: white;
+        }
+
+        footer a {
+            color: white;
+        }
+
+        footer a:hover,
+        footer a:focus {
+            border-bottom: 1px solid yellow;
+        }
+
+        .listing a:hover {
+            text-decoration: overline;
+            color: #f08c00;
+        }
+
+        .listing h2 {
+            background-color: #f08c00;
+            color: #fff;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .listing {
+            grid-area: listing;
+            display: grid;
+            grid-gap: 15px;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            list-style: none;
+            padding: 0px;
+        }
+
+        .listing li {
+            border: 1px solid #ffe066;
+            border-radius: 5px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .listing .link {
+            margin-top: auto;
+            border-top: 1px solid #ffe066;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .listing .body {
+            padding: 10px;
+        }
+
+        /*--------------------------------------------------------------
+        CSS Grid layout for wider screens:
+        --------------------------------------------------------------*/
+        @media screen and (min-width: 600px) {
+            .page {
+                display: grid;
+                grid-template-areas: "header header"
+                                      "main sidebar"
+                                      "listing listing"
+                                      "footer footer";
+                grid-template-columns: 1fr minmax(auto, 15em);
+            }
+
+            header {
+                grid-area: header;
+            }
+
+            footer {
+                grid-area: footer;
+            }
+
+            main {
+                grid-area: main;
+            }
+
+            .sidebar {
+                grid-area: sidebar;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+    <header>
+        <h2 class="site-title">Standard two-column layout</h2>
+    </header>
+
+    <main>
+        <h2>Main content area</h2>
+        <p>The main content area is where the main content of the page is placed.
+            Right now, the main content is on the left and the sidebar is on the right.
+        </p>
+    </main>
+
+    <aside class="sidebar">
+        <h3>The Sidebar</h3>
+        <p>The sidebar typically contains things like:</p>
+        <ul>
+            <li>Links</li>
+            <li>Menus</li>
+            <li>Ads</li>
+        </ul>
+    </aside>
+
+    <ul class="listing">
+        <li>
+            <h2>Item One</h2>
+            <div class="body"><p>The content of this listing item goes here.</p></div>
+            <div class="link"><a href="#">Call to action!</a></div>
+        </li>
+        <li>
+            <h2>Item Two</h2>
+            <div class="body"><p>The content of this listing item goes here.</p></div>
+            <div class="link"><a href="#">Call to action!</a></div>
+        </li>
+        <li>
+            <h2>Item Three</h2>
+            <div class="body"><p>The content of this listing item goes here.</p>
+                <p>This one has more text than the other items.</p>
+                <p>Quite a lot more</p>
+                <p>Perhaps we could do something different with it?</p></div>
+            <div class="link"><a href="#">Call to action!</a></div>
+        </li>
+        <li>
+            <h2>Item Four</h2>
+            <div class="body"><p>The content of this listing item goes here.</p></div>
+            <div class="link"><a href="#">Call to action!</a></div>
+        </li>
+        <li>
+            <h2>Item Five</h2>
+            <div class="body"><p>The content of this listing item goes here.</p></div>
+            <div class="link"><a href="#">Call to action!</a></div>
+        </li>
+    </ul>
+
+    <footer>
+        Design based on this
+        <a href="https://codepen.io/mor10/pen/QvmLpd" target="_blank">example</a>
+        Created by <a href="https://twitter.com/mor10" target="_blank">Morten Rand-Hendriksen</a>.
+    </footer>
+</div>
+</body>
+</html>

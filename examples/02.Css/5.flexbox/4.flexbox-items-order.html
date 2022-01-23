@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Flex</title>
+    <style>
+        .container {
+            display: flex;
+            /*
+            align-items:flex-start;
+            align-items:flex-end;
+            align-items:center;
+            flex-direction:column;
+            */
+        }
+
+        .container div {
+            border:1px #ccc solid;
+            padding:10px;
+        }
+
+        /* box-1 will be displayed 2nd and it will have twice the space as other boxes*/
+        .box-1{
+            flex:2;
+            order:2;
+        }
+
+        .box-2{
+            flex:1;
+            order:1;
+        }
+
+        .box-3{
+            flex:1;
+            order: 3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="box-1">
+            <h3>Box One</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </div>
+        <div class="box-2">
+            <h3>Box Two</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </div>
+        <div class="box-3">
+            <h3>Box Three</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Simple Form</title>
+    <style>
+        form {
+            display: grid;
+            padding: 1em;
+            background: #f9f9f9;
+            border:1px solid #c9e6ff;
+            margin: 2em auto 0 auto;
+            max-width: 500px;
+            padding: 1em;
+        }
+        form input {
+            border:1px solid #c9e6ff;
+        }
+
+        form button {
+            border: none;
+            padding: 1em;
+            background: #0069ed;
+            color: #ffffff;
+            cursor: pointer;
+        }
+
+        form button:hover,
+        form button:focus {
+            background: #0053ba;
+        }
+
+        form button:focus {
+            outline: 1px solid #fff;
+            outline-offset: -4px;
+        }
+
+        form button:active {
+            transform: scale(0.99);
+        }
+
+        label {
+            padding: 0.5em 0.5em 0.5em 0;
+        }
+
+        input {
+            padding: 0.7em;
+            margin-bottom: 0.5rem;
+        }
+        input:focus {
+            outline: 2px solid royalblue;
+        }
+
+        @media (min-width: 700px) {
+            form {
+                grid-template-columns: auto 1fr;
+                grid-gap: 16px;
+            }
+
+            button {
+                grid-column: 2 / 3;
+                justify-self: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<form action="">
+    <label for="firstName">First Name</label>
+    <input id="firstName" type="text">
+
+    <label for="lastName">Last Name</label>
+    <input id="lastName" type="text">
+
+    <label for="job">Job</label>
+    <input id="job" type="text">
+
+    <label for="age">Age</label>
+    <input id="age" type="text">
+
+    <label for="email">Email</label>
+    <input id="email" type="email">
+
+    <button>Submit</button>
+</form>
+</body>
+</html>
