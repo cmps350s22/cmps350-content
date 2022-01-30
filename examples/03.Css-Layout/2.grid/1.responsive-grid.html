@@ -10,22 +10,25 @@
         }
        .container{
             display: grid;
-            grid-template-columns: 1fr;
+           /*
+           no need for this by default 1fr
+           grid-template-columns: 1fr;
+            */
             /*
                 Rows are implicit: the browser will define them
                 You can sepecify the number of rows using
                 grid-template-rows
                 grid-auto-rows: 100px;
             */
-            grid-gap: 10px;
+            grid-gap: 0.8rem;
             text-align: center;
         }
 
         .container > div {
             background-color: greenyellow;
             border-radius: 5px;
-            font-size: 150%;
-            padding: 20px;
+            font-size: 1.5rem;
+            padding: 1.5rem;
         }
 
        @media screen and (min-width: 600px){

@@ -3,7 +3,9 @@
 <head>
     <style>
         table {
-            border: solid black 1px;
+            border: solid lightskyblue 2px;
+            <!-- center the table -->
+            margin: 0 auto;
         }
 
         tr:nth-child(even) {  /* even rows */
@@ -33,15 +35,9 @@
             color: white;
             background-color: red;
         }
-
-        p[data-myAttribute*="First"] {
-            color: white;
-            background-color: pink;
-        }
     </style>
 </head>
 <body>
-<p id="p1" data-myAttribute="First p">My first p</p>
 <table>
     <tr>
         <th>Lecture</th>
@@ -49,8 +45,7 @@
     </tr>
     <tr>
         <td>0. Course Introduction</td>
-        <td>00. Fundamentals-of-CSharp-Course-Introduction.pptx<br/> Telerik Academy Graduates Season 2009
-            2010.pptx<br/></td>
+        <td>00. Course Introduction.pptx<br/></td>
     </tr>
     <tr>
         <td>1. Introduction to Programming</td>
@@ -166,8 +161,8 @@
         <td>25. CSharp-Fundamentals-Sample-Final-Exam-Variant-3.doc</td>
     </tr>
     <tr>
-        <td>26. Problems Solving Practice #4</td>
-        <td>26. CSharp-Fundamentals-Sample-Final-Exam-Variant-4.doc</td>
+        <td>Total</td>
+        <td>26</td>
     </tr>
 </table>
 </body>

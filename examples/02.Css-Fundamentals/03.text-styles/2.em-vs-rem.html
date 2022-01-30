@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>em vs. rem</title>
+    <style>
+        .btn {
+            padding: 1rem 3rem;
+            /*  padding: 1em 3em; */
+            background: cornflowerblue;
+            color: white;
+            font-weight: bold;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 1.25rem;
+        }
+
+        .btn-em {
+            padding: 1em 3em;
+        }
+
+        .btn-small  { font-size: .5rem; }
+        .btn-large  { font-size: 3rem; }
+
+        /* Sibling elements having btn class */
+        .btn + .btn {
+            margin-left: 2rem;
+        }
+    </style>
+</head>
+<body>
+<h1>Button padding using rem</h1>
+<div>
+    <a class="btn btn-small" href="#">small</a>
+    <a class="btn" href="#">normal</a>
+    <a class="btn btn-large" href="#">large</a>
+</div>
+
+<h1>Button padding using em</h1>
+<p>Padding is proportional to the button font-size</p>
+<div>
+    <a class="btn btn-em btn-small" href="#">small</a>
+    <a class="btn btn-em" href="#">normal</a>
+    <a class="btn btn-em btn-large" href="#">large</a>
+</div>
+
+</body>
+</html>

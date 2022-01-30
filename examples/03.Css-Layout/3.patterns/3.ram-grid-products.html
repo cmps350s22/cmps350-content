@@ -18,35 +18,35 @@
             font-size: 80%;
         }
         /* Grid-based layout */
-        .deals {
+        .products {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             grid-gap: 1rem;
         }
 
-        .sale-item {
+        .product-item {
             display: flex;
             flex-flow: column;
             border:  1px solid black;
             border-radius: 1rem;
             padding: 2rem;
         }
-        .sale-item > h1 {
+        .product-item > h1 {
             margin: 1rem 1rem 0;
         }
-        .sale-item > ul {
+        .product-item > ul {
             margin: 0 0 1rem;
         }
-        .sale-item > p {
+        .product-item > p {
             margin: 0.25em 1rem 1rem;
         }
-        .sale-item > img {
+        .product-item > img {
             order: -1;
             align-self: center;
             max-width: 250px;
             height: auto;
         }
-        .sale-item > button {
+        .product-item > button {
             margin-top: auto;
             background: teal;
             color: white;
@@ -56,13 +56,13 @@
             font-size: 1.2rem;
         }
         footer {
-            margin: 10px;
+            margin: 0.8rem;
         }
     </style>
 </head>
 <body>
-<main class="deals">
-    <article class="sale-item">
+<main class="products">
+    <article class="product-item">
         <h1>Computer Starter Kit</h1>
         <p>This is the best computer money can buy, if you don’t have much money.</p>
         <ul>
@@ -76,7 +76,7 @@
         <button>BUY NOW</button>
     </article>
 
-    <article class="sale-item">
+    <article class="product-item">
         <h1>Printer</h1>
         <p>Only capable of printing ASCII art.</p>
         <ul>
@@ -87,22 +87,22 @@
         <button>BUY NOW</button>
     </article>
 
-    <article class="sale-item">
+    <article class="product-item">
         <h1>Printer 2</h1>
-        <p>A la 1989.</p>
+        <p>Super fast dot-matrix Printer.</p>
         <img src="https://www.epson.eu/files/assets/converted/510m-310m/p/r/i/c/price-list-lq-590.png.png"
              alt="You get: a dot-matrix printer.">
         <button>BUY NOW</button>
     </article>
 
-    <article class="sale-item">
+    <article class="product-item">
         <h1>Mouse</h1>
         <p>A computer mouse is a pointing device (hand control) that detects two-dimensional motion relative to a surface. This motion is typically translated into the motion of a pointer on a display, which allows a smooth control of the graphical user interface. Clickity Click!</p>
         <img src="https://assets.logitech.com/assets/65122/wireless-mouse-m585-multi-device.png">
         <button>BUY NOW</button>
     </article>
 
-    <article class="sale-item">
+    <article class="product-item">
         <h1>Macintosh 8500</h1>
         <p>This is the best computer money can buy, if you don’t have much money. This computer was state of the art in 1995.</p>
         <img src="https://cdn.shopclues.com/images/thumbnails/18729/320/320/78279966PC14275391591432900471.jpg"

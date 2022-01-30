@@ -13,7 +13,7 @@
 
         /* unvisited link */
         a:link {
-            color: grey;
+            color: darkblue;
         }
 
         /* visited link */
@@ -23,7 +23,7 @@
 
         /* mouse over link */
         a:hover {
-            color: red;
+            color: deeppink;
         }
 
         /* selected link */
@@ -38,9 +38,8 @@
         .quote {font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif}
 
         /* More info @ https://developer.mozilla.org/en-US/docs/Web/CSS/::before */
-        .quote::before { content: "«";  color: lightskyblue;}
-        .quote::after { content: "»";  color: lightskyblue;}
-
+        .quote:before { content: "«";  color: lightskyblue ;}
+        .quote:after { content: "»";  color: lightskyblue;}
     </style>
 </head>
 <body>
@@ -48,7 +47,7 @@
 <form action="">
     First name: <input type="text" value="Mickey"/><br/>
     Last name: <input type="text" value="Mouse"/><br/>
-    Country: <input type="text" disabled="disabled" value="Disneyland"/><br/>
+    Country: <input type="text" disabled value="Disneyland"/><br/>
 
     <h1>Links</h1>
     <p>

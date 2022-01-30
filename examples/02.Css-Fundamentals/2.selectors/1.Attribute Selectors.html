@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        input[type='text'] {
+            width: 150px;
+            margin-bottom: 10px;
+            background-color: lightgoldenrodyellow;
+        }
+
+        input[type='button'] {
+            margin-top: 1rem;
+            background: cornflowerblue;
+            color: white;
+            border: none;
+            padding: 0.6rem;
+            margin-left: 5rem;
+        }
+
+        input[type='button']:hover,
+        input[type='button']:focus {
+            background: #272eb5
+        }
+
+        a[target=_blank], a[href^="http"] {
+            background-image: url(./images/external-link-icon.svg);
+            background-repeat: no-repeat;
+            background-position: top right;
+            padding-right: 1.2em;
+        }
+
+    </style>
+</head>
+<body>
+
+<a href="https://qu.edu.qa">Qatar University</a>
+<br>
+<a href="https://developer.mozilla.org/en-US/docs/Web/CSS" target="_blank">MDN CSS</a>
+<br>
+<br>
+
+<form name="input" action="" method="get">
+    <div>
+        <label for="firstName">First name:</label>
+        <input type="text" id="firstName" name="firstName" value="Ali" size="20">
+    </div>
+    <div>
+        <label for="lastName">Last name:</label>
+        <input type="text" id="lastName" name="lastName" value="Faleh" size="20">
+    </div>
+    <input type="button" value="Submit">
+</form>
+
+</body>
+</html>
