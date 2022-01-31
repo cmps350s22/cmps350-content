@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sidebar says</title>
+    <link rel="stylesheet" href="css/common.css">
+    <style>
+        .container {
+            height: 98vh;
+            display: grid;
+            grid-template-columns: minmax(100px, 20%) 1fr;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <aside class="section yellow" contenteditable>
+        Min: 100px / Max: 20%
+    </aside>
+    <main class="section blue" contenteditable>
+        <p class="center">
+            Sidebar says:
+            A layout where the sidebar is given a minimum and maximum safe area size,
+            and the rest of the content fills the available space.
+        </p>
+        This main element takes the second grid position (1fr), meaning
+        it takes up the rest of the remaining space.
+    </main>
+</div>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Classic layout</title>
+    <link rel="stylesheet" href="css/common.css">
+    <style>
+        .container {
+            height: 98vh;
+            display: grid;
+            grid-template: auto 1fr auto / auto 1fr auto;
+        }
+
+        header {
+            grid-column: 1 / 4;
+        }
+
+        .left-side {
+            grid-column: 1 / 2;
+        }
+
+        main {
+            grid-column: 2 / 3;
+        }
+
+        .right-side {
+            grid-column: 3 / 4;
+        }
+
+        footer {
+            grid-column: 1 / 4;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <header class="section coral">Header</header>
+    <aside class="left-side section blue">Left Sidebar</aside>
+    <main class="section green"> Main Content
+        <p>
+            Classic layout:
+            Having a  header, footer, left sidebar, right sidebar, and main content area.
+        </p>
+    </main>
+    <aside class="right-side section yellow">Right Sidebar</aside>
+    <footer class="section coral">Footer</footer>
+</div>
+</body>
+</html>

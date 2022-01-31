@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Clamping card</title>
+    <link rel="stylesheet" href="css/common.css">
+    <style>
+        .center {
+            /*
+            Clamp can be used for responsive typography.
+            font-size: clamp(0.8rem, 3vw, 2.5rem)
+            font-size is 3% of Viewport width but
+            would always stay clamped between 0.8rem and 2.5rem
+            */
+            font-size: clamp(0.8rem, 3vw, 2.5rem)
+        }
+
+        .card {
+            width: clamp(23ch, 40%, 46ch);
+            margin: 0 auto;
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card img {
+            width: 90%;
+            aspect-ratio: 16 / 9;
+            align-self: center;
+        }
+    </style>
+</head>
+<body>
+<p class="center">
+    Clamping card:
+    Sets an absolute min and max size, and an actual size for the card.
+</p>
+<article class="card">
+    <h1>Doha, Qatar</h1>
+    <img src="img/doha-aerial-image.jpg" alt="Doha aerial photo">
+    <p>Doha is Qatar's largest city and commercial centre.
+        It has a population of 2.4 million.
+    </p>
+    <a href="https://en.wikipedia.org/wiki/Doha" target="_blank">
+        Read more...
+    </a>
+</article>
+
+</body>
+</html>

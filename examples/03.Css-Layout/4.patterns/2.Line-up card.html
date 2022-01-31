@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Line-up card</title>
+    <link rel="stylesheet" href="css/common.css">
+    <style>
+        .container {
+            display: grid;
+            grid-gap: 1rem;
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        .visual {
+            height: 100px;
+            width: 100%;
+        }
+
+        .card {
+            display: flex;
+            flex-direction: column;
+            padding: 1rem;
+            justify-content: space-between;
+        }
+
+        h3 {
+            margin: 0
+        }
+    </style>
+</head>
+<body>
+<p class="center">
+  Line-up card:
+    A layout that places the first and last child elements at
+    the edges of the flex container,
+    with the remaining space evenly distributed between the elements.
+</p>
+<div class="container">
+    <div class="card">
+        <h3>Title - Card 1</h3>
+        <p contenteditable>Medium length description with a few more words here.</p>
+        <div class="visual"></div>
+    </div>
+    <div class="card">
+        <h3>Title - Card 2</h3>
+        <p contenteditable>Long Description. Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
+        <div class="visual"></div>
+    </div>
+    <div class="card">
+        <h3>Title - Card 3</h3>
+        <p contenteditable>Short Description.</p>
+        <div class="visual"></div>
+    </div>
+</div>
+</body>
+</html>

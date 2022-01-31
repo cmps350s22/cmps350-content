@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>RAM (Repeat, Auto, Minmax)</title>
+    <link rel="stylesheet" href="css/common.css">
+    <style>
+        .container {
+            display: grid;
+            grid-gap: 1rem;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        }
+    </style>
+</head>
+<body>
+<p class="center">
+    RAM (Repeat, Auto, Minmax):
+    A responsive layout with auto-created grid columns and automatically-placed children.
+</p>
+<div class="container white">
+    <div class="box">1</div>
+    <div class="box">2</div>
+    <div class="box">3</div>
+    <div class="box">4</div>
+</div>
+</body>
+</html>

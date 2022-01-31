@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Deconstructed pancake</title>
+    <style>
+        .container {
+            font-size: 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .box {
+            /*  No stretching: */
+            flex: 0 1 200px;
+            /*  Stretching: */
+            /* flex: 1 1 200px; */
+            margin: 5px;
+            padding: 1rem;
+            text-align: center;
+            border-radius: 1rem;
+            background-color: #fce4ec;
+            border: 1px solid pink;
+        }
+    </style>
+</head>
+<body>
+<p>
+    Deconstructed pancake:
+    Create a layout that stretches to fit the space,
+    and snaps to the next line at a minimum size.
+</p>
+<div class="container">
+    <div class="box">1</div>
+    <div class="box">2</div>
+    <div class="box">3</div>
+</div>
+</body>
+</html>
