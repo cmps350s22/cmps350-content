@@ -9,26 +9,30 @@
             min-height: 98vh;
             display: grid;
             grid-template: auto 1fr auto / auto 1fr auto;
+            grid-template-areas:
+                "header header header"
+                "left-side main right-side"
+                "footer footer footer";
         }
 
         header {
-            grid-area: 1 / span 3;
+            grid-area: header;
         }
 
         .left-side {
-            grid-column: 1 / 2;
+            grid-area: left-side;
         }
 
         main {
-            grid-column: 2 / 3;
+            grid-area: main;
         }
 
         .right-side {
-            grid-column: 3 / 4;
+            grid-area: right-side;
         }
 
         footer {
-            grid-column: 1 / span 3;
+            grid-area: footer;
         }
     </style>
 </head>
