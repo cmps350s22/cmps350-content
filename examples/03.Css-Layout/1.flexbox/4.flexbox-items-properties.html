@@ -5,48 +5,42 @@
     <title>Flex</title>
     <style>
         .container {
+            outline: 1px dotted gray;
+            min-height: 40vh;
             display: flex;
+            gap: 0.5rem;
+            justify-content: end;
+            align-items: center;
             /*
-            align-items:flex-start;
-            align-items:flex-end;
-            align-items:center;
             flex-direction:column;
             */
         }
 
-        .container div {
-            border:1px #ccc solid;
-            padding:10px;
+        .container > div {
+            border:1px firebrick solid;
+            background: lightgoldenrodyellow;
+            padding: 0.5rem;
         }
 
-        /* box-1 will be displayed 2nd and it will have twice the space as other boxes*/
-        .box-1{
-            flex:2;
-            order:2;
-        }
-
-        .box-2{
-            flex:1;
+        /* 1st box will be displayed last (as others items have default order 0)
+         and it will have twice the space as other boxes*/
+        .container > div:nth-child(1) {
+            flex-grow:3;
             order:1;
-        }
-
-        .box-3{
-            flex:1;
-            order: 3;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="box-1">
+        <div>
             <h3>Box One</h3>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
         </div>
-        <div class="box-2">
+        <div>
             <h3>Box Two</h3>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
         </div>
-        <div class="box-3">
+        <div>
             <h3>Box Three</h3>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
         </div>
