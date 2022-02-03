@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Headline decoration</title>
+  <style>
+      h1 {
+          display: grid;
+          grid-template-columns: 1fr auto 1fr;
+      }
+      h1:before, h1:after {
+          content: "";
+          border-top: 1px solid #36454f;
+          align-self: center;
+      }
+  </style>
+</head>
+<body>
+    <h1>Welcome to CSS World!</h1>
+</body>
+</html>

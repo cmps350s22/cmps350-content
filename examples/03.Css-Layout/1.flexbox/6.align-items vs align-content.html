@@ -1,0 +1,106 @@
+<!--
+Adapted from https://codepen.io/kevinpowell/pen/gOXbadb
+Video https://www.youtube.com/watch?v=WeUEqZQ7ADU
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>align-items vs align-content</title>
+    <style>
+        body {
+            min-height: 100vh;
+            font-family: system-ui, sans-serif;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+        }
+
+        .container {
+            width: min(100% - 4rem, 50rem);
+            margin-inline: auto;
+        }
+
+        .item--large {
+            aspect-ratio: 1 / 2;
+        }
+
+        .align-items {
+            jusify-content: space-between;
+            align-items: center;
+        }
+
+        .align-content {
+            justify-content: center;
+            align-content: end;
+            align-items: center;
+            min-height: 80vh;
+        }
+
+        /* general styling */
+        .align-items,
+        .align-content {
+           display: flex;
+           flex-wrap: wrap;
+            /*display: grid;
+            grid-template-columns: repeat(5, 1fr);*/
+            gap: 1rem;
+            border: 0.5rem solid var(--border-color);
+            padding: 0.5rem;
+        }
+
+        .align-items {
+            --border-color: #e02442;
+            --box-color: #c42971;
+        }
+
+        .align-content {
+            --border-color: #5370C6;
+            --box-color: #7352e0
+        }
+
+        .item {
+            padding: 2rem;
+            background: var(--box-color);
+            flex-basis: 10%;
+            flex-grow: 1;
+        }
+    </style>
+</head>
+<body>
+<h1>align-items vs align-content</h1>
+<div class="container">
+    <h2>align-items</h2>
+    <div class="align-items">
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item item--large"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+    </div>
+</div>
+
+<div class="container">
+    <h2>align-content</h2>
+    <div class="align-content">
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item item--large"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item item--large"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+    </div>
+</div>
+</body>
+</html>

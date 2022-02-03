@@ -31,6 +31,10 @@
             /* Vertical alignment overridden at the flex item level */
             align-self: start;
         }
+        .container > div:last-child {
+            /* Vertical alignment overridden at the flex item level */
+            align-self: end;
+        }
     </style>
 </head>
 <body>
@@ -41,9 +45,11 @@
     align-self
 </a>
     <div class="container">
-        <div>One</div>
-        <div>Two</div>
-        <div>Three</div>
+        <div>Item one</div>
+        <div>Item two</div>
+        <div>Item three has more content</div>
+        <div>Item four</div>
+        <div>Item five</div>
     </div>
 </body>
 </html>
