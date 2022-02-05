@@ -16,4 +16,4 @@ do {
    console.log(number);
 } while (number % 10)
 
-console.log("Using do loop -Divisible by 10 found -> " + number);
+console.log("Using do loop - Divisible by 10 found -> " + number);

@@ -1,4 +1,4 @@
-﻿let numbers = [5, 4, 23, 2];
+﻿const numbers = [5, 4, 23, 2];
 
 function orderBy(a, b) {
     //return (a == b) ? 0 : (a > b) ? 1 : -1;

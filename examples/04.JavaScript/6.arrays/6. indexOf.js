@@ -1,4 +1,4 @@
-﻿let arr = [1, 2, 3, 4, 5, 6, 7, 8];
+﻿const arr = [1, 2, 3, 4, 5, 6, 7, 8];
 
 console.log(arr.join(", "));
 console.log("element 3 is on index: " + arr.indexOf(3));

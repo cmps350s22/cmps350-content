@@ -1,5 +1,5 @@
 //Old way
-let colors = ["red", "green", "blue", "yellow", "black"]
+const colors = ["red", "green", "blue", "yellow", "black"]
 
 // Create Variables from Array
 let firstColor   = colors[0]
@@ -16,7 +16,7 @@ console.log(firstColor, secondColor, thirdColor, otherColors2);
 console.log(firstColor, secondColor, thirdColor, otherColors2)
 
 // Create elements from the array and place the remaining ones in otherColors variable using the Spread Operator
-let [primaryColor, secondaryColor, ...otherColors] = colors
+const [primaryColor, secondaryColor, ...otherColors] = colors
 
 console.log("\nprimaryColor:", primaryColor)
 console.log("secondaryColor:", secondaryColor)
@@ -40,16 +40,16 @@ function f() {
    return [1, 2]
 }
 
-let [x, y] = f()
+const [x, y] = f()
 console.log("\n(x, y):", x, y)
 
 //Destructing an object
-let person = {
+const person = {
    firstname: 'Ali', lastname: 'Faleh', age: 18, gpa: 3.6,
    address: {
       city: 'Doha',
       street: 'University St'
    }
 }
-let { firstname, lastname, address: {city}, ...otherDetails } = person
+const { firstname, lastname, address: {city}, ...otherDetails } = person
 console.log("\n(firstname, lastname, city, otherDetails):", firstname, lastname, city, otherDetails)

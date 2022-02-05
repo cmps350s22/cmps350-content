@@ -1,5 +1,5 @@
-let a = true;
-let b = false;
+const a = true;
+const b = false;
 
 console.log("a && b = " + (a && b)); // false
 console.log("a || b = " + (a || b)); // true

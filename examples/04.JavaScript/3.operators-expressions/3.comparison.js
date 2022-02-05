@@ -1,6 +1,6 @@
 console.log("----------------------------------------------------");
 console.log("Regular comparisons: ");
-let a = 5;
+const a = 5;
 let b = 4;
 
 console.log("a = " + a + ", b = " + b);
@@ -13,18 +13,18 @@ console.log("(a > b)   = " + (a > b));  // False
 
 console.log("----------------------------------------------------");
 console.log("Special comparisons: ");
-let zeroInt = 0;
-let oneInt = 1;
+const zeroInt = 0;
+const oneInt = 1;
 
-let zeroFloat = 0.0;
-let oneFloat = 1.0;
+const zeroFloat = 0.0;
+const oneFloat = 1.0;
 
-let emptyStr = "";
-let oneStr = "1";
-let str = "JavaScript";
+const emptyStr = "";
+const oneStr = "1";
+const str = "JavaScript";
 
-let nullValue = null;
-let emptyObject = {};
+const nullValue = null;
+const emptyObject = {};
 
 console.log('0 == 0.0 = ' + (zeroInt == zeroFloat));
 console.log('1 == "1" =' + (oneInt == oneStr));

@@ -1,4 +1,4 @@
-let sentence = "Sample sentence to show string methods";
+const sentence = "Sample sentence to show string methods";
 
 console.log(sentence);
 console.log(`length = ${sentence.length}`);
@@ -13,7 +13,7 @@ console.log(`'${sentence}'.indexOf('string',40) = ${sentence.indexOf("string", 4
 //The substring() method extracts the characters from a string, between two specified indices, and returns the new sub string.
 console.log(`'${sentence}'.substring(6,7) = '${sentence.substring(7, 15)}'`);
 
-let str = "                  There is elegance in simplicity                ";
+const str = "                  There is elegance in simplicity                ";
 
 console.log("trimming whitespace");
 console.log(`original: ! ${str} !`);

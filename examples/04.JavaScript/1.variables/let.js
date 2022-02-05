@@ -6,7 +6,6 @@ let message = greeting;
 
 console.log(heightInMeters, greeting, message);
 
-
 function divide(x, y) {
     let returnVal;
     if (y != 0) {
@@ -15,7 +14,7 @@ function divide(x, y) {
     return returnVal;
 }
 
-console.log(divide(10, 2));
+console.log(divide(10, 0));
 
 /*
     let is block-scoped

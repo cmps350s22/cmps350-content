@@ -1,6 +1,6 @@
 // exponential operator (**)
-let x = 3
-let y = 2
+const x = 3
+const y = 2
 console.log(x, y);
 let result = Math.pow(x,y);
 // … produces the same result as …

@@ -1,10 +1,10 @@
 let valueDouble = 8.75;
-let valueInt = valueDouble | 0; // 8
+const valueInt = valueDouble | 0; // 8
 console.log("valueDouble = " + valueDouble);
 console.log("valueInt = " + valueInt);
 
 valueDouble = 8.75;
-let roundedInt = (valueDouble + 0.5) | 0; // 9
+const roundedInt = (valueDouble + 0.5) | 0; // 9
 console.log("valueDouble = " + valueDouble);
 console.log("roundedInt = " + roundedInt);
 
