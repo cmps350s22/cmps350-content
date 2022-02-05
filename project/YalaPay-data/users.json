@@ -1,0 +1,20 @@
+[
+  {
+    "email": "sara@yalapay.com",
+    "password": "pass123",
+    "firstName": "Sara",
+    "lastName": "Khalili"
+  },
+  {
+    "email": "farid@yalapay.com",
+    "password": "pass123",
+    "firstName": "Farid",
+    "lastName": "Zakaria"
+  },
+  {
+    "email": "samir@yalapay.com",
+    "password": "pass123",
+    "firstName": "Samir",
+    "lastName": "Saghir"
+  }
+]

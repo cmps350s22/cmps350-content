@@ -1,0 +1,17 @@
+[
+  "No funds/insufficient funds",
+  "Cheque post-dated, please represent on due date",
+  "Drawer's signature differs",
+  "Alteration in date/words/figures requires drawer's full signature",
+  "Order cheque requires payee's endorsement",
+  "Not drawn on us",
+  "Drawer deceased/bankrupt",
+  "Account closed",
+  "Stopped by drawer due to cheque lost, bearer's bankruptcy or a judicial order",
+  "Date/beneficiary name is required",
+  "Presentment cycle expired",
+  "Already paid",
+  "Requires drawer's signature ",
+  "Cheque information and electronic data mismatch"
+]
+
