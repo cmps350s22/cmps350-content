@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Calculator</title>
+    <style>
+        .title {
+            color: #0053ba;
+            background: lightgoldenrodyellow;
+        }
+    </style>
+    <style>
+        #operation {
+            width: 40px
+        }
+
+        main {
+            text-align: center;
+        }
+    </style>
+
+    <script>
+        function add(x, y) {
+            return x + y;
+        }
+    </script>
+
+    <script type="module" src="js/calculator-app.js"></script>
+</head>
+<body>
+<main>
+    <h1>Calculator</h1>
+    <form>
+        <input type="text" id="num1" required/>
+        <select id="operation">
+            <option>+</option>
+            <option>-</option>
+            <option>*</option>
+            <option>/</option>
+        </select>
+        <input type="text" id="num2" required/>
+        <br><br>
+        <input type="button" value="Compute" onclick="handleCompute()"/>
+        <input type="button" value="Compute (event listener in JS)" id="btnCompute"/>
+        <br><br>
+        <div id="result"></div>
+    </form>
+</main>
+</body>
+</html>

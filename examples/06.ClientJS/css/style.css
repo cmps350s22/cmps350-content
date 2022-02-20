@@ -1,0 +1,27 @@
+#logo {
+    display: block;
+    max-width:40px;
+    max-height:40px;
+    width: auto;
+    height: auto;
+}
+
+/* Nav Bar styling */
+nav ul li
+{
+    display: inline;
+    padding:8px;
+}
+
+ul li a:hover {
+    color: dodgerblue;
+    text-decoration: overline;
+}
+
+h3 {
+    text-align: center;
+}
+
+a:visited{
+    color:blue;
+}

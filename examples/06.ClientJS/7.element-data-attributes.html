@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dataset</title>
+</head>
+<body>
+        <div id="user" data-id="123456" data-user-name="johndoe" data-dob>
+            John Doe
+        </div>
+
+        <script>
+            const el = document.querySelector('#user');
+            console.log(el.dataset);
+            // el.id === 'user'
+            // el.dataset.id === '123456'
+            // el.dataset.userName === 'johndoe'
+            // el.dataset.dob === ''
+
+            // set a data attribute
+            el.dataset.dob = '1960-10-03';
+            console.log("dob: ", el.dataset.dob);
+
+            delete el.dataset.dob;
+            // Result: el.dataset.dateOfBirth === undefined
+            console.log("dob: ", el.dataset.dob);
+
+            console.log("mobile: ", 'mobile' in el.dataset);
+            if ('mobile' in el.dataset === false) {
+                el.dataset.mobile = '55751585';
+                // Result: 'mobile' in el.dataset === true
+            }
+            console.log(el.dataset);
+        </script>
+</body>
+</html>

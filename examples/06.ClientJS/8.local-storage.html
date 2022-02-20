@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Local Storage</title>
+    <style>
+        main {
+            text-align: center;
+        }
+    </style>
+    <script>
+        function clickCounter() {
+            if (localStorage.clickCount) {
+                localStorage.clickCount = parseInt(localStorage.clickCount) + 1;
+            } else {
+                localStorage.clickCount = 1;
+            }
+            document.querySelector("#count").innerHTML = `Button clicked 
+		            ${localStorage.clickCount} times.`;
+        }
+    </script>
+</head>
+<body>
+<main>
+    <p id="count"></p>
+    <br>
+    <button onclick="clickCounter()">ClickMe</button>
+</main>
+</body>
+</html>

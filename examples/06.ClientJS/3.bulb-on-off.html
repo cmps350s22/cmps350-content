@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Event Handlers</title>
+    <style>
+        body {
+            text-align: center;
+        }
+        img {
+            height: 300px;
+        }
+    </style>
+    <script>
+        function handleBulbSwitch(command) {
+            const img = document.querySelector('#bulbImage');
+            if (command === "Turn on") {
+                turnOn();
+            } else {
+                turnOff();
+            }
+        }
+
+        function turnOn() {
+            document.querySelector('#bulbImage').src = 'images/bulb-on.png';
+            document.querySelector('#switchBtn').value = "Turn off";
+        }
+
+        function turnOff() {
+            document.querySelector('#bulbImage').src = 'images/bulb-off.png';
+            document.querySelector('#switchBtn').value = "Turn on";
+        }
+    </script>
+</head>
+<body>
+    <p>Using JavaScript to change the src (source) attribute of an image.</p>
+    <img id="bulbImage" src="images/bulb-off.png"
+         onmouseover="turnOn()"
+         onmouseout="turnOff()" >
+    <br>
+    <input type="button" id="switchBtn" value="Turn on"
+           onclick="handleBulbSwitch(this.value)" >
+</body>
+</html>

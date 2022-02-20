@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Surah Explorer</title>
+    <script>
+        let surahs;
+        document.addEventListener("DOMContentLoaded", async ()=> {
+            surahs = await getSurahs();
+            const surahsHtml = `
+                ${surahs.map(s => `<option value="${s.id}">${s.name_arabic} - ${s.name_simple}</option>`).join('\n')}
+            `
+            document.querySelector('#surahDD').innerHTML = surahsHtml;
+            handleSurahChanged(1);
+        });
+
+        async function handleSurahChanged(surahId) {
+            const verses = await getVerses(surahId);
+            const versesHtml = `
+                ${verses.map( (v, i) => `<li>${v.text_uthmani} (${i+1})</li>`).join('\n')}
+            `;
+            document.querySelector('#versesList').innerHTML = versesHtml;
+        }
+
+        async function getSurahs() {
+            const url = "https://api.quran.com/api/v4/chapters";
+            const response = await fetch(url);
+            const surahs = await response.json();
+            return  surahs.chapters;
+        }
+
+        async function getVerses(surahId) {
+            const url = `https://api.quran.com/api/v4/quran/verses/uthmani?chapter_number=${surahId}`;
+            const response = await fetch(url);
+            const verses = await response.json();
+            return  verses.verses;
+        }
+
+    </script>
+</head>
+<body>
+    <label for="surahDD">Surah</label>
+    <select id="surahDD" onchange="handleSurahChanged(this.value)">
+    </select>
+    <ul id="versesList" style="direction: rtl;">
+    </ul>
+</body>
+</html>
