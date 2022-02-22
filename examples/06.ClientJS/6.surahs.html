@@ -4,17 +4,16 @@
     <meta charset="UTF-8">
     <title>Surah Explorer</title>
     <script>
-        let surahs;
         document.addEventListener("DOMContentLoaded", async ()=> {
-            surahs = await getSurahs();
+            const surahs = await getSurahs();
             const surahsHtml = `
                 ${surahs.map(s => `<option value="${s.id}">${s.name_arabic} - ${s.name_simple}</option>`).join('\n')}
             `
             document.querySelector('#surahDD').innerHTML = surahsHtml;
-            handleSurahChanged(1);
+            await onSurahChange(1);
         });
 
-        async function handleSurahChanged(surahId) {
+        async function onSurahChange(surahId) {
             const verses = await getVerses(surahId);
             const versesHtml = `
                 ${verses.map( (v, i) => `<li>${v.text_uthmani} (${i+1})</li>`).join('\n')}
@@ -40,7 +39,7 @@
 </head>
 <body>
     <label for="surahDD">Surah</label>
-    <select id="surahDD" onchange="handleSurahChanged(this.value)">
+    <select id="surahDD" onchange="onSurahChange(this.value)">
     </select>
     <ul id="versesList" style="direction: rtl;">
     </ul>
