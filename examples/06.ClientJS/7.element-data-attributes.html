@@ -5,11 +5,19 @@
     <title>Dataset</title>
 </head>
 <body>
-        <div id="user" data-id="123456" data-user-name="johndoe" data-dob>
+        <div id="user" data-id="123456" data-user-name="johndoe" data-dob
+             onclick="handleClick(event)">
             John Doe
         </div>
 
         <script>
+            function handleClick(event) {
+                console.log(event);
+                console.log(event.target);
+                console.log(event.type);
+                console.log(event.timeStamp);
+            }
+
             const el = document.querySelector('#user');
             console.log(el.dataset);
             // el.id === 'user'
