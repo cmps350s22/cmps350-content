@@ -1,0 +1,19 @@
+<h3 id="title">Hero Editor</h3>
+<form>
+    <input type="hidden" id="id" name="id">
+    <label for="name">Name</label>
+    <input type="text" id="name" name="name" required>
+
+    <label for="heroType">Hero Type</label>
+    <select id="heroType" name="heroType" required>
+        <option></option>
+        <option value="Prophet">Prophet</option>
+        <option value="Companion">Companion</option>
+        <option value="Scholar">Scholar</option>
+    </select>
+
+    <label for="quote">Quote</label>
+    <input type="text" id="quote" name="quote" required>
+
+    <button type="Submit" onclick="onSubmitHero(event)">Submit</button>
+</form>

@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "name": "Muhammad Ibn `Abd Allāh",
+    "quote": "ما كان الرفق في شيء إلا زانه ، ولا نزع من شيء إلا شانه ",
+    "heroType": "Prophet"
+  },
+  {
+    "id": 2,
+    "name": "Abu Bakr Al-Siddiq",
+    "quote": "أيها الناس، من كان يعبد محمدا، فإن محمدا قد مات، ومن كان يعبد الله، فإن الله حي لا يموت",
+    "heroType": "Companion"
+  },
+  {
+    "id": 3,
+    "name": "Umar ibn Al-Khattāb",
+    "heroType": "Companion",
+    "quote": "عليك بالصدق و إن قتلك"
+  },
+  {
+    "id": 4,
+    "name": "Uthman Ibn Affan",
+    "heroType": "Companion",
+    "quote": "لو أن قلوبنا طهرت ما شبعنا من كلام ربِّنا، وإني لأكره أن يأتي عليَّ يوم لا أنظر في المصحف"
+  },
+  {
+    "id": 5,
+    "name": "Ali Ibn Abi Talib",
+    "quote": "مَنْ أَطَالَ الاْمَلَ أَسَاءَ الْعَمَلَ",
+    "heroType": "Companion"
+  },
+  {
+    "id": 6,
+    "name": "Imam Maliq",
+    "heroType": "Scholar",
+    "quote": "Knowledge does not come but you have to come to it"
+  }
+]

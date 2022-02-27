@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Heroes</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
+    <link rel="stylesheet" href="./style.css">
+    <script type="module" src='./app.js'></script>
+</head>
+<body>
+    <nav>
+        <a href="#" onclick="onAddHero(event)">Add Hero</a>
+    </nav>
+    <br>
+    <label for="heroTypeFilter">Hero Type</label>
+    <select id="heroTypeFilter" name="heroType" required>
+        <option></option>
+        <option value="Prophet">Prophet</option>
+        <option value="Companion">Companion</option>
+        <option value="Scholar">Scholar</option>
+    </select>
+    <main id="heroes"></main>
+    <div id="errorMsg"></div>
+</body>
+</html>
