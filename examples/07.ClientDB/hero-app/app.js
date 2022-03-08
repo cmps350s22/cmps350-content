@@ -1,4 +1,4 @@
-import * as heroRepository from './hero-repository.js';
+import * as heroRepository  from './hero-repository.js';
 
 //After the document is loaded in the browser
 document.addEventListener("DOMContentLoaded", async () => {

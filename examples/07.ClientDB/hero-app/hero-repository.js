@@ -26,10 +26,10 @@ async function getDB() {
        Just like how the main store is auto sorted by the primary key, the index store is
        auto sorted by the index key.
     */
-    const db = await openDB(dbName, dbVersion, {
+    const db = await openDB('heroes-db', 1, {
             upgrade(db) {
-                if (!db.objectStoreNames.contains(heroesStoreName)) {
-                    const heroesStore = db.createObjectStore(heroesStoreName, {
+                if (!db.objectStoreNames.contains('heroes')) {
+                    const heroesStore = db.createObjectStore('heroes', {
                         keyPath: 'id', autoIncrement: true,
                     });
 
@@ -44,7 +44,7 @@ async function getDB() {
     const heroesCount = await db.count(heroesStoreName);
     if (heroesCount === 0) {
         const heroes = await fetchHeroes();
-        heroes.forEach(async hero => await db.add(heroesStoreName, hero));
+        heroes.forEach(async hero => await addHero(hero));
     }
     return db;
 }
@@ -61,10 +61,12 @@ export async function getHero(heroId) {
 
 export async function addHero(hero) {
     // Remove the hero id to ensure that the database will auto-assign an id
-    delete hero.id;
+    //delete hero.id;
     const db = await getDB();
     // Returns the id assigned by the database
     const heroId = await db.add(heroesStoreName, hero);
+    //hero.id = heroId;
+    //await updateHero(hero);
     console.log(heroId)
     return heroId;
 }
@@ -85,7 +87,7 @@ export async function getHeroesByType(heroType) {
     return await db.getAllFromIndex(heroesStoreName, 'heroTypeIndex', heroType);
 }
 
-//getHeroesById(2, 7)
+//getHeroesById(5, 10)
 export async function getHeroesById(fromId, toId) {
     const db = await getDB();
     let range;

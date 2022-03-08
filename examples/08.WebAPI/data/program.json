@@ -1,0 +1,34 @@
+[
+  {
+    "code": "AUP",
+    "name": "Architecture and Urban Planning "
+  },
+  {
+    "code": "CHE",
+    "name": "Chemical Engineering "
+  },
+  {
+    "code": "CVE",
+    "name": "Civil Engineering "
+  },
+  {
+    "code": "CS",
+    "name": "Computer Science "
+  },
+  {
+    "code": "CE",
+    "name": "Computer Engineering "
+  },
+  {
+    "code": "EE",
+    "name": "Electrical Engineering "
+  },
+  {
+    "code": "ME",
+    "name": "Mechanical Engineering "
+  },
+  {
+    "code": "ISE",
+    "name": "Industrial and Systems Engineering "
+  }
+]

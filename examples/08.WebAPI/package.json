@@ -1,0 +1,9 @@
+{
+  "name": "WebApi",
+  "version": "0.0.1",
+  "type": "module",
+  "dependencies": {
+    "express": "latest",
+    "fs-extra": "latest"
+  }
+}

@@ -1,0 +1,116 @@
+[
+  {
+    "staffNo": 1,
+    "username": "adviser1",
+    "firstname": "Adviser1",
+    "lastname": "CENG",
+    "password": "password",
+    "type": "Adviser",
+    "program": ["AUP", "CVE", "CS", "CE"]
+  },
+  {
+    "staffNo": 2,
+    "username": "adviser2",
+    "firstname": "Adviser2",
+    "lastname": "CENG",
+    "password": "password",
+    "type": "Adviser",
+    "program": ["EE", "CHE", "ME", "ISE"]
+  },
+  {
+    "staffNo": 3,
+    "username": "aup",
+    "firstname": "AUP",
+    "lastname": "Coordinator",
+    "password": "password",
+    "type": "Coordinator",
+    "program": "AUP"
+  },
+  {
+    "staffNo": 4,
+    "username": "che",
+    "firstname": "CHE",
+    "lastname": "Coordinator",
+    "password": "password",
+    "type": "Coordinator",
+    "program": "CHE"
+  },
+  {
+    "staffNo": 5,
+    "username": "cve",
+    "firstname": "CVE",
+    "lastname": "Coordinator",
+    "password": "password",
+    "type": "Coordinator",
+    "program": "CVE"
+  },
+  {
+    "staffNo": 6,
+    "username": "cs",
+    "firstname": "CS",
+    "lastname": "Coordinator",
+    "password": "password",
+    "type": "Coordinator",
+    "program": "CS"
+  },
+  {
+    "staffNo": 7,
+    "username": "ce",
+    "firstname": "CE",
+    "lastname": "Coordinator",
+    "password": "password",
+    "type": "Coordinator",
+    "program": "CE"
+  },
+  {
+    "staffNo": 8,
+    "username": "ee",
+    "firstname": "EE",
+    "lastname": "Coordinator",
+    "password": "password",
+    "type": "Coordinator",
+    "program": "EE"
+  },
+  {
+    "staffNo": 9,
+    "username": "me",
+    "firstname": "ME",
+    "lastname": "Coordinator",
+    "password": "password",
+    "type": "Coordinator",
+    "program": "ME"
+  },
+  {
+    "staffNo": 10,
+    "username": "ise",
+    "firstname": "ISE",
+    "lastname": "Coordinator",
+    "password": "password",
+    "type": "Coordinator",
+    "program": "ISE"
+  },
+  {
+    "staffNo": 12,
+    "username": "faculty1",
+    "firstname": "Faculty1",
+    "lastname": "Ln1",
+    "password": "password",
+    "type": "Faculty"
+  },
+  {
+    "staffNo": 21,
+    "username": "faculty2",
+    "firstname": "Faculty2",
+    "lastname": "Ln2",
+    "password": "password",
+    "type": "Faculty"
+  },
+  {
+    "staffNo": 33,
+    "username": "faculty3",
+    "firstname": "Faculty3",
+    "lastname": "Ln3",
+    "password": "password",
+    "type": "Faculty"
+  }
+]

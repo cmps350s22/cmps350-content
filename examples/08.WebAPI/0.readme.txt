@@ -1,0 +1,13 @@
+Do:
+open the terminal (by clicking the black >_ icon at the bottom of Webstorm)
+
+Run this once to install the dependencies:
+npm install
+
+Right-click and run app.js
+
+Urls:
+- http://localhost:9080/api/students  to get students as a json document
+- http://localhost:9080/api/students/2015001 to get details of student 2015001 as a json document
+- http://localhost:9080/api/heroes to get heroes
+- http://localhost:9080/api/heroes/1 to get hero having id=1
