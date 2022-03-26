@@ -1,0 +1,66 @@
+[
+  {
+    "code": "ARA",
+    "name": "Arabic"
+  },
+  {
+    "code": "BIO",
+    "name": "Biology"
+  },
+  {
+    "code": "CHM",
+    "name": "Chemistry"
+  },
+  {
+    "code": "ENV",
+    "name": "Environmental Science"
+  },
+  {
+    "code": "HIS",
+    "name": "History"
+  },
+  {
+    "code": "ENG",
+    "name": "English"
+  },
+  {
+    "code": "HN",
+    "name": "Human Nutrition"
+  },
+  {
+    "code": "IA",
+    "name": "International Affairs"
+  },
+  {
+    "code": "MC",
+    "name": "Mass Communication"
+  },
+  {
+    "code": "PPD",
+    "name": "Policy, Planning and  Development"
+  },
+  {
+    "code": "MATH",
+    "name": "Mathematics"
+  },
+  {
+    "code": "PSY",
+    "name": "Psychology"
+  },
+  {
+    "code": "SOC",
+    "name": "Sociology"
+  },
+  {
+    "code": "SW",
+    "name": "Social Work"
+  },
+  {
+    "code": "SS",
+    "name": "Sport Science"
+  },
+  {
+    "code": "STAT",
+    "name": "Statistics"
+  }
+]

@@ -1,0 +1,772 @@
+%\documentclass[10pt,journal,compsoc]{IEEEtran}
+%\documentclass[journal]{IEEEtran}
+%\documentclass[10pt,journal,compsoc]{IEEEtran}
+\documentclass[preprint,12pt,3p]{elsarticle}
+%\documentclass[preprint,10pt,3p,twocolumn]{elsarticle}
+
+\usepackage{lineno,hyperref}
+\modulolinenumbers[5]
+%\usepackage{amssymb}
+%\usepackage{subfigure}
+%\usepackage{url}
+%\usepackage{verbatim}
+\usepackage{multirow}
+\usepackage[table,xcdraw]{xcolor}
+%\usepackage[lined,boxed,commentsnumbered]{algorithm2e}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{caption}
+%\usepackage{subcaption}
+%\usepackage{graphicx}
+\usepackage{listings,balance}
+%\usepackage{algpseudocode}
+%\usepackage{algorithm}
+%\usepackage{cite,bm}
+%\usepackage[noadjust]{cite}
+%\usepackage[table,xcdraw]{xcolor}
+\usepackage{float}
+%\usepackage[
+%  separate-uncertainty = true,
+%  multi-part-units = repeat
+%]{siunitx}
+
+%\renewcommand{\multirowsetup}{\centering}
+%\journal{Future Generation Computer Systems}
+%\journal{Computer Networks}
+
+
+
+%\DeclareMathOperator*{\argmin}{arg\,min}
+%\newcommand{\argmin}[1]{\underset{#1}{\operatorname{argmin}}\;}
+%\newcommand{\argmin}[1]{\underset{#1}{\operatorname{arg}\,\operatorname{min}}\;}
+%\newcommand{\argmax}[1]{\underset{#1}{\operatorname{arg}\,\operatorname{max}}\;}
+\bibliographystyle{elsarticle-num}
+\journal{Future Generation Computer Systems}
+
+\begin{document}
+
+\begin{frontmatter}
+
+\title{Adaptive Observation Windows for Data Center Resource Utilization Estimation}
+
+
+%% Group authors per affiliation:
+\author{Elsevier\fnref{myfootnote}}
+\address{Radarweg 29, Amsterdam}
+\fntext[myfootnote]{Since 1880.}
+
+%% or include affiliations in footnotes:
+\author[mymainaddress,mysecondaryaddress]{Elsevier Inc}
+\ead[url]{www.elsevier.com}
+
+\author[mysecondaryaddress]{Global Customer Service\corref{mycorrespondingauthor}}
+\cortext[mycorrespondingauthor]{Corresponding author}
+\ead{support@elsevier.com}
+
+\address[mymainaddress]{1600 John F Kennedy Boulevard, Philadelphia}
+\address[mysecondaryaddress]{360 Park Avenue South, New York}
+
+\begin{abstract}
+Data center's resource estimation for future helps for capacity planning, job scheduling, workload placement, and load balancing to utilize the resources efficiently. However, it is challenging to accurately estimate the data center resource utilization due to dynamic workloads, heterogeneous infrastructure, and multi-tenant co-hosted applications. The existing estimation methods use a fixed size historical observation windows to build prediction models for resource utilization estimation. In this paper, we proposed a method to identify adaptive observation windows for building prediction models for better data center resource estimation. Our proposed solution uses deep learning to automatically determine the best observation window size to use for building prediction methods.
+We evaluated the proposed approach to identify and use adaptive observation window sizes with multiple baseline methods and real data sets. The experimental evaluation shows that the proposed solution outperforms the state-of-the-art approaches and yields 10\% to 44\% improved resource utilization estimation accuracy compared to baseline methods.
+
+\end{abstract}
+
+\begin{keyword}
+Adaptive Observation Windows \sep
+Automatic Window Size \sep
+Resource Estimation \sep
+Data Center\sep
+Deep Learning
+\end{keyword}
+
+\end{frontmatter}
+
+\section{Introduction}
+%para1: Explain importance of resource estimation in data center and also in other fields.
+%para2: Then discuss the limitations of the existing solutions and make sure to couple those with fix window size.
+%para3: Discuss what benefits adaptive window can bring for resource estimation. Also point to a picture similar to other paper showing different windows sizes and MSE.
+%para4: Discuss some of the most relevant work and also criticize it or discuss the limitations.
+%para5: Pitch the central idea of this paper and then list the contributions.
+%para6: Typical para pointing the rest of the paper sections.
+%--------------------------------------------------------------------------------------------------------------------
+
+%para1: Explain importance of resource estimation in data center and also in other fields.
+
+Data center's resource monitoring is an essential step towards estimating the future utilization requirements.
+The accurate future estimation of resource utilization in data centers can significantly help in self optimization and management for both users and providers which can minimize the operating cost and maximize resource utilization. Users can dynamically allocate the resources to minimize the operating cost while maintaining the good quality of service~\cite{Iqbal_FGCS} and providers can increase the profit by maximizing the usage of available resources~\cite{wei2018imperfect}. Further it helps providers in resource management~\cite{rahmanian2018learning,gai2018resource,ralha2018multiagent,li2018serac3,ghobaei2018autonomic}, energy aware scheduling, cost prediction and consolidation of virtual machines in the virtualized environment~\cite{duan2017energy, aldossary2018energy, nguyen2017virtual}, in advance capacity planning~\cite{carvalho2017capacity,tang2017joint} and many more~\cite{zhang2016resource}.
+Future estimation of resources also plays an important role in other domains such as internet of things~\cite{kaur2017energy}, Cyber-Physical Systems\cite{gai2018resource} and industry informatics~\cite{zhang2018efficient}.\\
+
+%para2: Then discuss the limitations of the existing solutions and make sure to couple those with fix window size.
+The data centers resource usage is highly volatile due to ever changing workloads running on top of heterogeneous infrastructure.
+One of the principal challenges when managing data centers is that due to the unpredictable changing nature in most of the situations with multi-tenancy environments, co-hosted applications and/or dynamic workloads,
+the prior knowledge of resource usage cannot be easily determined.
+While several efforts to build estimation methods for cloud resource utilization exist, using time-series machine learning methods~\cite{nikravesh2015towards,yang2014cost,davis2017failuresim,ran2017dynamic}, all focus on sliding windows of fixed sizes.
+The classic approach for determining the window size is to obtain it from the user.
+The window size is kept constant by removing old data from the window, when new data arrive.
+However, due to dynamic nature of resources usage, the fixed window size is not suitable to obtain the optimal results from the trained machine learning algorithms.
+%However, by using a fixed window size, the performance of this model is degraded in terms of reflecting recent changes.
+while our attempts to leverage adaptive window size approach for the very different scenarios we can encounter in a production data center, being able to adapt the window size to the one that learns best.
+The dynamic sliding window is a mechanism to limit the amount of historical data that is used for training machine learning algorithm.
+\\
+
+%para3: Discuss what benefits adaptive window can bring for resource estimation. Also point to a picture similar to other paper showing different windows sizes and MSE.
+% SHUJA: I DID NOT ADD FIGURE IN THIS SECTION AS FIGURE 6 ALREADY CONTAINS SIMILAR INFORMATION.
+Due to ever changing behavior of resource usage, a prediction model must be able to adapt the window size with the rate of change in data.
+To test and validate our adaptive window size approach, we have conducted experiments using the Alibaba~\cite{ali_baba} , Materna~\cite{materna_ds} and Bitbrains~\cite{bitbrains_ds} data center utilization data sets, comparing them to baseline methods, also against fixed size window approach.
+Adaptive window sizes are also used in many areas including mining frequent itemsets~\cite{deypir2012towards, xiong2018adaptive}, physical activity recognition~\cite{noor2017adaptive}, wireless networks~\cite{perez2015adaptive}, anomaly detection in health care~\cite{smrithy2019anomaly,nair2018mitigating} and renewable power generation~\cite{ouyang2016optimisation, ouyang2017model}.\\
+
+%para4: Discuss some of the most relevant work and also criticize it or discuss the limitations.
+%To the best of our knowledge, the algorithm proposed in
+% SHUJA: THIS SECTION LOOKS LIKE OF RELATED WORK SECTION.
+
+
+%para5: Pitch the central idea of this paper and then list the contributions.
+%To address this issue, we propose a variable window size approach for resource estimation in data center's environment based on deep learning techniques. The size of the window defines the amount of historical data that is used for training the machine learning algorithm.
+In order to overcome the problem of determining window size, in this study, we propose a new algorithm named "Adaptive Window Size Predictor" which estimate the window size based on deep learning methods.
+The main contributions of this paper are as follows:
+\begin{itemize}
+    \item A novel method to dynamically select the best window size to train the regression model for estimating and forecasting cloud resource utilization.
+  \item A comparison of different baseline methods, currently used in the state-of-the-art, as candidate methods for window size estimation, aside of validation for the presented approach.
+\end{itemize}
+%para6: Typical para pointing the rest of the paper sections.
+The rest of the paper is organized as follows. Related work is presented in Section~\ref{sec:related_work}. Our proposed window size estimation system is explained in Section~\ref{sec:methodolgy}. Prediction methods are explained in Section~\ref{sec:prediction_methods}.
+We provide details about the experimental evaluation in Section~\ref{sec:experimental_setup}. The experimental results are presented in Section~\ref{sec:experiments_results} and finally, conclusion and future work are discussed in Section~\ref{sec:conclusion}.
+
+\section{Related Work}
+\label{sec:related_work}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% para1: explain resource estimation importance etc in general and discuss some work who uses resource estimation for different reasons. More like applied side.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%  Resource estimation for different reasons is also mentioned in intro section however I am repeating it here.
+%In this section, we present a review of related works centered around resource estimation.
+
+Resource estimation plays an important role in many areas such as internet of things~\cite{kaur2017energy}, cyber physical systems\cite{gai2018resource} and industry informatics~\cite{zhang2018efficient}. With respect to data centers, future estimation of resources helps in better resource management~\cite{rahmanian2018learning,gai2018resource,ralha2018multiagent,li2018serac3,ghobaei2018autonomic}, energy aware scheduling~\cite{duan2017energy, aldossary2018energy}, cost prediction and consolidation of virtual machines in the virtualized environment\cite{nguyen2017virtual}, in advance capacity planning~\cite{carvalho2017capacity,tang2017joint} and many more~\cite{zhang2016resource}.\\
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% para2: Discuss papers related to resource estimation methods uses fixed window sizes.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Recently there have been several attempts to estimate the resource usage of data centers. For example, a recent work by Mason et al.~\cite{mason2018predicting} predict the host CPU utilization using neural networks for a fixed window sizes for training and testing the estimation method. Zhang et al.~\cite{zhang2018efficient} proposed cloud workload prediction system for industry informatics based on stacked autoencoders. They use a canonical polyadic decomposition format to reduce the training time by compressing the input parameters. The author also used a fixed observation windows to train and test the estimation method.
+Another recent work in which, Nikravesh et al.~\cite{nikravesh2015towards} proposed predictive auto-scaling system to automatically scale the cloud resources. They used multiple prediction methods and select the one which yields better prediction accuracy for the given type of workload. For their experiments, they used fixed length sliding window however the effect of different size of sliding window is also present in the study.
+Another recent work by Yang et al.~\cite{yang2014cost} used linear regression to predict the cloud workload. They used static sliding window of size four.
+Similarly Davis et al.~\cite{davis2017failuresim} proposed hardware failure prediction system for cloud data centers using Neural Networks however they also used fixed length sliding window.
+Ranel et al.~\cite{ran2017dynamic} proposed dynamic provisioning of cloud resources however they also used the sliding window of fixed sizes with the study of effect of different sizes of sliding window.\\
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% para3: Discuss papers related to dynamic window sizes for resource estimation in data centers/clouds etc
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+The above approaches use the fixed size of sliding windows whereas the techniques presented below use the variable size for sliding window. For example a recent work by
+%paper: Online Traffic Prediction in the Cloud: A Dynamic Window Approach
+Dalmazo et al.~\cite{dalmazo2014online} proposed the use the dynamic window to predict the network traffic in the cloud. The take the averages of last and current sliding window and increase or decrease the size of window based on the comparison of these averages. if the current window average is greater than the last sliding window average, they increase the size of window otherwise they decrease the size.% if average of current window is less than the last window.
+ They decide the size of sliding window based on the comparison of variance for last and current sliding window.
+%paper: Effects of drift and noise on the optimal sliding window size for data stream regression models
+Another recent work by Tschumitschew et al. \cite{tschumitschew2017effects} select the optimal window size for the regression problem to predict the next data point in the series based on the ratio of drift and noise. They use larger window sizes if noise is stronger than drift otherwise shorter window sizes.
+%paper :An analysis of adaptive windowing for time series forecasting in dynamic environments: further tests of the DyFor GP model
+Klinkenberg  et al. \cite{wagner2008analysis} use the adaptive sliding window to forecast the time series whereas underlying data generation process changes over time. They started with initial window size and keep increasing or decreasing it until prediction accuracy start degrading. They select the window size which yields the highest prediction accuracy. However this approach requires extensive computing resources and not feasible for real-time processing.\\
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% para 4: Discuss papers related to dynamic window sizes for other domains
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+The concept of adaptive or dynamic window is not only used for cloud and data centers but it is also equally used in other domains such as physical activity recognition, industrial process optimization, mining frequent itemsets, wireless networks, health care, renewable power generation e.t.c For example
+%industrial paper:
+%paper: A novel intelligent modeling framework integrating convolutional neural network with an adaptive time-series window and its application to industrial process operational optimization
+Wang et al~\cite{wang2018novel} use adaptive time series window with convolutional neural networks to optimize the industrial process operations. They select different time-series windows according to the steady and unsteady states in time series.
+%paper: Optimisation of time window size for wind power ramps prediction
+%paper: Model of selecting prediction window in ramps forecasting
+Ouyang et al~\cite{ouyang2016optimisation, ouyang2017model} use optimal window size for wind power ramp prediction by minimizing the non-ramp data in time windows.
+%paper:  Anomaly Detection Using Dynamic Sliding Window in Wireless Body Area Networks
+Some of the recent work shows the use of dynamic sliding window in health care domain. e.g Smrithy et al.~\cite{smrithy2019anomaly,nair2018mitigating} use dynamic sliding window with weighted moving averages to detect the anomalies in the wireless body area networks which are used in real time healthcare systems. By identify anomalies, they decrease the false alarm rate which results in increasing the reliability of the system. They decide the size of window by comparing the variance of predecessor and current sliding window.
+%paper: Adaptive time window linear regression algorithm for accurate time synchronization in wireless sensor networks
+Pérez-Solano et al~\cite{perez2015adaptive} use adaptive window size for linear regression to synchronize time in wireless networks. They search for a window size which yields minimum Mean Square Prediction Error (MSPE).
+%paper: Adaptive sliding window segmentation for physical activity recognition using a single tri-axial accelerometer
+Similarly Noor et al.~\cite{noor2017adaptive} use adaptive sliding window for signal segmentation which is used to recognize the transitional physical activity (sit to stand or falling e.t.c). The use a default window size as a starting point and then used probability density function to expand the size of window to capture the transitional activity with longer duration. They keep increasing the size of window in iterative way until probability density function reached to its highest value.
+%paper: Towards a variable size sliding window model for frequent itemset mining over data streams
+A recent work by Deypir et al.~\cite{deypir2012towards} use variable size sliding window to mine frequent item sets.
+They start with initial window size which is set by user and then the window size is adjusted according to rate of change in the incoming data stream. They increase the window size if no significant change is detected and reduce the size if significant changes are observed in the incoming data in order to better model the most recent data. However the limitation of this approach is that size of window becomes very large when there is no changes occurred in data.\\
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% para 5: conclude the related work by explaining what is different we are doing than most relevant papers
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%paper: Forward Forecast of Stock Price Using Sliding-window Metaheuristic-optimized Machine Learning Regression
+Another recent work by Chou et al.~\cite{chou2018forward} proposed an time series prediction system based on metaheuristic optimization of sliding window. The purpose of the system is to forecast the stock price. However the limitation of proposed system is that it is computational expensive. Most of the existing works are based on either static window size or use of heuristic or simple statistical methods to make use of adaptive window sizes. Our work proposes a novel Deep learning based window size estimation method to efficiently identify and estimate the best window size to train the regression model by using the adaptive window size predictor.
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%SHUJA THESE WORKS ARE FOR RESOURCE MANAGEMENT NOT RESOURCE UTILIZATION ESTIMATION%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Yes, but the management of resources is based on estimation/prediction of resource utilization..anyways...as these
+% are not direct related papers so we can remove them.
+% In~\cite{ghobaei2018autonomic}, Arani et al. used autonomic control loops and reinforcement learning to manage the cloud resource. They used autonomic control loops to monitor and estimate the future resource utilization and used reinforcement learning to make the decision of scale in or scale out resources. The reinforcement learning uses the predicted results which are estimated in the autonomic control loops.
+% Li et al.~\cite{li2018serac3} used machine learning to classify the incoming jobs to allocate the resources in the clouds. Witanto et al.~\cite{witanto2018adaptive} used neural networks for cloud resource management by selecting VM consolidation strategy which minimize the energy requirements as well as SLA violations.
+%Another recent work by
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%paper: An efficient deep learning model to predict cloud workload for industry informatics
+%paper: Machine learning for predictive maintenance: A multiple classifier approach
+%Susto et al.~\cite{susto2015machine} proposed maintenance management module based on multiple classifiers to minimize the operating cost.
+
+%-------------------------------------%
+% section-4: related work dynamic window sizes paper for all other fields
+%-------------------------------------%
+%-------------------------------------%
+% section-5: related work paper from the target journal
+%-------------------------------------%
+%-------------------------------------%
+% section-6: related work conclusion with proposed method explanation
+%-------------------------------------%
+%paper: Adaptive Sliding Kalman Filter using Nonparametric Change Point Detection
+%The main aim of this paper is to contribute toward an approach for adapting the window length of an SKF on the basis of online change point detection in the data stream and apply adaptive Kalman filter for a window with data points until the last change. This framework provides convenient delineation between change point detection for non-parametric sequential data stream and the implementation of an estimation algorithm.
+\begin{figure}[htb!]
+\begin{center}
+\includegraphics[width=\linewidth]{figures/deep_learning_architecure.pdf}
+\caption{Purposed system overview to learn adaptive window size predictor and using it to estimate the data center resource utilization}
+\label{fig:system_arc}
+%\vspace{1.0mm}
+\end{center}
+\end{figure}
+
+\section{Proposed System Overview}
+\label{sec:methodolgy}
+The proposed system architecture is illustrated in Figure \ref{fig:system_arc}. Different steps are numbered and labeled to explain the flow of the system. The proposed system works in the following steps.
+\begin{enumerate}[i.]
+    \item Historical resource utilization logs of the data center are divided into sliding windows of a $k$ fixed size intervals. Each sliding window at time interval $t$ is called an observation window. Our objective is to identify an appropriate size for the observation window to train a resource prediction model with minimal prediction error.
+    \item For each sliding window $W_i$, the system identifies the optimal window size to predict the next interval's resource consumption with minimal prediction error. In this phase, the next interval's consumption data for each sliding window is known. The system performs a linear search to identify the window size with minimal prediction error. The system checks the observation window into $k-1$ sub windows, start from length $2$ to $k$. Each sub-window is used to estimate the resource consumption, and the size of the sub-window with minimum prediction error is identified as optimal window size $\Phi_{W_i}$ for the corresponding sliding window $W_i$, where $2 \ge \Phi_{W_i} \le k $.
+
+    \item Each sliding window $W_i$ and the identified corresponding optimal window size $\Phi_{W_i}$ is recorded as training data set to predict the window size for resource utilization estimation.
+    \item Once training data is prepared, the system train a deep neural network to predict the best window size for a given sliding window data. We named this component as ``\textit{Adaptive Window Size Predictor}''.
+    \item Once \textit{Adaptive Window Size Predictor} is trained then the system uses it to identify the best window size for each time interval $t$ from the current observation window.
+    \item The predicted window size is used to select the number of observations from the $k$ data points of the current observation window for training a regression model to predict the resource utilization for the next time interval $t+1$.
+\end{enumerate}
+\section{Adaptive Window Size Predictor Using Deep Learning}\label{proposed_awsp}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Predicting the adequate size of our window towards modeling the current analyzed series is crucial to save computing power when generating periodically models, but this prediction is not trivial. Here we propose to use Deep Learning (DL) methods.
+
+Deep Learning is a set of machine learning methods based in neural networks, where those networks have more than one layer of transformations between the input data and the output data to be matched. MultiLayer Perceptrons (MLP), the proposed neural networks, consists on the transformation of an input data-set $X_{N,I}$ (a matrix of $N$ observations and $I$ features) to an output data-set $\hat{Y}_{N,J}$ (a matrix of $J$ transformed features per observation).
+A \textit{Perceptron} (the usual neurons on MLPs) is an artifact that processes the input as $\hat{Y}_{N,I} = G(F(X_{N,I}))$, where $F(X_{N_I}) = X_{N,I} \cdot W_{I} + B$, and $W_{I}$ is a matrix of weights to be adjusted, $B$ is a vector of biases, and $G(X)$ is a function that in regression can be the Identity or in classification can be a $sigmoid$ function.
+A "single hidden layer" MLP consists on an array of Perceptrons (the hidden layer) processing that input as $X'_{N,H} = G(F(X_{N,I}))$, where $F(X_{N,I}) = X_{N,I} \cdot W_{I,H} + B_{H}$, being $H$ is the number of perceptrons on the hidden layer. The purpose of a layer is to find a non-linear relation between its inputs and outputs, then the results can be aggregated in the output layer as $\hat{Y}_{N,J} = G(F(X'_{N,H}))$.
+A deep MLP concatenates different hidden layers, and the output of a layer is the input of the next one. In that case, each layer $i$ processes $\hat{X}^{i}_{N,H^{i}} = G(F(X^{i-1}_{N,H^{i-1}}))$, where $H^{i}$ is the number of neurons in that layer.
+Training a MLP consists in finding the function $MLP$ that transforms $MLP(X) = \hat{Y} \sim Y$, where $Y$ is the real output data-set to be matched. Weight matrices $W$ and bias vectors $B$ are adjusted using Gradient Descent, by iteratively passing data through the network forth and back.
+The goal of adding multiple layers to a network is to learn latent patterns that a simple non-linear function can not represent, through combinations of multiple non-linear relations.
+
+%% Indicate why we are using DL for predicting adaptive window. DL doing other things: CITATIONS + Then we apply to window size prediction.
+While other approaches attempt shallow architectures, here we propose the use of deep neural networks, mainly because of the stochastic and non-linear nature of the workload data. As we tested in prior experiments with simpler models, simpler structures of neural networks have performed poorly when attempting to predict and discover the latent features in this kind of data. As seen in other works referring to resource utilization and Cloud and virtualization management, like~\cite{zhang2018efficient,mason2018predicting,witanto2018adaptive}, the use of deep neural networks on prediction of resource usage and management has proven to be reasonably cost-efficient and accurate, and this brings us to attempt these techniques for our adaptive window prediction scenario. {\color{red}Comparisons of different tested methods are shown on the Experiments section.}
+
+%{\color{red}
+%TODO - Indicate why other simpler methods do not work.
+%-> Main reasons on the citations.
+%-> Also indicate that heuristics are tried but not as good. Maybe indicate (if space available) some numbers.
+%}
+
+%% Explain the architecture of the network, and justify it! Testing different input layers, kept best configuration. (added/subs layers). Evaluation: got recommended ones.
+After testing different architectures and hyper-parameters, including number of layers and number of neurons per layer, using a grid-search method, we selected the model resulting in the most accurate without ending with an overkill model. Such model has an input of $N$ elements as the size of the sliding window, and an output of $1$ value, resulting on the prediction. The deep network has 4 hidden layers, with $\langle 23, 15, 10, 5\rangle$ hidden units each layer, with \textit{rectified linear unit} (ReLU) activation function and normally random initialization. It is optimized using the \textit{Adam} method for stochastic gradient descent~\cite{kingma2015method}, using the \textit{Mean Squared Error} (MSE) as quality metric. The network has been trained for $500$ epochs, with a batch size of $250$ units, out of {\color{red}$XXX$} total elements on the training data-set, as the best tuning found on grid search. Figure~\ref{fig:dl-schema} shows the basic schema of our neural network.
+
+\begin{figure}[h!t]
+\begin{center}
+\includegraphics[width=0.8\linewidth]{figures/dl-schema.png}
+\caption{Schema for a 4-Hidden Layer Deep Neural Network on our Time-Series}
+\label{fig:dl-schema}
+\end{center}
+\end{figure}
+
+The input data-set, being data a time series, is generated by sliding a window of size $N$, generating an observation for each window movement. The window is slid 1 time-step at a time. Each observation is introduced in the network as a vector of $N$ values, considering that the window sample is always ordered. For validation purposes, the final data-set is randomly split $80/20$ for training vs. testing subsets.
+{\color{red} EACH SERIES HAS A NEURAL NETWORK? OR IS THERE ONLY ONE VALUE (CPU)?}
+
+
+
+%{\color{red}
+%TODO - Explain how data is represented, as input for the DNN.
+%-> Initial dataset for training, grid search as sampling. window: <t, t+1, ... t+N=30, optimal_window_size>
+%-> At each sample (row), window moves 1 position, then optimal is checked again.
+%-> Train/test : 80/20, randomized mini_batches.
+%-> Direct input vector to input layer
+%TODO - Explain the training tuning and evaluation metrics. Also how epochs and batch size are chosen.
+%-> from references, got param. references + some tuning. Then, selected best ones.
+%}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Estimation Methods for Resource Utilization Prediction}\label{sec:prediction_methods}
+
+%https://www.analyticsvidhya.com/blog/2017/06/a-comprehensive-guide-for-linear-ridge-and-lasso-regression/
+
+Our proposed technique to identify observation windows to build estimation method works with all machine learning and statistical estimations methods. We explore machine learning methods easy to train requiring less computing power for building resource estimation model using the predicted observation windows. We explain the estimation methods in the following subsections.
+
+\subsection{Linear Regression (LR)} % copied from previous paper:
+
+Linear Regression (LR) is one of the simplest and widely used machine learning method for predictive modeling. LR assumes there is a linear relation between output variable $y$ and input variables $X = \{x_1 \ldots x_n\}$, and attempts to find a vector $\theta^T = \{\theta_1 \ldots \theta_n\}$ and a scalar constant bias $b$ where $\hat{Y} = X \cdot \theta + b$ while minimizing the error $\epsilon = |Y - \hat{Y}|$. Minimization is usually performed using the Least Squares Error approach and the cost function of LR for hypothesis $\theta$ for a given training examples $X$ is calculated using:
+\begin{equation} \label{eq:lr_cost_func}
+    \text{J} (\theta) = \frac{1}{m} \sum_{i=1}^m (\theta^T \cdot X^{(i)} - Y^{(i)} ) ^2.
+\end{equation}
+In our proposed system, we use the predicted adaptive window size consisting of last $m$ interval's resource estimation at time interval $t$ to train LR model using cost function given in Equation~\ref{eq:lr_cost_func} and then estimate the resource estimation for $t+1$ time interval.
+
+\subsection{Ridge Regression (RR)}
+
+Ridge regression (RR) also known as Tikhonov regularization is improved version of LR by introducing regularization to constraining the coefficients to low range. This helps to reduce the chances of model over-fitting. The cost function for Ridge regression for hypothesis $\theta$ is calculated using:
+ \begin{equation} \label{eq:ridge_cost_func}
+    \text{R}  (\theta) = \frac{1}{m}  \sum_{i=1}^m (\theta^T \cdot X^{(i)} - Y^{(i)} ) ^2 + \alpha \frac{1}{2} \sum_{i=1}^k \theta{_i}^2,
+\end{equation}
+where $\alpha$ is a hyperparameter use to control the regularization the model.
+
+\subsection{ Least Absolute Shrinkage and Selection Operator (LASSO)}
+Least Absolute Shrinkage and Selection Operator (LASSO) is another improvement in LR by introducing regularization term and ensure to eliminates the least important features to increase the model accuracy. The cost function for LASSO for hypothesis $\theta$ is calculated using:
+\begin{equation} \label{eq:ridge_cost_func}
+    \text{L}  (\theta) = \frac{1}{m}  \sum_{i=1}^m (\theta^T \cdot X^{(i)} - Y^{(i)} ) ^2 + \alpha \sum_{i=1}^k \theta{_i},
+\end{equation}
+
+LASSO improves the prediction accuracy by selecting a subset of items rather than using all of them as compared to LR, NNLS, and Ridge regression which use all of the features and data.
+\subsection{Elastic Net (EN)}
+EN improves LR using regulrization by combining Ridge and LASSO's regularizations. It also reduces the number of features by removing less important features to help improving accuracy of the model. The EN cost function is computed using:
+ \begin{equation} \label{eq:ridge_cost_func}
+    \text{E}  (\theta) = \frac{1}{m}  \sum_{i=1}^m (\theta^T \cdot X^{(i)} - Y^{(i)} ) ^2 + \frac{1-r}{2}\alpha \sum_{i=1}^k \theta{_i}^2 +  r\alpha \sum_{i=1}^k \theta{_i},
+\end{equation}
+where $r$ is a mix ratio and can be control to include regularization of Ridge and LASSO. For example, $r = 1$ will result the EN to behave similar to LASSO and $r = 0$ will force the EN to behave similar to Ridge regression.
+\subsection{Non-Negative Least Square (NNLS)}
+
+NNLS is a type of constrained least problems to restrict the coefficients of the model to positive numbers.  This type of regression methods are feasible for resource estimation as the output is always positive. The objective function of NNLS is:
+\begin{equation}
+    \underset{\theta_j\ge 0 ~~\forall j} {\arg \min}  \sum_{i=1}^m (\theta^T \cdot X^{(i)} - Y^{(i)} ) ^2.  \label{nnls}
+\end{equation}
+The objective function \eqref{nnls} ensures that the linear coefficients in $\theta$ are non-negative. Since the resource usage of data centers are always non-negative, therefore all values in $Y$ are also non-negative. As a result, we get non-negative prediction. We used the algorithm proposed by Lawson and Hansonb \cite{lawson1995solving} to solve the NNLS objective function.
+
+\subsection{Support Vector Regression (SVR)} % Mostly copied from previous paper and updated it little:
+Support Vector Machine (SVM) methods are common for classification which maps the independent variable of a specific sample size into a high dimension feature space. Although SVM can be used for regression as Support Vector Regression machines (SVR)~\cite{DBLP:conf/nips/DruckerBKSV96}. A SVR implementation follows similar principles to SVM but only differ to produce a continuous output variable. The compelling advantage of SVMs is to automatically learn non-linear functions as linear through  transformation of data known as the \emph{kernel trick}.
+
+In a typical SVM implementation, input $X$ are mapped into an h-dimensional feature space using a predefined non-linear kernel function to produce a linear model. Similar to LR, we can express SVMs as $\Tilde{Y} = k(X) \cdot W + b$, where $k$ is the function making the space for $X$ linear. SMVs error minimization consists on building two margin functions (support vectors) $X \cdot W + b \pm \epsilon$, where final error $\xi$ is computed for those elements outside the margins. As a disadvantage, margin $\epsilon$ can become an hyper-parameter.
+%\subsection{Ridge Regression}
+
+
+\section{Experimental Setup and Design}
+\label{sec:experimental_setup}
+%In this section, we explain the data sets used to evaluate the proposed method, provide details about the conducted experiments, discuss the baseline methods, and explain the evaluation criteria.
+\subsection{Data Sets}
+\label{sec:dataset}
+To evaluate the proposed solution, we used three publicly available data sets representing diversified CPU resource utilization characteristics. Table~\ref{tab:datasets} shows the total number of machines, average CPU load in percentage, average CPU load variations in the data sets.  Each data set is categorized either low, moderate, or high CPU serving workloads. Materna data set is labeled as low CPU workload as the CPU load and variation is considerably low comparing to other data sets. Alibaba data set is considered as a traces of the data center serving moderate CPU workload. Whereas, Bitbrains data set is recognized as a data center serving high CPU workload. The data sets are briefly discussed in the following subsections.
+%Following section contains the explanation of representative datasets.
+\begin{table}[]
+\caption{Data sets with CPU resource utilization statistics and utilization categories.}
+\centering
+\scalebox{0.74}{
+\begin{tabular}{|l|c|c|c|c|}
+\hline
+\textbf{Data Set} & \textbf{Total Machines} & \textbf{Average Load (\%)} & \textbf{Average Variation in Load} & \textbf{Utilization Category}    \\ \hline
+Materna          & 520                         & 4.44                       & 9.29                       & Low \\ \hline
+Alibaba          & 1,313                        & 26.46                      & 10.66                      & Moderate \\ \hline
+Bitbrains        & 131                         & 44.21                      & 44.84                      & High  \\ \hline
+\end{tabular}}
+\label{tab:datasets}
+\end{table}
+
+\begin{figure*}
+\begin{center}
+\includegraphics[width=\linewidth]{figures/alibaba_machines_bx1_100.pdf}
+%\includegraphics[width=\linewidth]{figures/ex1.pdf}
+\caption{CPU utilization for randomly selected 100 machines from Alibaba data set for twelve-hour data}
+\label{fig:alibaba_100_machines_vm_box_plot}
+%\vspace{1.0mm}
+\end{center}
+\end{figure*}
+\begin{figure*}
+\begin{center}
+%\includegraphics[width=\linewidth]{figures/bitbrain_vms_bx_1_days_100vms.pdf}
+\includegraphics[width=\linewidth]{figures/bitbrain_vms_bx_30_days_100vms.pdf}
+%\includegraphics[width=\linewidth]{figures/ex1.pdf}
+\caption{CPU utilization for randomly selected 100 machines from Bitbrains data set for one-month data}
+\label{fig:bitbrains_100_machines_vm_box_plot}
+%\vspace{1.0mm}
+\end{center}
+\end{figure*}
+\begin{figure*}
+\begin{center}
+\includegraphics[width=\linewidth]{figures/meterna_vms_bx_1_days_100vms.pdf}
+%\includegraphics[width=\linewidth]{figures/ex1.pdf}
+\caption{CPU utilization for randomly selected 100 machines from Matenra data set for one-month data}
+\label{fig:materna_100_machines_vm_box_plot}
+%\vspace{1.0mm}
+\end{center}
+\end{figure*}
+
+\subsubsection{Materna}
+Materna is a service provider offering cloud services to the aviation industry. Their data center performance traces for 30 days are publicly available~\cite{materna_ds}. The data set contains resource utilization metrics for CPU, memory, network, and disk for 520 different VMs running on the data center. Each of these resource utilization metrics is sampled for 5 minutes average utilization.  Figure~\ref{fig:materna_100_machines_vm_box_plot} shows CPU utilization for 100 randomly selected machines from the data set. Most of the machines CPU utilization remains below 5\%; therefore, we considered this data set representing low CPU workload serving data center.
+
+\subsubsection{Alibaba}
+Alibaba cluster logs~\cite{ali_baba} are publicly available data set containing performance traces of 1,313 machines for 12 hours. The Alibaba cluster serves interactive and batch processing workloads. The available metrics in the data set are CPU, memory, and disk utilization for all machines representing average utilization for 5 minute time intervals. Figure.~\ref{fig:alibaba_100_machines_vm_box_plot} shows a CPU utilization sample for 100 randomly selected machines from the data set which shows that most of the machines CPU utilization remains from 20\% to 50\%. Therefore, we considered this data set representing moderate CPU workload serving data center.
+
+\subsubsection{Bitbrains}
+Bitbrains is a service provider offer cloud services for enterprises. Their data center performance traces representing 1,750 VMs for 30 days is publicly available~\cite{bitbrains_ds}. This data set also contains average CPU, memory, network, and disk utilization for all the VMs sampled for 5-minute interval. From this data set, we selected VMs with average CPU utilization greater than 30\% (131 VMs) to build a data set representing data center serving high CPU workload. Figure~\ref{fig:bitbrains_100_machines_vm_box_plot} shows a CPU utilization sample for 100 randomly selected machines from the data set which shows that most of the machines CPU utilization remains from 0\% to 100\%.
+
+
+
+\subsection{Evaluation Criteria}
+\label{sec:evaluation_criteria}
+To evaluation the proposed method, we used Mean Square Error (MSE) to quantify the error in resource estimation prediction. The MSE is calculated using true and estimated values using:
+ \begin{equation}
+\label{eq:mse}
+%\text{MSE} = \frac{\sum_{t=1}^{n}{{(a_t -p_t)}^2}}{n}
+\text{MSE} = \frac{1}{n}\sum_{t=1}^{n}(a_t -p_t)^2,
+\end{equation}
+where $a_t$ is the true CPU resource utilization and $p_t$ is the estimated CPU utilization at  $t$-th time interval and $n$ is the total number of estimations.
+
+% \subsection{Methodology}
+% \label{sec:methodolgy}
+%  This section describes how the study on the evaluation of Adaptive Window Size Predictor (AWSP) has been performed as well as the rationale behind the experiments evaluated in the following sections.
+
+%  The data sets are divided into training and testing sets. Training set is used to train the AWSP model and consist of 80\% while remaining 20\% of data is used to validate and test the model. l
+
+%  The data centers host different type of applications which varies in their resource utilization. To validate the proposed method, we selected four machines from Alibaba data set with very distinct CPU demands. The CPU utilization of these machines are shown in Figure. \ref{fig:bx_4vms}. These four machines are labeled as M1, M2, M3 and M4. M1 represent the high CPU utilization machine. M2 represents the low CPU utilization machine, M3 represents high variation in CPU utilization and M4 represent low variation in CPU utilization. By selecting these four machine, we covered the corner conditions.
+%  The proposed solution is compared with two methods. 1- ) Minimum of fixed window 2-) Change point detection.
+%  In the first method we are comparing with that window size from 5, 10, 20 and 30 which yields the minimum MSE and in the second method, we compare the proposed solution with the change point detection algorithm as discussed in section \ref{sec:cpt}
+
+\subsection{Experimental Details} \label{sec:experimental_details}
+We performed three different experiments to evaluate and compare the proposed system. In \textbf{Experiment 1 (FixW)}, we evaluate the effect of different fixed size observation windows on resource estimation accuracy for all three data sets. We use 5, 10, 20, and 30 fixed observation window sizes to train and estimate the resources using machine learning methods, explained in \ref{sec:prediction_methods} for all three data sets.
+
+\label{sec:cpt}
+\begin{figure}[t!]
+\begin{center}
+\includegraphics[width=0.6\linewidth]{figures/cpt_example.pdf}
+\caption{Change Point Detection (CPD) method to identify observation window for building resource estimation model. }
+\label{fig:ex2_cpt_example}
+\end{center}
+\end{figure}
+
+In \textbf{Experiment 2 (CPD)}, we employ Change Point Detection~(CPD) method~\cite{ross2015parametric} to adaptively identify the appropriate window size for training resource estimation models. This method allows selecting adaptive observations windows to build estimation models by using only data points after the recent change point. For example, Figure \ref{fig:ex2_cpt_example} shows the use of CPD method to identify the adaptive observation window to use for training the estimation method. Assuming, current time interval is 30 and CPD provides a change point at 21st time interval for the given data then we will use observations from 21st interval to 30th interval for training an estimation model for future resource utilization estimation. The CPD method can identify multiple change points for the given time series data, however, we limit the observation window to the recent change point. In this experiment, we limit the maximum observation window size to 30 intervals which represents last 150 minutes of resource utilization observations.
+
+In \textbf{Experiment~3 (Proposed)}, we use the proposed Adaptive Window Size Predictor (AWSP), explained in Section~\ref{proposed_awsp}, to adaptively identify the best observation window to build resource estimation method. For every time interval, we provide the last 30 interval observations to the pre-trained AWSP and obtain an observation window size and then build the estimation model for predicting the future resource utilization estimation. In this experiment, we also limit the maximum observation window size to 30 minutes which represents the last 150 minutes of the resource utilization observations.
+
+
+\begin{table}[t!]
+\centering
+\caption{Experiment 1 (FixW) results showing MSE for different estimation methods and fixed window sizes. }
+\scalebox{0.90}{
+\begin{tabular}{l c r r r r r r}
+\toprule
+\textbf{Data Set}                   & \textbf{Window Size} & \textbf{LR}                            & \textbf{SVR}                           & \textbf{EN}                            & \textbf{LASSO}                        & \textbf{RR}                         & \textbf{NNLS}                          \\ \midrule
+                                    & 30                   & 34.28                                  & 42.15                                  & 34.06                                  & 34.02                                  & 34.28                                  & 45.25                                  \\ \cline{2-8}
+                                    & 20                   & 33.18                                  & 39.04                                  & 32.43                                  & 32.23                                  & 33.16                                  & 42.14                                  \\ \cline{2-8}
+                                    & 10                   & {\color[HTML]{009901} \textbf{25.45}}  & 29.5                                   & 23.92                                  & 24.09                                  & {\color[HTML]{009901} \textbf{25.24}}  & 30.91                                  \\ \cline{2-8}
+
+\multirow{-4}{*}{\textbf{Alibaba}}  & 5                    & 28                                     & {\color[HTML]{009901} \textbf{23.72}}  & {\color[HTML]{009901} \textbf{22}}     & {\color[HTML]{009901} \textbf{23.28}}  & 25.71                                  & {\color[HTML]{009901} \textbf{28.49}}  \\ \midrule
+                                    % & \textbf{Window Size} & \textbf{LR}                            & \textbf{SVM}                           & \textbf{EN}                            & \textbf{LASSO}                        & \textbf{RR}                         & \textbf{NNLS}                          \\ \cline{2-8}
+                                    & 30                   & 12.81                                  & 17.83                                  & 12.70                                  & 12.68                                  & 12.80                                  & 14.12                                  \\ \cline{2-8}
+                                    & 20                   & 11.63                                  & 15.69                                  & 11.45                                  & 11.45                                  & 11.62                                  & 12.85                                  \\ \cline{2-8}
+                                    & 10                   & {\color[HTML]{009901} \textbf{11.39}}  & 12.57                                  & 10.75                                  & {\color[HTML]{009901} \textbf{10.95}}  & {\color[HTML]{009901} \textbf{11.29}}  & {\color[HTML]{009901} \textbf{11.98}}  \\ \cline{2-8}
+\multirow{-5}{*}{\textbf{Materna}}  & 5                    & 13.02                                  & {\color[HTML]{009901} \textbf{11.12}}  & {\color[HTML]{009901} \textbf{10.41}}  & 11.81                                  & 11.91                                  & 12.70                                  \\ \midrule
+                                    % & \textbf{Window Size} & \textbf{LR}                            & \textbf{SVM}                           & \textbf{EN}                            & \textbf{Lassso}                        & \textbf{Ridge}                         & \textbf{NNLS}                          \\ \cline{2-8}
+                                    & 30                   & 380.75                                 & 696.47                                 & 378.41                                 & 379.67                                 & 380.63                                 & 442.22                                 \\ \cline{2-8}
+                                    & 20                   & 301.83                                 & 577.35                                 & 297.75                                 & 300.46                                 & 301.47                                 & 360.44                                 \\ \cline{2-8}
+                                    & 10                   & 220.90                                 & 359.98                                 & 209.52                                 & 218.43                                 & 218.57                                 & 249.85                                 \\ \cline{2-8}
+\multirow{-5}{*}{\textbf{Bitbrain}} & 5                    & {\color[HTML]{009901} \textbf{178.14}} & {\color[HTML]{009901} \textbf{249.14}} & {\color[HTML]{009901} \textbf{146.67}} & {\color[HTML]{009901} \textbf{173.27}} & {\color[HTML]{009901} \textbf{162.01}} & {\color[HTML]{009901} \textbf{190.12}} \\ \bottomrule
+\end{tabular}}
+\label{tab:ex1}
+\end{table}
+%\textbf{\color{red} confuesd about table 2. should we keep it or remove?}
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[width=0.75\linewidth]{figures/ex_1_bar_new_star_with_max_nor.pdf}
+\caption{Experiment 1 results showing Normalized MSE for comparison of different estimation methods and window sizes for all three data sets.}
+\label{fig:ex1_window_size_senstivity_analysis}
+%\vspace{1.0mm}
+\end{center}
+\end{figure}
+
+\section{Experiment Results}
+\label{sec:experiments_results}
+%This section explains the experimental results with discussion.
+\subsection{ Experiment 1: Fixed Observation Window (FixW)}
+Table~\ref{tab:ex1} shows MSE for all three test sets using different resource estimation methods and window sizes 5, 10, 20, and 30. MSE represents resource estimation error and small values of MSE show better estimation results.  We observed that small window sizes like 5 and 10 yield minimum MSE. For Alibaba data set, LR and RR yield minimum MSE using window size 10 whereas SVR, EN, LASSO, and NNLS produce minimum estimation error using window size 5. For Materna data set, LR, LASSO, RR, and NNLS give minimum MSE to estimate the CPU resource utilization whereas SVR and EN using window size 10 give minimum resource estimation error. For Bitbrain data set, window size 5 yield minimum  error for all estimation methods. Overall EN with window size 5 outperforms all other estimation methods for all three data sets.
+
+%LR yields minimum MSE on window size 10 for Alibaba and Materna data sets and window size 5 gives minimum estimation error for Bitbrains dat aset. Support Vector Regression and elastic net yield minimum MSE at window size 5. Similarly Lasso, Ridge and NNLS yields minimum MSE at window sizes 5 and 10.
+
+To compare different estimation methods and window sizes for all three data sets, we compute normalized MSE. Figure~\ref{fig:ex1_window_size_senstivity_analysis} shows the normalized MSE for the results obtained in Experiment~1. EN for window size 5 gives minimum estimation error for all data sets whereas SVM yields worst results in all of the data sets for using window sizes 20 and 30. In general, the small window sizes with linear models show better results and exhibit that the resource utilization of data centers is locally linear. However, identifying the appropriate fixed window size to minimize the resource estimation error is a tedious and challenging task.
+
+%adaptive observation window sizes can further improve the prediction results.
+
+%Therefore, appropriate local observation window sizes can help to build resource estimation models with better results.
+%This experiment validates our motivation to dynamically identify and use of adaptive window sizes instead of using a fixed window size for minimizing resource estimation error.
+%However, automatically identifying appropriate local observation window size is a challenging task which we address in this paper.
+
+
+\begin{table}[t!]
+\centering
+\caption{Experiment 2~(CPD) results showing MSE for different estimation methods.}
+\label{tab:cpd}
+\begin{tabular}{c r r r r r r}
+\toprule
+\textbf{Data Set} & \textbf{LR} & \textbf{SVR} & \textbf{EN} & \textbf{LASSO} & \textbf{RR} & \textbf{NNLS} \\ \toprule
+Alibaba          & 30.40       & \textbf{23.24}        & 25.84       & 26.92           & 27.48          & 28.50         \\ \midrule
+Materna          & 20.71       & \textbf{11.02}        & 12.35       & 17.65           & 13.36          & 20.44    \\ \midrule
+
+Bitbrains        & 272.05      & 292.55       & \textbf{222.73}      & 262.29          & 234.68         & 276.49
+
+\\ \bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=0.45\linewidth]{figures/ex2_adaptive_cpd_step.pdf}
+\caption{Adaptive window sizes obtained using the CPD method in Experiment 2 for first 100 test intervals of all three data sets.}
+\label{fig:ex2_step}
+%\vspace{1.0mm}
+\end{center}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=0.45\linewidth]{figures/bp_ex2_cpd_windows.pdf}
+\caption{Box plot of adaptive observation window sizes using the CPD method for test data sets.}
+\label{fig:ex2_boxplot_window_sizes}
+\end{center}
+\end{figure}
+
+
+
+\subsection{Experiment 2: Adaptive Windows Size using Change Point Detection Method}
+
+Table~\ref{tab:cpd} shows the MSE for all three test data sets and different estimation methods using observation windows selected through the Change Point Detection (CPD) method~\cite{ross2015parametric}. The CPD selects adaptive observation windows to build estimation models by using data points after the recent change point from the given historical observations. SVR yields the minimum MSE for Alibaba and Materna data sets whereas EN produces the minimum MSE for Bitbrains data set using the CPD method.
+
+
+Figure~\ref{fig:ex2_step} shows the adaptive window sizes obtained through the CPD method for building estimation models for first 100 test intervals of Alibaba, Materna, and Bitbrains data sets. At each test interval, a maximum of 30 previous observations are passed to the CPD and dynamically limit the observation windows to train the estimation models. For Materna data set, the CPD method does not variate the observation window so frequently whereas for Alibaba and Bitbrains the observation windows are frequently variates.  This shows that for low variation data set like Materna the CPD methods also gives the observation windows with low variations. To further study the adaptive observation windows identified by the CPD for all three data sets, we draw the box plot.
+
+Figure~\ref{fig:ex2_boxplot_window_sizes} shows the box plot of the adaptive window sizes for the entire test sets of all three data sets. For Alibaba data set, the observation windows variate between 9 and 22 with 15 mean window size. For Bitbrains data set, in average the observation window size remains 30 and variate between 15 to 30 sizes. Whereas, Materna which represents low utilization workload with little variations in resource utilization pattern mostly use 30 observation window size and show few outliers varying from 3 to 29.  This clearly shows the limitation of the CPD method for the cases where resource utilizations do not show any notable changes in the usage pattern, and the CPD favors a bigger size observation windows.
+
+% Adaptive observation windows using the CPD method eliminates the manual daunting task for identifying fixed observation windows to minimize the estimation error. However, the the estimation results using the CPD method is not outperforming the fixed observation windows results obtained in Experiment~1.
+
+The CPD method eliminates the need to search for the appropriate observation window size for building estimation method. However, the results obtained using the CPD methods are not outperforming FixW method results.
+
+% Figure shows that CPD does not yield any quantitative results in those cases in which resource consumption is constant or having less variation in their demand and utilization. This can be clearly seen from the Bitbrains and Materna step graphs which have less fluctuation in their resource usage pattern.
+
+
+% \begin{figure}
+% \begin{center}
+% \includegraphics[width=0.5\linewidth]{figures/ex2_cpd_bar_normalized.pdf}
+% \caption{Experiment 2:Normalized MSE using CPD for representative data sets.}
+% \label{fig:ex2_normalized_mse}
+% %\vspace{1.0mm}
+% \end{center}
+% \end{figure}
+
+% To compare the performance of different estimation methods for all three data sets, we compute the normalized MSE of the results obtained in Experiment~2. Figure~\ref{fig:ex2_normalized_mse} shows the normalized MSE to compare the estimation methods for all three data sets using adaptive observation windows obtained through the CPD method. SVR  yields minimum resource estimation error (MSE) for Alibaba and Materna data sets whereas EN gives minimum resource estimation error for Bitbrains dataset. LR and NNLS perform worst to estimate the resource utilization for all three data sets comparing to SVR, Lasso, Ridge, and  EN resource estimation methods.
+
+
+%Figure~\ref{fig:boxplot_alibaba_mae} shows the box plot for absolute error computed for each estimated CPU utilization using Alibaba data set for the proposed and baseline methods. We observed the proposed method outperforms the baseline methods to minimize the absolute error.
+
+
+
+
+\subsection{Experiment 3: Adaptive Windows Using Proposed Method}
+%The preceding experiment shows the effect of CPD algorithm to detect the appropriate training window size whereas in this experiment, we used deep learning algorithm to detect the most appropriate window size to train the machine learning regression algorithm.
+Table~\ref{tab:proposed} shows the MSE for all three test data sets and different estimation methods using the observation windows obtained through the proposed \textit{Adaptive Window Size Predictor} method. For each data sets, all estimation methods yield comparable resource estimation results. However, EN gives the minimum MSE for Alibaba and Bitbrains data sets whereas NNLS produces the minimum MSE for Materna data set using the proposed method.
+
+
+Figure~\ref{fig:ex3_step_graph} shows the adaptive window sizes obtained using the Proposed method for training estimation models for first 100 test intervals of three representative test data sets. For all data sets, the proposed method identifies different observation window sizes even for Materna data set which represents the workload with fewer variations. The proposed method variates the adaptive observation window sizes and yields better estimation results comparing to the CPD and FixW methods.
+
+
+Figure~\ref{fig:ex3_boxplot_window_sizes} shows box plot for the adaptive window sizes identified by the proposed method for all three test data sets. For Alibaba data set, the observation window sizes variate between 2 to 30 with 13.26 mean. For Bitbrains data set, the observation window sizes variate between 2 to 30 with 9.65 mean and Materna data set shows the observation window sizes between 5 and 30 with 12.77 mean.
+
+The Proposed method outperforms the FixW and CPD observation window selection methods and also helps to eliminate the daunting task for searching appropriate fixed window sizes.
+
+% Figure.~\ref{fig:ex3_bar_normalized} shows the normalized MSE to compare the estimation methods for all three data sets using the proposed approach to identify the adaptive window sizes. We observe that all estimation methods are performing comparable within 20\% error when compared with each other. This shows the appropriate observation windows can help any estimation method to yield better estimation results.
+
+
+
+
+% This experiment clearly shows that limitation of CPD is solved using the proposed strategy. and it also works well in those cases where resource utilization does not contains any significant changes in the usage pattern and hence this algorithm detects the most appropriate window size where change in the data is not much visible.
+
+\begin{table}[t]
+\centering
+\caption{Experiment 3 (Proposed) results showing MSE for different estimation methods using the Proposed method to identify the observation window sizes.}
+\label{tab:proposed}
+\begin{tabular}{l l l l l l l}
+\hline
+\textbf{Data Set} & \textbf{LR} & \textbf{SVM} & \textbf{EN} & \textbf{LASSO} & \textbf{RR} & \textbf{NNLS} \\ \toprule
+Alibaba          & 16.86       & 15.82        & \textbf{14.97}       & 16.13           & 15.59          & 17.04         \\ \hline
+Bitbrains        & 154.70      & 169.21       & \textbf{139.69}      & 156.38          & 148.08         & 156.08        \\ \hline
+Materna          & 10.19       & 10.11        & 9.45        & 9.63            & 9.93           & \textbf{8.73}          \\ \bottomrule
+\end{tabular}
+\end{table}
+
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=0.5\linewidth]{figures/ex3_adaptive_cpd_step.pdf}
+\caption{Adaptive observation window sizes obtained using the Proposed method in Experiment~3 for first 100 test intervals of all three data sets.}
+\label{fig:ex3_step_graph}
+%\vspace{1.0mm}
+\end{center}
+\end{figure}
+
+
+
+\begin{figure}[t]
+\begin{center}
+\includegraphics[width=0.45\linewidth]{figures/bp_ex3__windows.pdf}
+\caption{Box plot of adaptive observation window sizes using the Proposed method for test data sets.}
+\label{fig:ex3_boxplot_window_sizes}
+\end{center}
+\end{figure}
+
+% \begin{figure}[t]
+% \begin{center}
+% \includegraphics[width=0.5\linewidth]{figures/ex3_bar_normalized.pdf}
+% %\includegraphics[width=\linewidth]{figures/ex_1_bar.pdf}
+% %\includegraphics[width=\linewidth]{figures/ex1.pdf}
+% \caption{Experiment 3: Normalized MSE using Proposed Method}
+% \label{fig:ex3_bar_normalized}
+% %\vspace{1.0mm}
+% \end{center}
+% \end{figure}
+
+
+%by considering the best results obtained in Experiment~1 (FixW) as a baseline method.
+% Please add the following required packages to your document preamble:
+% \usepackage{multirow}
+\begin{table}[]
+\centering
+\caption{Normalized MSE representing resource estimation error on test data for Experiment~1 (FixW), Experiment~2 (CPD), and Experiment~3 (Proposed).}
+\label{tab:ex3_mse_comparison}
+\scalebox{0.90}{
+\begin{tabular}{lllllllll}
+\hline
+\textbf{Data Set}                   & \textbf{Experiment} & \textbf{LR}   & \textbf{SVM}  & \textbf{EN}   & \textbf{LASSO} & \textbf{RR}   & \textbf{NNLS} & \textbf{Average} \\ \hline
+\multirow{3}{*}{\textbf{Alibaba}}   & FixW               & 0.84          & 0.78          & 0.72          & 0.77           & 0.83          & 0.94          & 0.81             \\ \cline{2-9}
+                                    & CPD                 & 1.00          & 0.76          & 0.85          & 0.89           & 0.90          & 0.94          & 0.89             \\ \cline{2-9}
+                                    & \textbf{Proposed}   & \textbf{0.55} & \textbf{0.52} & \textbf{0.49} & \textbf{0.53}  & \textbf{0.51} & \textbf{0.56} & \textbf{0.53}    \\ \hline
+
+\multirow{3}{*}{\textbf{Bitbrains}} & FixW               & 0.61          & 0.85          & 0.50          & 0.59           & 0.55          & 0.65          & 0.63             \\ \cline{2-9}
+                                    & CPD                 & 0.93          & 1.00          & 0.76          & 0.90           & 0.80          & 0.95          & 0.89             \\ \cline{2-9}
+                                    & \textbf{Proposed}   & \textbf{0.53} & \textbf{0.58} & \textbf{0.48} & \textbf{0.53}  & \textbf{0.51} & \textbf{0.53} & \textbf{0.53}    \\ \hline
+\multirow{3}{*}{\textbf{Materna}}   & FixW               & 0.55          & 0.54          & 0.50          & 0.53           & 0.55          & 0.58          & 0.54             \\ \cline{2-9}
+                                    & CPD                 & 1.00          & 0.53          & 0.60          & 0.85           & 0.64          & 0.99          & 0.77             \\ \cline{2-9}
+                                    & \textbf{Proposed}   & \textbf{0.49} & \textbf{0.49} & \textbf{0.46} & \textbf{0.47}  & \textbf{0.48} & \textbf{0.42} & \textbf{0.47}    \\ \hline
+\end{tabular}}
+\end{table}
+
+
+
+
+
+\begin{figure}[h!]
+\begin{center}
+%\includegraphics[width=0.45\linewidth]{figures/percentage_increased_mse_annotated.pdf}
+\includegraphics[width=0.75\linewidth]{figures/fixw_cpd_proposed.pdf}
+%\includegraphics[width=\linewidth]{figures/ex1.pdf}
+\caption{Comparison of MSE for FixW and CPD and Proposed method using different estimation methods.}
+\label{fig:ex3_mse_percentage_increased}
+%\vspace{1.0mm}
+\end{center}
+\end{figure}
+\subsection{Comparison of FixW, CPD, and Proposed Method}
+In this section, we compare the results obtained in Experiment~1 (FixW), Experiment~2 (CPD), and Experiment~3 (Proposed). Table~\ref{tab:ex3_mse_comparison} shows the normalized MSE for all three experiments and data sets. For each data sets, the maximum MSE among all three observation window selection methods and resource estimation is selected to calculate the normalized MSE. The proposed solution yields the minimum MSE using all estimation methods. The best performing estimation method is EN for Alibaba and Bitbrains data sets, whereas NNLS outperforms in Materna data set.
+
+To quantify the relative improvement for estimation resource utilization using the Proposed window size selection method, we consider FixW (Experiment~1) as a baseline method. Figure~\ref{fig:ex3_mse_percentage_increased} shows the relative percentage of MSE for the Proposed and CPD compared to the FixW. For all estimation methods, the Proposed outperforms the FixW and the CPD to minimize the estimation error. Whereas, the FixW yields better estimation results compared to the CPD. For Alibaba data set, the proposed method produces 34\%, 33,\%, 32\%, 31\%, 38\%, and 40\% better estimation results for LR, SVM, EN, LASSO, RR, and NNLS estimation methods respectively compared to FixW. For Materna data set, the Proposed method gives 11\%, 9\%, 9\%, 18\%, 18\%, and 27\% better estimation results for LR, SVM, EN, LASSO, RR, and NNLS estimation methods respectively compared to FixW. For Bitbrains data set, the Proposed method gives 13\%, 32\%, 9\%, 10\%, 9\%, and 18\% better estimation results for LR, SVM, EN, LASSO, RR, and NNLS estimation methods respectively compared to FixW.
+
+In average we observe 29.7\%, 15.7\%, and 13.1\% better estimation results using the proposed method for Alibaba, Materna, and Bitbrains data sets respectively. The comparison indicates that the Proposed method outperforms FixW and CPD for identifying appropriate observation window to build estimation method with good results.
+
+A traditional solution to identify observation windows for building estimation methods are based on a series of experiments using various fixed size observation windows manually and then determine the best observation window to use with the estimations. Whereas, an automatic adaptive observation window size can help to minimize estimating error better than fixed observation windows and also reduce the human efforts to test different observation window sizes manually. In our experimental evaluation, we evaluated six different commonly used estimation methods and showed that adaptive observation windows can yield better estimation results comparing to the fixed observation windows for all different estimation methods.
+
+ %%We need to discuss overall findings and critisize anything we can and also give some take home pointers
+
+
+% \begin{table}[]
+% \centering
+% \caption{Regression methods which yields the minimum MSE.}
+% \label{tab:ex3_optimal_regression_methods}
+% \begin{tabular}{|l|l|l|l|}
+% \hline
+% \textbf{Data set} & \textbf{FixW}  & \textbf{CPD} & \textbf{Proposed} \\ \hline
+% alibaba           & ElasticNet (5) & SVM          & ElasticNet        \\ \hline
+% materna           & ElasticNet (5) & SVM          & NNLS              \\ \hline
+% bitbrains & ElasticNet (5) & ElasticNet   & ElasticNet        \\ \hline
+% \end{tabular}
+% \end{table}
+
+% \begin{figure}
+% \begin{center}
+% \includegraphics[width=0.5\linewidth]{figures/boxplot4vms.pdf}
+% %\includegraphics[width=\linewidth]{figures/ex1.pdf}
+% \caption{Box plot for CPU utilization of selected four machines with different characteristics from the Alibaba data set. M1=high load, M2=low load, M3=high variation, and M4=low variation.
+% }
+% \label{fig:bx_4vms}
+% %\vspace{1.0mm}
+% \end{center}
+% \end{figure}
+
+
+% \begin{figure}[t]
+% \begin{center}
+% \includegraphics[width=0.5\linewidth]{figures/actual_predicted.pdf}
+% %\includegraphics[scale=0.8]{figures/Experiments.pdf}
+% \caption{Actual vs proposed method CPU prediction for Alibaba data set using EN (lowest MSE) for four selected machines. M1 = Heavy workload, M2 = Low workload, M3 = High variation, M4= Low variation.}
+% \label{fig:actual_prediction_4machines}
+% %\vspace{1.0mm}
+% \end{center}
+% \end{figure}
+
+% To further show the effect of the proposed solution, we selected four VMs exhibiting diversified resource utilization behaviours from Alibaba data set and used EN estimation method to show the resource estimation results. Figure~\ref{fig:bx_4vms} shows the box plot for CPU utilization of the selected four VMs.
+
+% Figure~\ref{fig:actual_prediction_4machines} shows the CPU resource utilization comparison for actual and predicted for the four selected VMS from Alibaba data set using elastic net as our regression model.
+
+% We observed that proposed method predicts with high accuracy and follow the pattern and trend which is also presented in actual data. This prove the effectiveness of proposed solution for different type of machines with distinct characteristics.
+
+% \begin{figure}[t]
+% \begin{center}
+% \includegraphics[width=0.5\linewidth]{figures/811.pdf}
+% %\includegraphics[width=\linewidth]{figures/811.pdf}
+% \caption{Absolute error frequency of CPU utilization estimation for machine M1 (High Load).}
+% \label{fig:ae_m1}
+% %\vspace{1.0mm}
+% \end{center}
+% \end{figure}
+
+
+% \begin{figure}[t]
+% \begin{center}
+% %\includegraphics[width=\linewidth]{figures/547.pdf}
+% \includegraphics[width=0.5\linewidth]{figures/547.pdf}
+% \caption{Absolute error frequency of CPU utilization estimation for machine M3 (High Variation).}
+% \label{fig:ae_m3}
+% %\vspace{1.0mm}
+% \end{center}
+% \end{figure}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+% To make a detail comparison, we have selected four machines named as "M1", "M2", "M3" and "M4" from ali baba data set with various characteristics as shown in Figure. \ref{fig:bx_4vms}. M1 represents the high load machine in which CPU utilization remains in between 40 to 60\%. M2 represents the low load machine in which CPU utilization remains 8 to 10\% and M3 and M4 represents the high variation and low variation machines respectively.
+% For Alibaba data set, We observed that elastic net (EN) yields the lowest MSE so we selected EN as our machine learning model to predict the next data point.
+
+
+% To quantify and visualize the error for each estimation, we show absolute error frequency computed for machines M1 and M3 using baseline and proposed methods in Figure~\ref{fig:ae_m1} and Figure~\ref{fig:ae_m3} respectively. Where M1 serves a workload demanding high CPU resources consistently, and  M3 served a workload requiring CPU resources with fluctuating demand. We observed that the proposed method always yield minimum error to estimate the CPU resource utilization for a different type of workloads.
+% We also observed that the proposed method yield minimum absolute error for each estimation comparing to the baseline methods for both M1 and M3 machines.
+% The experiment evaluation concludes that proposed method outperform existing state of the art methods.
+
+\section{Conclusion}
+\label{sec:conclusion}
+Data centers resource estimation is an active and challenging problem. Most of the state-of-art methods available up-to-date are based on sliding window of fixed lengths.
+Selecting a fixed size window for training machine learning model is always not yields the optimal results. Therefore we present a novel approach to adaptively and automatically identify the most appropriate window size to be used for training machine learning model.
+In our proposed methodology, We use multi-layer perceptron to estimate the window size for next data interval. The model is trained on the historical data and is evaluated on real traces collected from Alibaba, Materna and Bitbrains data-center monitoring data sets, and our proposed approach can improve prediction accuracy from 5\% to 44\% over current methodologies.
+We conclude that our methodology can help to identify the appropriate window size for each specific scenario over time, and in future, we will explore using adaptive machine learning algorithm with adaptive window size.
+% \section*{Acknowledgement}
+%
+%\section*{References}
+\bibliography{bibfile}
+\end{document}

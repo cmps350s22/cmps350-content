@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <script>
+        function getLocation() {
+            /*
+                If we try to call getCurrentPosition in a synchronous way then we will get undefined value
+                because getCurrentPosition is an asynchronous function. Instead we have to call it and pass
+                a callback function to it.
+            */
+            const myLocation = navigator.geolocation.getCurrentPosition(showPosition);
+            console.log("myLocation", myLocation);
+
+            navigator.geolocation.getCurrentPosition( showPosition );
+            //console.log(coordinates);
+        }
+
+        function showPosition(position) {
+            console.log(position);
+            const p = document.querySelector("#result");
+            p.innerHTML += `Latitude: ${position.coords.latitude}
+                    Longitude: ${position.coords.longitude} <BR>`;
+        }
+
+        function greet() {
+            document.querySelector("#result").innerHTML += "السلام عليكم و رحمة الله و بركاته" + "<br>";
+        }
+    </script>
+</head>
+<body>
+    <p>Click the button to get your coordinates.</p>
+
+    <button onclick="getLocation()">Get Location (async call)</button>
+    <button onclick="greet()">Greet (super-fast!)</button>
+
+    <p id="result"></p>
+</body>
+</html>

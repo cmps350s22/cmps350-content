@@ -1,0 +1,51 @@
+[
+  {
+    "crn": 107,
+    "courseCode": "GENG 107",
+    "courseName": "Engineering Skills and Ethics",
+    "college": "ENG",
+    "year": 1
+  },
+  {
+    "crn": 127,
+    "courseCode": "MATH 217",
+    "courseName": "Mathematics for Engineers",
+    "college": "CAS",
+    "year": 1
+  },
+  {
+    "crn": 200,
+    "courseCode": "GENG 200",
+    "courseName": "Probability and Statistics for Engineers",
+    "college": "ENG",
+    "year": 2
+  },
+  {
+    "crn": 251,
+    "courseCode": "CMPS 251",
+    "courseName": "Object Oriented Programming",
+    "college": "ENG",
+    "year": 2
+  },
+  {
+    "crn": 300,
+    "courseCode": "MATH 300",
+    "courseName": "Numerical Methods",
+    "college": "CAS",
+    "year": 3
+  },
+  {
+    "crn": 360,
+    "courseCode": "GENG 360",
+    "courseName": "Engineering Economics",
+    "college": "ENG",
+    "year": 3
+  },
+  {
+    "crn": 211,
+    "courseCode": "MATH 211",
+    "courseName": "Calculus II",
+    "college": "CAS",
+    "year": 2
+  }
+]

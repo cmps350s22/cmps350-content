@@ -1,0 +1,1302 @@
+[
+  {
+    "studentId": 2015001,
+    "firstname": "Fn1",
+    "lastname": "Ln1",
+    "gender": "M",
+    "program": "ISE",
+    "gpa": 2.7,
+    "courseIds": [
+      107,
+      300,
+      127
+    ]
+  },
+  {
+    "studentId": 2015002,
+    "firstname": "Fn2",
+    "lastname": "Ln2",
+    "gender": "M",
+    "program": "ISE",
+    "gpa": 2,
+    "courseIds": [
+      107,
+      300,
+      127
+    ]
+  },
+  {
+    "studentId": 2015003,
+    "firstname": "Fn3",
+    "lastname": "Ln3",
+    "gender": "F",
+    "program": "AUP",
+    "gpa": 3.2,
+    "courseIds": [
+      107,
+      300,
+      211
+    ]
+  },
+  {
+    "studentId": 2015004,
+    "firstname": "Fn4",
+    "lastname": "Ln4",
+    "gender": "M",
+    "program": "ME",
+    "gpa": 2.1,
+    "courseIds": [
+      200,
+      360,
+      127
+    ]
+  },
+  {
+    "studentId": 2015005,
+    "firstname": "Fn5",
+    "lastname": "Ln5",
+    "gender": "F",
+    "program": "AUP",
+    "gpa": 2,
+    "courseIds": [
+      200,
+      300,
+      127
+    ]
+  },
+  {
+    "studentId": 2015006,
+    "firstname": "Fn6",
+    "lastname": "Ln6",
+    "gender": "M",
+    "program": "ISE",
+    "gpa": 2.8,
+    "courseIds": [
+      200,
+      300,
+      127
+    ]
+  },
+  {
+    "studentId": 2015007,
+    "firstname": "Fn7",
+    "lastname": "Ln7",
+    "gender": "F",
+    "program": "EE",
+    "gpa": 2.4,
+    "courseIds": [
+      107,
+      300,
+      127
+    ]
+  },
+  {
+    "studentId": 2015008,
+    "firstname": "Fn8",
+    "lastname": "Ln8",
+    "gender": "M",
+    "program": "CS",
+    "gpa": 2.7,
+    "courseIds": [
+      200,
+      360,
+      127
+    ]
+  },
+  {
+    "studentId": 2015009,
+    "firstname": "Fn9",
+    "lastname": "Ln9",
+    "gender": "F",
+    "program": "CS",
+    "gpa": 3,
+    "courseIds": [
+      200,
+      300,
+      211
+    ]
+  },
+  {
+    "studentId": 2015010,
+    "firstname": "Fn10",
+    "lastname": "Ln10",
+    "gender": "F",
+    "program": "CS",
+    "gpa": 3.1,
+    "courseIds": [
+      200,
+      300,
+      211
+    ]
+  },
+  {
+    "studentId": 2015011,
+    "firstname": "Fn11",
+    "lastname": "Ln11",
+    "gender": "M",
+    "program": "EE",
+    "gpa": 2.4,
+    "courseIds": [
+      200,
+      300,
+      127
+    ]
+  },
+  {
+    "studentId": 2015012,
+    "firstname": "Fn12",
+    "lastname": "Ln12",
+    "gender": "F",
+    "program": "CE",
+    "gpa": 3.3,
+    "courseIds": [
+      200,
+      300,
+      211
+    ]
+  },
+  {
+    "studentId": 2015013,
+    "firstname": "Fn13",
+    "lastname": "Ln13",
+    "gender": "M",
+    "program": "AUP",
+    "gpa": 3.6,
+    "courseIds": [
+      107,
+      360,
+      127
+    ]
+  },
+  {
+    "studentId": 2015014,
+    "firstname": "Fn14",
+    "lastname": "Ln14",
+    "gender": "F",
+    "program": "CE",
+    "gpa": 4,
+    "courseIds": [
+      107,
+      360,
+      127
+    ]
+  },
+  {
+    "studentId": 2015015,
+    "firstname": "Fn15",
+    "lastname": "Ln15",
+    "gender": "M",
+    "program": "ISE",
+    "gpa": 2.7,
+    "courseIds": [
+      107,
+      300,
+      211
+    ]
+  },
+  {
+    "studentId": 2015016,
+    "firstname": "Fn16",
+    "lastname": "Ln16",
+    "gender": "M",
+    "program": "CHE",
+    "gpa": 2.7,
+    "courseIds": [
+      200,
+      300,
+      127
+    ]
+  },
+  {
+    "studentId": 2015017,
+    "firstname": "Fn17",
+    "lastname": "Ln17",
+    "gender": "F",
+    "program": "CHE",
+    "gpa": 2.5,
+    "courseIds": [
+      200,
+      360,
+      211
+    ]
+  },
+  {
+    "studentId": 2015018,
+    "firstname": "Fn18",
+    "lastname": "Ln18",
+    "gender": "M",
+    "program": "ME",
+    "gpa": 3.6,
+    "courseIds": [
+      107,
+      300,
+      127
+    ]
+  },
+  {
+    "studentId": 2015019,
+    "firstname": "Fn19",
+    "lastname": "Ln19",
+    "gender": "F",
+    "program": "EE",
+    "gpa": 2.6,
+    "courseIds": [
+      200,
+      300,
+      127
+    ]
+  },
+  {
+    "studentId": 2015020,
+    "firstname": "Fn20",
+    "lastname": "Ln20",
+    "gender": "F",
+    "program": "EE",
+    "gpa": 3.6,
+    "courseIds": [
+      200,
+      300,
+      211
+    ]
+  },
+  {
+    "studentId": 2015021,
+    "firstname": "Fn21",
+    "lastname": "Ln21",
+    "gender": "F",
+    "program": "CS",
+    "gpa": 2.6,
+    "courseIds": [
+      200,
+      360,
+      127
+    ]
+  },
+  {
+    "studentId": 2015022,
+    "firstname": "Fn22",
+    "lastname": "Ln22",
+    "gender": "F",
+    "program": "CVE",
+    "gpa": 3.1,
+    "courseIds": [
+      200,
+      300,
+      127
+    ]
+  },
+  {
+    "studentId": 2015023,
+    "firstname": "Fn23",
+    "lastname": "Ln23",
+    "gender": "M",
+    "program": "EE",
+    "gpa": 2.8,
+    "courseIds": [
+      200,
+      360,
+      211
+    ]
+  },
+  {
+    "studentId": 2015024,
+    "firstname": "Fn24",
+    "lastname": "Ln24",
+    "gender": "F",
+    "program": "CS",
+    "gpa": 3,
+    "courseIds": [
+      200,
+      360,
+      211
+    ]
+  },
+  {
+    "studentId": 2015025,
+    "firstname": "Fn25",
+    "lastname": "Ln25",
+    "gender": "M",
+    "program": "ME",
+    "gpa": 2.8,
+    "courseIds": [
+      107,
+      360,
+      211
+    ]
+  },
+  {
+    "studentId": 2015026,
+    "firstname": "Fn26",
+    "lastname": "Ln26",
+    "gender": "M",
+    "program": "AUP",
+    "gpa": 2.5,
+    "courseIds": [
+      200,
+      360,
+      211
+    ]
+  },
+  {
+    "studentId": 2015027,
+    "firstname": "Fn27",
+    "lastname": "Ln27",
+    "gender": "M",
+    "program": "CVE",
+    "gpa": 3.9,
+    "courseIds": [
+      200,
+      360,
+      127
+    ]
+  },
+  {
+    "studentId": 2015028,
+    "firstname": "Fn28",
+    "lastname": "Ln28",
+    "gender": "M",
+    "program": "AUP",
+    "gpa": 2.1,
+    "courseIds": [
+      200,
+      360,
+      211
+    ]
+  },
+  {
+    "studentId": 2015029,
+    "firstname": "Fn29",
+    "lastname": "Ln29",
+    "gender": "F",
+    "program": "CS",
+    "gpa": 2.4,
+    "courseIds": [
+      200,
+      360,
+      127
+    ]
+  },
+  {
+    "studentId": 2015030,
+    "firstname": "Fn30",
+    "lastname": "Ln30",
+    "gender": "F",
+    "program": "CS",
+    "gpa": 2.7,
+    "courseIds": [
+      107,
+      360,
+      127
+    ]
+  },
+  {
+    "studentId": 2015031,
+    "firstname": "Fn31",
+    "lastname": "Ln31",
+    "gender": "M",
+    "program": "ISE",
+    "gpa": 3,
+    "courseIds": [
+      200,
+      360,
+      127
+    ]
+  },
+  {
+    "studentId": 2015032,
+    "firstname": "Fn32",
+    "lastname": "Ln32",
+    "gender": "F",
+    "program": "CVE",
+    "gpa": 2.9,
+    "courseIds": [
+      200,
+      300,
+      127
+    ]
+  },
+  {
+    "studentId": 2015033,
+    "firstname": "Fn33",
+    "lastname": "Ln33",
+    "gender": "F",
+    "program": "ISE",
+    "gpa": 2,
+    "courseIds": [
+      107,
+      300,
+      211
+    ]
+  },
+  {
+    "studentId": 2015034,
+    "firstname": "Fn34",
+    "lastname": "Ln34",
+    "gender": "M",
+    "program": "EE",
+    "gpa": 3.9,
+    "courseIds": [
+      200,
+      360,
+      211
+    ]
+  },
+  {
+    "studentId": 2015035,
+    "firstname": "Fn35",
+    "lastname": "Ln35",
+    "gender": "F",
+    "program": "ISE",
+    "gpa": 3.1,
+    "courseIds": [
+      107,
+      300,
+      211
+    ]
+  },
+  {
+    "studentId": 2015036,
+    "firstname": "Fn36",
+    "lastname": "Ln36",
+    "gender": "M",
+    "program": "CHE",
+    "gpa": 3.6,
+    "courseIds": [
+      107,
+      300,
+      211
+    ]
+  },
+  {
+    "studentId": 2015037,
+    "firstname": "Fn37",
+    "lastname": "Ln37",
+    "gender": "M",
+    "program": "CS",
+    "gpa": 3.9,
+    "courseIds": [
+      200,
+      300,
+      211
+    ]
+  },
+  {
+    "studentId": 2015038,
+    "firstname": "Fn38",
+    "lastname": "Ln38",
+    "gender": "M",
+    "program": "EE",
+    "gpa": 2.7,
+    "courseIds": [
+      200,
+      360,
+      211
+    ]
+  },
+  {
+    "studentId": 2015039,
+    "firstname": "Fn39",
+    "lastname": "Ln39",
+    "gender": "M",
+    "program": "AUP",
+    "gpa": 3.9,
+    "courseIds": [
+      200,
+      360,
+      127
+    ]
+  },
+  {
+    "studentId": 2015040,
+    "firstname": "Fn40",
+    "lastname": "Ln40",
+    "gender": "F",
+    "program": "EE",
+    "gpa": 2.6,
+    "courseIds": [
+      107,
+      300,
+      211
+    ]
+  },
+  {
+    "studentId": 2015041,
+    "firstname": "Fn41",
+    "lastname": "Ln41",
+    "gender": "F",
+    "program": "ISE",
+    "gpa": 2.2,
+    "courseIds": [
+      107,
+      300,
+      211
+    ]
+  },
+  {
+    "studentId": 2015042,
+    "firstname": "Fn42",
+    "lastname": "Ln42",
+    "gender": "M",
+    "program": "ME",
+    "gpa": 3.8,
+    "courseIds": [
+      107,
+      300,
+      127
+    ]
+  },
+  {
+    "studentId": 2015043,
+    "firstname": "Fn43",
+    "lastname": "Ln43",
+    "gender": "F",
+    "program": "EE",
+    "gpa": 3.4,
+    "courseIds": [
+      200,
+      360,
+      211
+    ]
+  },
+  {
+    "studentId": 2015044,
+    "firstname": "Fn44",
+    "lastname": "Ln44",
+    "gender": "F",
+    "program": "CE",
+    "gpa": 3.3,
+    "courseIds": [
+      200,
+      360,
+      127
+    ]
+  },
+  {
+    "studentId": 2015045,
+    "firstname": "Fn45",
+    "lastname": "Ln45",
+    "gender": "M",
+    "program": "CVE",
+    "gpa": 3.2,
+    "courseIds": [
+      107,
+      360,
+      211
+    ]
+  },
+  {
+    "studentId": 2015046,
+    "firstname": "Fn46",
+    "lastname": "Ln46",
+    "gender": "F",
+    "program": "EE",
+    "gpa": 3.2,
+    "courseIds": [
+      200,
+      360,
+      127
+    ]
+  },
+  {
+    "studentId": 2015047,
+    "firstname": "Fn47",
+    "lastname": "Ln47",
+    "gender": "M",
+    "program": "CS",
+    "gpa": 2.5,
+    "courseIds": [
+      200,
+      360,
+      211
+    ]
+  },
+  {
+    "studentId": 2015048,
+    "firstname": "Fn48",
+    "lastname": "Ln48",
+    "gender": "M",
+    "program": "CHE",
+    "gpa": 3.8,
+    "courseIds": [
+      107,
+      360,
+      127
+    ]
+  },
+  {
+    "studentId": 2015049,
+    "firstname": "Fn49",
+    "lastname": "Ln49",
+    "gender": "F",
+    "program": "ME",
+    "gpa": 3.4,
+    "courseIds": [
+      107,
+      360,
+      127
+    ]
+  },
+  {
+    "studentId": 2015050,
+    "firstname": "Fn50",
+    "lastname": "Ln50",
+    "gender": "F",
+    "program": "CVE",
+    "gpa": 2.9,
+    "courseIds": [
+      200,
+      300,
+      211
+    ]
+  },
+  {
+    "studentId": 2015051,
+    "firstname": "Fn51",
+    "lastname": "Ln51",
+    "gender": "M",
+    "program": "CVE",
+    "gpa": 3,
+    "courseIds": [
+      200,
+      300,
+      211
+    ]
+  },
+  {
+    "studentId": 2015052,
+    "firstname": "Fn52",
+    "lastname": "Ln52",
+    "gender": "M",
+    "program": "ISE",
+    "gpa": 3.6,
+    "courseIds": [
+      107,
+      300,
+      127
+    ]
+  },
+  {
+    "studentId": 2015053,
+    "firstname": "Fn53",
+    "lastname": "Ln53",
+    "gender": "F",
+    "program": "CS",
+    "gpa": 4,
+    "courseIds": [
+      107,
+      360,
+      211
+    ]
+  },
+  {
+    "studentId": 2015054,
+    "firstname": "Fn54",
+    "lastname": "Ln54",
+    "gender": "M",
+    "program": "EE",
+    "gpa": 3.1,
+    "courseIds": [
+      200,
+      300,
+      127
+    ]
+  },
+  {
+    "studentId": 2015055,
+    "firstname": "Fn55",
+    "lastname": "Ln55",
+    "gender": "F",
+    "program": "ME",
+    "gpa": 3.2,
+    "courseIds": [
+      200,
+      360,
+      127
+    ]
+  },
+  {
+    "studentId": 2015056,
+    "firstname": "Fn56",
+    "lastname": "Ln56",
+    "gender": "F",
+    "program": "EE",
+    "gpa": 3.2,
+    "courseIds": [
+      107,
+      360,
+      211
+    ]
+  },
+  {
+    "studentId": 2015057,
+    "firstname": "Fn57",
+    "lastname": "Ln57",
+    "gender": "F",
+    "program": "CS",
+    "gpa": 2.2,
+    "courseIds": [
+      200,
+      300,
+      211
+    ]
+  },
+  {
+    "studentId": 2015058,
+    "firstname": "Fn58",
+    "lastname": "Ln58",
+    "gender": "F",
+    "program": "CVE",
+    "gpa": 3,
+    "courseIds": [
+      200,
+      300,
+      211
+    ]
+  },
+  {
+    "studentId": 2015059,
+    "firstname": "Fn59",
+    "lastname": "Ln59",
+    "gender": "M",
+    "program": "AUP",
+    "gpa": 2.2,
+    "courseIds": [
+      107,
+      360,
+      127
+    ]
+  },
+  {
+    "studentId": 2015060,
+    "firstname": "Fn60",
+    "lastname": "Ln60",
+    "gender": "M",
+    "program": "CE",
+    "gpa": 3.9,
+    "courseIds": [
+      200,
+      300,
+      127
+    ]
+  },
+  {
+    "studentId": 2015061,
+    "firstname": "Fn61",
+    "lastname": "Ln61",
+    "gender": "M",
+    "program": "CVE",
+    "gpa": 2,
+    "courseIds": [
+      200,
+      300,
+      127
+    ]
+  },
+  {
+    "studentId": 2015062,
+    "firstname": "Fn62",
+    "lastname": "Ln62",
+    "gender": "M",
+    "program": "CHE",
+    "gpa": 2.2,
+    "courseIds": [
+      107,
+      360,
+      127
+    ]
+  },
+  {
+    "studentId": 2015063,
+    "firstname": "Fn63",
+    "lastname": "Ln63",
+    "gender": "F",
+    "program": "AUP",
+    "gpa": 2.1,
+    "courseIds": [
+      200,
+      360,
+      211
+    ]
+  },
+  {
+    "studentId": 2015064,
+    "firstname": "Fn64",
+    "lastname": "Ln64",
+    "gender": "M",
+    "program": "ISE",
+    "gpa": 2.6,
+    "courseIds": [
+      200,
+      300,
+      211
+    ]
+  },
+  {
+    "studentId": 2015065,
+    "firstname": "Fn65",
+    "lastname": "Ln65",
+    "gender": "F",
+    "program": "CHE",
+    "gpa": 3.1,
+    "courseIds": [
+      200,
+      360,
+      211
+    ]
+  },
+  {
+    "studentId": 2015066,
+    "firstname": "Fn66",
+    "lastname": "Ln66",
+    "gender": "M",
+    "program": "CVE",
+    "gpa": 3.9,
+    "courseIds": [
+      200,
+      300,
+      211
+    ]
+  },
+  {
+    "studentId": 2015067,
+    "firstname": "Fn67",
+    "lastname": "Ln67",
+    "gender": "M",
+    "program": "ME",
+    "gpa": 2.1,
+    "courseIds": [
+      107,
+      360,
+      127
+    ]
+  },
+  {
+    "studentId": 2015068,
+    "firstname": "Fn68",
+    "lastname": "Ln68",
+    "gender": "M",
+    "program": "ME",
+    "gpa": 3.8,
+    "courseIds": [
+      200,
+      300,
+      211
+    ]
+  },
+  {
+    "studentId": 2015069,
+    "firstname": "Fn69",
+    "lastname": "Ln69",
+    "gender": "M",
+    "program": "CS",
+    "gpa": 3.4,
+    "courseIds": [
+      107,
+      360,
+      211
+    ]
+  },
+  {
+    "studentId": 2015070,
+    "firstname": "Fn70",
+    "lastname": "Ln70",
+    "gender": "F",
+    "program": "ME",
+    "gpa": 4,
+    "courseIds": [
+      107,
+      360,
+      211
+    ]
+  },
+  {
+    "studentId": 2015071,
+    "firstname": "Fn71",
+    "lastname": "Ln71",
+    "gender": "F",
+    "program": "CVE",
+    "gpa": 3.4,
+    "courseIds": [
+      200,
+      360,
+      211
+    ]
+  },
+  {
+    "studentId": 2015072,
+    "firstname": "Fn72",
+    "lastname": "Ln72",
+    "gender": "M",
+    "program": "EE",
+    "gpa": 2,
+    "courseIds": [
+      107,
+      360,
+      211
+    ]
+  },
+  {
+    "studentId": 2015073,
+    "firstname": "Fn73",
+    "lastname": "Ln73",
+    "gender": "F",
+    "program": "CVE",
+    "gpa": 3.7,
+    "courseIds": [
+      107,
+      300,
+      127
+    ]
+  },
+  {
+    "studentId": 2015074,
+    "firstname": "Fn74",
+    "lastname": "Ln74",
+    "gender": "F",
+    "program": "ME",
+    "gpa": 2.6,
+    "courseIds": [
+      200,
+      300,
+      211
+    ]
+  },
+  {
+    "studentId": 2015075,
+    "firstname": "Fn75",
+    "lastname": "Ln75",
+    "gender": "M",
+    "program": "EE",
+    "gpa": 3.1,
+    "courseIds": [
+      107,
+      300,
+      127
+    ]
+  },
+  {
+    "studentId": 2015076,
+    "firstname": "Fn76",
+    "lastname": "Ln76",
+    "gender": "M",
+    "program": "CS",
+    "gpa": 3.3,
+    "courseIds": [
+      200,
+      360,
+      211
+    ]
+  },
+  {
+    "studentId": 2015077,
+    "firstname": "Fn77",
+    "lastname": "Ln77",
+    "gender": "M",
+    "program": "EE",
+    "gpa": 4,
+    "courseIds": [
+      107,
+      300,
+      211
+    ]
+  },
+  {
+    "studentId": 2015078,
+    "firstname": "Fn78",
+    "lastname": "Ln78",
+    "gender": "M",
+    "program": "CE",
+    "gpa": 3,
+    "courseIds": [
+      107,
+      360,
+      211
+    ]
+  },
+  {
+    "studentId": 2015079,
+    "firstname": "Fn79",
+    "lastname": "Ln79",
+    "gender": "M",
+    "program": "CE",
+    "gpa": 2.2,
+    "courseIds": [
+      107,
+      360,
+      211
+    ]
+  },
+  {
+    "studentId": 2015080,
+    "firstname": "Fn80",
+    "lastname": "Ln80",
+    "gender": "M",
+    "program": "AUP",
+    "gpa": 2.7,
+    "courseIds": [
+      107,
+      300,
+      127
+    ]
+  },
+  {
+    "studentId": 2015081,
+    "firstname": "Fn81",
+    "lastname": "Ln81",
+    "gender": "M",
+    "program": "EE",
+    "gpa": 3.2,
+    "courseIds": [
+      107,
+      360,
+      127
+    ]
+  },
+  {
+    "studentId": 2015082,
+    "firstname": "Fn82",
+    "lastname": "Ln82",
+    "gender": "F",
+    "program": "CVE",
+    "gpa": 3.3,
+    "courseIds": [
+      200,
+      360,
+      127
+    ]
+  },
+  {
+    "studentId": 2015083,
+    "firstname": "Fn83",
+    "lastname": "Ln83",
+    "gender": "M",
+    "program": "CVE",
+    "gpa": 4,
+    "courseIds": [
+      107,
+      360,
+      127
+    ]
+  },
+  {
+    "studentId": 2015084,
+    "firstname": "Fn84",
+    "lastname": "Ln84",
+    "gender": "F",
+    "program": "ME",
+    "gpa": 2.4,
+    "courseIds": [
+      200,
+      360,
+      127
+    ]
+  },
+  {
+    "studentId": 2015085,
+    "firstname": "Fn85",
+    "lastname": "Ln85",
+    "gender": "F",
+    "program": "CS",
+    "gpa": 3.4,
+    "courseIds": [
+      107,
+      300,
+      127
+    ]
+  },
+  {
+    "studentId": 2015086,
+    "firstname": "Fn86",
+    "lastname": "Ln86",
+    "gender": "F",
+    "program": "CE",
+    "gpa": 3.5,
+    "courseIds": [
+      200,
+      360,
+      127
+    ]
+  },
+  {
+    "studentId": 2015087,
+    "firstname": "Fn87",
+    "lastname": "Ln87",
+    "gender": "M",
+    "program": "EE",
+    "gpa": 3.9,
+    "courseIds": [
+      107,
+      300,
+      211
+    ]
+  },
+  {
+    "studentId": 2015088,
+    "firstname": "Fn88",
+    "lastname": "Ln88",
+    "gender": "F",
+    "program": "CVE",
+    "gpa": 2.3,
+    "courseIds": [
+      200,
+      360,
+      127
+    ]
+  },
+  {
+    "studentId": 2015089,
+    "firstname": "Fn89",
+    "lastname": "Ln89",
+    "gender": "F",
+    "program": "CS",
+    "gpa": 3.9,
+    "courseIds": [
+      200,
+      360,
+      127
+    ]
+  },
+  {
+    "studentId": 2015090,
+    "firstname": "Fn90",
+    "lastname": "Ln90",
+    "gender": "M",
+    "program": "CVE",
+    "gpa": 2.3,
+    "courseIds": [
+      107,
+      300,
+      127
+    ]
+  },
+  {
+    "studentId": 2015091,
+    "firstname": "Fn91",
+    "lastname": "Ln91",
+    "gender": "F",
+    "program": "CVE",
+    "gpa": 2.4,
+    "courseIds": [
+      107,
+      300,
+      211
+    ]
+  },
+  {
+    "studentId": 2015092,
+    "firstname": "Fn92",
+    "lastname": "Ln92",
+    "gender": "F",
+    "program": "EE",
+    "gpa": 3.2,
+    "courseIds": [
+      200,
+      300,
+      127
+    ]
+  },
+  {
+    "studentId": 2015093,
+    "firstname": "Fn93",
+    "lastname": "Ln93",
+    "gender": "F",
+    "program": "ME",
+    "gpa": 3.5,
+    "courseIds": [
+      200,
+      360,
+      127
+    ]
+  },
+  {
+    "studentId": 2015094,
+    "firstname": "Fn94",
+    "lastname": "Ln94",
+    "gender": "M",
+    "program": "EE",
+    "gpa": 3.9,
+    "courseIds": [
+      107,
+      300,
+      211
+    ]
+  },
+  {
+    "studentId": 2015095,
+    "firstname": "Fn95",
+    "lastname": "Ln95",
+    "gender": "M",
+    "program": "AUP",
+    "gpa": 3.9,
+    "courseIds": [
+      107,
+      360,
+      127
+    ]
+  },
+  {
+    "studentId": 2015096,
+    "firstname": "Fn96",
+    "lastname": "Ln96",
+    "gender": "M",
+    "program": "AUP",
+    "gpa": 3.6,
+    "courseIds": [
+      200,
+      300,
+      211
+    ]
+  },
+  {
+    "studentId": 2015097,
+    "firstname": "Fn97",
+    "lastname": "Ln97",
+    "gender": "M",
+    "program": "CVE",
+    "gpa": 4,
+    "courseIds": [
+      107,
+      300,
+      211
+    ]
+  },
+  {
+    "studentId": 2015098,
+    "firstname": "Fn98",
+    "lastname": "Ln98",
+    "gender": "M",
+    "program": "ME",
+    "gpa": 3.8,
+    "courseIds": [
+      200,
+      300,
+      211
+    ]
+  },
+  {
+    "studentId": 2015099,
+    "firstname": "Fn99",
+    "lastname": "Ln99",
+    "gender": "F",
+    "program": "ISE",
+    "gpa": 2.7,
+    "courseIds": [
+      107,
+      360,
+      127
+    ]
+  },
+  {
+    "studentId": 2015100,
+    "firstname": "Fn100",
+    "lastname": "Ln100",
+    "gender": "F",
+    "program": "CHE",
+    "gpa": 2.9,
+    "courseIds": [
+      200,
+      300,
+      127
+    ]
+  }
+]

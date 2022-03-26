@@ -1,0 +1,11 @@
+Instead of files consider using:
+Embedded persistent or in memory database for Node.js, 100% JavaScript,
+no binary dependency. API is a subset of MongoDB's and it's plenty fast.
+https://www.npmjs.com/package/nedb
+
+Must have Node.js v11 or above
+Do:
+Open the terminal (by clicking the black >_ icon at the bottom of Webstorm)
+
+Run this before running the project:
+npm install

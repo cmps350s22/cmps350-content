@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fetch Example</title>
+    <script>
+        function getStudents() {
+            let url = "data/student.json";
+            return fetch(url).then(response => response.json());
+        }
+
+        function displayStudents(students) {
+            const ul = document.querySelector("#studentsList");
+            for(const student of students) {
+                const li = `<li>${student.studentId} -
+                        ${student.firstname} ${student.lastname}</li>`;
+                ul.innerHTML += li;
+            }
+        }
+
+        //When the document is loaded in the browser then get the students
+        document.addEventListener("DOMContentLoaded", () => {
+            console.log("DOM fully loaded and parsed");
+            getStudents().then(students => displayStudents(students))
+                         .catch(err => console.log(err));
+        });
+    </script>
+</head>
+<body>
+    <h4>Students:</h4>
+    <ul id="studentsList"></ul>
+</body>
+</html>

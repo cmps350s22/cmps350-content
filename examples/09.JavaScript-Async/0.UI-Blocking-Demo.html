@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS Modules</title>
+
+    <script>
+
+        function greet() {
+            document.querySelector("#result").innerHTML += "السلام عليكم و رحمة الله و بركاته" + "<br>";
+        }
+
+        function avg() {
+            let sum=0, count = 500_000_0000;
+            for(let i=1; i<= count; i++) {
+                sum += i;
+            }
+            let avg = sum/count;
+            document.querySelector("#result").innerHTML += `Avg of 1 to ${count} is : ${avg} <br>`;
+        }
+    </script>
+</head>
+<body>
+    <button onclick="greet()">Greet (super-fast!)</button>
+    <button onclick="avg()">😭 Long running - will block to UI 😂</button>
+    <p id="result"></p>
+</body>
+</html>
