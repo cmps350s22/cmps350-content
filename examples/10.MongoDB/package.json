@@ -1,0 +1,14 @@
+{
+  "name": "10.mongodb",
+  "type": "module",
+  "dependencies": {
+    "express": "latest",
+    "fs-extra": "latest",
+    "mongoose": "latest"
+  },
+  "devDependencies": {
+    "chai": "latest",
+    "chai-http": "latest",
+    "mocha": "latest"
+  }
+}

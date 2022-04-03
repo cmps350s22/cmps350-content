@@ -3,6 +3,8 @@ import heroRepo from './repositories/HeroRepository.js';
 
 const app = express();
 
+app.use( express.static('public') );
+
 /*  express.json() is a middleware function that extracts the body portion of an incoming request and assigns
     it to req.body. without this line req.body will be undefined
  */
