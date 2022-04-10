@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Login</title>
+    <link rel="stylesheet" href="css/login.css">
+  </head>
+  <body>
+    <div class="container">
+      <main>
+        <div class="login-card">
+          <img class="header-logo" src="img/Logo.svg" alt="" />
+          <h1 class="title">Welcome to YalaPay!</h1>
+          <form class="login-form">
+            <input
+              type="email"
+              name="email"
+              id="email"
+              placeholder="Email"
+              required
+            />
+            <input
+              type="password"
+              placeholder="Password"
+              name="password"
+              id="password"
+              required
+            />
+              <button
+                type="submit"
+                class="submit-btn">
+                Log in
+              </button>
+          </form>
+        </div>
+      </main>
+      <footer>
+        <p class="copyright">ⓒ 2022. G5-Fatma-Hadieh-Shayma rights reserved.</p>
+      </footer>
+    </div>
+    <script src="https://unpkg.com/localbase/dist/localbase.dev.js"></script>
+    <script type="module" src="js/login.js"></script>
+  </body>
+</html>

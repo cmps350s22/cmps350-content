@@ -1,0 +1,77 @@
+[
+  {
+    "customerId": 1,
+    "companyName": "Amana Qatar Contracting",
+    "address": {
+      "street": "55 Al-Salam St",
+      "city": "Doha",
+      "country": "Qatar"
+    },
+    "contactDetails": {
+      "firstName": "Ali",
+      "lastName": "Al-Omari",
+      "email": "ali@aqc.com.qa",
+      "mobile": "7780-7800"
+    }
+  },
+  {
+    "customerId": 2,
+    "companyName": "Qatar Computing Center",
+    "address": {
+      "street": "12 Gulf St",
+      "city": "Doha",
+      "country": "Qatar"
+    },
+    "contactDetails": {
+      "firstName": "Sara",
+      "lastName": "Saleh",
+      "mobile": "6699-9900",
+      "email": "sara@qcc.com.qa"
+    }
+  },
+  {
+    "customerId": 3,
+    "companyName": "Kahramaa",
+    "address": {
+      "street": "87 Corniche Street",
+      "city": "Doha",
+      "country": "Qatar"
+    },
+    "contactDetails": {
+      "firstName": "Saif",
+      "lastName": "Dao",
+      "mobile": "5555-6666",
+      "email": "info@kahramaa.com"
+    }
+  },
+  {
+    "customerId": 4,
+    "companyName": "Ooredoo",
+    "address": {
+      "street": "89 Corniche Street",
+      "city": "Doha",
+      "country": "Qatar"
+    },
+    "contactDetails": {
+      "firstName": "Samira",
+      "lastName": "Ben Ooredoo",
+      "mobile": "4440-0400",
+      "email": "customer.service@ooredoo.qa"
+    }
+  },
+  {
+    "customerId": 5,
+    "companyName": "Qatar Energy",
+    "address": {
+      "street": "55 Corniche Street",
+      "city": "Doha",
+      "country": "Qatar"
+    },
+    "contactDetails": {
+      "firstName": "Nashit",
+      "lastName": "Nadeef",
+      "mobile": "4440-2000",
+      "email": "media@qp.com.qa"
+    }
+  }
+]

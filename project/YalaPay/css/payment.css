@@ -1,0 +1,56 @@
+.paymentsinfo{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 1rem;
+    margin: 1rem;
+}
+
+.invoiceinfo, .custinfo{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 1rem;
+    border-radius: 15px;
+    background-color: #fff;
+    box-shadow: 0px 0px 5px var(--shadow);
+}
+
+.paymentsinfo h3{
+    grid-column: span 2;
+    margin-bottom: 1rem;
+    font-weight: 700;
+    border-bottom: 2px solid var(--secondary);
+}
+
+.paymentsinfo p{
+    color: var(--heading);
+}
+
+.paymentsinfo span{
+    color: black;
+}
+
+.payment-mode-select{
+    grid-column: span 2;
+}
+
+.moreDetails{
+    grid-column: span 2;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 1rem;
+}
+
+#status{
+    background-color: var(--accent);
+    color: var(--primary);
+}
+
+.cheque-image-select{
+    grid-column: span 2;
+}
+
+@media only screen and (max-width:60rem){
+    .paymentsinfo{
+        grid-template-columns: 1fr;
+    }
+}

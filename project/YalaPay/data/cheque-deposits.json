@@ -1,0 +1,20 @@
+[
+  {
+    "depositId": 1,
+    "depositDate": "2021-11-15",
+    "bankAccountNo": "123-234-345",
+    "depositStatus": "Deposited",
+    "chequeNos": [
+      1234
+    ]
+  },
+  {
+    "depositId": 2,
+    "depositDate": "2021-10-14",
+    "bankAccountNo": "123-234-345",
+    "depositStatus": "Deposited",
+    "chequeNos": [
+      4567
+    ]
+  }
+]

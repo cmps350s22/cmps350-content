@@ -1,0 +1,329 @@
+:root {
+    --primary: #3E67D1;
+    --secondary: #2F4E9E;
+    --accent: #ECF1FF;
+    --background: #F3F3F3;
+    --heading: #696868;
+    --shadow: #a1a0a0;
+    --amount-green: #338946;
+    --amount-purple: #9E2EB0;
+    --amount-red: #C22626;
+    --amount-yellow: #EBBA3E;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: roboto, sans-serif;
+}
+
+body {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-areas:
+        "nav main"
+        "nav footer";
+    background-color: var(--background);
+}
+
+main {
+    grid-area: main;
+}
+
+nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    grid-area: nav;
+    background-color: #fff;
+}
+
+.nav-logo {
+    height: 2.5rem;
+    margin: 0 1rem;
+    filter: invert(27%) sepia(15%) saturate(5407%) hue-rotate(201deg) brightness(94%) contrast(90%);
+}
+
+.account-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 1.5rem;
+}
+
+.account-info:hover {
+    cursor: pointer;
+}
+
+.profile-img {
+    margin-right: 1rem;
+    height: 4rem;
+    border-radius: 2rem;
+}
+
+.account-name {
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+.account-loc {
+    font-size: 0.6rem;
+    color: var(--heading);
+}
+
+.navbar {
+    margin-top: 1rem;
+    text-align: left;
+    text-transform: capitalize;
+    list-style: none;
+}
+
+.navbar li {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 1rem 1rem;
+    padding: 0.75rem;
+    list-style: none;
+    background-color: var(--primary);
+    border-radius: 5px;
+}
+
+.navbar .icon-bg {
+    height: 1.5rem;
+    width: 1.5rem;
+    margin-right: 0.5rem;
+    padding: 0.25rem;
+    background-color: #fff;
+    border-radius: 3px;
+}
+
+.navbar img {
+    height: 1rem;
+    width: 1rem;
+    border-radius: 3px;
+    filter: invert(61%) sepia(92%) saturate(5833%) hue-rotate(213deg) brightness(87%) contrast(85%);
+}
+
+.navbar a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.navbar li:hover {
+    background-color: #fff;
+    box-shadow: 0px 0px 5px var(--shadow);
+    cursor: pointer;
+}
+
+.navbar li:hover .icon-bg {
+    background-color: var(--primary);
+}
+
+.navbar li:hover img {
+    filter: invert(100%);
+}
+
+.navbar li:hover a {
+    color: var(--primary);
+}
+
+.credit-card {
+    margin-top: 1.5rem;
+    padding: 1.25rem 0.75rem;
+    background-color: var(--secondary);
+    border-radius: 15px;
+}
+
+.credit-logo {
+    height: 0.75rem;
+    margin-left: 5rem;
+}
+
+.credit-card p {
+    font-size: 1rem;
+    color: #fff;
+}
+
+.credit-card .balance {
+    margin: 0.5rem 0;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.container {
+    margin: 1rem 3.5rem 0;
+}
+
+.box {
+    margin-bottom: 1rem;
+    border-radius: 20px;
+    background-color: #fff;
+    box-shadow: 0px 0px 10px #cacaca;
+}
+
+
+.invoices {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    padding: 1rem;
+}
+
+.cheques {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    padding: 1rem;
+}
+
+.invoices h1 {
+    grid-column: span 3;
+}
+
+.cheques h1 {
+    grid-column: span 2;
+}
+
+.card {
+    margin: 0.5rem;
+    padding: 1rem;
+    background-color: var(--accent);
+    border-radius: 5px;
+}
+
+.dash-title {
+    text-transform: capitalize;
+    font-size: 1.5rem;
+    color: var(--heading)
+}
+
+.card-title {
+    color: var(--secondary);
+}
+
+.amount {
+    margin: 0.5rem 0;
+    font-size: 2rem;
+    text-align: center;
+    font-weight: 700;
+}
+
+.amount span {
+    font-size: 1.5rem;
+}
+
+.card .green {
+    color: var(--amount-green);
+}
+
+.card .red {
+    color: var(--amount-red);
+}
+
+.card .purple {
+    color: var(--amount-purple);
+}
+
+.card .yellow {
+    color: var(--amount-yellow);
+}
+
+.details {
+    padding: 0.5rem 1rem;
+    display: block;
+    color: #fff;
+    background-color: var(--secondary);
+    border-radius: 25px;
+    border: none;
+    cursor: pointer;
+}
+
+.invoices .details {
+    margin: auto;
+}
+
+.details:hover {
+    color: var(--secondary);
+    background-color: #fff;
+}
+
+.cheques .card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: space-between;
+}
+
+.cheques .amount {
+    grid-column: span 2;
+}
+
+.cheques .details {
+    margin-left: auto;
+}
+
+footer {
+    grid-area: footer;
+    text-align: center;
+}
+
+@media only screen and (max-width:60rem) {
+    nav {
+        padding: 0;
+        justify-content: left;
+    }
+
+    .nav-logo, .account-name, .account-loc {
+        display: none;
+    }
+
+    .profile-img {
+        margin: 0.5rem;
+        height: 3.5rem;
+    }
+
+    .navbar .nav-link {
+        display: none;
+    }
+
+    .navbar .icon-bg {
+        margin: 0;
+    }
+
+    .credit-card {
+        display: none;
+    }
+
+    .container {
+        margin: 1rem;
+    }
+
+    .invoices, .cheques {
+        grid-template-columns: 1fr;
+    }
+
+    .cheques .card {
+        grid-template-columns: 1fr;
+        grid-gap: 0.5rem;
+    }
+
+    .invoices h1, .cheques h1 {
+        grid-column: span 1;
+    }
+
+    .cheques .amount {
+        grid-column: span 1;
+    }
+
+    .cheques .details {
+        margin: auto;
+    }
+
+    .amount {
+        font-size: 1.5rem;
+    }
+}

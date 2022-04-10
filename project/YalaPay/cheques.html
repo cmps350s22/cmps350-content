@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="css/dashboard.css" />
+        <link rel="stylesheet" href="css/invoices.css" />
+        <link rel="stylesheet" href="css/cheques.css" />
+        <title>Cheques</title>
+    </head>
+    <body>
+        <nav>
+            <p><img class="nav-logo" src="img/Logo.svg" alt="" /></p>
+            <div class="account-info">
+                <img class="profile-img" src="img/profile.png" alt="" />
+                <span class="account-name"
+                    >Hadieh Ayman
+                    <p class="account-loc">Doha, Qatar</p></span
+                >
+            </div>
+            <ul class="navbar">
+                <li>
+                    <div class="icon-bg">
+                        <a href="dashboard.html">
+                            <img src="img/dollar-sign.svg" alt="" />
+                        </a>
+                    </div>
+                    <a class="nav-link" href="dashboard.html">dashboard</a>
+                </li>
+                <li>
+                    <div class="icon-bg">
+                        <a href="customers.html">
+                            <img src="img/user-group.svg" alt="" />
+                        </a>
+                    </div>
+                    <a class="nav-link" href="customers.html">Customers</a>
+                </li>
+                <li>
+                    <div class="icon-bg">
+                        <a href="invoices.html">
+                            <img src="img/file-invoice-dollar.svg" alt="" />
+                        </a>
+                    </div>
+                    <a class="nav-link" href="invoices.html">invoices</a>
+                </li>
+                <li>
+                    <div class="icon-bg">
+                        <a href="deposits.html">
+                            <img src="img/coins.svg" alt="" />
+                        </a>
+                    </div>
+                    <a class="nav-link" href="deposits.html">Deposits</a>
+                </li>
+                <li>
+                    <div class="icon-bg">
+                        <a href="cheques.html">
+                            <img src="img/money-check-dollar.svg" alt="" />
+                        </a>
+                    </div>
+                    <a class="nav-link" href="cheques.html">Cheques</a>
+                </li>
+            </ul>
+        </nav>
+        <main class="container">
+            <section class="header">
+                <h1 class="header-title">Cheques</h1>
+                <div class="count-card">
+                    <div class="icon-bg">
+                        <img src="img/money-bill-1-wave.svg" alt="" />
+                    </div>
+                    <p class="counter">
+                        120 <span class="counter-desc">Total Cheques</span>
+                    </p>
+                </div>
+            </section>
+            <section class="function">
+                <form class="status-report">
+                    <div class="status-select">
+                        <label for="status">Status: </label>
+                        <select name="status" id="status">
+                            <option value="All">All</option>
+                            <option value="Awaiting">Awaiting</option>
+                            <option value="Deposited">Deposited</option>
+                            <option value="Cashed">Cashed</option>
+                            <option value="Returned">Returned</option>
+                        </select>
+                    </div>
+                    <div class="from-date-box">
+                        <label for="from-date">From Date:</label>
+                        <input type="date" id="from-date" name="fromDate" required />
+                    </div>
+                    <div class="to-date-box">
+                        <label for="to-date">To Date:</label>
+                        <input type="date" id="to-date" name="toDate" required/>
+                    </div>
+                    <button type="submit" class="submit-btn">Submit</button>
+                </form>
+            </section>
+            <section class="summary">
+                <div class="table-header">
+                    <h1 class="table-title">Cheque Report</h1>
+                </div>
+                <table class="table"></table>
+            </section>
+        </main>
+        <footer>
+            <p class="copyright">
+                ⓒ 2022. G5-Fatma-Hadieh-Shayma rights reserved.
+            </p>
+        </footer>
+        <script src="https://unpkg.com/localbase/dist/localbase.dev.js"></script>
+        <script type="module" src="js/cheques.js"></script>
+    </body>
+</html>

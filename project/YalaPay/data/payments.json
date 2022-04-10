@@ -1,0 +1,40 @@
+[
+  {
+    "paymentId" : 1,
+    "invoiceNo": 1,
+    "amount": 500.0,
+    "paymentDate": "2021-11-15",
+    "paymentMode": "Cheque",
+    "chequeNo": 1234
+  },
+  {
+    "paymentId" : 2,
+    "invoiceNo": 1,
+    "amount": 500.0,
+    "paymentDate": "2021-11-14",
+    "paymentMode": "Bank transfer"
+  },
+  {
+    "paymentId" : 3,
+    "invoiceNo": 2,
+    "amount": 2000.0,
+    "paymentDate": "2021-11-14",
+    "paymentMode": "Credit card"
+  },
+  {
+    "paymentId" : 4,
+    "invoiceNo": 3,
+    "amount": 1000.0,
+    "paymentDate": "2021-11-14",
+    "paymentMode": "Cheque",
+    "chequeNo": 4567
+  },
+  {
+    "paymentId" : 5,
+    "invoiceNo": 3,
+    "amount": 1000.0,
+    "paymentDate": "2021-11-14",
+    "paymentMode": "Cheque",
+    "chequeNo": 5678
+  }
+]
