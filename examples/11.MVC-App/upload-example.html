@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Upload Example</title>
+</head>
+<body>
+<form action="/user-profile" enctype="multipart/form-data" method="post">
+    <caption for="firstName">First name</caption>
+    <input type="text" name="firstName" id="firstName">
+    <br><br>
+    <caption for="lastName">Last name</caption>
+    <input type="text" name="lastName" id="lastName">
+    <br><br>
+
+    <caption for="profilePhotos">Profile Photos</caption>
+    <input type="file" name="profilePhotos" id="profilePhotos" multiple>
+    <br><br>
+    <input type="submit" value="Submit">
+</form>
+</body>
+</html>

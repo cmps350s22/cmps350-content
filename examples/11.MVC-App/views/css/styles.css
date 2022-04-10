@@ -1,0 +1,10 @@
+nav {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+a:hover {
+    color: dodgerblue;
+    text-decoration: overline;
+}

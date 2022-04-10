@@ -1,0 +1,11 @@
+{
+  "name": "server-side-rendering",
+  "main": "app.js",
+  "type": "module",
+  "dependencies": {
+    "express": "latest",
+    "express-handlebars": "latest",
+    "formidable": "latest",
+    "node-fetch": "latest"
+  }
+}

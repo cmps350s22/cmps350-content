@@ -1,0 +1,14 @@
+<br>
+<caption for="programsDD">Select a program:</caption>
+<select id="programsDD">
+    <option value=""></option>
+    {{#programs}}
+        <option value="{{code}}">{{name}}</option>
+    {{/programs}}
+</select>
+
+<br><br>
+
+<div id="courses-list"></div>
+
+<script src="/views/js/course.js"></script>
