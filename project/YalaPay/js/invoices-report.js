@@ -1,6 +1,9 @@
 import {formToObject} from "./common.js";
 import invoiceRepo from "./repository/invoice-repository.js";
 
+const reportForm = document.querySelector(".status-report");
+reportForm.addEventListener("submit", invoiceReport);
+
 async function invoiceReport(e) {
     e.preventDefault();
     const searchInput = formToObject(e.target);

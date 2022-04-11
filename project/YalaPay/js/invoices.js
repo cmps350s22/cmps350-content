@@ -4,41 +4,38 @@ import paymentRepo from "./repository/payment-repository.js";
 import {formToObject, addCommonUIFragments} from "./common.js";
 
 let isEdit = false;
-let balances = [];
 
 document.addEventListener("DOMContentLoaded", async () => {
     // Load and inject common html fragments (to avoid redundancy)
-    await addCommonUIFragments('Invoices', 'wallet.svg', 'Invoice amount', 'invoice-form.html');
+    await addCommonUIFragments('Invoices', 'wallet.svg', 'Customer name', 'invoice-form.html');
 
     await customerRepo.initCustomers();
     await invoiceRepo.initInvoices();
     await paymentRepo.initPayments();
-    await getInvoicesBalance();
+    await paymentRepo.initCheques();
+
     await displayInvoices();
-    await displayCustomerNames();
+    await fillCustomerDD();
     window.deleteInvoice = deleteInvoice;
     window.updateInvoice = updateInvoice;
-    window.goToPaymentpage = goToPaymentpage;
+    window.redirectToPaymentsPage = redirectToPaymentsPage;
 
     const popupForm = document.querySelector(".popup-form");
-    const invoiceTable = document.querySelector(".table");
-
     const searchForm = document.querySelector(".search-form");
-    const header = document.querySelector(".header");
-    const reportForm = document.querySelector(".status-report");
-    const accountInfo = document.querySelector(".account-info")
 
     popupForm.addEventListener("submit", addInvoice);
     searchForm.addEventListener("submit", searchInvoices);
-    reportForm.addEventListener("submit", invoiceReport);
 });
 
 async function displayInvoices() {
-    const mainContent = document.querySelector(".main-content");
-
     const invoices = await invoiceRepo.getInvoices();
+    invoicesToHtmlTable(invoices)
+}
+
+function invoicesToHtmlTable(invoices) {
+    const mainContent = document.querySelector(".main-content");
     const invoiceRows = invoices
-        .map((invoice) => invoiceToRow(invoice))
+        .map(invoice => invoiceHtmlToRow(invoice))
         .join(" ");
 
     mainContent.innerHTML = `
@@ -49,7 +46,7 @@ async function displayInvoices() {
       <th>Customer Name</th>
       <th>Amount</th>
       <th>Balance</th>
-      <th>Invoice Date</th>
+      <th>Inv. Date</th>
       <th>Due Date</th>
       <th></th>
     </tr>
@@ -58,66 +55,52 @@ async function displayInvoices() {
    `;
 }
 
-function invoiceToRow(invoice) {
+function invoiceHtmlToRow(invoice) {
     return `
-    <tr class="table-row">
-        <td onclick="goToPaymentpage(${invoice.id})">${
-        invoice.id
-    }</td>
-        <td onclick="goToPaymentpage(${invoice.id})">${
-        invoice.customerId
-    }</td>
-        <td onclick="goToPaymentpage(${invoice.id})">${
-        invoice.customerName
-    }</td>
-        <td onclick="goToPaymentpage(${invoice.id})">${
-        invoice.amount
-    }</td>
-        <td onclick="goToPaymentpage(${invoice.id})">
-            
-        </td>
-        <td onclick="goToPaymentpage(${invoice.id})">${
-        invoice.invoiceDate
-    }</td>
-        <td onclick="goToPaymentpage(${invoice.id})">${
-        invoice.dueDate
-    }</td>
+    <tr class="table-row" data-invoice-id='${invoice.id}'>
+        <td>${invoice.id}</td>
+        <td>${invoice.customerId}</td>
+        <td>${invoice.customerName}</td>
+        <td>${invoice.amount}</td>
+        <td>${invoice.balance}</td>
+        <td>${invoice.invoiceDate}</td>
+        <td>${invoice.dueDate}</td>
         <td class=editing-btns>
-            <img class="edit-btn" src="img/pen.svg" onclick="updateInvoice('${
-                invoice.id
-            }')"/>
-            <img class="delete-btn" src="img/trash.svg" onclick="deleteInvoice('${
-                invoice.id
-            }')"/>
+            <img class="edit-btn" src="img/pen.svg" 
+                onclick="updateInvoice('${invoice.id}')"/>
+            <img class="delete-btn" src="img/trash.svg" 
+                onclick="deleteInvoice('${invoice.id}')"/>
+            <img class="payments-btn" src="img/payments.svg" 
+                onclick="redirectToPaymentsPage('${invoice.id}')"/>
         </td>
     </tr>
     `;
 }
 
-async function displayCustomerNames() {
-    const customerSelect = document.querySelector("#customer-name");
+async function fillCustomerDD() {
+    const customerDD = document.querySelector("#customerId");
     const customers = await customerRepo.getCustomers();
-    const customerOptions = customers.map(
-        (customer) =>
-            `<option value="${customer.companyName}">${customer.companyName}</option>`
-    );
-    customerSelect.innerHTML = customerOptions.join(" ");
+    const customerOptions = customers.map(c =>
+            `<option value="${c.id}">${c.companyName}</option>`
+        ).join(" ");
+    customerDD.innerHTML = customerOptions;
 }
 
 async function addInvoice(e) {
     e.preventDefault();
-    const invoice = formToObject();
+    const invoice = formToObject(e.target);
+    console.dir(invoice);
+    const customerDD = document.querySelector("#customerId");
+    invoice.customerName = customerDD.options[customerDD.selectedIndex].text;
     //assign the customer ID
-    const customer = await customerRepo.getCustomerByName(invoice.customerName);
-    invoice.customerId = customer.customerId;
+    /*const customer = await customerRepo.getCustomerByName(invoice.customerName);
+    invoice.customerId = customer.customerId; */
 
     if (isEdit) {
         await invoiceRepo.updateInvoice(invoice);
-        await getInvoicesBalance();
         isEdit = false;
     } else {
         await invoiceRepo.addInvoice(invoice);
-        await getInvoicesBalance();
     }
 
     await displayInvoices();
@@ -125,69 +108,38 @@ async function addInvoice(e) {
 }
 
 async function deleteInvoice(invoiceNo) {
-    await invoiceRepo.deleteInvoice(invoiceNo);
-    await displayInvoices();
+    const confirmed = confirm(`Are you sure you want to delete invoice #${invoiceNo}?`);
+    if (confirmed) {
+        await invoiceRepo.deleteInvoice(invoiceNo);
+        document.querySelector(`tr[data-invoice-id='${invoiceNo}']`).remove();
+    }
 }
 
 async function updateInvoice(invoiceNo) {
-    const invoice = await invoiceRepo.getInvoice(parseInt(invoiceNo));
+    const invoice = await invoiceRepo.getInvoice(invoiceNo);
+    //console.log("updateInvoice", invoice);
     document.querySelector("#id").value = invoice.id;
-    document.querySelector("#customer-id").value = invoice.customerId;
-    document.querySelector("#customer-name").value = invoice.customerName;
+    document.querySelector("#customerId").value = invoice.customerId;
+    //document.querySelector("#customerId").value = invoice.customerName;
     document.querySelector("#amount").value = invoice.amount;
-    document.querySelector("#invoice-date").value = invoice.invoiceDate;
-    document.querySelector("#due-date").value = invoice.dueDate;
+    document.querySelector("#invoiceDate").value = invoice.invoiceDate;
+    document.querySelector("#dueDate").value = invoice.dueDate;
     isEdit = true;
-}
-
-async function getInvoicesBalance() {
-    const payments = await paymentRepo.getPayments();
-    const invoices = await invoiceRepo.getInvoices();
-    for (const invoice of invoices) {
-        const invoiceNoPayments = payments.filter(
-            (payment) => payment.invoiceNo == invoice.id
-        );
-        let balance = invoice.amount;
-        for (const payment of invoiceNoPayments) {
-            balance -= payment.amount;
-        }
-        const invoiceBalance = {
-            invoiceNo: invoice.id,
-            balance: balance,
-        };
-        balances.push(invoiceBalance);
-    }
 }
 
 async function searchInvoices(e) {
     e.preventDefault();
     const searchInput = formToObject(e.target);
-    const invoice = await invoiceRepo.getInvoice(parseInt(searchInput.invoiceNo));
-    invoiceTable.innerHTML = `
-    <tr class="table-headings">
-      <th>Invoice No.</th>
-      <th>Customer ID</th>
-      <th>Customer Name</th>
-      <th>Amount</th>
-      <th>Balance</th>
-      <th>Invoice Date</th>
-      <th>Due Date</th>
-      <th>        </th>
-    </tr>
-    ${invoiceToRow(invoice)}`;
-}
-
-function goToPaymentpage(invoiceNo) {
-    sessionStorage.setItem("invoiceNo", invoiceNo);
-    document.location = "payments.html";
-}
-
-function findBalance(invoice) {
-    const invoiceBalance = balances.filter(
-        (x) => x.invoiceNo == invoice.invoiceNo
-    );
-    if (invoiceBalance == undefined) {
-        return parseInt(invoice.amount);
+    const invoice = await invoiceRepo.getInvoiceByCustomer(searchInput.searchText);
+    if (invoice) {
+        //console.log(customer);
+        invoicesToHtmlTable([ invoice ]);
+    } else {
+        alert("No data found");
     }
-    return invoiceBalance[0].balance;
+}
+
+function redirectToPaymentsPage(invoiceNo) {
+    sessionStorage.invoiceNo = invoiceNo;
+    document.location = "payments.html";
 }

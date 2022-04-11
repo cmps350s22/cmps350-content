@@ -110,10 +110,10 @@
 
 .status-select select{
     padding: 0.25rem;
-    color: #fff;
-    border: none;
+    /*color: #fff;
+    border: none; */
     border-radius: 15px;
-    background-color: var(--secondary);
+    /*background-color: var(--secondary);*/
     cursor: pointer;
 }
 
@@ -198,10 +198,10 @@
     margin-top: 0.5rem;
     padding: 0.35rem;
     width: 100%;
-    color: #fff;
-    border: none;
+    /*color: #fff;
+    border: none; */
     border-radius: 15px;
-    background-color: var(--secondary);
+    /*background-color: var(--secondary);*/
 }
 
 .form input{

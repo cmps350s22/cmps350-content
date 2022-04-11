@@ -11,8 +11,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     footer.innerHTML = getFooter();
 
     displayCurrentUser();
+    await invoiceRepo.initInvoices();
     await paymentRepo.initCheques();
-    await invoiceRepo.initInvoices()
     await displayInvoicesSummary();
     await displayChequesSummary();
 });

@@ -1,4 +1,5 @@
 import {getId, sum} from "../common.js";
+import paymentRepo from "./payment-repository.js";
 
 const db = new Localbase("YalaPay.db");
 const invoices = "invoices";
@@ -9,8 +10,8 @@ class InvoiceRepository {
         console.log(`invoicesCount: ${invoicesCount}`);
 
         if (invoicesCount === 0) {
-            const invoiceUrl = "data/invoices.json";
-            const response = await fetch(invoiceUrl);
+            const invoicesUrl = "data/invoices.json";
+            const response = await fetch(invoicesUrl);
             const invoices = await response.json();
             for (const invoice of invoices) {
                 await this.addInvoice(invoice);
@@ -18,28 +19,49 @@ class InvoiceRepository {
         }
     }
 
-    getInvoice(invoiceNo) {
-        return db
-            .collection(invoices)
-            .doc({ invoiceNo: invoiceNo })
+    async getInvoice(invoiceNo) {
+        let invoice = await db.collection(invoices)
+                 .doc({ id : invoiceNo })
+                 .get();
+
+        if (invoice) {
+            const totalPayments = await paymentRepo.getTotalPayments(invoiceNo);
+            invoice.balance = invoice.amount - totalPayments;
+        }
+        return invoice;
+    }
+
+    getInvoiceByCustomer(customerName) {
+        return db.collection(invoices)
+            .doc({ customerName : customerName })
             .get();
     }
 
-    getInvoices() {
-        return db.collection(invoices).get();
+    async getInvoices() {
+        let invoices = await db.collection("invoices").get();
+        invoices = await this.getInvoicesBalance(invoices);
+        return invoices;
+    }
+
+    async getInvoicesBalance(invoices) {
+        for (const [i, invoice] of  invoices.entries()) {
+            const totalPayments = await paymentRepo.getTotalPayments(invoice.id);
+            //console.log("totalPayments", totalPayments);
+            invoices[i].balance = invoice.amount - totalPayments;
+        }
+        return invoices;
     }
 
     async getInvoicesCount() {
         // Localbase = very poor library, it does NOT have a function to just return documents count
-        const invoices = await this.getInvoices();
+        // ToDo: getCount should be done by DB
+        const invoices = await db.collection("invoices").get();
         const count = invoices.length;
         return (count !== null && count !== undefined) ? count : 0;
     }
 
     addInvoice(invoice) {
-        if (invoice.id)
-            invoice.id = invoice.id.toString()
-        else
+        if (!invoice.id)
             invoice.id = getId();
 
         return db.collection(invoices).add(invoice);
@@ -48,24 +70,15 @@ class InvoiceRepository {
     updateInvoice(updatedInvoice) {
         return db
             .collection(invoices)
-            .doc({ invoiceNo: updatedInvoice.invoiceNo })
+            .doc({ id: updatedInvoice.id })
             .update(updatedInvoice);
     }
 
     deleteInvoice(invoiceNo) {
         return db
             .collection(invoices)
-            .doc({ invoiceNo: invoiceNo })
+            .doc({ id : invoiceNo })
             .delete();
-    }
-
-    async getBalance(invoice) {
-        const payments = await this.getPaymentsByInvoiceNo(invoice.invoiceNo);
-        let balance = invoice.amount;
-        for (const payment of payments) {
-            balance -= payment.amount;
-        }
-        return balance;
     }
 
     async getInvoicesSummary() {

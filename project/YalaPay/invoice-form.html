@@ -1,29 +1,19 @@
 <button class="close-btn">X</button>
 <form class="form" action="" id="invoiceForm">
-  <h2 class="form-heading">Add a new invoice</h2>
+  <h2 class="form-heading">Add Invoice</h2>
   <input
           name="id"
           id="id"
           type="hidden"
-          value=""
   />
-  <input
-          name="customerId"
-          id="customer-id"
-          hidden="true"
-          type="hidden"
-          value=""
-  />
-  <div class="customer-name-select">
-    <label for="customerName">Customer Name</label>
-    <select
-            id="customerName"
-            name="customerName"
-            value=""
-            required
-    >
 
-    </select>
+  <div class="customer-select">
+    <label for="customerId">Customer</label>
+    <select
+            id="customerId"
+            name="customerId"
+            required
+    ></select>
   </div>
   <div class="amount-select">
     <label for="amount">Amount</label>
@@ -31,7 +21,6 @@
             type="number"
             id="amount"
             name="amount"
-            value=""
             min="0"
             required
     />
@@ -42,7 +31,6 @@
             type="date"
             id="invoiceDate"
             name="invoiceDate"
-            value=""
             required
     />
   </div>
@@ -52,7 +40,6 @@
             type="date"
             id="dueDate"
             name="dueDate"
-            value=""
             required
     />
   </div>

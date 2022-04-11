@@ -1,6 +1,6 @@
 [
   {
-    "depositId": 1,
+    "depositId": "1",
     "depositDate": "2021-11-15",
     "bankAccountNo": "123-234-345",
     "depositStatus": "Deposited",
@@ -9,7 +9,7 @@
     ]
   },
   {
-    "depositId": 2,
+    "depositId": "2",
     "depositDate": "2021-10-14",
     "bankAccountNo": "123-234-345",
     "depositStatus": "Deposited",

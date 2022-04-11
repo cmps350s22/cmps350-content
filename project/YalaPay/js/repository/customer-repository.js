@@ -10,8 +10,8 @@ class CustomerRepository {
         console.log(`customersCount: ${customersCount}`);
 
         if (customersCount === 0) {
-            const customerUrl = "data/customers.json";
-            const response = await fetch(customerUrl);
+            const customersUrl = "data/customers.json";
+            const response = await fetch(customersUrl);
             const customers = await response.json();
             for (const customer of customers) {
                 await this.addCustomer(customer);
@@ -46,9 +46,7 @@ class CustomerRepository {
     }
 
     addCustomer(customer) {
-        if (customer.id)
-            customer.id = customer.id.toString()
-        else
+        if (!customer.id)
             customer.id = getId();
 
         return db.collection(customers).add(customer);

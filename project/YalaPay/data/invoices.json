@@ -1,26 +1,26 @@
 [
   {
-    "id": 1,
-    "customerId": 1,
+    "id": "1",
+    "customerId": "1",
     "customerName": "Amana Qatar Contracting",
     "amount": 1000.0,
-    "invoiceDate": "2021-11-14",
-    "dueDate": "2021-11-30"
+    "invoiceDate": "2022-04-10",
+    "dueDate": "2022-04-30"
   },
   {
-    "id": 2,
-    "customerId": 2,
+    "id": "2",
+    "customerId": "2",
     "customerName": "Qatar Computing Center",
     "amount": 2000.0,
-    "invoiceDate": "2021-11-14",
+    "invoiceDate": "2022-04-10",
     "dueDate": "2021-11-25"
   },
   {
-    "id": 3,
-    "customerId": 3,
+    "id": "3",
+    "customerId": "3",
     "customerName": "Kahramaa",
     "amount": 3000.0,
-    "invoiceDate": "2021-11-14",
-    "dueDate": "2021-11-30"
+    "invoiceDate": "2022-04-10",
+    "dueDate": "2022-04-30"
   }
 ]
