@@ -12,7 +12,7 @@ document.body.addEventListener("click", (event) => {
     }
     if (event.target.className === "edit-btn") {
         document.querySelector(".form-heading").innerHTML = "Updating...";
-        document.querySelector(".plus-btn").innerHTML = "Save Changes";
+        document.querySelector(".plus-btn").innerHTML = "Submit";
         document.querySelector(".popup-form").classList.add("active");
     }
 });

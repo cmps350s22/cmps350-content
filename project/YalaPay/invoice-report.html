@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Invoices Report</title>
+</head>
+<body>
+<form class="status-report">
+    <div class="status-select">
+        <label for="status">Status: </label>
+        <select name="status" id="status">
+            <option value="All">All</option>
+            <option value="Pending">Pending</option>
+            <option value="Partially Paid">Partially Paid</option>
+            <option value="Paid">Paid</option>
+        </select>
+    </div>
+    <div class="from-date-box">
+        <label for="from-date">From Date:</label>
+        <input type="date" id="from-date" name="fromDate" required />
+    </div>
+    <div class="to-date-box">
+        <label for="to-date">To Date:</label>
+        <input type="date" id="to-date" name="toDate" required/>
+    </div>
+    <button type="submit" class="submit-btn">Submit</button>
+</form>
+</body>
+</html>

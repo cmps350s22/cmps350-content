@@ -1,55 +1,70 @@
-const customerDb = new Localbase("customer.db");
-const customerCollection = "customers";
-const customerUrl = "data/customers.json";
+import { getId } from "../common.js";
+
+const db = new Localbase("YalaPay.db");
+const customers = "customers";
 
 class CustomerRepository {
-    // Customer Operations
+
     async initCustomers() {
-        const response = await fetch(customerUrl);
-        const data = await response.json();
-        for (const customer of data) {
-            const customerExists = await customerDb
-                .collection(customerCollection)
-                .doc({ customerId: customer.customerId })
-                .get();
-            if (customerExists == undefined)
-                await customerDb.collection(customerCollection).add(customer);
+        const customersCount = await this.getCustomersCount();
+        console.log(`customersCount: ${customersCount}`);
+
+        if (customersCount === 0) {
+            const customerUrl = "data/customers.json";
+            const response = await fetch(customerUrl);
+            const customers = await response.json();
+            for (const customer of customers) {
+                await this.addCustomer(customer);
+            }
         }
     }
 
     getCustomer(customerId) {
-        return customerDb
-            .collection(customerCollection)
-            .doc({ customerId: customerId })
+        return db
+            .collection(customers)
+            .doc({ id: customerId })
             .get();
     }
 
     getCustomerByName(customerName) {
-        return customerDb
-            .collection(customerCollection)
+        return db
+            .collection(customers)
             .doc({ companyName: customerName })
             .get();
     }
 
     getCustomers() {
-        return customerDb.collection(customerCollection).get();
+        return db.collection(customers).get();
+    }
+
+    async getCustomersCount() {
+        // Localbase = very poor library, it does NOT have a function to just return documents count
+        // ToDo: getCount should be done by DB
+        const customers = await this.getCustomers();
+        const count = customers.length;
+        return (count !== null && count !== undefined) ? count : 0;
     }
 
     addCustomer(customer) {
-        return customerDb.collection(customerCollection).add(customer);
+        if (customer.id)
+            customer.id = customer.id.toString()
+        else
+            customer.id = getId();
+
+        return db.collection(customers).add(customer);
     }
 
-    updateCustomer(updatedCustomer) {
-        return customerDb
-            .collection(customerCollection)
-            .doc({ customerId: updatedCustomer.customerId })
-            .update(updatedCustomer);
+    updateCustomer(customer) {
+        return db
+            .collection(customers)
+            .doc({ id: customer.id })
+            .update(customer);
     }
 
     deleteCustomer(customerId) {
-        return customerDb
-            .collection(customerCollection)
-            .doc({ customerId: customerId })
+        return db
+            .collection(customers)
+            .doc({ id: customerId })
             .delete();
     }
 }

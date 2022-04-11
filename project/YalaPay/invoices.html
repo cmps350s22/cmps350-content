@@ -2,20 +2,28 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="css/dashboard.css" />
-        <link rel="stylesheet" href="css/invoices.css" />
+        <link rel="stylesheet" href="css/common.css" />
+        <link rel="stylesheet" href="css/forms.css" />
         <title>Invoices</title>
     </head>
     <body>
-        <nav>
+    <nav class="nav-bar"></nav>
+    <main class="container">
+        <section class="header"></section>
+        <section class="search-section"></section>
+        <section class="popup-form"></section>
+        <section class="main-content"></section>
+    </main>
+    <footer class="footer"></footer>
+
+<!--        <nav>
             <p><img class="nav-logo" src="img/Logo.svg" alt="" /></p>
             <div class="account-info">
                 <img class="profile-img" src="img/profile.png" alt="" />
                 <span class="account-name"
                     >Hadieh Ayman
-                    <p class="account-loc">Doha, Qatar</p></span
+                    </span
                 >
             </div>
             <ul class="navbar">
@@ -30,7 +38,7 @@
                 <li>
                     <div class="icon-bg">
                         <a href="customers.html">
-                            <img src="img/user-group.svg" alt="" />
+                            <img src="img/customers.svg" alt="" />
                         </a>
                     </div>
                     <a class="nav-link" href="customers.html">Customers</a>
@@ -64,17 +72,17 @@
         <main class="container">
             <section class="header">
                 <h1 class="header-title">Invoices</h1>
-                <div class="count-card">
+                <div class="header-card">
                     <div class="icon-bg">
                         <img src="img/wallet.svg" alt="" />
                     </div>
-                    <p class="counter">
+                    <p class="docsCount">
                         700 <span class="counter-desc">Total Invoices</span>
                     </p>
                 </div>
             </section>
-            <section class="function">
-                <form action="" class="search">
+            <section class="search-box">
+                <form action="" class="search-form">
                     <input
                         type="text"
                         placeholder="Search for invoices by No..."
@@ -86,96 +94,11 @@
                 <button class="add-btn">
                     + new invoice
                 </button>
-                <form class="status-report">
-                    <div class="status-select">
-                        <label for="status">Status: </label>
-                        <select name="status" id="status">
-                            <option value="All">All</option>
-                            <option value="Pending">Pending</option>
-                            <option value="Partially Paid">Partially Paid</option>
-                            <option value="Paid">Paid</option>
-                        </select>
-                    </div>
-                    <div class="from-date-box">
-                        <label for="from-date">From Date:</label>
-                        <input type="date" id="from-date" name="fromDate" required />
-                    </div>
-                    <div class="to-date-box">
-                        <label for="to-date">To Date:</label>
-                        <input type="date" id="to-date" name="toDate" required/>
-                    </div>
-                    <button type="submit" class="submit-btn">Submit</button>
-                </form>
             </section>
             <section class="popup-form">
-                <button class="close-btn">X</button>
-                <form class="form" action="" id="invoiceForm">
-                    <h2 class="form-heading">Add a new invoice</h2>
-                    <input
-                        name="invoiceNo"
-                        id="invoiceNo"
-                        hidden="true"
-                        type="hidden"
-                        value=""
-                    />
-                    <input
-                        name="customerId"
-                        id="customer-id"
-                        hidden="true"
-                        type="hidden"
-                        value=""
-                    />
-                    <div class="customer-name-select">
-                        <label for="customerName">Customer Name</label>
-                        <select
-                            id="customer-name"
-                            name="customerName"
-                            value=""
-                            required
-                        >
-                            
-                        </select>
-                    </div>
-                    <div class="amount-select">
-                        <label for="amount">Amount</label>
-                        <input
-                            type="number"
-                            id="amount"
-                            name="amount"
-                            value=""
-                            min="0"
-                            required
-                        />
-                    </div>
-                    <div class="invoice-date-select">
-                        <label for="invoiceDate">Invoice Date</label>
-                        <input
-                            type="date"
-                            id="invoice-date"
-                            name="invoiceDate"
-                            value=""
-                            required
-                        />
-                    </div>
-                    <div class="duedate-select">
-                        <label for="dueDate">Due Date</label><br />
-                        <input
-                            type="date"
-                            id="due-date"
-                            name="dueDate"
-                            value=""
-                            required
-                        />
-                    </div>
-                    <button class="plus-btn" type="submit">Add Invoice</button>
-                </form>
             </section>
-            <section class="summary">
-                <div class="table-header">
-                    <h1 class="table-title">Invoices Summary</h1>
-                </div>
+            <section class="main-content">
                 <table class="table" id="invoiceTable">
-                    
                 </table>
             </section>
         </main>
@@ -183,9 +106,9 @@
             <p class="copyright">
                 ⓒ 2022. G5-Fatma-Hadieh-Shayma rights reserved.
             </p>
-        </footer>
+        </footer>-->
         <script src="https://unpkg.com/localbase/dist/localbase.dev.js"></script>
         <script type="module" src="js/invoices.js"></script>
-        <script src="js/interaction.js"></script>
+        <script src="js/button-handlers.js"></script>
     </body>
 </html>

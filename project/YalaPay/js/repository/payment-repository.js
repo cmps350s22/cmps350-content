@@ -1,100 +1,125 @@
-const paymentDb = new Localbase("payment.db");
-const chequeDb = new Localbase("cheque.db");
-const paymentCollection = "payments";
-const chequeCollection = "cheque";
-const paymentUrl = "data/payments.json";
-const chequeUrl = "data/cheques.json";
+import { sum } from "../common.js";
+const db = new Localbase("YalaPay.db");
+const payments = "payments";
+const cheques = "cheques";
 
 class PaymentRepository {
     // payments Operations
     async initPayments() {
-        const response = await fetch(paymentUrl);
+        const paymentsUrl = "data/payments.json";
+        const response = await fetch(paymentsUrl);
         const data = await response.json();
         for (const payment of data) {
-            const paymentExists = await paymentDb
-                .collection(paymentCollection)
+            const paymentExists = await db
+                .collection(payments)
                 .doc({ paymentId: payment.paymentId })
                 .get();
             if (paymentExists == undefined)
-                await paymentDb.collection(paymentCollection).add(payment);
+                await db.collection(payments).add(payment);
         }
     }
 
     getPayment(paymentId) {
-        return paymentDb
-            .collection(paymentCollection)
+        return db
+            .collection(payments)
             .doc({ paymentId: paymentId })
             .get();
     }
 
     getPayments() {
-        return paymentDb.collection(paymentCollection).get();
+        return db.collection(payments).get();
     }
 
     async getPaymentsByInvoiceNo(invoiceNo) {
         const payments = await this.getPayments();
-        return payments.filter((payment) => payment.invoiceNo == invoiceNo);
+        return payments.filter((payment) => payment.invoiceNo === invoiceNo);
     }
 
     addPayment(payment) {
-        return paymentDb.collection(paymentCollection).add(payment);
+        return db.collection(payments).add(payment);
     }
 
     updatePayment(updatePayment) {
-        return paymentDb
-            .collection(paymentCollection)
+        return db
+            .collection(payments)
             .doc({ paymentId: updatePayment.paymentId })
             .update(updatePayment);
     }
 
     deletePayment(paymentId) {
-        return paymentDb
-            .collection(paymentCollection)
+        return db
+            .collection(payments)
             .doc({ paymentId: paymentId })
             .delete();
     }
 
     //Cheque Operations
     async initCheques() {
-        const response = await fetch(chequeUrl);
+        const chequesUrl = "data/cheques.json";
+        const response = await fetch(chequesUrl);
         const data = await response.json();
         for (const cheque of data) {
-            const chequeExists = await chequeDb
-                .collection(chequeCollection)
+            const chequeExists = await db
+                .collection(cheques)
                 .doc({ chequeNo: cheque.chequeNo })
                 .get();
             if (chequeExists == undefined)
-                await chequeDb.collection(chequeCollection).add(cheque);
+                await db.collection(cheques).add(cheque);
         }
     }
 
     getCheque(chequeNo) {
-        return chequeDb
-            .collection(chequeCollection)
+        return db
+            .collection(cheques)
             .doc({ chequeNo: chequeNo })
             .get();
     }
 
     getCheques() {
-        return chequeDb.collection(chequeCollection).get();
+        return db.collection(cheques).get();
     }
 
     addCheque(cheque) {
-        return chequeDb.collection(chequeCollection).add(cheque);
+        return db.collection(cheques).add(cheque);
     }
 
-    updateCheque(updatedCheque, oldChequeNo) {
-        return chequeDb
-            .collection(chequeCollection)
-            .doc({ chequeNo: oldChequeNo })
+    updateCheque(updatedCheque, chequeNo) {
+        return db
+            .collection(cheques)
+            .doc({ chequeNo: chequeNo })
             .update(updatedCheque);
     }
 
     deleteCheque(chequeNo) {
-        return chequeDb
-            .collection(chequeCollection)
+        return db
+            .collection(cheques)
             .doc({ chequeNo: chequeNo })
             .delete();
+    }
+
+    async getChequesSummary() {
+        const cheques = await this.getCheques();
+        const awaiting = cheques
+            .filter(c => c.status === "Awaiting")
+            .map(i => i.amount)
+            .reduce(sum, 0);
+
+        const deposited = cheques
+            .filter(c => c.status === "Deposited")
+            .map(i => i.amount)
+            .reduce(sum, 0);
+
+        const cashed = cheques
+            .filter(c => c.status === "Cashed")
+            .map(i => i.amount)
+            .reduce(sum, 0);
+
+        const returned = cheques
+            .filter(c => c.status === "Returned")
+            .map(i => i.amount)
+            .reduce(sum, 0);
+
+        return {awaiting, deposited, cashed, returned};
     }
 }
 

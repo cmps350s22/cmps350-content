@@ -1,10 +1,10 @@
-import paymentRepo from "./repository/payment-repository";
+import paymentRepo from "./repository/payment-repository.js";
 
 window.onload = async () => {
-    generateAccount();
+    displayCurrentUser();
     await paymentRepo.initCheques();
-    await showChequesData();
-    await showCounter();
+    await displayChequesData();
+    await displayDocsCount();
     window.viewChequeImage = viewChequeImage;
 };
 
@@ -16,13 +16,13 @@ const accountInfo = document.querySelector(".account-info")
 reportForm.addEventListener("submit", chequeReport);
 
 
-function generateAccount(){
+function displayCurrentUser(){
     const name = sessionStorage.getItem("name");
     accountInfo.innerHTML = `
     <img class="profile-img" src="img/profile.png" alt="" />
           <span class="account-name"
               >${name} 
-              <p class="account-loc">Doha, Qatar</p></span
+              </span
           >
     `
 }
@@ -36,7 +36,7 @@ function formToObject(form) {
     return data;
 }
 
-async function showChequesData() {
+async function displayChequesData() {
     const cheques = await paymentRepo.getCheques();
     console.log(cheques);
     const chequesRows = cheques.map((cheque) => chequeToRow(cheque)).join(" ");
@@ -71,7 +71,7 @@ function chequeToRow(cheque) {
     `;
 }
 
-function showChequesReport(cheques) {
+function displayChequesReport(cheques) {
     const chequesRows = cheques.map((cheque) => chequeToRow(cheque)).join(" ");
     chequeTable.innerHTML = `
     <tr class="table-headings">
@@ -96,31 +96,31 @@ async function chequeReport(e) {
     switch (searchInput.status) {
         case "All":{
             const inPeriodCheques = cheques.filter((cheque) => cheque.receivedDate >= fromDate && cheque.dueDate <= toDate);
-            showChequesReport(inPeriodCheques);
+            displayChequesReport(inPeriodCheques);
         }
             break;
         case "Awaiting": {
             const awaitingCheques = cheques.filter((cheque) => cheque.status === "Awaiting");
             const inPeriodCheques = awaitingCheques.filter((cheque) => cheque.receivedDate >= fromDate && cheque.dueDate <= toDate);
-            showChequesReport(inPeriodCheques);
+            displayChequesReport(inPeriodCheques);
             break;
         }
         case "Deposited": {
             const depositedCheques = cheques.filter((cheque) => cheque.status === "Deposited");
             const inPeriodCheques = depositedCheques.filter((cheque) => cheque.receivedDate >= fromDate && cheque.dueDate <= toDate);
-            showChequesReport(inPeriodCheques);
+            displayChequesReport(inPeriodCheques);
             break;
         }
         case "Cashed": {
             const cashedCheques = cheques.filter((cheque) => cheque.status === "Cashed");
             const inPeriodCheques = cashedCheques.filter((cheque) => cheque.receivedDate >= fromDate && cheque.dueDate <= toDate);
-            showChequesReport(inPeriodCheques);
+            displayChequesReport(inPeriodCheques);
             break;
         }
         case "Returned": {
             const returnedCheques = cheques.filter((cheque) => cheque.status === "Returned");
             const inPeriodCheques = returnedCheques.filter((cheque) => cheque.receivedDate >= fromDate && cheque.dueDate <= toDate);
-            showChequesReport(inPeriodCheques);
+            displayChequesReport(inPeriodCheques);
             break;
         }
     }
@@ -132,7 +132,7 @@ async function viewChequeImage(chequeNo){
     window.open(`./img/cheques/${imageURL}`, '_blank');
 }
 
-async function showCounter() {
+async function displayDocsCount() {
     const cheques = await paymentRepo.getCheques();
     const chequesCount = cheques.length;
     let sum = 0;
@@ -141,17 +141,17 @@ async function showCounter() {
     }
     header.innerHTML = `
     <h1 class="header-title">Cheques</h1>
-    <div class="count-card">
+    <div class="header-card">
         <div class="icon-bg">
             <img src="img/wallet.svg" alt="" />
         </div>
-        <p class="counter">
+        <p class="docsCount">
             ${chequesCount} <span class="counter-desc">Total Cheques </span>
         </p>
         <div class="icon-bg">
             <img src="img/money-bill-1-wave.svg" alt="" />
         </div>
-        <p class="counter">
+        <p class="docsCount">
             $ ${sum}  <span class="counter-desc">Sum Cheques</span>
         </p>
     </div>

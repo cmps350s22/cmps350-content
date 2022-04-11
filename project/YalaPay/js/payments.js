@@ -1,24 +1,24 @@
-import paymentRepo from "./repository/payment-repository";
-import invoiceRepo from "./repository/invoice-repository";
-import customerRepo from "./repository/customer-repository";
+import paymentRepo from "./repository/payment-repository.js";
+import invoiceRepo from "./repository/invoice-repository.js";
+import customerRepo from "./repository/customer-repository.js";
 
 let isEdit = false;
 let oldChequeNo = 0;
 
 window.onload = async () => {
-    generateAccount();
+    displayCurrentUser();
     await paymentRepo.initPayments();
     await paymentRepo.initCheques();
-    await showPaymentData();
-    await showInvoiceInfo();
-    showPaymentModes();
+    await displayPaymentData();
+    await displayInvoiceInfo();
+    displayPaymentModes();
     window.deletePayment = deletePayment;
     window.updatePayment = updatePayment;
 };
 
 const popupForm = document.querySelector(".popup-form");
 const paymentTable = document.querySelector(".table");
-const searchForm = document.querySelector(".search");
+const searchForm = document.querySelector(".search-form");
 const invoiceInfo = document.querySelector(".invoiceinfo");
 const customerInfo = document.querySelector(".custinfo");
 const paymentSelect = document.querySelector("#payment-mode");
@@ -27,16 +27,16 @@ const accountInfo = document.querySelector(".account-info")
 
 popupForm.addEventListener("submit", addPayment);
 searchForm.addEventListener("submit", searchPayments);
-paymentSelect.addEventListener("change", showMoreDetails);
+paymentSelect.addEventListener("change", displayMoreDetails);
 
 
-function generateAccount(){
+function displayCurrentUser(){
     const name = sessionStorage.getItem("name");
     accountInfo.innerHTML = `
     <img class="profile-img" src="img/profile.png" alt="" />
           <span class="account-name"
               >${name} 
-              <p class="account-loc">Doha, Qatar</p></span
+              </span
           >
     `
 }
@@ -50,7 +50,7 @@ function formToObject(form) {
     return data;
 }
 
-async function showPaymentData() {
+async function displayPaymentData() {
     const sessionInvoice = sessionStorage.getItem("invoiceNo");
     const payments = await paymentRepo.getPayments();
     // console.log(payments);
@@ -91,7 +91,7 @@ function paymentToRow(payment) {
     `;
 }
 
-async function showPaymentModes() {
+async function displayPaymentModes() {
     const response = await fetch("YalaPay-data/payment-modes.json");
     const data = await response.json();
     const paymentOptions = data.map(
@@ -101,7 +101,7 @@ async function showPaymentModes() {
     paymentSelect.innerHTML = paymentOptions.join(" ");
 }
 
-function showMoreDetails() {
+function displayMoreDetails() {
     if (paymentSelect.value == "Cheque") {
         moreDetails.innerHTML = `
         <div class="chequeNo-select">
@@ -163,10 +163,10 @@ function showMoreDetails() {
     } else {
         moreDetails.innerHTML = ``;
     }
-    showBankNames();
+    displayBankNames();
 }
 
-async function showBankNames() {
+async function displayBankNames() {
     const bankSelect = document.querySelector("#bank-name");
     const response = await fetch("YalaPay-data/banks.json");
     const data = await response.json();
@@ -226,7 +226,7 @@ async function addPayment(e) {
         }
     }
 
-    await showPaymentData();
+    await displayPaymentData();
     popupForm.reset();
 }
 
@@ -270,7 +270,7 @@ async function deletePayment(paymentID) {
         await paymentRepo.deleteCheque(payment.chequeNo);
     }
     await paymentRepo.deletePayment(parseInt(paymentID));
-    await showPaymentData();
+    await displayPaymentData();
 }
 
 async function updatePayment(paymentID) {
@@ -281,7 +281,7 @@ async function updatePayment(paymentID) {
     document.querySelector("#amount").value = payment.amount;
     document.querySelector("#payment-date").value = payment.paymentDate;
     document.querySelector("#payment-mode").value = payment.paymentMode;
-    showMoreDetails();
+    displayMoreDetails();
     if (paymentSelect.value == "Cheque") {
         const cheque = await paymentRepo.getCheque(parseInt(payment.chequeNo));
         oldChequeNo = cheque.chequeNo;
@@ -295,10 +295,10 @@ async function updatePayment(paymentID) {
     }
 }
 
-async function showInvoiceInfo() {
+async function displayInvoiceInfo() {
     const sessionInvoice = sessionStorage.getItem("invoiceNo");
     const invoice = await invoiceRepo.getInvoice(parseInt(sessionInvoice));
-    showCustomerInfo(invoice.customerId);
+    displayCustomerInfo(invoice.customerId);
     invoiceInfo.innerHTML = `
     <h3>Invoice Details</h3>
                     <p>Invoice No:</p>
@@ -312,7 +312,7 @@ async function showInvoiceInfo() {
     `;
 }
 
-async function showCustomerInfo(customerId) {
+async function displayCustomerInfo(customerId) {
     const customer = await customerRepo.getCustomer(customerId);
     customerInfo.innerHTML = `
     <h3>Customer Details</h3>

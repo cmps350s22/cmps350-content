@@ -1,47 +1,60 @@
-const invoiceDb = new Localbase("invoice.db");
-const invoiceCollection = "invoices";
-const invoiceUrl = "data/invoices.json";
+import {getId, sum} from "../common.js";
+
+const db = new Localbase("YalaPay.db");
+const invoices = "invoices";
 
 class InvoiceRepository {
-    // Invoice Operations
     async initInvoices() {
-        const response = await fetch(invoiceUrl);
-        const data = await response.json();
-        for (const invoice of data) {
-            const invoiceExists = await invoiceDb
-                .collection(invoiceCollection)
-                .doc({ invoiceNo: invoice.invoiceNo })
-                .get();
-            if (invoiceExists == undefined)
-                await invoiceDb.collection(invoiceCollection).add(invoice);
+        const invoicesCount = await this.getInvoicesCount();
+        console.log(`invoicesCount: ${invoicesCount}`);
+
+        if (invoicesCount === 0) {
+            const invoiceUrl = "data/invoices.json";
+            const response = await fetch(invoiceUrl);
+            const invoices = await response.json();
+            for (const invoice of invoices) {
+                await this.addInvoice(invoice);
+            }
         }
     }
 
     getInvoice(invoiceNo) {
-        return invoiceDb
-            .collection(invoiceCollection)
+        return db
+            .collection(invoices)
             .doc({ invoiceNo: invoiceNo })
             .get();
     }
 
     getInvoices() {
-        return invoiceDb.collection(invoiceCollection).get();
+        return db.collection(invoices).get();
+    }
+
+    async getInvoicesCount() {
+        // Localbase = very poor library, it does NOT have a function to just return documents count
+        const invoices = await this.getInvoices();
+        const count = invoices.length;
+        return (count !== null && count !== undefined) ? count : 0;
     }
 
     addInvoice(invoice) {
-        return invoiceDb.collection(invoiceCollection).add(invoice);
+        if (invoice.id)
+            invoice.id = invoice.id.toString()
+        else
+            invoice.id = getId();
+
+        return db.collection(invoices).add(invoice);
     }
 
     updateInvoice(updatedInvoice) {
-        return invoiceDb
-            .collection(invoiceCollection)
+        return db
+            .collection(invoices)
             .doc({ invoiceNo: updatedInvoice.invoiceNo })
             .update(updatedInvoice);
     }
 
     deleteInvoice(invoiceNo) {
-        return invoiceDb
-            .collection(invoiceCollection)
+        return db
+            .collection(invoices)
             .doc({ invoiceNo: invoiceNo })
             .delete();
     }
@@ -53,6 +66,34 @@ class InvoiceRepository {
             balance -= payment.amount;
         }
         return balance;
+    }
+
+    async getInvoicesSummary() {
+        const invoices = await this.getInvoices();
+        const currentDate = new Date();
+        const today = currentDate.toJSON().slice(0,10);
+
+        const totalInvoices = invoices.map(i => i.amount).reduce(sum, 0);
+
+        //due in 30 days
+        currentDate.setDate(new Date().getDate()+30);
+        const afterToday = currentDate.toJSON().slice(0,10);
+        const within30Days =
+            invoices
+                .filter(invoice => invoice.dueDate >= today && invoice.dueDate <= afterToday)
+                .map(i => i.amount)
+                .reduce(sum, 0);
+
+        //due in more than 30 days
+        currentDate.setDate(new Date().getDate());
+        const afterMonth = currentDate.toJSON().slice(0,10);
+        const after30Days = invoices
+            .filter(invoice => invoice.dueDate >= afterMonth)
+            .map(i => i.amount)
+            .reduce(sum, 0);
+
+        return {totalInvoices, within30Days, after30Days}
+
     }
 }
 

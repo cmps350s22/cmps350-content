@@ -1,26 +1,26 @@
-import paymentRepo from "./repository/payment-repository";
-import chequeDepositRepo from "./repository/cheque-deposit-repository";
+import paymentRepo from "./repository/payment-repository.js";
+import chequeDepositRepo from "./repository/cheque-deposit-repository.js";
 
 let isEdit = false;
 let chequeNos = [];
 
 window.onload = async () => {
-    generateAccount()
+    displayCurrentUser()
     await paymentRepo.initChequeDeposits();
-    showChequeDepositData();
-    showBankAccounts();
-    showCounter();
-    showAwaitingCheques();
+    displayChequeDepositData();
+    displayBankAccounts();
+    displayDocsCount();
+    displayAwaitingCheques();
     window.addToChequeNos = addToChequeNos;
-    window.showReasons = showReasons;
+    window.displayReasons = displayReasons;
     window.deleteDeposit = deleteDeposit;
     window.updateDeposit = updateDeposit;
 };
 
 const popupForm = document.querySelector(".popup-form");
 const depositTable = document.querySelector(".table");
-const searchForm = document.querySelector(".search");
-const counter = document.querySelector(".counter");
+const searchForm = document.querySelector(".search-form");
+const counter = document.querySelector(".docsCount");
 const accountSelect = document.querySelector("#bank-account-no");
 const chequeSelect = document.querySelector(".cheques-select");
 const statusSelect = document.querySelector("#deposit-status");
@@ -29,17 +29,17 @@ const accountInfo = document.querySelector(".account-info")
 
 
 popupForm.addEventListener("submit", addDeposit);
-statusSelect.addEventListener("change", showReasonSelect);
+statusSelect.addEventListener("change", displayReasonSelect);
 searchForm.addEventListener("submit", searchDeposits);
 
 
-function generateAccount(){
+function displayCurrentUser(){
     const name = sessionStorage.getItem("name");
     accountInfo.innerHTML = `
     <img class="profile-img" src="img/profile.png" alt="" />
           <span class="account-name"
               >${name} 
-              <p class="account-loc">Doha, Qatar</p></span
+              </span
           >
     `
 }
@@ -53,7 +53,7 @@ function formToObject(form) {
     }
     return data;
 }
-async function showAwaitingCheques() {
+async function displayAwaitingCheques() {
     const cheques = await paymentRepo.getCheques();
     const awaitingCheques = cheques.filter(
         (cheque) => cheque.status == "Awaiting"
@@ -65,7 +65,7 @@ async function showAwaitingCheques() {
     chequeSelect.innerHTML = `${chequeForms}`;
 }
 
-async function showCashedCheques(chequeNumbers) {
+async function displayCashedCheques(chequeNumbers) {
     const depositedCheques = [];
     for (const chequeNo of chequeNumbers) {
         const cheque = await paymentRepo.getCheque(parseInt(chequeNo));
@@ -102,8 +102,8 @@ function addToChequeNos(cb, chequeNo) {
     }
 }
 
-async function showChequeDepositData() {
-    showDepositStatus("add");
+async function displayChequeDepositData() {
+    displayDepositStatus("add");
     const deposits = await chequeDepositRepo.getDeposits();
     // console.log(depsoits);
     const depositRows = await deposits
@@ -141,7 +141,7 @@ function depositToRow(deposit) {
     `;
 }
 
-async function showBankAccounts() {
+async function displayBankAccounts() {
     const response = await fetch("YalaPay-data/bank-accounts.json");
     const data = await response.json();
     const accountOptions = data.map(
@@ -151,7 +151,7 @@ async function showBankAccounts() {
     accountSelect.innerHTML = accountOptions.join(" ");
 }
 
-function showDepositStatus(func) {
+function displayDepositStatus(func) {
     if (func == "add") {
         statusSelect.innerHTML = `
         <option value="Deposited">Deposited</option>
@@ -164,13 +164,13 @@ function showDepositStatus(func) {
     }
 }
 
-function showReasonSelect() {
+function displayReasonSelect() {
     const returnArea = document.querySelectorAll(".returns");
     if (statusSelect.value == "Cashed with Returns") {
         [].slice.call(returnArea).forEach(function (area) {
             area.innerHTML = `
             <p>Returned? </p>
-            <input class="cbox" type="checkbox" onclick="showReasons(this)">
+            <input class="cbox" type="checkbox" onclick="displayReasons(this)">
             `;
         });
     } else {
@@ -180,7 +180,7 @@ function showReasonSelect() {
     }
 }
 
-async function showReasons(cb) {
+async function displayReasons(cb) {
     if (cb.checked) {
         const reasonDiv = document.createElement("div");
         reasonDiv.className = "reasons";
@@ -229,20 +229,20 @@ async function addDeposit(e) {
         await chequeDepositRepo.addDeposit(deposit);
     }
     chequeNos = [];
-    showDepositStatus("add");
-    await showChequeDepositData();
+    displayDepositStatus("add");
+    await displayChequeDepositData();
     popupForm.reset();
 }
 
 async function deleteDeposit(depositId) {
     await chequeDepositRepo.deleteDeposit(parseInt(depositId));
-    await showChequeDepositData();
+    await displayChequeDepositData();
 }
 
 async function updateDeposit(depositId) {
-    showDepositStatus("update");
+    displayDepositStatus("update");
     const deposit = await chequeDepositRepo.getDeposit(parseInt(depositId));
-    showCashedCheques(deposit.chequeNos);
+    displayCashedCheques(deposit.chequeNos);
     document.querySelector("#depositId").value = deposit.depositId;
     document.querySelector("#deposit-date").value = deposit.depositDate;
     document.querySelector("#bank-account-no").value = deposit.bankAccountNo;
@@ -268,7 +268,7 @@ async function searchDeposits(e) {
     ${depositToRow(deposit)}`;
 }
 
-async function showCounter() {
+async function displayDocsCount() {
     const deposits = await chequeDepositRepo.getDeposits();
     const depositCount = deposits.length;
     counter.innerHTML = `${depositCount} <span class="counter-desc">Total Cheque Deposits</span>`;

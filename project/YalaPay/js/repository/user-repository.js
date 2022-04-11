@@ -1,22 +1,32 @@
-const db = new Localbase("user.db");
-const userCollection = "users";
+const db = new Localbase("YalaPay.db");
 
 class UserRepository {
     getUsers() {
-        return db.collection(userCollection).get();
+        return db.collection("users").get();
     }
 
-    getUser(email) {
-        return db.collection(userCollection).doc({ email: email }).get();
+    async getUsersCount() {
+        // Localbase = very poor library, it does NOT have a function to just return documents count
+        const users = await this.getUsers();
+        const count = users.length;
+        return (count !== null && count !== undefined) ? count : 0;
     }
 
-    async addUsers() {
-        const url = "data/users.json";
-        const response = await fetch(url);
-        const users = await response.json();
-        for (const user of users) {
-            if(!this.getUser(user.email))
-                await db.collection(userCollection).add(user);
+    getUser(email, password) {
+        return db.collection("users").doc({ email: email, password: password }).get();
+    }
+
+    async initUsers() {
+        const usersCount = await this.getUsersCount();
+        console.log(`Users count: ${usersCount}`);
+
+        if (usersCount === 0) {
+            const userUrl = "data/users.json";
+            const response = await fetch(userUrl);
+            const users = await response.json();
+            for (const user of users) {
+                await db.collection("users").add(user);
+            }
         }
     }
 }

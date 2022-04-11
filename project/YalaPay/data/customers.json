@@ -1,6 +1,6 @@
 [
   {
-    "customerId": 1,
+    "id": 1,
     "companyName": "Amana Qatar Contracting",
     "address": {
       "street": "55 Al-Salam St",
@@ -15,7 +15,7 @@
     }
   },
   {
-    "customerId": 2,
+    "id": 2,
     "companyName": "Qatar Computing Center",
     "address": {
       "street": "12 Gulf St",
@@ -30,7 +30,7 @@
     }
   },
   {
-    "customerId": 3,
+    "id": 3,
     "companyName": "Kahramaa",
     "address": {
       "street": "87 Corniche Street",
@@ -45,7 +45,7 @@
     }
   },
   {
-    "customerId": 4,
+    "id": 4,
     "companyName": "Ooredoo",
     "address": {
       "street": "89 Corniche Street",
@@ -60,7 +60,7 @@
     }
   },
   {
-    "customerId": 5,
+    "id": 5,
     "companyName": "Qatar Energy",
     "address": {
       "street": "55 Corniche Street",

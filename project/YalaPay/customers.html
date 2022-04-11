@@ -2,181 +2,23 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="css/dashboard.css" />
-        <link rel="stylesheet" href="css/invoices.css" />
+        <link rel="stylesheet" href="css/common.css" />
+        <link rel="stylesheet" href="css/forms.css" />
         <title>Customers</title>
     </head>
     <body>
-        <nav>
-            <p><img class="nav-logo" src="img/Logo.svg" alt="" /></p>
-            <div class="account-info">
-                <img class="profile-img" src="img/profile.png" alt="" />
-                <span class="account-name"
-                    >Hadieh Ayman
-                    <p class="account-loc">Doha, Qatar</p></span
-                >
-            </div>
-            <ul class="navbar">
-                <li>
-                    <div class="icon-bg">
-                        <a href="dashboard.html">
-                            <img src="img/dollar-sign.svg" alt="" />
-                        </a>
-                    </div>
-                    <a class="nav-link" href="dashboard.html">dashboard</a>
-                </li>
-                <li>
-                    <div class="icon-bg">
-                        <a href="customers.html">
-                            <img src="img/user-group.svg" alt="" />
-                        </a>
-                    </div>
-                    <a class="nav-link" href="customers.html">Customers</a>
-                </li>
-                <li>
-                    <div class="icon-bg">
-                        <a href="invoices.html">
-                            <img src="img/file-invoice-dollar.svg" alt="" />
-                        </a>
-                    </div>
-                    <a class="nav-link" href="invoices.html">invoices</a>
-                </li>
-                <li>
-                    <div class="icon-bg">
-                        <a href="deposits.html">
-                            <img src="img/coins.svg" alt="" />
-                        </a>
-                    </div>
-                    <a class="nav-link" href="deposits.html">Deposits</a>
-                </li>
-                <li>
-                    <div class="icon-bg">
-                        <a href="cheques.html">
-                            <img src="img/money-check-dollar.svg" alt="" />
-                        </a>
-                    </div>
-                    <a class="nav-link" href="cheques.html">Cheques</a>
-                </li>
-            </ul>
-        </nav>
+        <nav class="nav-bar"></nav>
         <main class="container">
-            <section class="header">
-                <h1 class="header-title">Customers</h1>
-                <div class="count-card">
-                    <div class="icon-bg">
-                        <img src="img/user-group.svg" alt="" />
-                    </div>
-                    <p class="counter">
-                        125 <span class="counter-desc">Total Customers</span>
-                    </p>
-                </div>
-            </section>
-            <section class="function">
-                <form action="" class="search">
-                    <input
-                        type="text"
-                        placeholder="Search for customers..."
-                        class="search-box"
-                        name="companyName"
-                    />
-                    <button type="submit" class="search-btn">
-                        Search
-                    </button>
-                </form>
-                <button class="add-btn">+ new customer</button>
-            </section>
-            <section class="popup-form">
-                <button class="close-btn">X</button>
-                <form class="form" action="">
-                    <h2 class="form-heading">Add a new customer</h2>
-                    <input type="number" name="customerId" id="customerId" type="hidden" hidden="true">
-                    <div>
-                        <label for="companyName">Company Name</label>
-                        <input
-                            type="text"
-                            id="companyName"
-                            name="companyName"
-                            required
-                        />
-                    </div>
-
-                    <div>
-                        <label for="street">Street</label>
-                        <input type="text" id="street" name="street" required />
-                    </div>
-                    <div>
-                        <label for="city">City</label>
-                        <input type="text" id="city" name="city" required />
-                    </div>
-                    <div>
-                        <label for="country">Country</label>
-                        <input
-                            type="text"
-                            id="country"
-                            name="country"
-                            required
-                        />
-                    </div>
-
-                    <div>
-                        <label for="firstName">First Name</label>
-                        <input
-                            type="text"
-                            id="firstName"
-                            name="firstName"
-                            required
-                        />
-                    </div>
-
-                    <div>
-                        <label for="lastName">Last Name</label>
-                        <input
-                            type="text"
-                            id="lastName"
-                            name="lastName"
-                            required
-                        />
-                    </div>
-                    <div>
-                        <label for="email">Email</label>
-                        <input
-                            type="email"
-                            id="email"
-                            name="email"
-                            required
-                        />
-                    </div>
-
-                    <div>
-                        <label for="mobile">Mobile</label><br />
-                        <input
-                            type="tel"
-                            id="mobile"
-                            name="mobile"
-                            required
-                        />
-                    </div>
-                    <button type="submit" class="plus-btn">Add Customer</button>
-                </form>
-            </section>
-            <section class="summary">
-                <div class="table-header">
-                    <h1 class="table-title">Customers Summary</h1>
-                </div>
-                <table class="table">
-                    
-                </table>
-            </section>
+            <section class="header"></section>
+            <section class="search-section"></section>
+            <section class="popup-form"></section>
+            <section class="main-content"></section>
         </main>
-        <footer>
-            <p class="copyright">
-                ⓒ 2022. G5-Fatma-Hadieh-Shayma rights reserved.
-            </p>
-        </footer>
+        <footer class="footer"></footer>
+
         <script src="https://unpkg.com/localbase/dist/localbase.dev.js"></script>
         <script type="module" src="js/customers.js"></script>
-        <script src="js/interaction.js"></script>
+        <script src="js/button-handlers.js"></script>
     </body>
 </html>

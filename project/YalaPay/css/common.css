@@ -191,7 +191,7 @@ nav {
 
 .card {
     margin: 0.5rem;
-    padding: 1rem;
+    padding: 0.3rem;
     background-color: var(--accent);
     border-radius: 5px;
 }

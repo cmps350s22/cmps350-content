@@ -9,7 +9,7 @@
     font-size: 2rem;
 }
 
-.count-card {
+.header-card {
     display: flex;
     align-items: center;
     padding: 1rem;
@@ -18,19 +18,19 @@
     border-radius: 8px;
 }
 
-.count-card .icon-bg {
+.header-card .icon-bg {
     padding: 0.5rem;
     margin-right: 1rem;
     border-radius: 5px;
     background-color: var(--accent);
 }
 
-.count-card .icon-bg img {
+.header-card .icon-bg img {
     height: 1.5rem;
     filter: invert(27%) sepia(15%) saturate(5407%) hue-rotate(201deg) brightness(94%) contrast(90%);
 }
 
-.counter {
+.docsCount {
     font-size: 1.8rem;
     font-weight: 700;
 }
@@ -40,7 +40,7 @@
     color: var(--heading);
 }
 
-.function {
+.search-section {
     display: grid;
     grid-template-columns: 1.25fr 0.75fr;
     grid-gap: 2rem;
@@ -52,7 +52,7 @@
     box-shadow: 0px 0px 5px var(--shadow);
 }
 
-.search {
+.search-form {
     display: flex;
 }
 
@@ -141,10 +141,10 @@
 .popup-form{
     display: none;
     position: absolute;
-    left: 50%;
+    left: 60%;
     top: 50%;
     transform: translate(-50%, -50%) scale(1.25);
-    width: 40vw;
+    width: 60vw;
     padding: 2rem 2.5rem;
     background-color: #fff;
     box-shadow: 0px 0px 15px var(--shadow);
@@ -156,7 +156,7 @@
     display: block;
     overflow-y: scroll;
     overflow-x: hidden;
-    height: 70vh;
+    height: 80vh;
     transform: translate(-50%, -50%) scale(1);
     transition: all 2s ease-in-out;
 }
@@ -230,7 +230,7 @@
     background-color: var(--primary);
 }
 
-.summary {
+.main-content {
     padding: 1rem;
     border-radius: 15px;
     background-color: #fff;
@@ -333,23 +333,23 @@ footer{
         grid-gap: 1rem;
     }
 
-    .count-card{
+    .header-card{
         display: grid;
         grid-template-columns: 0.25fr 1.75fr;
     }
 
-    .count-card .icon-bg{
+    .header-card .icon-bg{
         margin-top: 0.5rem
     }
 
-    .counter{
+    .docsCount{
         font-size: 1.5rem;
     }
     .counter-desc{
         font-size: 0.8rem;
     }
 
-    .function{
+    .search-section{
         display:flex;
         flex-direction: column;
     }
@@ -372,19 +372,19 @@ footer{
     }
 
     .popup-form{
-        width: 90vw;
+        width: 60vw;
     }
 
     .popup-form.active{
-        height: 50vh;
+        height: 90vh;
         transform: translate(-50%, -90%) scale(1);
     }
 
     .plus-btn{
         width: 100%;
     }
-    .summary{
-        width: 70vw;
+    .main-content{
+        /*width: 70vw;*/
         overflow-x: scroll;
     }
 

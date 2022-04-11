@@ -2,103 +2,18 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/common.css">
     <title>Dashboard</title>
   </head>
   <body>
-    <nav>
-      <p><img class="nav-logo" src="img/Logo.svg" alt="" /></p>
-      <div class="account-info">
-          <img class="profile-img" src="img/profile.png" alt="" />
-          <span class="account-name">Hadieh Ayman
-              <p class="account-loc">Doha, Qatar</p></span
-          >
-      </div>
-      <ul class="navbar">
-          <li>
-              <div class="icon-bg">
-                  <a href="dashboard.html">
-                      <img src="img/dollar-sign.svg" alt="" />
-                  </a>
-              </div>
-              <a class="nav-link" href="dashboard.html">dashboard</a>
-          </li>
-          <li>
-              <div class="icon-bg">
-                  <a href="customers.html">
-                      <img src="img/user-group.svg" alt="" />
-                  </a>
-              </div>
-              <a class="nav-link" href="customers.html">Customers</a>
-          </li>
-          <li>
-              <div class="icon-bg">
-                  <a href="invoices.html">
-                      <img src="img/file-invoice-dollar.svg" alt="" />
-                  </a>
-              </div>
-              <a class="nav-link" href="invoices.html">invoices</a>
-          </li>
-          <li>
-              <div class="icon-bg">
-                  <a href="deposits.html">
-                      <img src="img/coins.svg" alt="" />
-                  </a>
-              </div>
-              <a class="nav-link" href="deposits.html">Deposits</a>
-          </li>
-          <li>
-              <div class="icon-bg">
-                  <a href="cheques.html">
-                      <img src="img/money-check-dollar.svg" alt="" />
-                  </a>
-              </div>
-              <a class="nav-link" href="cheques.html">Cheques</a>
-          </li>
-      </ul>
-  </nav>
-    <main class="container">
-        <div class="box invoices">
-            <h1 class="dash-title">invoices</h1>
-            <div class="card">
-                <h3 class="card-title">All</h3>
-                <p class="amount green">99.99<span> QR</span></p>
-            </div>
-            <div class="card">
-                <h3 class="card-title">Due in 30 days</h3>
-                <p class="amount purple">33.33<span> QR</span></p>
-            </div>
-            <div class="card">
-                <h3 class="card-title">Due in more than 30 days</h3>
-                <p class="amount red">66.66<span> QR</span></p>
-            </div>
-        </div>
-        <div class="box cheques">
-            <h1 class="dash-title">Cheques</h1>
-            <div class="card">
-                <h3 class="card-title">Awaiting</h3>
-                <p class="amount yellow">99.99<span> QR</span></p>
-            </div>
-            <div class="card">
-                <h3 class="card-title">Depotised</h3>
-                <p class="amount purple">22.22<span> QR</span></p>
-            </div>
-            <div class="card">
-                <h3 class="card-title">Cashed</h3>
-                <p class="amount green">44.44<span> QR</span></p>
-            </div>
-            <div class="card">
-                <h3 class="card-title">Returned</h3>
-                <p class="amount red">11.11<span> QR</span></p>
-            </div>
-        </div>
-    </main>
-    <footer>
-      <p class="copyright">ⓒ 2022. G5-Fatma-Hadieh-Shayma rights reserved.</p>
-      <script src="https://unpkg.com/localbase/dist/localbase.dev.js"></script>
-      <script type="module" src="js/dashboard.js"></script>
-    </footer>
+      <nav class="nav-bar"></nav>
+      <main class="container">
+          <section class="box invoices"></section>
+          <section class="box cheques"></section>
+      </main>
+      <footer class="footer"></footer>
+    <script src="https://unpkg.com/localbase/dist/localbase.dev.js"></script>
+    <script type="module" src="js/dashboard.js"></script>
   </body>
 </html>

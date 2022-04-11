@@ -1,68 +1,63 @@
-import customerRepo from "./repository/customer-repository";
+import customerRepo from "./repository/customer-repository.js";
+import {
+    addCommonUIFragments,
+    displayCurrentUser,
+    formToObject
+} from "./common.js"
 let isEdit = false;
 
-window.onload = async () => {
-    generateAccount();
+document.addEventListener("DOMContentLoaded", async () => {
+    // Load and inject common html fragments (to avoid redundancy)
+    await addCommonUIFragments('Customers', 'customers.svg', 'Company name', 'customer-form.html');
+
     await customerRepo.initCustomers();
-    await showCustomerData();
-    await showCounter();
+    await displayCustomers();
     window.deleteCustomer = deleteCustomer;
     window.updateCustomer = updateCustomer;
-};
 
-const popupForm = document.querySelector(".popup-form");
-const customerTable = document.querySelector(".table");
-const searchForm = document.querySelector(".search");
-const counter = document.querySelector(".counter");
-const accountInfo = document.querySelector(".account-info")
+    const searchForm = document.querySelector(".search-form");
+    const popupForm = document.querySelector(".popup-form");
 
-popupForm.addEventListener("submit", addCustomer);
-searchForm.addEventListener("submit", searchCustomer);
+    searchForm.addEventListener("submit", searchCustomer);
+    popupForm.addEventListener("submit", addCustomer);
+});
 
-
-function generateAccount(){
-    const name = sessionStorage.getItem("name");
-    accountInfo.innerHTML = `
-    <img class="profile-img" src="img/profile.png" alt="" />
-          <span class="account-name"
-              >${name} 
-              <p class="account-loc">Doha, Qatar</p></span
-          >
-    `
-}
-
-function formToObject(form) {
-    const formdata = new FormData(form);
-    const data = {};
-    for (const [key, value] of formdata) {
-        data[key] = value;
-    }
-    return data;
-}
-
-async function showCustomerData() {
-    const customers = await customerRepo.getCustomers();
-    console.log(customers);
-    const customerRows = customers
-        .map((customer) => customerToHTMLRow(customer))
-        .join(" ");
-    customerTable.innerHTML = `
-    <tr class="table-headings">
-        <th>Customer ID</th>
+function getTableHeader() {
+    return `<tr class="table-headings">
+        <th>Customer Id</th>
             <th>Company Name</th>
-            <th>Addrees</th>
-            <th>Name</th>
+            <th>Address</th>
+            <th>Contact Name</th>
             <th>Email</th>
             <th>Mobile</th>
             <th> </th>
-    </tr>
-    ${customerRows}`;
+    </tr>`
+}
+
+async function displayCustomers() {
+    const customers = await customerRepo.getCustomers();
+    //console.log(customers);
+    customersToHtmlTable(customers);
+}
+
+function customersToHtmlTable(customers) {
+    const mainContent = document.querySelector(".main-content");
+    const customerRows = customers
+        .map((customer) => customerToHTMLRow(customer))
+        .join(" ");
+
+    mainContent.innerHTML = `
+        <table class="table">
+            ${getTableHeader()}  
+            ${customerRows}
+        </table>
+    `;
 }
 
 function customerToHTMLRow(customer) {
     return `
-    <tr class="table-row">
-        <td>${customer.customerId}</td>
+    <tr class="table-row" data-customer-id='${customer.id}'>
+        <td>${customer.id}</td>
         <td>${customer.companyName}</td>
         <td>${customerAddress(customer.address)}</td>
         <td>${customer.contactDetails.firstName} ${
@@ -71,12 +66,10 @@ function customerToHTMLRow(customer) {
         <td>${customer.contactDetails.email}</td>
         <td>${customer.contactDetails.mobile}</td>
         <td class=editing-btns>
-            <img class="edit-btn" src="img/pen.svg" onclick="updateCustomer('${
-                customer.customerId
-            }')"/>
-            <img class="delete-btn" src="img/trash.svg" onclick="deleteCustomer('${
-                customer.customerId
-            }')"/>
+            <img class="edit-btn" src="img/pen.svg" 
+                onclick="updateCustomer('${customer.id}')"/>
+            <img class="delete-btn" src="img/trash.svg" 
+                onclick="deleteCustomer('${customer.id}')"/>
         </td>
     </tr>
     `;
@@ -88,44 +81,44 @@ function customerAddress(address) {
 
 async function addCustomer(e) {
     e.preventDefault();
-    const data = formToObject(e.target);
+    const formData = formToObject(e.target);
     const customer = {
-        customerId: parseInt(data.customerId),
-        companyName: data.companyName,
+        id: formData.id,
+        companyName: formData.companyName,
         address: {
-            street: data.street,
-            city: data.city,
-            country: data.country,
+            street: formData.street,
+            city: formData.city,
+            country: formData.country,
         },
         contactDetails: {
-            firstName: data.firstName,
-            lastName: data.lastName,
-            email: data.email,
-            mobile: data.mobile,
+            firstName: formData.firstName,
+            lastName: formData.lastName,
+            email: formData.email,
+            mobile: formData.mobile,
         }
     };
     if (isEdit) {
-        customer.customerId = parseInt(customer.customerId);
         await customerRepo.updateCustomer(customer);
         isEdit = false;
     } else {
-        const customers = await customerRepo.getCustomers();
-        customer.customerId = customers.length + 1;
         await customerRepo.addCustomer(customer);
     }
 
-    await showCustomerData();
-    popupForm.reset();
+    await displayCustomers();
+    e.target.reset();
 }
 
 async function deleteCustomer(customerId) {
-    await customerRepo.deleteCustomer(parseInt(customerId));
-    await showCustomerData();
+    const confirmed = confirm(`Are you sure you want to delete customer #${customerId}?`);
+    if (confirmed) {
+        await customerRepo.deleteCustomer(customerId);
+        document.querySelector(`tr[data-customer-id='${customerId}']`).remove();
+    }
 }
 
 async function updateCustomer(customerId) {
-    const customer = await customerRepo.getCustomer(parseInt(customerId));
-    document.querySelector("#customerId").value = customer.customerId;
+    const customer = await customerRepo.getCustomer(customerId);
+    document.querySelector("#id").value = customer.id;
     document.querySelector("#companyName").value = customer.companyName;
     document.querySelector("#street").value = customer.address.street;
     document.querySelector("#city").value = customer.address.city;
@@ -142,24 +135,11 @@ async function updateCustomer(customerId) {
 async function searchCustomer(e) {
     e.preventDefault();
     const searchInput = formToObject(e.target);
-    let customer = await customerRepo.getCustomerByName(searchInput.companyName);
-
-    console.log(customer);
-    customerTable.innerHTML = `
-     <tr class="table-headings">
-        <th>Customer ID</th>
-         <th>Company Name</th>
-            <th>Addrees</th>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Mobile</th>
-            <th> </th>
-    </tr>
-    ${customerToHTMLRow(customer)}`;
-}
-
-async function showCounter() {
-    const customers = await customerRepo.getCustomers();
-    const customersCount = customers.length;
-    counter.innerHTML = `${customersCount} <span class="counter-desc">Total Customers</span>`;
+    const customer = await customerRepo.getCustomerByName(searchInput.searchText);
+    if (customer) {
+        //console.log(customer);
+        customersToHtmlTable([ customer ]);
+    } else {
+        alert("No data found");
+    }
 }

@@ -1,90 +1,66 @@
-import paymentRepo from "./repository/payment-repository";
-import invoiceRepo from "./repository/invoice-repository";
+import paymentRepo from "./repository/payment-repository.js";
+import invoiceRepo from "./repository/invoice-repository.js";
+import {displayCurrentUser, getFooter, getHtml} from "./common.js";
 
-window.onload = async () => {
-    generateAccount();
+document.addEventListener("DOMContentLoaded", async () => {
+    // Load and inject common html fragments (to avoid redundancy)
+    const navBar = document.querySelector(".nav-bar");
+    navBar.innerHTML = await getHtml('nav-bar.html');
+
+    const footer = document.querySelector(".footer");
+    footer.innerHTML = getFooter();
+
+    displayCurrentUser();
     await paymentRepo.initCheques();
     await invoiceRepo.initInvoices()
-    await showInvoiceBox();
-    await showChequeBox();
-};
+    await displayInvoicesSummary();
+    await displayChequesSummary();
+});
 
-const invoiceBox = document.querySelector(".invoices");
-const chequeBox = document.querySelector(".cheques");
-const accountInfo = document.querySelector(".account-info")
+async function displayInvoicesSummary(){
+    const invoicesBox = document.querySelector(".invoices");
+    const {totalInvoices, within30Days, after30Days} = await invoiceRepo.getInvoicesSummary();
+    console.log(totalInvoices, within30Days, after30Days);
 
-function generateAccount(){
-    const name = sessionStorage.getItem("name");
-    accountInfo.innerHTML = `
-    <img class="profile-img" src="img/profile.png" alt="" />
-          <span class="account-name">
-              ${name} 
-              <p class="account-loc">Doha, Qatar</p>
-          </span>
-    `
-}
-
-async function showInvoiceBox(){
-    const invoices = await invoiceRepo.getInvoices();
-    //todays date
-    const currentDate = new Date();
-    const today = currentDate.toJSON().slice(0,10);
-    //due in 30 days
-    currentDate.setDate(new Date().getDate()+30);
-    const afterToday = currentDate.toJSON().slice(0,10);
-    const withinThirtyInvoices = invoices.filter((invoice) => invoice.dueDate >= today && invoice.dueDate <= afterToday)
-    //due in more than 30 days
-    currentDate.setDate(new Date().getDate());
-    const afterMonth = currentDate.toJSON().slice(0,10);
-    const afterThirtyInvoices = invoices.filter((invoice) => invoice.dueDate >= afterMonth);
-    invoiceBox.innerHTML = `
+    invoicesBox.innerHTML = `
     <h1 class="dash-title">invoices</h1>
     <div class="card">
         <h3 class="card-title">All</h3>
-        <p class="amount green">${sumAmounts(invoices)} <span> QR</span></p>
+        <p class="amount green">${totalInvoices} <span> QR</span></p>
     </div>
     <div class="card">
         <h3 class="card-title">Due within 30 days</h3>
-        <p class="amount purple">${sumAmounts(withinThirtyInvoices)} <span> QR</span></p>
+        <p class="amount purple">${within30Days} <span> QR</span></p>
     </div>
     <div class="card">
         <h3 class="card-title">Due in more than 30 days</h3>
-        <p class="amount red">${sumAmounts(afterThirtyInvoices)} <span> QR</span></p>
+        <p class="amount red">${after30Days} <span> QR</span></p>
     </div>
     `
 }
 
-async function showChequeBox(){
-    const cheques = await paymentRepo.getCheques();
-    const awaitingCheques = cheques.filter((cheque) => cheque.status === "Awaiting");
-    const depositedCheques = cheques.filter((cheque) => cheque.status === "Deposited");
-    const cashedCheques = cheques.filter((cheque) => cheque.status === "Cashed");
-    const returnedCheques = cheques.filter((cheque) => cheque.status === "Returned");
-    chequeBox.innerHTML = `
+async function displayChequesSummary() {
+    const chequesBox = document.querySelector(".cheques");
+    const {awaiting, deposited, cashed, returned} = await paymentRepo.getChequesSummary();
+    console.log(awaiting, deposited, cashed, returned);
+
+    chequesBox.innerHTML = `
     <h1 class="dash-title">Cheques</h1>
             <div class="card">
                 <h3 class="card-title">Awaiting</h3>
-                <p class="amount yellow">${sumAmounts(awaitingCheques)} <span> QR</span></p>
+                <p class="amount yellow">${awaiting} <span> QR</span></p>
             </div>
             <div class="card">
-                <h3 class="card-title">Depotised</h3>
-                <p class="amount purple">${sumAmounts(depositedCheques)} <span> QR</span></p>
+                <h3 class="card-title">Deposited</h3>
+                <p class="amount purple">${deposited} <span> QR</span></p>
             </div>
             <div class="card">
                 <h3 class="card-title">Cashed</h3>
-                <p class="amount green">${sumAmounts(cashedCheques)} <span> QR</span></p>
+                <p class="amount green">${cashed} <span> QR</span></p>
             </div>
             <div class="card">
                 <h3 class="card-title">Returned</h3>
-                <p class="amount red">${sumAmounts(returnedCheques)} <span> QR</span></p>
+                <p class="amount red">${returned} <span> QR</span></p>
             </div>
     `
-}
-
-function sumAmounts(items){
-    let sum = 0;
-    for (const item of items) {
-        sum += parseInt(item.amount);
-    }
-    return sum;
 }

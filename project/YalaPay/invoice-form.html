@@ -1,0 +1,60 @@
+<button class="close-btn">X</button>
+<form class="form" action="" id="invoiceForm">
+  <h2 class="form-heading">Add a new invoice</h2>
+  <input
+          name="id"
+          id="id"
+          type="hidden"
+          value=""
+  />
+  <input
+          name="customerId"
+          id="customer-id"
+          hidden="true"
+          type="hidden"
+          value=""
+  />
+  <div class="customer-name-select">
+    <label for="customerName">Customer Name</label>
+    <select
+            id="customerName"
+            name="customerName"
+            value=""
+            required
+    >
+
+    </select>
+  </div>
+  <div class="amount-select">
+    <label for="amount">Amount</label>
+    <input
+            type="number"
+            id="amount"
+            name="amount"
+            value=""
+            min="0"
+            required
+    />
+  </div>
+  <div class="invoice-date-select">
+    <label for="invoiceDate">Invoice Date</label>
+    <input
+            type="date"
+            id="invoiceDate"
+            name="invoiceDate"
+            value=""
+            required
+    />
+  </div>
+  <div class="duedate-select">
+    <label for="dueDate">Due Date</label><br />
+    <input
+            type="date"
+            id="dueDate"
+            name="dueDate"
+            value=""
+            required
+    />
+  </div>
+  <button class="plus-btn" type="submit">Submit</button>
+</form>
