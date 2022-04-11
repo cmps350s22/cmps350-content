@@ -32,6 +32,7 @@ class InvoiceRepository {
     }
 
     getInvoiceByCustomer(customerName) {
+        // Only returns 1 document!!! Not impressed with Localbase => Do not use in a real world project
         return db.collection(invoices)
             .doc({ customerName : customerName })
             .get();

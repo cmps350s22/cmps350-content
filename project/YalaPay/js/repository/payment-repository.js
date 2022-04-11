@@ -20,19 +20,23 @@ class PaymentRepository {
     }
 
     getPayment(paymentId) {
-        return db
-            .collection(payments)
-            .doc({ paymentId: paymentId })
+        return db.collection(payments)
+            .doc({ id: paymentId })
             .get();
+    }
+
+    getInvoicePayments(invoiceNo, amount) {
+        // Unfortunately the line below only returns the 1st match 😒
+        return db.collection("payments").doc({invoiceNo: invoiceNo, amount: parseInt(amount)}).get();
     }
 
     async getPayments(invoiceNo) {
         if (invoiceNo) {
-            let payments = await db.collection("payments").doc({ invoiceNo : invoiceNo}).get();
-            // Workaround - LocalDB return a single object if 1 result match => poor library
-            if (!Array.isArray(payments))
-                payments = [payments]
-            return payments;
+            // Unfortunately the line below only returns the 1st match 😒
+            //let payments = await db.collection("payments").doc({ invoiceNo : invoiceNo}).get();
+            // ToDo: in phase 2 all data querying/filtering must be done by DB
+            const payments = await db.collection("payments").get();
+            return payments.filter(p => p.invoiceNo === invoiceNo);
         }
         else
             return db.collection(payments).get();
@@ -61,17 +65,15 @@ class PaymentRepository {
         return db.collection(payments).add(payment);
     }
 
-    updatePayment(updatePayment) {
-        return db
-            .collection(payments)
-            .doc({ paymentId: updatePayment.paymentId })
-            .update(updatePayment);
+    updatePayment(payment) {
+        return db.collection(payments)
+            .doc({ id: payment.id })
+            .update(payment);
     }
 
     deletePayment(paymentId) {
-        return db
-            .collection(payments)
-            .doc({ paymentId: paymentId })
+        return db.collection(payments)
+            .doc({ id : paymentId })
             .delete();
     }
 
@@ -91,17 +93,34 @@ class PaymentRepository {
     }
     
     getCheque(chequeNo) {
-        return db
-            .collection(cheques)
-            .doc({ chequeNo: chequeNo })
+        return db.collection(cheques)
+            .doc({ chequeNo: parseInt(chequeNo) })
             .get();
     }
 
-    getCheques(status) {
+    async getChequesForReport({status, fromDate, toDate}) {
+        let cheques;
         if (status)
-            return db.collection(cheques).doc({status: status}).get();
+            cheques = await this.getCheques(status);
         else
-            return db.collection(cheques).get();
+            cheques = await this.getCheques();
+
+        if (fromDate && toDate) {
+            cheques = cheques.filter(c => c.receivedDate >= fromDate && c.dueDate <= toDate);
+        }
+        return cheques;
+    }
+
+    async getCheques(status) {
+        if (status) {
+            // Unfortunately the line below only return the 1st one 😒
+            //return db.collection(cheques).doc({status: status}).get();
+            // ToDo: in phase 2 all data querying/filtering must be done by DB
+            const cheques = await db.collection("cheques");
+            return cheques.filter(c => c.status = status);
+        }
+        else
+            return db.collection("cheques").get();
     }
 
     async getChequesCount() {
@@ -124,23 +143,16 @@ class PaymentRepository {
     }
 
     deleteCheque(chequeNo) {
-        return db
-            .collection(cheques)
-            .doc({ chequeNo: chequeNo })
+        return db.collection(cheques)
+            .doc({ chequeNo: parseInt(chequeNo) })
             .delete();
     }
 
     async sumCheques(status) {
         let sum = 0;
-        let cheques = await this.getCheques(status);
-        console.dir(cheques);
+        const cheques = await this.getCheques(status);
         if (cheques) {
-            // Workaround - LocalDB return a single object if 1 result match => poor library
-            if (!Array.isArray(cheques)) {
-                sum = cheques.amount;
-            } else {
-                sum = cheques.map(c => c.amount).reduce(sum, 0);
-            }
+             sum = cheques.map(c => c.amount).reduce(sum, 0);
         }
         return sum;
     }

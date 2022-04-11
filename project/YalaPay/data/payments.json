@@ -1,6 +1,6 @@
 [
   {
-    "paymentId" : "1",
+    "id" : "1",
     "invoiceNo": "1",
     "amount": 500.0,
     "paymentDate": "2022-04-10",
@@ -8,21 +8,21 @@
     "chequeNo": 1234
   },
   {
-    "paymentId" : "2",
+    "id" : "2",
     "invoiceNo": "1",
     "amount": 500.0,
     "paymentDate": "2022-04-10",
     "paymentMode": "Bank transfer"
   },
   {
-    "paymentId" : "3",
+    "id" : "3",
     "invoiceNo": "2",
     "amount": 2000.0,
     "paymentDate": "2022-04-10",
     "paymentMode": "Credit card"
   },
   {
-    "paymentId" : "4",
+    "id" : "4",
     "invoiceNo": "3",
     "amount": 1000.0,
     "paymentDate": "2022-04-10",
@@ -30,7 +30,7 @@
     "chequeNo": 4567
   },
   {
-    "paymentId" : "5",
+    "id" : "5",
     "invoiceNo": "3",
     "amount": 1000.0,
     "paymentDate": "2022-04-10",

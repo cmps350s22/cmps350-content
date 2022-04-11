@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="css/common.css" />
+        <link rel="stylesheet" href="css/forms.css" />
+        <link rel="stylesheet" href="css/cheques.css" />
+        <title>Cheques</title>
+    </head>
+    <body>
+        <nav class="nav-bar"></nav>
+        <main class="container">
+            <section class="header"></section>
+            <section class="search-box">
+                <form class="status-report">
+                    <div class="status-select">
+                        <label for="status">Status: </label>
+                        <select name="status" id="status">
+                            <option value="All">All</option>
+                            <option value="Awaiting">Awaiting</option>
+                            <option value="Deposited">Deposited</option>
+                            <option value="Cashed">Cashed</option>
+                            <option value="Returned">Returned</option>
+                        </select>
+                    </div>
+                    <div class="from-date-box">
+                        <label for="from-date">From Date:</label>
+                        <input type="date" id="from-date" name="fromDate" required />
+                    </div>
+                    <div class="to-date-box">
+                        <label for="to-date">To Date:</label>
+                        <input type="date" id="to-date" name="toDate" required/>
+                    </div>
+                    <button type="submit" class="submit-btn">Submit</button>
+                </form>
+            </section>
+            <section class="main-content"></section>
+        </main>
+        <footer class="footer"></footer>
+
+        <script src="https://unpkg.com/localbase/dist/localbase.dev.js"></script>
+        <script type="module" src="js/cheques-report.js"></script>
+    </body>
+</html>

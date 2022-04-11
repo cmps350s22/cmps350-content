@@ -5,8 +5,8 @@
     "drawer": "Ali Faleh",
     "bankName": "Commercial Bank",
     "status": "Deposited",
-    "receivedDate": "2021-11-15",
-    "dueDate": "2021-11-30",
+    "receivedDate": "2022-04-10",
+    "dueDate": "2022-04-30",
     "chequeImageUri": "cheque1.jpg"
   },
   {
@@ -15,8 +15,8 @@
     "drawer": "Sara Dahak",
     "bankName": "Qatar National Bank",
     "status": "Deposited",
-    "receivedDate": "2021-11-15",
-    "dueDate": "2021-11-28",
+    "receivedDate": "2022-04-10",
+    "dueDate": "2022-04-25",
     "chequeImageUri": "cheque2.jpg"
   },
   {
@@ -25,8 +25,8 @@
     "drawer": "Sara Dahak",
     "bankName": "Qatar National Bank",
     "status": "Awaiting",
-    "receivedDate": "2021-11-15",
-    "dueDate": "2021-11-28",
+    "receivedDate": "2022-04-10",
+    "dueDate": "2022-04-25",
     "chequeImageUri": "cheque2.jpg"
   },
   {
@@ -35,8 +35,8 @@
     "drawer": "Abbas Ibn Firnas",
     "bankName": "Qatar Islamic Bank",
     "status": "Awaiting",
-    "receivedDate": "2021-11-14",
-    "dueDate": "2021-11-29",
+    "receivedDate": "2022-01-01",
+    "dueDate": "2022-03-01",
     "chequeImageUri": "cheque3.jpg"
   }
 ]

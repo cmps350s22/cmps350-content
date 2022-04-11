@@ -1,338 +1,225 @@
 import paymentRepo from "./repository/payment-repository.js";
 import invoiceRepo from "./repository/invoice-repository.js";
-import customerRepo from "./repository/customer-repository.js";
+import {formToObject, addCommonUIFragments} from "./common.js";
 
 let isEdit = false;
-let oldChequeNo = 0;
+let chequeNoBeforeUpdate = 0;
 
-window.onload = async () => {
-    displayCurrentUser();
+document.addEventListener("DOMContentLoaded", async () => {
+    // Load and inject common html fragments (to avoid redundancy)
+    await addCommonUIFragments('Payments', 'payments.svg', 'Amount', 'payment-form.html');
+
     await paymentRepo.initPayments();
     await paymentRepo.initCheques();
-    await displayPaymentData();
-    await displayInvoiceInfo();
-    displayPaymentModes();
+    await displayInvoiceDetails();
+    await displayPayments();
+    await fillPaymentModesDD();
+    await fillBanksDD();
+
     window.deletePayment = deletePayment;
     window.updatePayment = updatePayment;
-};
 
-const popupForm = document.querySelector(".popup-form");
-const paymentTable = document.querySelector(".table");
-const searchForm = document.querySelector(".search-form");
-const invoiceInfo = document.querySelector(".invoiceinfo");
-const customerInfo = document.querySelector(".custinfo");
-const paymentSelect = document.querySelector("#payment-mode");
-const moreDetails = document.querySelector(".moreDetails");
-const accountInfo = document.querySelector(".account-info")
+    const paymentModesDD = document.querySelector("#paymentMode");
+    const popupForm = document.querySelector(".popup-form");
+    const searchForm = document.querySelector(".search-form");
 
-popupForm.addEventListener("submit", addPayment);
-searchForm.addEventListener("submit", searchPayments);
-paymentSelect.addEventListener("change", displayMoreDetails);
+    popupForm.addEventListener("submit", addPayment);
+    searchForm.addEventListener("submit", searchPayments);
+    paymentModesDD.addEventListener("change", onPaymentModeChange);
+});
 
-
-function displayCurrentUser(){
-    const name = sessionStorage.getItem("name");
-    accountInfo.innerHTML = `
-    <img class="profile-img" src="img/profile.png" alt="" />
-          <span class="account-name"
-              >${name} 
-              </span
-          >
-    `
+async function displayPayments() {
+    const payments = await paymentRepo.getPayments(sessionStorage.invoiceNo);
+    //console.log(payments);
+    paymentsToHtmlTable(payments);
 }
 
-function formToObject(form) {
-    const formdata = new FormData(form);
-    const data = {};
-    for (const [key, value] of formdata) {
-        data[key] = value;
-    }
-    return data;
-}
-
-async function displayPaymentData() {
-    const sessionInvoice = sessionStorage.getItem("invoiceNo");
-    const payments = await paymentRepo.getPayments();
-    // console.log(payments);
-    const paymentsOfInvoice = payments.filter(
-        (payment) => payment.invoiceNo == sessionInvoice
-    );
-    console.log(paymentsOfInvoice);
-    const paymentRows = paymentsOfInvoice
-        .map((payment) => paymentToRow(payment))
+function paymentsToHtmlTable(payments) {
+    const mainContent = document.querySelector(".main-content");
+    const paymentRows = payments
+        .map(payment => paymentToHtmlRow(payment))
         .join(" ");
-    paymentTable.innerHTML = `
-    <tr class="table-headings">
-      <th>Payment ID</th>
-      <th>Invoice No</th>
-      <th>Amount</th>
-      <th>Payment Date</th>
-      <th>Payment Mode</th>
-      <th>Cheque No</th>
-      <th> </th>
-    </tr>
-    ${paymentRows}`;
+
+    mainContent.innerHTML = `
+     <table class="table">
+        <tr class="table-headings">
+          <th>Payment ID</th>
+          <th>Invoice No</th>
+          <th>Amount</th>
+          <th>Payment Date</th>
+          <th>Payment Mode</th>
+          <th>Cheque No</th>
+          <th> </th>
+        </tr>
+        ${paymentRows}
+     </table>
+     `;
 }
 
-function paymentToRow(payment) {
+function paymentToHtmlRow(payment) {
     return `
-    <tr class="table-row">
-        <td>${payment.paymentId}</td>
+    <tr class="table-row" data-payment-id='${payment.id}'>
+        <td>${payment.id}</td>
         <td>${payment.invoiceNo}</td>
         <td>${payment.amount}</td>
         <td>${payment.paymentDate}</td>
         <td>${payment.paymentMode}</td>
-        <td>${payment.chequeNo}</td>
+        <td>${payment.chequeNo ? payment.chequeNo : ''}</td>
         <td class=editing-btns>
-            <img class="edit-btn" src="img/pen.svg" onclick="updatePayment('${payment.paymentId}')"/>
-            <img class="delete-btn" src="img/trash.svg" onclick="deletePayment('${payment.paymentId}')"/>
+            <img class="edit-btn" src="img/pen.svg" onclick="updatePayment('${payment.id}')"/>
+            <img class="delete-btn" src="img/trash.svg" onclick="deletePayment('${payment.id}', ${payment.chequeNo})"/>
+            if (payment.chequeNo) { 
+                <img class="view-btn" src="img/view.svg" onclick="displayChequeImage('${payment.chequeNo}')"/>
+            }
         </td>
     </tr>
     `;
 }
 
-async function displayPaymentModes() {
-    const response = await fetch("YalaPay-data/payment-modes.json");
+// ToDo: read from DB
+async function fillPaymentModesDD() {
+    const paymentModesDD = document.querySelector("#paymentMode");
+    const response = await fetch("data/payment-modes.json");
     const data = await response.json();
     const paymentOptions = data.map(
         (paymentMode) =>
             `<option value="${paymentMode}">${paymentMode}</option>`
-    );
-    paymentSelect.innerHTML = paymentOptions.join(" ");
+    ).join(" ");
+    paymentModesDD.innerHTML = paymentOptions;
 }
 
-function displayMoreDetails() {
-    if (paymentSelect.value == "Cheque") {
-        moreDetails.innerHTML = `
-        <div class="chequeNo-select">
-                            <label for="chequeNo">Cheque No</label><br />
-                            <input
-                                type="number"
-                                id="chequeNo"
-                                name="chequeNo"
-                                min="0"
-                                required
-                            />
-                        </div>
-                        <div class="drawer-select">
-                            <label for="drawer">Drawer</label>
-                            <input type="text" name="drawer" id="drawer" required/>
-                        </div>
-                        <div class="bank-select">
-                            <label for="bankName">Drawer Bank</label><br />
-                            <select
-                                id="bank-name"
-                                name="bankName"
-                                required
-                            ></select>
-                        </div>
-                        <div class="bank-status-select">
-                            <label for="status">Status</label><br />
-                            <select id="status" name="status" required>
-                                <option value="Awaiting">Awaiting</option>
-                                <option value="Deposited">Deposited</option>
-                                <option value="Cashed">Cashed</option>
-                                <option value="Returned">Returned</option>
-                            </select>
-                        </div>
-                        <div class="received-date-select">
-                            <label for="received-date">Received Date</label
-                            ><br />
-                            <input
-                                type="date"
-                                id="received-date"
-                                name="receivedDate"
-                                required
-                            />
-                        </div>
-                        <div class="due-date-select">
-                            <label for="due-date">Due Date</label
-                            ><br />
-                            <input
-                                type="date"
-                                id="due-date"
-                                name="dueDate"
-                                required
-                            />
-                        </div>
-                        <div class="cheque-image-select">
-                            <label for="chequeImageUri">Cheque Image</label>
-                            <input type="file" id="cheque-image" name="chequeImageUri" accept="image/*">
-                        </div>
-        `;
+function onPaymentModeChange() {
+    const paymentModesDD = document.querySelector("#paymentMode");
+    const chequeDetailsDiv = document.querySelector(".chequeDetails");
+    console.log("onPaymentModeChange", paymentModesDD.value);
+    if (paymentModesDD.value === "Cheque") {
+        chequeDetailsDiv.style.display = "";
     } else {
-        moreDetails.innerHTML = ``;
+        chequeDetailsDiv.style.display = "none";
     }
-    displayBankNames();
 }
 
-async function displayBankNames() {
-    const bankSelect = document.querySelector("#bank-name");
-    const response = await fetch("YalaPay-data/banks.json");
+// ToDo: read from DB
+async function fillBanksDD() {
+    const bankSelect = document.querySelector("#bankName");
+    const response = await fetch("data/banks.json");
     const data = await response.json();
     const banksOptions = data.map(
         (bankName) => `<option value="${bankName}">${bankName}</option>`
-    );
-    bankSelect.innerHTML = banksOptions.join(" ");
+    ).join(" ");
+    bankSelect.innerHTML = banksOptions;
 }
 
 async function addPayment(e) {
     e.preventDefault();
-    const sessionInvoice = sessionStorage.getItem("invoiceNo");
-    if (paymentSelect.value == "Cheque") {
-        const data = formToObject(e.target);
-        console.log(data);
-        const payment = {
-            paymentId: parseInt(data.paymentId),
-            invoiceNo: parseInt(sessionInvoice),
-            amount: parseInt(data.amount),
-            paymentDate: data.paymentDate,
-            paymentMode: "Cheque",
-            chequeNo: data.chequeNo,
-        };
-        const cheque = {
-            chequeNo: parseInt(data.chequeNo),
-            amount: parseInt(data.amount),
-            drawer: data.drawer,
-            bankName: data.bankName,
-            status: data.status,
-            receivedDate: data.receivedDate,
-            dueDate: data.dueDate,
-            chequeImageUri: data.chequeImageUri.name,
-        };
+    const formData = formToObject(e.target);
+    console.log("addPayment", JSON.stringify(formData));
 
-        if (isEdit) {
-            await paymentRepo.updatePayment(payment);
-            await paymentRepo.updateCheque(cheque, oldChequeNo);
-            isEdit = false;
-        } else {
-            const payments = await paymentRepo.getPayments();
-            payment.paymentId = payments.length + 1;
-            await paymentRepo.addPayment(payment);
-            await paymentRepo.addCheque(cheque);
-        }
-    } else {
-        const payment = formToObject(e.target);
-        payment.invoiceNo = parseInt(sessionInvoice);
-        payment.amount = parseInt(payment.amount);
-        if (isEdit) {
-            payment.paymentId = parseInt(payment.paymentId);
-            await paymentRepo.updatePayment(payment);
-            isEdit = false;
-        } else {
-            const payments = await paymentRepo.getPayments();
-            payment.paymentId = payments.length + 1;
-            await paymentRepo.addPayment(payment);
-        }
+    let cheque;
+    const payment = {
+        id: formData.id,
+        invoiceNo: sessionStorage.invoiceNo,
+        amount: parseInt(formData.amount),
+        paymentDate: formData.paymentDate,
+        paymentMode: formData.paymentMode
+    };
+
+    console.log("addPayment", JSON.stringify(payment));
+
+    if (formData.paymentMode == "Cheque") {
+        payment.chequeNo = parseInt(formData.chequeNo);
+        cheque = {
+            chequeNo: payment.chequeNo,
+            amount: parseInt(formData.amount),
+            drawer: formData.drawer,
+            bankName: formData.bankName,
+            status: "Awaiting",
+            receivedDate: formData.receivedDate,
+            dueDate: formData.dueDate,
+            // ToDo: upload the cheque image to the server and set the chequeImageUri
+            chequeImageUri: "cheque2.jpg" //formData.chequeImageUri.name,
+        };
+        console.log("addPayment", JSON.stringify(cheque));
     }
 
-    await displayPaymentData();
-    popupForm.reset();
+    if (isEdit) {
+        await paymentRepo.updatePayment(payment);
+        if (cheque)
+            await paymentRepo.updateCheque(cheque, chequeNoBeforeUpdate);
+        isEdit = false;
+    } else {
+        await paymentRepo.addPayment(payment);
+        if (cheque)
+            await paymentRepo.addCheque(cheque);
+    }
+
+    await displayPayments();
+    e.target.reset();
 }
 
 async function searchPayments(e) {
     e.preventDefault();
     const searchInput = formToObject(e.target);
-    console.log(searchInput);
-    const payment = await paymentRepo.getPayment(parseInt(searchInput.paymentId));
-    const sessionInvoice = sessionStorage.getItem("invoiceNo");
-    if (payment.invoiceNo != sessionInvoice) {
-        paymentTable.innerHTML = `
-        <tr class="table-headings">
-      <th>Payment ID</th>
-      <th>Invoice No</th>
-      <th>Amount</th>
-      <th>Payment Date</th>
-      <th>Payment Mode </th>
-      <th>Cheque No</th>
-      <th>        </th>
-    </tr>
-    <tr><td>Not Found</td></tr>
-        `;
+    const payment = await paymentRepo.getInvoicePayments(sessionStorage.invoiceNo, searchInput.searchText);
+    if (payment) {
+        //console.log(customer);
+        paymentsToHtmlTable([ payment ]);
     } else {
-        paymentTable.innerHTML = `
-    <tr class="table-headings">
-      <th>Payment ID</th>
-      <th>Invoice No</th>
-      <th>Amount</th>
-      <th>Payment Date</th>
-      <th>Payment Mode </th>
-      <th>Cheque No</th>
-      <th>        </th>
-    </tr>
-    ${paymentToRow(payment)}`;
+        alert("No data found");
     }
 }
 
-async function deletePayment(paymentID) {
-    if (paymentSelect.value == "Cheque") {
-        const payment = await paymentRepo.getPayment(paymentID);
-        await paymentRepo.deleteCheque(payment.chequeNo);
+async function deletePayment(paymentId, chequeNo) {
+    const confirmed = confirm(`Are you sure you want to delete payment #${paymentId}?`);
+    if (confirmed) {
+        if (chequeNo) {
+            await paymentRepo.deleteCheque(chequeNo);
+        }
+        await paymentRepo.deletePayment(paymentId);
+        document.querySelector(`tr[data-payment-id='${paymentId}']`).remove();
     }
-    await paymentRepo.deletePayment(parseInt(paymentID));
-    await displayPaymentData();
+
+
 }
 
-async function updatePayment(paymentID) {
+async function updatePayment(paymentId) {
     isEdit = true;
-    const payment = await paymentRepo.getPayment(parseInt(paymentID));
-    document.querySelector("#payment-id").value = payment.paymentId;
-    document.querySelector("#invoiceNo").value = payment.invoiceNo;
+    const payment = await paymentRepo.getPayment(paymentId);
+    console.log("updatePayment", JSON.stringify(payment));
+    document.querySelector("#id").value = payment.id;
     document.querySelector("#amount").value = payment.amount;
-    document.querySelector("#payment-date").value = payment.paymentDate;
-    document.querySelector("#payment-mode").value = payment.paymentMode;
-    displayMoreDetails();
-    if (paymentSelect.value == "Cheque") {
-        const cheque = await paymentRepo.getCheque(parseInt(payment.chequeNo));
-        oldChequeNo = cheque.chequeNo;
+    document.querySelector("#paymentDate").value = payment.paymentDate;
+    document.querySelector("#paymentMode").value = payment.paymentMode;
+
+    if (payment.paymentMode === "Cheque") {
+        const cheque = await paymentRepo.getCheque(payment.chequeNo);
+        chequeNoBeforeUpdate = cheque.chequeNo;
         document.querySelector("#chequeNo").value = cheque.chequeNo;
         document.querySelector("#drawer").value = cheque.drawer;
-        document.querySelector("#bank-name").value = cheque.bankName;
+        document.querySelector("#bankName").value = cheque.bankName;
         document.querySelector("#status").value = cheque.status;
-        document.querySelector("#received-date").value = cheque.receivedDate;
-        document.querySelector("#due-date").value = cheque.dueDate;
-        document.querySelector("#cheque-image").value = cheque.chequeImageUri;
+        document.querySelector("#receivedDate").value = cheque.receivedDate;
+        document.querySelector("#dueDate").value = cheque.dueDate;
+        //document.querySelector("#chequeImage").value = cheque.chequeImageUri;
     }
+    onPaymentModeChange();
 }
 
-async function displayInvoiceInfo() {
-    const sessionInvoice = sessionStorage.getItem("invoiceNo");
-    const invoice = await invoiceRepo.getInvoice(parseInt(sessionInvoice));
-    displayCustomerInfo(invoice.customerId);
+async function displayInvoiceDetails() {
+    const invoiceInfo = document.querySelector(".invoice-info");
+    const invoice = await invoiceRepo.getInvoice(sessionStorage.invoiceNo);
     invoiceInfo.innerHTML = `
-    <h3>Invoice Details</h3>
-                    <p>Invoice No:</p>
-                    <span>${invoice.invoiceNo}</span>
-                    <p>Amount:</p>
-                    <span>${invoice.amount}</span>
-                    <p>Invoice Date:</p>
-                    <span>${invoice.invoiceDate}</span>
-                    <p>Due Date:</p>
-                    <span>${invoice.dueDate}</span>
+        <h3>Invoice Details</h3>
+        <p>Invoice No: ${invoice.id}</p>
+        <p>Company Name: ${invoice.customerName}</p>
+        <p>Amount: ${invoice.amount} - Balance: ${invoice.balance}</p>
+        <p>Invoice Date: ${invoice.invoiceDate} - Due Date: ${invoice.dueDate}</p>
+        <br>
     `;
 }
 
-async function displayCustomerInfo(customerId) {
-    const customer = await customerRepo.getCustomer(customerId);
-    customerInfo.innerHTML = `
-    <h3>Customer Details</h3>
-                    <p>Customer ID:</p>
-                    <span>${customer.customerId}</span>
-                    <p>Company Name:</p>
-                    <span>${customer.companyName}</span>
-                    <p>Address:</p>
-                    <span>${customerAddress(customer.address)}</span>
-                    <p>Contact Name:</p>
-                    <span>${customer.contactDetails.firstName} ${
-        customer.contactDetails.lastName
-    }</span>
-                    <p>Email:</p>
-                    <span>${customer.contactDetails.email}</span>
-                    <p>Phone:</p>
-                    <span>${customer.contactDetails.mobile}</span>
-    `;
-}
-
-function customerAddress(address) {
-    return `${address.street}, ${address.city}, ${address.country}`;
+async function displayChequeImage(chequeNo){
+    const cheque = await paymentRepo.getCheque(parseInt(chequeNo));
+    const imageURL = cheque.chequeImageUri;
+    window.open(`./img/cheques/${imageURL}`, '_blank');
 }

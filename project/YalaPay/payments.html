@@ -2,7 +2,6 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="css/common.css" />
         <link rel="stylesheet" href="css/forms.css" />
@@ -10,6 +9,16 @@
         <title>Payments</title>
     </head>
     <body>
+    <nav class="nav-bar"></nav>
+    <main class="container">
+        <section class="header"></section>
+        <section class="search-section"></section>
+        <section class="popup-form"></section>
+        <section class="invoice-info"></section>
+        <section class="main-content"></section>
+    </main>
+    <footer class="footer"></footer>
+    <!--
         <nav>
             <p><img class="nav-logo" src="img/Logo.svg" alt="" /></p>
             <div class="account-info">
@@ -54,11 +63,11 @@
                 </li>
                 <li>
                     <div class="icon-bg">
-                        <a href="cheques.html">
+                        <a href="cheques-report.html">
                             <img src="img/payments.svg" alt="" />
                         </a>
                     </div>
-                    <a class="nav-link" href="cheques.html">Cheques</a>
+                    <a class="nav-link" href="cheques-report.html">Cheques</a>
                 </li>
             </ul>
         </nav>
@@ -86,92 +95,14 @@
                 </form>
                 <button class="add-btn">+ new payment</button>
             </section>
-            <section class="popup-form">
-                <button class="close-btn">X</button>
-                <form class="form" action="">
-                    <h2 class="form-heading">Add a new payment</h2>
-                    <input
-                        name="paymentId"
-                        id="payment-id"
-                        hidden="true"
-                        type="hidden"
-                        value=""
-                    />
-                    <input
-                        name="invoiceNo"
-                        id="invoiceNo"
-                        hidden="true"
-                        type="hidden"
-                        value=""
-                    />
-                    <div class="amount-select">
-                        <label for="amount">Amount</label>
-                        <input
-                            type="number"
-                            id="amount"
-                            name="amount"
-                            value=""
-                            min="0"
-                            required
-                        />
-                    </div>
-                    <div class="payment-date-select">
-                        <label for="payment-date">Payment Date</label><br />
-                        <input
-                            type="date"
-                            id="payment-date"
-                            name="paymentDate"
-                            required
-                        />
-                    </div>
-                    <div class="payment-mode-select">
-                        <label for="payment-mode">Payment Mode</label><br />
-                        <select
-                            id="payment-mode"
-                            name="paymentMode"
-                            required
-                        ></select>
-                    </div>
-                    <div class="moreDetails">
-                        
-                    </div>
-                    <button class="plus-btn" type="submit">Add Payment</button>
-                </form>
-            </section>
-            <section class="main-content">
-                <div class="table-header">
-                    <h1 class="table-title">Payments Summary</h1>
-                </div>
-                <table class="table">
-                    <tr class="table-headings">
-                        <th>Payment ID</th>
-                        <th>Invoice No.</th>
-                        <th>Amount</th>
-                        <th>Payment Date</th>
-                        <th>Payment Mode</th>
-                        <th>Cheque No.</th>
-                        <th></th>
-                    </tr>
-                    <tr class="table-row">
-                        <td>1</td>
-                        <td>1</td>
-                        <td>500.0</td>
-                        <td>2021-11-15</td>
-                        <td>Cheque</td>
-                        <td>1234</td>
-                        <td class="editing-btns">
-                            <img class="edit-btn" src="img/pen.svg" />
-                            <img class="delete-btn" src="img/trash.svg" />
-                        </td>
-                    </tr>
-                </table>
-            </section>
+            <section class="popup-form"></section>
+            <section class="main-content"></section>
         </main>
         <footer>
             <p class="copyright">
                 ⓒ 2022. G5-Fatma-Hadieh-Shayma rights reserved.
             </p>
-        </footer>
+        </footer> -->
         <script src="https://unpkg.com/localbase/dist/localbase.dev.js"></script>
         <script type="module" src="js/payments.js"></script>
         <script src="js/button-handlers.js"></script>

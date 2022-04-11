@@ -53,7 +53,7 @@ nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-top: 1.5rem;
+    margin-top: 1rem;
 }
 
 .account-info:hover {
@@ -88,7 +88,7 @@ nav {
     display: flex;
     flex-direction: row;
     align-items: center;
-    margin: 1rem 1rem;
+    margin: 0.5rem 0.5rem;
     padding: 0.75rem;
     list-style: none;
     background-color: var(--primary);
@@ -283,7 +283,7 @@ footer {
 
     .profile-img {
         margin: 0.5rem;
-        height: 3.5rem;
+        height: 3rem;
     }
 
     .navbar .nav-link {
