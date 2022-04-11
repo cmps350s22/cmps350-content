@@ -1,18 +1,13 @@
-import invoiceRepo from "./repository/invoice-repository.js";
-import customerRepo from "./repository/customer-repository.js";
-import paymentRepo from "./repository/payment-repository.js";
-import {formToObject, addCommonUIFragments} from "./common.js";
+import invoiceRepo from "./invoice-repository.js";
+import customerRepo from "../customer/customer-repository.js";
+import paymentRepo from "../payment/payment-repository.js";
+import {formToObject, addCommonUIFragments} from "../common/common.js";
 
 let isEdit = false;
 
 document.addEventListener("DOMContentLoaded", async () => {
     // Load and inject common html fragments (to avoid redundancy)
     await addCommonUIFragments('Invoices', 'wallet.svg', 'Customer name', 'invoice-form.html');
-
-    await customerRepo.initCustomers();
-    await invoiceRepo.initInvoices();
-    await paymentRepo.initPayments();
-    await paymentRepo.initCheques();
 
     await displayInvoices();
     await fillCustomerDD();

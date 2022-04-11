@@ -1,0 +1,30 @@
+<button class="close-btn">X</button>
+<form class="form" action="">
+    <h2 class="form-heading">Add Cheques Deposit</h2>
+    <input name="id" id="id" type="hidden" />
+    <div class="bank-account-select">
+        <label for="bankAccountNo">Bank Account</label><br />
+        <select
+                id="bankAccountNo"
+                name="bankAccountNo"
+                required
+        ></select>
+    </div>
+    <div class="deposit-date-select">
+        <label for="depositDate">Deposit Date</label><br />
+        <input
+                type="date"
+                id="depositDate"
+                name="depositDate"
+                required
+        />
+    </div>
+    <div class="status-select">
+        <label for="status">Deposit Status</label><br />
+        <select id="status" name="status">
+            <option value="Deposited">Deposited</option>
+        </select>
+    </div>
+    <div class="cheques-list"></div>
+    <button class="plus-btn" type="submit">Add Deposit</button>
+</form>

@@ -1,6 +1,7 @@
-import paymentRepo from "./repository/payment-repository.js";
-import invoiceRepo from "./repository/invoice-repository.js";
-import {formToObject, addCommonUIFragments} from "./common.js";
+import paymentRepo from "./payment-repository.js";
+import invoiceRepo from "../invoice/invoice-repository.js";
+import lookupDataRepository from "../common/lookup-data-repository.js";
+import {formToObject, addCommonUIFragments} from "../common/common.js";
 
 let isEdit = false;
 let chequeNoBeforeUpdate = 0;
@@ -9,8 +10,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     // Load and inject common html fragments (to avoid redundancy)
     await addCommonUIFragments('Payments', 'payments.svg', 'Amount', 'payment-form.html');
 
-    await paymentRepo.initPayments();
-    await paymentRepo.initCheques();
     await displayInvoiceDetails();
     await displayPayments();
     await fillPaymentModesDD();
@@ -18,6 +17,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     window.deletePayment = deletePayment;
     window.updatePayment = updatePayment;
+    window.displayChequeImage = displayChequeImage;
 
     const paymentModesDD = document.querySelector("#paymentMode");
     const popupForm = document.querySelector(".popup-form");
@@ -52,8 +52,7 @@ function paymentsToHtmlTable(payments) {
           <th> </th>
         </tr>
         ${paymentRows}
-     </table>
-     `;
+     </table>`;
 }
 
 function paymentToHtmlRow(payment) {
@@ -68,8 +67,9 @@ function paymentToHtmlRow(payment) {
         <td class=editing-btns>
             <img class="edit-btn" src="img/pen.svg" onclick="updatePayment('${payment.id}')"/>
             <img class="delete-btn" src="img/trash.svg" onclick="deletePayment('${payment.id}', ${payment.chequeNo})"/>
-            if (payment.chequeNo) { 
-                <img class="view-btn" src="img/view.svg" onclick="displayChequeImage('${payment.chequeNo}')"/>
+            ${(payment.chequeNo) ?
+                `<img class="view-btn" src="img/view.svg" onclick="displayChequeImage('${payment.chequeNo}')"/>`
+                : ''
             }
         </td>
     </tr>
@@ -79,10 +79,8 @@ function paymentToHtmlRow(payment) {
 // ToDo: read from DB
 async function fillPaymentModesDD() {
     const paymentModesDD = document.querySelector("#paymentMode");
-    const response = await fetch("data/payment-modes.json");
-    const data = await response.json();
-    const paymentOptions = data.map(
-        (paymentMode) =>
+    const data = await lookupDataRepository.getLookupData("paymentModes");
+    const paymentOptions = data.paymentModes.map(paymentMode =>
             `<option value="${paymentMode}">${paymentMode}</option>`
     ).join(" ");
     paymentModesDD.innerHTML = paymentOptions;
@@ -102,9 +100,8 @@ function onPaymentModeChange() {
 // ToDo: read from DB
 async function fillBanksDD() {
     const bankSelect = document.querySelector("#bankName");
-    const response = await fetch("data/banks.json");
-    const data = await response.json();
-    const banksOptions = data.map(
+    const data = await lookupDataRepository.getLookupData("banks");
+    const banksOptions = data.banks.map(
         (bankName) => `<option value="${bankName}">${bankName}</option>`
     ).join(" ");
     bankSelect.innerHTML = banksOptions;
@@ -219,7 +216,7 @@ async function displayInvoiceDetails() {
 }
 
 async function displayChequeImage(chequeNo){
-    const cheque = await paymentRepo.getCheque(parseInt(chequeNo));
+    const cheque = await paymentRepo.getCheque(chequeNo);
     const imageURL = cheque.chequeImageUri;
     window.open(`./img/cheques/${imageURL}`, '_blank');
 }

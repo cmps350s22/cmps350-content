@@ -1,4 +1,4 @@
-import { getId } from "../common.js";
+import {fetchJson, getId} from "../common/common.js";
 
 const db = new Localbase("YalaPay.db");
 const customers = "customers";
@@ -10,9 +10,7 @@ class CustomerRepository {
         console.log(`customersCount: ${customersCount}`);
 
         if (customersCount === 0) {
-            const customersUrl = "data/customers.json";
-            const response = await fetch(customersUrl);
-            const customers = await response.json();
+            const customers = await fetchJson("data/customers.json");
             for (const customer of customers) {
                 await this.addCustomer(customer);
             }

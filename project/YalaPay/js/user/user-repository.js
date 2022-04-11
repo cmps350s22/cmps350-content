@@ -1,3 +1,4 @@
+import { fetchJson } from "../common/common.js";
 const db = new Localbase("YalaPay.db");
 
 class UserRepository {
@@ -21,9 +22,7 @@ class UserRepository {
         console.log(`Users count: ${usersCount}`);
 
         if (usersCount === 0) {
-            const userUrl = "data/users.json";
-            const response = await fetch(userUrl);
-            const users = await response.json();
+            const users = await fetchJson("data/users.json");
             for (const user of users) {
                 await db.collection("users").add(user);
             }

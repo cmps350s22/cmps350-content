@@ -1,14 +1,22 @@
 import { v4 as uuidv4 } from 'https://jspm.dev/uuid';
 
 export const getId = () => uuidv4();
-export const sum = (accumulator, curr) => accumulator + curr;
+export const sumReducer = (accumulator, curr) => accumulator + curr;
 
 export function displayCurrentUser() {
+    // If the user is not logged in then redirect to the login page
+    if (!sessionStorage.name) {
+        window.location = "login.html";
+    }
     const accountInfo = document.querySelector(".account-info");
     accountInfo.innerHTML = `
         <img class="profile-img" src="img/profile.png" alt="" />
-        <span class="account-name">${sessionStorage.name}</span>
-    `
+        <span class="account-name">${sessionStorage.name}</span>`
+}
+
+export async function fetchJson(url) {
+    const response = await fetch(url);
+    return await response.json();
 }
 
 export function formToObject(form) {
@@ -20,7 +28,7 @@ export function formToObject(form) {
     return formObject;
 }
 
-export async function getHtml(url) {
+export async function fetchHtml(url) {
     const response = await fetch(url);
     return await response.text();
 }
@@ -63,7 +71,7 @@ export function getSearchForm(searchLabel) {
 // e..g., 'Customers', 'customers.svg', 'Company name', 'customer-form.html'
 export async function addCommonUIFragments(moduleTitle, moduleLogo, searchLabel, formUrl) {
     const navBar = document.querySelector(".nav-bar");
-    navBar.innerHTML = await getHtml('nav-bar.html');
+    navBar.innerHTML = await fetchHtml('nav-bar.html');
 
     const header = document.querySelector(".header");
     header.innerHTML = getHeader(moduleTitle, moduleLogo);
@@ -75,7 +83,7 @@ export async function addCommonUIFragments(moduleTitle, moduleLogo, searchLabel,
     searchSection.innerHTML = getSearchForm(searchLabel);
 
     const popupForm = document.querySelector(".popup-form");
-    popupForm.innerHTML = await getHtml(formUrl);
+    popupForm.innerHTML = await fetchHtml(formUrl);
 
     displayCurrentUser();
 }

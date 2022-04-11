@@ -26,13 +26,14 @@
 }
 
 .header-card .icon-bg img {
-    height: 1.5rem;
+    height: 1rem;
     filter: invert(27%) sepia(15%) saturate(5407%) hue-rotate(201deg) brightness(94%) contrast(90%);
 }
 
 .docsCount {
-    font-size: 1.8rem;
+    font-size: 1.2rem;
     font-weight: 700;
+    padding-right: 0.5rem;
 }
 
 .counter-desc {
@@ -97,14 +98,14 @@
     transition: 0.1s;
 }
 
-.status-report{
+.report-parameters{
     grid-column: span 2;
     display:grid;
     grid-template-columns: 1fr 1fr 1fr 0.5fr;
     justify-content: left;
 }
 
-.status-report label{
+.report-parameters label{
     margin-right: 0.5rem;
 }
 
@@ -117,7 +118,7 @@
     cursor: pointer;
 }
 
-.status-report input{
+.report-parameters input{
     padding: 0.35rem;
     border-radius: 15px;
     border: 1px solid #d4d4d4;
@@ -339,12 +340,16 @@ footer{
     }
 
     .header-card .icon-bg{
-        margin-top: 0.5rem
+        margin-top: 0.5rem;
+        margin-left: 0.3rem;
+        padding-left: 0.3rem;
     }
 
     .docsCount{
-        font-size: 1.5rem;
+        font-size: 1.1rem;
+        padding-right: 0.5rem;
     }
+
     .counter-desc{
         font-size: 0.8rem;
     }
@@ -358,7 +363,7 @@ footer{
         margin-right: auto;
     }
 
-    .status-report{
+    .report-parameters{
         grid-template-columns: 1fr;
         grid-gap: 0.5rem;
     }
@@ -367,7 +372,7 @@ footer{
         margin-right: auto;
     }
 
-    #from-date{
+    #fromDate{
         width: 50%;
     }
 

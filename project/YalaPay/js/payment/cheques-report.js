@@ -1,24 +1,34 @@
-import paymentRepo from "./repository/payment-repository.js";
-import {displayCurrentUser, getFooter, getHtml, formToObject, sum} from "./common.js";
+import paymentRepo from "./payment-repository.js";
+import {displayCurrentUser, getFooter, fetchHtml, formToObject, sumReducer} from "../common/common.js";
+import lookupDataRepository from "../common/lookup-data-repository.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
     // Load and inject common html fragments (to avoid redundancy)
     const navBar = document.querySelector(".nav-bar");
-    navBar.innerHTML = await getHtml('nav-bar.html');
+    navBar.innerHTML = await fetchHtml('nav-bar.html');
 
     const footer = document.querySelector(".footer");
     footer.innerHTML = getFooter();
 
     displayCurrentUser();
-    await paymentRepo.initCheques();
+    await fillStatusDD();
     const cheques = await paymentRepo.getCheques();
-    console.log(cheques);
     await displayCheques(cheques);
-    window.viewChequeImage = displayChequeImage;
+
+    const parametersForm = document.querySelector(".report-parameters");
+    parametersForm.addEventListener("submit", chequeReport);
 });
 
-const reportForm = document.querySelector(".status-report");
-reportForm.addEventListener("submit", chequeReport);
+async function fillStatusDD() {
+    const statusDD = document.querySelector("#status");
+    const data = await lookupDataRepository.getLookupData("chequeStatus");
+    //Add All as the 1st option
+    data.chequeStatus.unshift("All");
+    const statusOptions = data.chequeStatus.map(c =>
+        `<option value="${c}">${c}</option>`
+    ).join(" ");
+    statusDD.innerHTML = statusOptions;
+}
 
 function displayCheques(cheques) {
     const mainContent = document.querySelector(".main-content");
@@ -33,11 +43,10 @@ function displayCheques(cheques) {
             <th>Status</th>
             <th>Received Date</th>
             <th>Due Date</th>
-            <th></th>
          </tr>
          ${chequesRows}
         </table>`;
-    displayDocsCount(cheques);
+    displaySummary(cheques);
 }
 
 function chequeToHtmlRow(cheque) {
@@ -56,32 +65,29 @@ function chequeToHtmlRow(cheque) {
 async function chequeReport(e) {
     e.preventDefault();
     const searchParams = formToObject(e.target);
-/*    const status = searchParams.status;
-    const toDate = searchParams.toDate;
-    const fromDate = searchParams.fromDate;*/
     const cheques = await paymentRepo.getChequesForReport(searchParams);
     displayCheques(cheques)
 }
 
-function displayDocsCount(cheques) {
+function displaySummary(cheques) {
     const header = document.querySelector(".header");
     const chequesCount = cheques.length;
-    const chequesSum = cheques.reduce(sum, 0);
+    const chequesSum = cheques.map(c => c.amount).reduce(sumReducer, 0);
 
     header.innerHTML = `
-     <h1 class="header-title">Cheques</h1>
+     <h1 class="header-title">Cheques Report</h1>
      <div class="header-card">
         <div class="icon-bg">
             <img src="img/wallet.svg" alt="" />
         </div>
         <p class="docsCount">
-            ${chequesCount} <span class="counter-desc">Count</span>
+            <span class="counter-desc">Count: </span> ${chequesCount}
         </p>
         <div class="icon-bg">
-            <img src="img/money-bill-1-wave.svg" alt="" />
+            <img src="img/payments.svg" alt="" />
         </div>
         <p class="docsCount">
-            QR ${chequesSum}  <span class="counter-desc">Sum</span>
+            <span class="counter-desc">Sum: </span> QR ${chequesSum}
         </p>
      </div>
     `;

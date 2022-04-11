@@ -1,16 +1,14 @@
-import customerRepo from "./repository/customer-repository.js";
+import customerRepo from "./customer-repository.js";
 import {
     addCommonUIFragments,
-    displayCurrentUser,
     formToObject
-} from "./common.js"
+} from "../common/common.js"
 let isEdit = false;
 
 document.addEventListener("DOMContentLoaded", async () => {
     // Load and inject common html fragments (to avoid redundancy)
     await addCommonUIFragments('Customers', 'customers.svg', 'Company name', 'customer-form.html');
 
-    await customerRepo.initCustomers();
     await displayCustomers();
     window.deleteCustomer = deleteCustomer;
     window.updateCustomer = updateCustomer;

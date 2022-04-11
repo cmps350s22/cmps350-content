@@ -1,5 +1,5 @@
-import {getId, sum} from "../common.js";
-import paymentRepo from "./payment-repository.js";
+import {fetchJson, getId, sumReducer} from "../common/common.js";
+import paymentRepo from "../payment/payment-repository.js";
 
 const db = new Localbase("YalaPay.db");
 const invoices = "invoices";
@@ -10,9 +10,7 @@ class InvoiceRepository {
         console.log(`invoicesCount: ${invoicesCount}`);
 
         if (invoicesCount === 0) {
-            const invoicesUrl = "data/invoices.json";
-            const response = await fetch(invoicesUrl);
-            const invoices = await response.json();
+            const invoices = await fetchJson("data/invoices.json");
             for (const invoice of invoices) {
                 await this.addInvoice(invoice);
             }
@@ -20,9 +18,9 @@ class InvoiceRepository {
     }
 
     async getInvoice(invoiceNo) {
-        let invoice = await db.collection(invoices)
-                 .doc({ id : invoiceNo })
-                 .get();
+        const invoice = await db.collection(invoices)
+                                .doc({ id : invoiceNo })
+                                .get();
 
         if (invoice) {
             const totalPayments = await paymentRepo.getTotalPayments(invoiceNo);
@@ -87,7 +85,7 @@ class InvoiceRepository {
         const currentDate = new Date();
         const today = currentDate.toJSON().slice(0,10);
 
-        const totalInvoices = invoices.map(i => i.amount).reduce(sum, 0);
+        const totalInvoices = invoices.map(i => i.amount).reduce(sumReducer, 0);
 
         //due in 30 days
         currentDate.setDate(new Date().getDate()+30);
@@ -96,7 +94,7 @@ class InvoiceRepository {
             invoices
                 .filter(invoice => invoice.dueDate >= today && invoice.dueDate <= afterToday)
                 .map(i => i.amount)
-                .reduce(sum, 0);
+                .reduce(sumReducer, 0);
 
         //due in more than 30 days
         currentDate.setDate(new Date().getDate());
@@ -104,10 +102,35 @@ class InvoiceRepository {
         const after30Days = invoices
             .filter(invoice => invoice.dueDate >= afterMonth)
             .map(i => i.amount)
-            .reduce(sum, 0);
+            .reduce(sumReducer, 0);
 
         return {totalInvoices, within30Days, after30Days}
 
+    }
+
+    async getInvoicesForReport({status, fromDate, toDate}) {
+        console.log(status, fromDate, toDate);
+        let invoices = await this.getInvoices();
+
+        switch (status) {
+            case "Unpaid": {
+                invoices = invoices.filter(i => i.amount === i.balance);
+                break;
+            }
+            case "Partially Paid": {
+                invoices = invoices.filter(i => i.balance > 0);
+                break;
+            }
+            case "Paid": {
+                invoices = invoices.filter(i => i.balance === 0);
+                break;
+            }
+        }
+
+        if (fromDate && toDate) {
+            invoices = invoices.filter(c => c.receivedDate >= fromDate && c.dueDate <= toDate);
+        }
+        return invoices;
     }
 }
 

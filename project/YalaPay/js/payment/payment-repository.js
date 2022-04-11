@@ -1,4 +1,4 @@
-import {getId, sum} from "../common.js";
+import {fetchJson, getId, sumReducer} from "../common/common.js";
 const db = new Localbase("YalaPay.db");
 const payments = "payments";
 const cheques = "cheques";
@@ -10,9 +10,7 @@ class PaymentRepository {
         console.log(`paymentsCount: ${paymentsCount}`);
 
         if (paymentsCount === 0) {
-            const paymentsUrl = "data/payments.json";
-            const response = await fetch(paymentsUrl);
-            const payments = await response.json();
+            const payments = await fetchJson("data/payments.json");
             for (const payment of payments) {
                 await this.addPayment(payment);
             }
@@ -53,7 +51,7 @@ class PaymentRepository {
     async getTotalPayments(invoiceNo) {
         try {
             const payments = await this.getPayments(invoiceNo);
-            return payments.map(c => c.amount).reduce(sum, 0);
+            return payments.map(c => c.amount).reduce(sumReducer, 0);
         } catch (e) {
             return 0;
         }
@@ -83,9 +81,7 @@ class PaymentRepository {
         console.log(`chequesCount: ${chequesCount}`);
 
         if (chequesCount === 0) {
-            const chequesUrl = "data/cheques.json";
-            const response = await fetch(chequesUrl);
-            const cheques = await response.json();
+            const cheques = await fetchJson("data/cheques.json");
             for (const cheque of cheques) {
                 await this.addCheque(cheque);
             }
@@ -94,11 +90,12 @@ class PaymentRepository {
     
     getCheque(chequeNo) {
         return db.collection(cheques)
-            .doc({ chequeNo: parseInt(chequeNo) })
-            .get();
+                 .doc({ chequeNo: parseInt(chequeNo) })
+                 .get();
     }
 
     async getChequesForReport({status, fromDate, toDate}) {
+        console.log(status, fromDate, toDate);
         let cheques;
         if (status)
             cheques = await this.getCheques(status);
@@ -116,11 +113,13 @@ class PaymentRepository {
             // Unfortunately the line below only return the 1st one 😒
             //return db.collection(cheques).doc({status: status}).get();
             // ToDo: in phase 2 all data querying/filtering must be done by DB
-            const cheques = await db.collection("cheques");
-            return cheques.filter(c => c.status = status);
+            const cheques = await db.collection("cheques").get();
+            console.log(cheques);
+            return cheques.filter(c => c.status === status);
         }
-        else
-            return db.collection("cheques").get();
+        else {
+            return await db.collection("cheques").get();
+        }
     }
 
     async getChequesCount() {
@@ -152,7 +151,7 @@ class PaymentRepository {
         let sum = 0;
         const cheques = await this.getCheques(status);
         if (cheques) {
-             sum = cheques.map(c => c.amount).reduce(sum, 0);
+             sum = cheques.map(c => c.amount).reduce(sumReducer, 0);
         }
         return sum;
     }

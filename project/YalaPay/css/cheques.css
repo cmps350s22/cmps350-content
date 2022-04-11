@@ -1,4 +1,4 @@
-.cheques-select {
+.cheques-list {
     width: 150%;
     display: flex;
     grid-gap: 0.25rem;
@@ -17,7 +17,7 @@
     grid-column: span 2;
 }
 
-.cheques-select p{
+.cheques-list p{
     text-transform: capitalize;
     font-size: 1.0rem;
     color: var(--heading);

@@ -1,18 +1,16 @@
-import paymentRepo from "./repository/payment-repository.js";
-import invoiceRepo from "./repository/invoice-repository.js";
-import {displayCurrentUser, getFooter, getHtml} from "./common.js";
+import paymentRepo from "./payment/payment-repository.js";
+import invoiceRepo from "./invoice/invoice-repository.js";
+import {displayCurrentUser, getFooter, fetchHtml} from "./common/common.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
     // Load and inject common html fragments (to avoid redundancy)
     const navBar = document.querySelector(".nav-bar");
-    navBar.innerHTML = await getHtml('nav-bar.html');
+    navBar.innerHTML = await fetchHtml('nav-bar.html');
 
     const footer = document.querySelector(".footer");
     footer.innerHTML = getFooter();
 
     displayCurrentUser();
-    await invoiceRepo.initInvoices();
-    await paymentRepo.initCheques();
     await displayInvoicesSummary();
     await displayChequesSummary();
 });
