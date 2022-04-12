@@ -51,6 +51,7 @@ class ChequeDepositRepository {
         return db.collection(chequeDeposits)
                  .doc({ id: depositId })
                  .delete();
+        // ToDo: Set the status of included cheques to Awaiting
     }
 }
 
