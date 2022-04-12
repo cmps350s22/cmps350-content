@@ -1,0 +1,208 @@
+:root {
+    --basaer-green: rgba(32, 106, 93, 0.9);
+    --basaer-orange: rgb(245, 134, 52);
+    --header-background-color: #ffffff;
+    --footer-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+    --light-grey: rgba(32, 106, 93, 0.15);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Cairo', sans-serif;
+}
+
+.qesm-anchor {
+    text-decoration: none;
+}
+
+.all-mahawer-container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row-reverse;
+    justify-content: center;
+    align-items: center;
+    height: fit-content;
+
+    padding-top: 20px;
+}
+
+#moqadema-card {
+    border: 1px solid;
+    width: 100%;
+    background-color: var(--light-grey);
+}
+
+#moqadema-title {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+
+#moqadema-range {
+    display: flex;
+    justify-content: center;
+}
+
+.mehwar-card {
+    background-color: var(--basaer-green);
+
+    margin: 10px 20px;
+    padding: 10px 20px;
+    border: 1px solid;
+    border-radius: 10px;
+
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;;
+}
+
+.mehwar-card:hover {
+    background-color: var(--basaer-orange);
+    border: var(--basaer-green) solid;
+    border-radius: 0;
+
+    transition: 1000ms ease;
+}
+
+.mehwar-card:nth-child(odd) {
+    background-color: var(--basaer-orange);
+    border: 1px solid;
+}
+
+.mehwar-card:nth-child(odd):hover {
+    background-color: var(--basaer-green);
+
+    border: var(--basaer-orange) solid;
+
+    transition: 1000ms ease;
+
+}
+
+.collapsed-mehwar-card {
+    background: white;
+    padding: 10px;
+    cursor: pointer;
+    position: relative;
+    border-radius: 10px;
+    border: 1px solid;
+}
+
+.collapsed-mehwar-card:hover {
+    transform: scale(1.01);
+    border-radius: 0;
+    transition: 300ms ease-in-out;
+}
+
+.collapsed-mehwar-card::after {
+    content: '+';
+    position: absolute;
+    right: 1%;
+    top: -7px;
+    font-size: 35px;
+}
+
+.collapsed-mehwar-title {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    border: 2px var(--basaer-green) solid;
+    border-radius: 20px;
+
+    padding: 7px;
+    width: fit-content;
+    margin: 10px auto;
+
+    font-size: 18px;
+}
+
+.collapsed-mehwar-counter {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.collapsed-mehwar-text {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+
+    padding: 5px;
+    line-height: 1.5em;
+}
+
+.collapsed-mehwar-range {
+    text-align: center;
+    color: var(--basaer-green);
+    font-weight: bold;
+}
+
+.card-clicked-mehawer::after {
+    content: "-";
+}
+
+.mehwar-aqsam {
+    overflow: hidden;
+    max-height: 0;
+    transition: 1300ms ease max-height;
+}
+
+.mehwar-aqsam {
+    display: flex;
+    flex-direction: row-reverse;
+    flex-wrap: wrap;
+
+    margin: 5px;
+}
+
+.qesm-header {
+    text-align: center;
+
+    background-color: var(--basaer-orange);
+    border-radius: 10px;
+    color: white;
+    padding: 5px;
+    margin: 5px;
+}
+
+.qesm-header:hover {
+    background-color: var(--basaer-green);
+    border: var(--basaer-orange) solid;
+    transition: 200ms ease;
+}
+
+.qesm-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    background-color: white;
+    border: 3px solid;
+
+    margin: 10px;
+    padding: 10px;
+    border-radius: 10px;
+
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.qesm-section:hover {
+    transform: scale(1.04);
+    transition: 200ms ease;
+
+    border-radius: 0px;
+}
+
+.qesm-text {
+    text-align: center;
+}
+
+.qesm-range {
+    text-align: center;
+    color: var(--basaer-green);
+    font-weight: bold;
+    margin: 5px;
+}
+
+

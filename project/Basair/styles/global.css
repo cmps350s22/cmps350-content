@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo&display=swap');
+
+:root {
+    --bottom-yellow-border: rgb(255, 204, 41);
+    --basaer-green: rgba(32, 106, 93, 0.9);
+    --basaer-orange: rgb(245, 134, 52);
+    --light-green: rgba(32, 106, 93, 0.78);
+    --lighter-green: rgba(59, 126, 114, 0.58);
+    --neon-green: #12b71f;
+    --dark-film: rgba(0, 0, 0, 0.18);
+
+    --button-shadow: rgba(100, 100, 111, 0.2) 0 7px 29px 0;
+
+    --header-shadow: 0 0 12px rgb(0 0 0 / 10%);
+    --header-background-color: #ffffff;
+
+    --header-max-height: 150px;
+    --header-min-height: 100px;
+    --header-part-height: 241px;
+    --nav-height: 3rem;
+
+    --header-vertical-padding: max(10px, 2%);
+    --text-paddings: 0.5rem 1rem;
+    --nav-sides-padding: max(3rem, 7%);
+    --header-sides-padding: calc(var(--nav-sides-padding) / 1.2);
+
+    --global-sides-padding: 5vw;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    font-family: 'Cairo', sans-serif;
+    height: 100%;
+    min-width: 25rem;
+}

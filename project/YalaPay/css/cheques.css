@@ -21,7 +21,7 @@
     text-transform: capitalize;
     font-size: 1.0rem;
     color: var(--heading);
-    padding: 7px;
+    padding: 2px;
 }
 
 .switch{

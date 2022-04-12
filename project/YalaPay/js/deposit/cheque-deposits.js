@@ -4,7 +4,7 @@ import lookupDataRepository from "../common/lookup-data-repository.js";
 import {addCommonUIFragments, formToObject} from "../common/common.js";
 
 let isEdit = false;
-let includedChequeNos = [];
+let depositCheques = [];
 
 document.addEventListener("DOMContentLoaded", async () => {
     // Load and inject common html fragments (to avoid redundancy)
@@ -13,9 +13,13 @@ document.addEventListener("DOMContentLoaded", async () => {
     await displayChequeDeposits();
     await fillBankAccountsDD();
     await fillDepositStatusDD();
-    await displayAwaitingCheques();
-    window.addToChequeNos = addToChequeNos;
-    window.fillReturnReasonsDD = fillReturnReasonsDD;
+    depositCheques = await paymentRepo.getCheques("Awaiting");
+    await displayDepositCheques(depositCheques);
+    window.onIncludeChequeChange = onIncludeChequeChange;
+    window.onReturnChequeChange = onReturnChequeChange;
+    window.onReturnReasonChange = onReturnReasonChange;
+
+   // window.fillReturnReasonsDD = fillReturnReasonsDD;
     window.deleteDeposit = deleteDeposit;
     window.updateDeposit = updateDeposit;
 
@@ -24,36 +28,22 @@ document.addEventListener("DOMContentLoaded", async () => {
     const searchForm = document.querySelector(".search-form");
     const statusDD = document.querySelector("#status");
 
-    popupForm.addEventListener("submit", addDeposit);
-    statusDD.addEventListener("change", displayReasonSelect);
+    popupForm.addEventListener("submit", onSubmitDeposit);
+    //statusDD.addEventListener("change", displayReasonSelect);
     searchForm.addEventListener("submit", searchDeposits);
 });
 
-async function displayAwaitingCheques() {
+async function displayDepositCheques(depositCheques) {
     const chequesList = document.querySelector(".cheques-list");
-    const cheques = await paymentRepo.getCheques("Awaiting");
-    console.log(cheques);
-    const chequeForms = cheques
-        .map(cheque => chequeToForm(cheque))
-        .join("");
-    chequesList.innerHTML = `${chequeForms}`;
-}
-
-async function displayDepositCheques(chequeNumbers) {
-    const chequesList = document.querySelector(".cheques-list");
-    const depositedCheques = await Promise.all( chequeNumbers.map(async chequeNo =>
-        await paymentRepo.getCheque(chequeNo)
-    ));
-    includedChequeNos = chequeNumbers;
-    console.log("depositedCheques", depositedCheques);
-
-    const chequeForms = depositedCheques
+    //console.log("depositCheques", depositCheques);
+    const chequeForms = depositCheques
                             .map(c => chequeToForm(c, true))
                             .join("");
     chequesList.innerHTML = `${chequeForms}`;
+    await fillReturnReasonDDs();
 }
 
-function chequeToForm(cheque, included) {
+function chequeToForm(cheque) {
     return `
     <div class="cheque-card">
             <p for="chequeNo">Cheque No: ${cheque.chequeNo}</p>
@@ -61,22 +51,50 @@ function chequeToForm(cheque, included) {
             <p>Status : ${cheque.status}</p>
             <p>Due Date : ${cheque.dueDate} <span class="daydiff">(${dateDifference(cheque.dueDate)})</span></p>
             <p>Include? 
-                <input type="checkbox" class="cbox" checked=${included ? true : false}
-                    onclick="addToChequeNos(this,'${cheque.chequeNo}')">
+                <input type="checkbox" class="cbox" 
+                    checked=${cheque.status !== "Awaiting" ? true : false}
+                    onclick="onIncludeChequeChange(this, ${cheque.chequeNo})" >
             </p>
-            <div class="returns"></div>
+            <span class="return-cheque-panel">            
+                <p>Returned?
+                    <input class="cbox" type="checkbox"
+                        checked=${cheque.status === "Returned" ? true : false}
+                        onclick="onReturnChequeChange(this, ${cheque.chequeNo})"> 
+                </p>
+                <select class="returnReasonDD"
+                    value="${cheque.returnReason}"
+                    onchange="onReturnReasonChange(this, ${cheque.chequeNo})" 
+                >          
+                </select>
+            </span>
     </div>`;
 }
 
-function addToChequeNos(cb, chequeNo) {
-    if (cb.checked === true) {
-        includedChequeNos.push(chequeNo);
-    } else if (cb.checked === false) {
-        const index = includedChequeNos.indexOf(chequeNo);
-        if (index > -1) {
-            includedChequeNos.splice(index, 1);
-        }
+function onIncludeChequeChange(cb, chequeNo) {
+    const index = depositCheques.indexOf(c => c.chequeNo == chequeNo);
+    const status = cb.checked === true ? "Deposited" : "Awaiting";
+    depositCheques[index].status = status;
+    depositCheques[index].hasChanged = true;
+}
+
+function onReturnChequeChange(cb, chequeNo) {
+    const index = depositCheques.indexOf(c => c.chequeNo == chequeNo);
+    console.log("index", index);
+    const status = cb.checked === true ? "Returned" : "Cashed";
+    depositCheques[index].status = status;
+    if (status !== "Returned") {
+        cb.nextSibling.style.display = "none";
+        delete depositCheques[index].returnReason;
+    } else {
+        cb.nextSibling.style.display = "";
     }
+    depositCheques[index].hasChanged = true;
+}
+
+function onReturnReasonChange(dd, chequeNo) {
+    const index = depositCheques.indexOf(c => c.chequeNo == chequeNo);
+    depositCheques[index].returnReason = dd.value;
+    depositCheques[index].hasChanged = true;
 }
 
 async function displayChequeDeposits() {
@@ -86,8 +104,7 @@ async function displayChequeDeposits() {
 
 function depositsToHtmlTable(deposits) {
     const mainContent = document.querySelector(".main-content");
-    
-    const depositRows = 
+    const depositRows =
         deposits.map(deposit => depositToHtmlRow(deposit))
                 .join(" ");
     
@@ -140,7 +157,7 @@ async function fillDepositStatusDD() {
     statusDD.innerHTML = statusOptions;
 }
 
-function displayReasonSelect() {
+/*function displayReasonSelect() {
     const statusDD = document.querySelector("#status");
     const returnArea = document.querySelectorAll(".returns");
     if (statusDD.value == "Cashed with Returns") {
@@ -155,9 +172,21 @@ function displayReasonSelect() {
             area.innerHTML = ``;
         });
     }
+}*/
+
+async function fillReturnReasonDDs() {
+    const data = await lookupDataRepository.getLookupData("returnReasons");
+    const returnReasonDDs = document.querySelectorAll(".returnReasonDD");
+    for (const reasonsDD of returnReasonDDs) {
+        const reasonOptions = data.returnReasons.map(reason =>
+            `<option value="${reason}">${reason}</option>`
+        );
+        reasonsDD.innerHTML = reasonOptions.join(" ");
+    }
 }
 
-async function fillReturnReasonsDD(cb) {
+/*
+async function fillReturnReasonsDD2(cb) {
     if (cb.checked) {
         const reasonDiv = document.createElement("div");
         reasonDiv.className = "reasons";
@@ -174,8 +203,9 @@ async function fillReturnReasonsDD(cb) {
         cb.nextElementSibling.remove();
     }
 }
+*/
 
-async function addDeposit(e) {
+async function onSubmitDeposit(e) {
     e.preventDefault();
     const formData = formToObject(e.target);
     console.log(formData);
@@ -184,17 +214,15 @@ async function addDeposit(e) {
         depositDate: formData.depositDate,
         bankAccountNo: formData.bankAccountNo,
         status: formData.status,
-        chequeNos: includedChequeNos,
+        chequeNos: depositCheques.filter(c => c.status != "Awaiting").map(c => c.chequeNo)
     };
     console.log("addDeposit", JSON.stringify(deposit));
     
-    for (const chequeNo of includedChequeNos) {
-        const cheque = await paymentRepo.getCheque(parseInt(chequeNo));
-        if(formData.status === "Cashed with Returns")
-            cheque.status = "Returned";
-        else
-            cheque.status = formData.status;
-        await paymentRepo.updateCheque(cheque, parseInt(chequeNo));
+    for (const cheque of depositCheques) {
+        if (cheque.hasChanged) {
+            delete cheque.hasChanged;
+            await paymentRepo.updateCheque(cheque, parseInt(cheque));
+        }
     }
     if (isEdit) {
         await chequeDepositsRepo.updateDeposit(deposit);
@@ -202,7 +230,7 @@ async function addDeposit(e) {
     } else {
         await chequeDepositsRepo.addDeposit(deposit);
     }
-    includedChequeNos = [];
+    depositCheques = [];
     await displayChequeDeposits();
     e.target.reset();
 }
@@ -217,11 +245,15 @@ async function deleteDeposit(depositId) {
 
 async function updateDeposit(depositId) {
     const deposit = await chequeDepositsRepo.getDeposit(depositId);
-    await displayDepositCheques(deposit.chequeNos);
     document.querySelector("#id").value = deposit.id;
     document.querySelector("#depositDate").value = deposit.depositDate;
     document.querySelector("#bankAccountNo").value = deposit.bankAccountNo;
     document.querySelector("#status").value = deposit.status;
+
+    depositCheques = await Promise.all( deposit.chequeNos.map(async chequeNo =>
+        await paymentRepo.getCheque(chequeNo)
+    ));
+    await displayDepositCheques(depositCheques);
     isEdit = true;
 }
 

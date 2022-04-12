@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css2?family=Amiri&display=swap');
+
+:root {
+    --overall-margin: 2rem;
+    --box-border: 1px solid black;
+    --box-padding: 0.5rem;
+    --basaer-green: rgba(32, 106, 93, 0.9);
+    --basaer-orange: rgb(245, 134, 52);
+    --light-green: rgba(32, 106, 93, 0.78);
+    --lighter-green: rgba(59, 126, 114, 0.58);
+    --neon-green: #12b71f;
+}
+
+/*----------------------------------------------------Header----------------------------------------------------------*/
+
+.header-viewer {
+    margin: 3rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.arrow-viewer {
+    color: var(--lighter-green);
+    transition: 0.2s ease-in-out;
+    font-size: 3rem;
+}
+
+.arrow-viewer:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+    color: var(--basaer-green);
+}
+
+.head-title-viewer {
+    color: #031a4f;
+    text-align: center;
+    font-family: Amiri, serif;
+    margin-bottom: 0.15rem;
+}
+
+/*--------------------------------------------------Main--------------------------------------------------------------*/
+
+.main-viewer {
+    overflow-x: auto;
+    margin: 0rem var(--overall-margin);
+    border-spacing: 5px 5px;
+    margin-bottom: 1rem;
+}
+
+.main-table-viewer {
+    border-collapse: collapse;
+    border-spacing: 5px 5px;
+    border: none;
+    width: 100%;
+}
+
+.main-table-viewer td {
+    padding: 1rem 1rem;
+}
+
+tr {
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: var(--basaer-green);
+}
+
+tr:nth-child(odd) {
+    background: rgba(32, 106, 93, 0.8);
+}
+
+.summary-text-qesm {
+    width: 50%;
+    border-right: 1px solid white;
+    padding: 1rem 0.5rem;
+}
+
+.qesm-summary-title {
+    padding: var(--box-padding);
+    text-align: right;
+    font-family: Amiri, serif;
+
+}
+
+.sura-name-header {
+    text-align: center;
+}
+
+.aya-nav {
+    margin-top: 0.5rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    list-style-type: none;
+    border-top: 1px solid white;
+
+}
+
+.aya-nav-li {
+    border-radius: 25px;
+    padding: 0.1rem 1rem;
+    margin-top: 0.5rem;
+    transition: 0.5s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.aya-nav-li:hover {
+    background-color: var(--lighter-green);
+    color: #12b71f;
+}
+
+.aya-nav-a {
+    text-align: center;
+    color: lightgrey;
+    text-decoration: none;
+    font-family: Amiri, serif;
+}
+
+.aya {
+    padding: 1rem;
+    text-align: right;
+    width: 50%;
+    line-height: 2.2rem;
+    font-family: Amiri, serif;
+}
+
+h2 {
+    margin-bottom: var(--overall-margin);
+    font-weight: bold;
+}

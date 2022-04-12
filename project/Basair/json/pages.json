@@ -1,0 +1,4232 @@
+[
+  {
+    "index": 1,
+    "startingSura": 1,
+    "startingAya": 1,
+    "endingSura": 1,
+    "endingAya": 7
+  },
+  {
+    "index": 2,
+    "startingSura": 2,
+    "startingAya": 1,
+    "endingSura": 2,
+    "endingAya": 5
+  },
+  {
+    "index": 3,
+    "startingSura": 2,
+    "startingAya": 6,
+    "endingSura": 2,
+    "endingAya": 16
+  },
+  {
+    "index": 4,
+    "startingSura": 2,
+    "startingAya": 17,
+    "endingSura": 2,
+    "endingAya": 24
+  },
+  {
+    "index": 5,
+    "startingSura": 2,
+    "startingAya": 25,
+    "endingSura": 2,
+    "endingAya": 29
+  },
+  {
+    "index": 6,
+    "startingSura": 2,
+    "startingAya": 30,
+    "endingSura": 2,
+    "endingAya": 37
+  },
+  {
+    "index": 7,
+    "startingSura": 2,
+    "startingAya": 38,
+    "endingSura": 2,
+    "endingAya": 48
+  },
+  {
+    "index": 8,
+    "startingSura": 2,
+    "startingAya": 49,
+    "endingSura": 2,
+    "endingAya": 57
+  },
+  {
+    "index": 9,
+    "startingSura": 2,
+    "startingAya": 58,
+    "endingSura": 2,
+    "endingAya": 61
+  },
+  {
+    "index": 10,
+    "startingSura": 2,
+    "startingAya": 62,
+    "endingSura": 2,
+    "endingAya": 69
+  },
+  {
+    "index": 11,
+    "startingSura": 2,
+    "startingAya": 70,
+    "endingSura": 2,
+    "endingAya": 76
+  },
+  {
+    "index": 12,
+    "startingSura": 2,
+    "startingAya": 77,
+    "endingSura": 2,
+    "endingAya": 83
+  },
+  {
+    "index": 13,
+    "startingSura": 2,
+    "startingAya": 84,
+    "endingSura": 2,
+    "endingAya": 88
+  },
+  {
+    "index": 14,
+    "startingSura": 2,
+    "startingAya": 89,
+    "endingSura": 2,
+    "endingAya": 93
+  },
+  {
+    "index": 15,
+    "startingSura": 2,
+    "startingAya": 94,
+    "endingSura": 2,
+    "endingAya": 101
+  },
+  {
+    "index": 16,
+    "startingSura": 2,
+    "startingAya": 102,
+    "endingSura": 2,
+    "endingAya": 105
+  },
+  {
+    "index": 17,
+    "startingSura": 2,
+    "startingAya": 106,
+    "endingSura": 2,
+    "endingAya": 112
+  },
+  {
+    "index": 18,
+    "startingSura": 2,
+    "startingAya": 113,
+    "endingSura": 2,
+    "endingAya": 119
+  },
+  {
+    "index": 19,
+    "startingSura": 2,
+    "startingAya": 120,
+    "endingSura": 2,
+    "endingAya": 126
+  },
+  {
+    "index": 20,
+    "startingSura": 2,
+    "startingAya": 127,
+    "endingSura": 2,
+    "endingAya": 134
+  },
+  {
+    "index": 21,
+    "startingSura": 2,
+    "startingAya": 135,
+    "endingSura": 2,
+    "endingAya": 141
+  },
+  {
+    "index": 22,
+    "startingSura": 2,
+    "startingAya": 142,
+    "endingSura": 2,
+    "endingAya": 145
+  },
+  {
+    "index": 23,
+    "startingSura": 2,
+    "startingAya": 146,
+    "endingSura": 2,
+    "endingAya": 153
+  },
+  {
+    "index": 24,
+    "startingSura": 2,
+    "startingAya": 154,
+    "endingSura": 2,
+    "endingAya": 163
+  },
+  {
+    "index": 25,
+    "startingSura": 2,
+    "startingAya": 164,
+    "endingSura": 2,
+    "endingAya": 169
+  },
+  {
+    "index": 26,
+    "startingSura": 2,
+    "startingAya": 170,
+    "endingSura": 2,
+    "endingAya": 176
+  },
+  {
+    "index": 27,
+    "startingSura": 2,
+    "startingAya": 177,
+    "endingSura": 2,
+    "endingAya": 181
+  },
+  {
+    "index": 28,
+    "startingSura": 2,
+    "startingAya": 182,
+    "endingSura": 2,
+    "endingAya": 186
+  },
+  {
+    "index": 29,
+    "startingSura": 2,
+    "startingAya": 187,
+    "endingSura": 2,
+    "endingAya": 190
+  },
+  {
+    "index": 30,
+    "startingSura": 2,
+    "startingAya": 191,
+    "endingSura": 2,
+    "endingAya": 196
+  },
+  {
+    "index": 31,
+    "startingSura": 2,
+    "startingAya": 197,
+    "endingSura": 2,
+    "endingAya": 202
+  },
+  {
+    "index": 32,
+    "startingSura": 2,
+    "startingAya": 203,
+    "endingSura": 2,
+    "endingAya": 210
+  },
+  {
+    "index": 33,
+    "startingSura": 2,
+    "startingAya": 211,
+    "endingSura": 2,
+    "endingAya": 215
+  },
+  {
+    "index": 34,
+    "startingSura": 2,
+    "startingAya": 216,
+    "endingSura": 2,
+    "endingAya": 219
+  },
+  {
+    "index": 35,
+    "startingSura": 2,
+    "startingAya": 220,
+    "endingSura": 2,
+    "endingAya": 224
+  },
+  {
+    "index": 36,
+    "startingSura": 2,
+    "startingAya": 225,
+    "endingSura": 2,
+    "endingAya": 230
+  },
+  {
+    "index": 37,
+    "startingSura": 2,
+    "startingAya": 231,
+    "endingSura": 2,
+    "endingAya": 233
+  },
+  {
+    "index": 38,
+    "startingSura": 2,
+    "startingAya": 234,
+    "endingSura": 2,
+    "endingAya": 237
+  },
+  {
+    "index": 39,
+    "startingSura": 2,
+    "startingAya": 238,
+    "endingSura": 2,
+    "endingAya": 245
+  },
+  {
+    "index": 40,
+    "startingSura": 2,
+    "startingAya": 246,
+    "endingSura": 2,
+    "endingAya": 248
+  },
+  {
+    "index": 41,
+    "startingSura": 2,
+    "startingAya": 249,
+    "endingSura": 2,
+    "endingAya": 252
+  },
+  {
+    "index": 42,
+    "startingSura": 2,
+    "startingAya": 253,
+    "endingSura": 2,
+    "endingAya": 256
+  },
+  {
+    "index": 43,
+    "startingSura": 2,
+    "startingAya": 257,
+    "endingSura": 2,
+    "endingAya": 259
+  },
+  {
+    "index": 44,
+    "startingSura": 2,
+    "startingAya": 260,
+    "endingSura": 2,
+    "endingAya": 264
+  },
+  {
+    "index": 45,
+    "startingSura": 2,
+    "startingAya": 265,
+    "endingSura": 2,
+    "endingAya": 269
+  },
+  {
+    "index": 46,
+    "startingSura": 2,
+    "startingAya": 270,
+    "endingSura": 2,
+    "endingAya": 274
+  },
+  {
+    "index": 47,
+    "startingSura": 2,
+    "startingAya": 275,
+    "endingSura": 2,
+    "endingAya": 281
+  },
+  {
+    "index": 48,
+    "startingSura": 2,
+    "startingAya": 282,
+    "endingSura": 2,
+    "endingAya": 282
+  },
+  {
+    "index": 49,
+    "startingSura": 2,
+    "startingAya": 283,
+    "endingSura": 2,
+    "endingAya": 286
+  },
+  {
+    "index": 50,
+    "startingSura": 3,
+    "startingAya": 1,
+    "endingSura": 3,
+    "endingAya": 9
+  },
+  {
+    "index": 51,
+    "startingSura": 3,
+    "startingAya": 10,
+    "endingSura": 3,
+    "endingAya": 15
+  },
+  {
+    "index": 52,
+    "startingSura": 3,
+    "startingAya": 16,
+    "endingSura": 3,
+    "endingAya": 22
+  },
+  {
+    "index": 53,
+    "startingSura": 3,
+    "startingAya": 23,
+    "endingSura": 3,
+    "endingAya": 29
+  },
+  {
+    "index": 54,
+    "startingSura": 3,
+    "startingAya": 30,
+    "endingSura": 3,
+    "endingAya": 37
+  },
+  {
+    "index": 55,
+    "startingSura": 3,
+    "startingAya": 38,
+    "endingSura": 3,
+    "endingAya": 45
+  },
+  {
+    "index": 56,
+    "startingSura": 3,
+    "startingAya": 46,
+    "endingSura": 3,
+    "endingAya": 52
+  },
+  {
+    "index": 57,
+    "startingSura": 3,
+    "startingAya": 53,
+    "endingSura": 3,
+    "endingAya": 61
+  },
+  {
+    "index": 58,
+    "startingSura": 3,
+    "startingAya": 62,
+    "endingSura": 3,
+    "endingAya": 70
+  },
+  {
+    "index": 59,
+    "startingSura": 3,
+    "startingAya": 71,
+    "endingSura": 3,
+    "endingAya": 77
+  },
+  {
+    "index": 60,
+    "startingSura": 3,
+    "startingAya": 78,
+    "endingSura": 3,
+    "endingAya": 83
+  },
+  {
+    "index": 61,
+    "startingSura": 3,
+    "startingAya": 84,
+    "endingSura": 3,
+    "endingAya": 91
+  },
+  {
+    "index": 62,
+    "startingSura": 3,
+    "startingAya": 92,
+    "endingSura": 3,
+    "endingAya": 100
+  },
+  {
+    "index": 63,
+    "startingSura": 3,
+    "startingAya": 101,
+    "endingSura": 3,
+    "endingAya": 108
+  },
+  {
+    "index": 64,
+    "startingSura": 3,
+    "startingAya": 109,
+    "endingSura": 3,
+    "endingAya": 115
+  },
+  {
+    "index": 65,
+    "startingSura": 3,
+    "startingAya": 116,
+    "endingSura": 3,
+    "endingAya": 121
+  },
+  {
+    "index": 66,
+    "startingSura": 3,
+    "startingAya": 122,
+    "endingSura": 3,
+    "endingAya": 132
+  },
+  {
+    "index": 67,
+    "startingSura": 3,
+    "startingAya": 133,
+    "endingSura": 3,
+    "endingAya": 140
+  },
+  {
+    "index": 68,
+    "startingSura": 3,
+    "startingAya": 141,
+    "endingSura": 3,
+    "endingAya": 148
+  },
+  {
+    "index": 69,
+    "startingSura": 3,
+    "startingAya": 149,
+    "endingSura": 3,
+    "endingAya": 153
+  },
+  {
+    "index": 70,
+    "startingSura": 3,
+    "startingAya": 154,
+    "endingSura": 3,
+    "endingAya": 157
+  },
+  {
+    "index": 71,
+    "startingSura": 3,
+    "startingAya": 158,
+    "endingSura": 3,
+    "endingAya": 165
+  },
+  {
+    "index": 72,
+    "startingSura": 3,
+    "startingAya": 166,
+    "endingSura": 3,
+    "endingAya": 173
+  },
+  {
+    "index": 73,
+    "startingSura": 3,
+    "startingAya": 174,
+    "endingSura": 3,
+    "endingAya": 180
+  },
+  {
+    "index": 74,
+    "startingSura": 3,
+    "startingAya": 181,
+    "endingSura": 3,
+    "endingAya": 186
+  },
+  {
+    "index": 75,
+    "startingSura": 3,
+    "startingAya": 187,
+    "endingSura": 3,
+    "endingAya": 194
+  },
+  {
+    "index": 76,
+    "startingSura": 3,
+    "startingAya": 195,
+    "endingSura": 3,
+    "endingAya": 200
+  },
+  {
+    "index": 77,
+    "startingSura": 4,
+    "startingAya": 1,
+    "endingSura": 4,
+    "endingAya": 6
+  },
+  {
+    "index": 78,
+    "startingSura": 4,
+    "startingAya": 7,
+    "endingSura": 4,
+    "endingAya": 11
+  },
+  {
+    "index": 79,
+    "startingSura": 4,
+    "startingAya": 12,
+    "endingSura": 4,
+    "endingAya": 14
+  },
+  {
+    "index": 80,
+    "startingSura": 4,
+    "startingAya": 15,
+    "endingSura": 4,
+    "endingAya": 19
+  },
+  {
+    "index": 81,
+    "startingSura": 4,
+    "startingAya": 20,
+    "endingSura": 4,
+    "endingAya": 23
+  },
+  {
+    "index": 82,
+    "startingSura": 4,
+    "startingAya": 24,
+    "endingSura": 4,
+    "endingAya": 26
+  },
+  {
+    "index": 83,
+    "startingSura": 4,
+    "startingAya": 27,
+    "endingSura": 4,
+    "endingAya": 33
+  },
+  {
+    "index": 84,
+    "startingSura": 4,
+    "startingAya": 34,
+    "endingSura": 4,
+    "endingAya": 37
+  },
+  {
+    "index": 85,
+    "startingSura": 4,
+    "startingAya": 38,
+    "endingSura": 4,
+    "endingAya": 44
+  },
+  {
+    "index": 86,
+    "startingSura": 4,
+    "startingAya": 45,
+    "endingSura": 4,
+    "endingAya": 51
+  },
+  {
+    "index": 87,
+    "startingSura": 4,
+    "startingAya": 52,
+    "endingSura": 4,
+    "endingAya": 59
+  },
+  {
+    "index": 88,
+    "startingSura": 4,
+    "startingAya": 60,
+    "endingSura": 4,
+    "endingAya": 65
+  },
+  {
+    "index": 89,
+    "startingSura": 4,
+    "startingAya": 66,
+    "endingSura": 4,
+    "endingAya": 74
+  },
+  {
+    "index": 90,
+    "startingSura": 4,
+    "startingAya": 75,
+    "endingSura": 4,
+    "endingAya": 79
+  },
+  {
+    "index": 91,
+    "startingSura": 4,
+    "startingAya": 80,
+    "endingSura": 4,
+    "endingAya": 86
+  },
+  {
+    "index": 92,
+    "startingSura": 4,
+    "startingAya": 87,
+    "endingSura": 4,
+    "endingAya": 91
+  },
+  {
+    "index": 93,
+    "startingSura": 4,
+    "startingAya": 92,
+    "endingSura": 4,
+    "endingAya": 94
+  },
+  {
+    "index": 94,
+    "startingSura": 4,
+    "startingAya": 95,
+    "endingSura": 4,
+    "endingAya": 101
+  },
+  {
+    "index": 95,
+    "startingSura": 4,
+    "startingAya": 102,
+    "endingSura": 4,
+    "endingAya": 105
+  },
+  {
+    "index": 96,
+    "startingSura": 4,
+    "startingAya": 106,
+    "endingSura": 4,
+    "endingAya": 113
+  },
+  {
+    "index": 97,
+    "startingSura": 4,
+    "startingAya": 114,
+    "endingSura": 4,
+    "endingAya": 121
+  },
+  {
+    "index": 98,
+    "startingSura": 4,
+    "startingAya": 122,
+    "endingSura": 4,
+    "endingAya": 127
+  },
+  {
+    "index": 99,
+    "startingSura": 4,
+    "startingAya": 128,
+    "endingSura": 4,
+    "endingAya": 134
+  },
+  {
+    "index": 100,
+    "startingSura": 4,
+    "startingAya": 135,
+    "endingSura": 4,
+    "endingAya": 140
+  },
+  {
+    "index": 101,
+    "startingSura": 4,
+    "startingAya": 141,
+    "endingSura": 4,
+    "endingAya": 147
+  },
+  {
+    "index": 102,
+    "startingSura": 4,
+    "startingAya": 148,
+    "endingSura": 4,
+    "endingAya": 154
+  },
+  {
+    "index": 103,
+    "startingSura": 4,
+    "startingAya": 155,
+    "endingSura": 4,
+    "endingAya": 162
+  },
+  {
+    "index": 104,
+    "startingSura": 4,
+    "startingAya": 163,
+    "endingSura": 4,
+    "endingAya": 170
+  },
+  {
+    "index": 105,
+    "startingSura": 4,
+    "startingAya": 171,
+    "endingSura": 4,
+    "endingAya": 175
+  },
+  {
+    "index": 106,
+    "startingSura": 4,
+    "startingAya": 176,
+    "endingSura": 5,
+    "endingAya": 2
+  },
+  {
+    "index": 107,
+    "startingSura": 5,
+    "startingAya": 3,
+    "endingSura": 5,
+    "endingAya": 5
+  },
+  {
+    "index": 108,
+    "startingSura": 5,
+    "startingAya": 6,
+    "endingSura": 5,
+    "endingAya": 9
+  },
+  {
+    "index": 109,
+    "startingSura": 5,
+    "startingAya": 10,
+    "endingSura": 5,
+    "endingAya": 13
+  },
+  {
+    "index": 110,
+    "startingSura": 5,
+    "startingAya": 14,
+    "endingSura": 5,
+    "endingAya": 17
+  },
+  {
+    "index": 111,
+    "startingSura": 5,
+    "startingAya": 18,
+    "endingSura": 5,
+    "endingAya": 23
+  },
+  {
+    "index": 112,
+    "startingSura": 5,
+    "startingAya": 24,
+    "endingSura": 5,
+    "endingAya": 31
+  },
+  {
+    "index": 113,
+    "startingSura": 5,
+    "startingAya": 32,
+    "endingSura": 5,
+    "endingAya": 36
+  },
+  {
+    "index": 114,
+    "startingSura": 5,
+    "startingAya": 37,
+    "endingSura": 5,
+    "endingAya": 41
+  },
+  {
+    "index": 115,
+    "startingSura": 5,
+    "startingAya": 42,
+    "endingSura": 5,
+    "endingAya": 45
+  },
+  {
+    "index": 116,
+    "startingSura": 5,
+    "startingAya": 46,
+    "endingSura": 5,
+    "endingAya": 50
+  },
+  {
+    "index": 117,
+    "startingSura": 5,
+    "startingAya": 51,
+    "endingSura": 5,
+    "endingAya": 57
+  },
+  {
+    "index": 118,
+    "startingSura": 5,
+    "startingAya": 58,
+    "endingSura": 5,
+    "endingAya": 64
+  },
+  {
+    "index": 119,
+    "startingSura": 5,
+    "startingAya": 65,
+    "endingSura": 5,
+    "endingAya": 70
+  },
+  {
+    "index": 120,
+    "startingSura": 5,
+    "startingAya": 71,
+    "endingSura": 5,
+    "endingAya": 76
+  },
+  {
+    "index": 121,
+    "startingSura": 5,
+    "startingAya": 77,
+    "endingSura": 5,
+    "endingAya": 82
+  },
+  {
+    "index": 122,
+    "startingSura": 5,
+    "startingAya": 83,
+    "endingSura": 5,
+    "endingAya": 89
+  },
+  {
+    "index": 123,
+    "startingSura": 5,
+    "startingAya": 90,
+    "endingSura": 5,
+    "endingAya": 95
+  },
+  {
+    "index": 124,
+    "startingSura": 5,
+    "startingAya": 96,
+    "endingSura": 5,
+    "endingAya": 103
+  },
+  {
+    "index": 125,
+    "startingSura": 5,
+    "startingAya": 104,
+    "endingSura": 5,
+    "endingAya": 108
+  },
+  {
+    "index": 126,
+    "startingSura": 5,
+    "startingAya": 109,
+    "endingSura": 5,
+    "endingAya": 113
+  },
+  {
+    "index": 127,
+    "startingSura": 5,
+    "startingAya": 114,
+    "endingSura": 5,
+    "endingAya": 120
+  },
+  {
+    "index": 128,
+    "startingSura": 6,
+    "startingAya": 1,
+    "endingSura": 6,
+    "endingAya": 8
+  },
+  {
+    "index": 129,
+    "startingSura": 6,
+    "startingAya": 9,
+    "endingSura": 6,
+    "endingAya": 18
+  },
+  {
+    "index": 130,
+    "startingSura": 6,
+    "startingAya": 19,
+    "endingSura": 6,
+    "endingAya": 27
+  },
+  {
+    "index": 131,
+    "startingSura": 6,
+    "startingAya": 28,
+    "endingSura": 6,
+    "endingAya": 35
+  },
+  {
+    "index": 132,
+    "startingSura": 6,
+    "startingAya": 36,
+    "endingSura": 6,
+    "endingAya": 44
+  },
+  {
+    "index": 133,
+    "startingSura": 6,
+    "startingAya": 45,
+    "endingSura": 6,
+    "endingAya": 52
+  },
+  {
+    "index": 134,
+    "startingSura": 6,
+    "startingAya": 53,
+    "endingSura": 6,
+    "endingAya": 59
+  },
+  {
+    "index": 135,
+    "startingSura": 6,
+    "startingAya": 60,
+    "endingSura": 6,
+    "endingAya": 68
+  },
+  {
+    "index": 136,
+    "startingSura": 6,
+    "startingAya": 69,
+    "endingSura": 6,
+    "endingAya": 73
+  },
+  {
+    "index": 137,
+    "startingSura": 6,
+    "startingAya": 74,
+    "endingSura": 6,
+    "endingAya": 81
+  },
+  {
+    "index": 138,
+    "startingSura": 6,
+    "startingAya": 82,
+    "endingSura": 6,
+    "endingAya": 90
+  },
+  {
+    "index": 139,
+    "startingSura": 6,
+    "startingAya": 91,
+    "endingSura": 6,
+    "endingAya": 94
+  },
+  {
+    "index": 140,
+    "startingSura": 6,
+    "startingAya": 95,
+    "endingSura": 6,
+    "endingAya": 101
+  },
+  {
+    "index": 141,
+    "startingSura": 6,
+    "startingAya": 102,
+    "endingSura": 6,
+    "endingAya": 110
+  },
+  {
+    "index": 142,
+    "startingSura": 6,
+    "startingAya": 111,
+    "endingSura": 6,
+    "endingAya": 118
+  },
+  {
+    "index": 143,
+    "startingSura": 6,
+    "startingAya": 119,
+    "endingSura": 6,
+    "endingAya": 124
+  },
+  {
+    "index": 144,
+    "startingSura": 6,
+    "startingAya": 125,
+    "endingSura": 6,
+    "endingAya": 131
+  },
+  {
+    "index": 145,
+    "startingSura": 6,
+    "startingAya": 132,
+    "endingSura": 6,
+    "endingAya": 137
+  },
+  {
+    "index": 146,
+    "startingSura": 6,
+    "startingAya": 138,
+    "endingSura": 6,
+    "endingAya": 142
+  },
+  {
+    "index": 147,
+    "startingSura": 6,
+    "startingAya": 143,
+    "endingSura": 6,
+    "endingAya": 146
+  },
+  {
+    "index": 148,
+    "startingSura": 6,
+    "startingAya": 147,
+    "endingSura": 6,
+    "endingAya": 151
+  },
+  {
+    "index": 149,
+    "startingSura": 6,
+    "startingAya": 152,
+    "endingSura": 6,
+    "endingAya": 157
+  },
+  {
+    "index": 150,
+    "startingSura": 6,
+    "startingAya": 158,
+    "endingSura": 6,
+    "endingAya": 165
+  },
+  {
+    "index": 151,
+    "startingSura": 7,
+    "startingAya": 1,
+    "endingSura": 7,
+    "endingAya": 11
+  },
+  {
+    "index": 152,
+    "startingSura": 7,
+    "startingAya": 12,
+    "endingSura": 7,
+    "endingAya": 22
+  },
+  {
+    "index": 153,
+    "startingSura": 7,
+    "startingAya": 23,
+    "endingSura": 7,
+    "endingAya": 30
+  },
+  {
+    "index": 154,
+    "startingSura": 7,
+    "startingAya": 31,
+    "endingSura": 7,
+    "endingAya": 37
+  },
+  {
+    "index": 155,
+    "startingSura": 7,
+    "startingAya": 38,
+    "endingSura": 7,
+    "endingAya": 43
+  },
+  {
+    "index": 156,
+    "startingSura": 7,
+    "startingAya": 44,
+    "endingSura": 7,
+    "endingAya": 51
+  },
+  {
+    "index": 157,
+    "startingSura": 7,
+    "startingAya": 52,
+    "endingSura": 7,
+    "endingAya": 57
+  },
+  {
+    "index": 158,
+    "startingSura": 7,
+    "startingAya": 58,
+    "endingSura": 7,
+    "endingAya": 67
+  },
+  {
+    "index": 159,
+    "startingSura": 7,
+    "startingAya": 68,
+    "endingSura": 7,
+    "endingAya": 73
+  },
+  {
+    "index": 160,
+    "startingSura": 7,
+    "startingAya": 74,
+    "endingSura": 7,
+    "endingAya": 81
+  },
+  {
+    "index": 161,
+    "startingSura": 7,
+    "startingAya": 82,
+    "endingSura": 7,
+    "endingAya": 87
+  },
+  {
+    "index": 162,
+    "startingSura": 7,
+    "startingAya": 88,
+    "endingSura": 7,
+    "endingAya": 95
+  },
+  {
+    "index": 163,
+    "startingSura": 7,
+    "startingAya": 96,
+    "endingSura": 7,
+    "endingAya": 104
+  },
+  {
+    "index": 164,
+    "startingSura": 7,
+    "startingAya": 105,
+    "endingSura": 7,
+    "endingAya": 120
+  },
+  {
+    "index": 165,
+    "startingSura": 7,
+    "startingAya": 121,
+    "endingSura": 7,
+    "endingAya": 130
+  },
+  {
+    "index": 166,
+    "startingSura": 7,
+    "startingAya": 131,
+    "endingSura": 7,
+    "endingAya": 137
+  },
+  {
+    "index": 167,
+    "startingSura": 7,
+    "startingAya": 138,
+    "endingSura": 7,
+    "endingAya": 143
+  },
+  {
+    "index": 168,
+    "startingSura": 7,
+    "startingAya": 144,
+    "endingSura": 7,
+    "endingAya": 149
+  },
+  {
+    "index": 169,
+    "startingSura": 7,
+    "startingAya": 150,
+    "endingSura": 7,
+    "endingAya": 155
+  },
+  {
+    "index": 170,
+    "startingSura": 7,
+    "startingAya": 156,
+    "endingSura": 7,
+    "endingAya": 159
+  },
+  {
+    "index": 171,
+    "startingSura": 7,
+    "startingAya": 160,
+    "endingSura": 7,
+    "endingAya": 163
+  },
+  {
+    "index": 172,
+    "startingSura": 7,
+    "startingAya": 164,
+    "endingSura": 7,
+    "endingAya": 170
+  },
+  {
+    "index": 173,
+    "startingSura": 7,
+    "startingAya": 171,
+    "endingSura": 7,
+    "endingAya": 178
+  },
+  {
+    "index": 174,
+    "startingSura": 7,
+    "startingAya": 179,
+    "endingSura": 7,
+    "endingAya": 187
+  },
+  {
+    "index": 175,
+    "startingSura": 7,
+    "startingAya": 188,
+    "endingSura": 7,
+    "endingAya": 195
+  },
+  {
+    "index": 176,
+    "startingSura": 7,
+    "startingAya": 196,
+    "endingSura": 7,
+    "endingAya": 206
+  },
+  {
+    "index": 177,
+    "startingSura": 8,
+    "startingAya": 1,
+    "endingSura": 8,
+    "endingAya": 8
+  },
+  {
+    "index": 178,
+    "startingSura": 8,
+    "startingAya": 9,
+    "endingSura": 8,
+    "endingAya": 16
+  },
+  {
+    "index": 179,
+    "startingSura": 8,
+    "startingAya": 17,
+    "endingSura": 8,
+    "endingAya": 25
+  },
+  {
+    "index": 180,
+    "startingSura": 8,
+    "startingAya": 26,
+    "endingSura": 8,
+    "endingAya": 33
+  },
+  {
+    "index": 181,
+    "startingSura": 8,
+    "startingAya": 34,
+    "endingSura": 8,
+    "endingAya": 40
+  },
+  {
+    "index": 182,
+    "startingSura": 8,
+    "startingAya": 41,
+    "endingSura": 8,
+    "endingAya": 45
+  },
+  {
+    "index": 183,
+    "startingSura": 8,
+    "startingAya": 46,
+    "endingSura": 8,
+    "endingAya": 52
+  },
+  {
+    "index": 184,
+    "startingSura": 8,
+    "startingAya": 53,
+    "endingSura": 8,
+    "endingAya": 61
+  },
+  {
+    "index": 185,
+    "startingSura": 8,
+    "startingAya": 62,
+    "endingSura": 8,
+    "endingAya": 69
+  },
+  {
+    "index": 186,
+    "startingSura": 8,
+    "startingAya": 70,
+    "endingSura": 8,
+    "endingAya": 75
+  },
+  {
+    "index": 187,
+    "startingSura": 9,
+    "startingAya": 1,
+    "endingSura": 9,
+    "endingAya": 6
+  },
+  {
+    "index": 188,
+    "startingSura": 9,
+    "startingAya": 7,
+    "endingSura": 9,
+    "endingAya": 13
+  },
+  {
+    "index": 189,
+    "startingSura": 9,
+    "startingAya": 14,
+    "endingSura": 9,
+    "endingAya": 20
+  },
+  {
+    "index": 190,
+    "startingSura": 9,
+    "startingAya": 21,
+    "endingSura": 9,
+    "endingAya": 26
+  },
+  {
+    "index": 191,
+    "startingSura": 9,
+    "startingAya": 27,
+    "endingSura": 9,
+    "endingAya": 31
+  },
+  {
+    "index": 192,
+    "startingSura": 9,
+    "startingAya": 32,
+    "endingSura": 9,
+    "endingAya": 36
+  },
+  {
+    "index": 193,
+    "startingSura": 9,
+    "startingAya": 37,
+    "endingSura": 9,
+    "endingAya": 40
+  },
+  {
+    "index": 194,
+    "startingSura": 9,
+    "startingAya": 41,
+    "endingSura": 9,
+    "endingAya": 47
+  },
+  {
+    "index": 195,
+    "startingSura": 9,
+    "startingAya": 48,
+    "endingSura": 9,
+    "endingAya": 54
+  },
+  {
+    "index": 196,
+    "startingSura": 9,
+    "startingAya": 55,
+    "endingSura": 9,
+    "endingAya": 61
+  },
+  {
+    "index": 197,
+    "startingSura": 9,
+    "startingAya": 62,
+    "endingSura": 9,
+    "endingAya": 68
+  },
+  {
+    "index": 198,
+    "startingSura": 9,
+    "startingAya": 69,
+    "endingSura": 9,
+    "endingAya": 72
+  },
+  {
+    "index": 199,
+    "startingSura": 9,
+    "startingAya": 73,
+    "endingSura": 9,
+    "endingAya": 79
+  },
+  {
+    "index": 200,
+    "startingSura": 9,
+    "startingAya": 80,
+    "endingSura": 9,
+    "endingAya": 86
+  },
+  {
+    "index": 201,
+    "startingSura": 9,
+    "startingAya": 87,
+    "endingSura": 9,
+    "endingAya": 93
+  },
+  {
+    "index": 202,
+    "startingSura": 9,
+    "startingAya": 94,
+    "endingSura": 9,
+    "endingAya": 99
+  },
+  {
+    "index": 203,
+    "startingSura": 9,
+    "startingAya": 100,
+    "endingSura": 9,
+    "endingAya": 106
+  },
+  {
+    "index": 204,
+    "startingSura": 9,
+    "startingAya": 107,
+    "endingSura": 9,
+    "endingAya": 111
+  },
+  {
+    "index": 205,
+    "startingSura": 9,
+    "startingAya": 112,
+    "endingSura": 9,
+    "endingAya": 117
+  },
+  {
+    "index": 206,
+    "startingSura": 9,
+    "startingAya": 118,
+    "endingSura": 9,
+    "endingAya": 122
+  },
+  {
+    "index": 207,
+    "startingSura": 9,
+    "startingAya": 123,
+    "endingSura": 9,
+    "endingAya": 129
+  },
+  {
+    "index": 208,
+    "startingSura": 10,
+    "startingAya": 1,
+    "endingSura": 10,
+    "endingAya": 6
+  },
+  {
+    "index": 209,
+    "startingSura": 10,
+    "startingAya": 7,
+    "endingSura": 10,
+    "endingAya": 14
+  },
+  {
+    "index": 210,
+    "startingSura": 10,
+    "startingAya": 15,
+    "endingSura": 10,
+    "endingAya": 20
+  },
+  {
+    "index": 211,
+    "startingSura": 10,
+    "startingAya": 21,
+    "endingSura": 10,
+    "endingAya": 25
+  },
+  {
+    "index": 212,
+    "startingSura": 10,
+    "startingAya": 26,
+    "endingSura": 10,
+    "endingAya": 33
+  },
+  {
+    "index": 213,
+    "startingSura": 10,
+    "startingAya": 34,
+    "endingSura": 10,
+    "endingAya": 42
+  },
+  {
+    "index": 214,
+    "startingSura": 10,
+    "startingAya": 43,
+    "endingSura": 10,
+    "endingAya": 53
+  },
+  {
+    "index": 215,
+    "startingSura": 10,
+    "startingAya": 54,
+    "endingSura": 10,
+    "endingAya": 61
+  },
+  {
+    "index": 216,
+    "startingSura": 10,
+    "startingAya": 62,
+    "endingSura": 10,
+    "endingAya": 70
+  },
+  {
+    "index": 217,
+    "startingSura": 10,
+    "startingAya": 71,
+    "endingSura": 10,
+    "endingAya": 78
+  },
+  {
+    "index": 218,
+    "startingSura": 10,
+    "startingAya": 79,
+    "endingSura": 10,
+    "endingAya": 88
+  },
+  {
+    "index": 219,
+    "startingSura": 10,
+    "startingAya": 89,
+    "endingSura": 10,
+    "endingAya": 97
+  },
+  {
+    "index": 220,
+    "startingSura": 10,
+    "startingAya": 98,
+    "endingSura": 10,
+    "endingAya": 106
+  },
+  {
+    "index": 221,
+    "startingSura": 10,
+    "startingAya": 107,
+    "endingSura": 11,
+    "endingAya": 5
+  },
+  {
+    "index": 222,
+    "startingSura": 11,
+    "startingAya": 6,
+    "endingSura": 11,
+    "endingAya": 12
+  },
+  {
+    "index": 223,
+    "startingSura": 11,
+    "startingAya": 13,
+    "endingSura": 11,
+    "endingAya": 19
+  },
+  {
+    "index": 224,
+    "startingSura": 11,
+    "startingAya": 20,
+    "endingSura": 11,
+    "endingAya": 28
+  },
+  {
+    "index": 225,
+    "startingSura": 11,
+    "startingAya": 29,
+    "endingSura": 11,
+    "endingAya": 37
+  },
+  {
+    "index": 226,
+    "startingSura": 11,
+    "startingAya": 38,
+    "endingSura": 11,
+    "endingAya": 45
+  },
+  {
+    "index": 227,
+    "startingSura": 11,
+    "startingAya": 46,
+    "endingSura": 11,
+    "endingAya": 53
+  },
+  {
+    "index": 228,
+    "startingSura": 11,
+    "startingAya": 54,
+    "endingSura": 11,
+    "endingAya": 62
+  },
+  {
+    "index": 229,
+    "startingSura": 11,
+    "startingAya": 63,
+    "endingSura": 11,
+    "endingAya": 71
+  },
+  {
+    "index": 230,
+    "startingSura": 11,
+    "startingAya": 72,
+    "endingSura": 11,
+    "endingAya": 81
+  },
+  {
+    "index": 231,
+    "startingSura": 11,
+    "startingAya": 82,
+    "endingSura": 11,
+    "endingAya": 88
+  },
+  {
+    "index": 232,
+    "startingSura": 11,
+    "startingAya": 89,
+    "endingSura": 11,
+    "endingAya": 97
+  },
+  {
+    "index": 233,
+    "startingSura": 11,
+    "startingAya": 98,
+    "endingSura": 11,
+    "endingAya": 108
+  },
+  {
+    "index": 234,
+    "startingSura": 11,
+    "startingAya": 109,
+    "endingSura": 11,
+    "endingAya": 117
+  },
+  {
+    "index": 235,
+    "startingSura": 11,
+    "startingAya": 118,
+    "endingSura": 12,
+    "endingAya": 4
+  },
+  {
+    "index": 236,
+    "startingSura": 12,
+    "startingAya": 5,
+    "endingSura": 12,
+    "endingAya": 14
+  },
+  {
+    "index": 237,
+    "startingSura": 12,
+    "startingAya": 15,
+    "endingSura": 12,
+    "endingAya": 22
+  },
+  {
+    "index": 238,
+    "startingSura": 12,
+    "startingAya": 23,
+    "endingSura": 12,
+    "endingAya": 30
+  },
+  {
+    "index": 239,
+    "startingSura": 12,
+    "startingAya": 31,
+    "endingSura": 12,
+    "endingAya": 37
+  },
+  {
+    "index": 240,
+    "startingSura": 12,
+    "startingAya": 38,
+    "endingSura": 12,
+    "endingAya": 43
+  },
+  {
+    "index": 241,
+    "startingSura": 12,
+    "startingAya": 44,
+    "endingSura": 12,
+    "endingAya": 52
+  },
+  {
+    "index": 242,
+    "startingSura": 12,
+    "startingAya": 53,
+    "endingSura": 12,
+    "endingAya": 63
+  },
+  {
+    "index": 243,
+    "startingSura": 12,
+    "startingAya": 64,
+    "endingSura": 12,
+    "endingAya": 69
+  },
+  {
+    "index": 244,
+    "startingSura": 12,
+    "startingAya": 70,
+    "endingSura": 12,
+    "endingAya": 78
+  },
+  {
+    "index": 245,
+    "startingSura": 12,
+    "startingAya": 79,
+    "endingSura": 12,
+    "endingAya": 86
+  },
+  {
+    "index": 246,
+    "startingSura": 12,
+    "startingAya": 87,
+    "endingSura": 12,
+    "endingAya": 95
+  },
+  {
+    "index": 247,
+    "startingSura": 12,
+    "startingAya": 96,
+    "endingSura": 12,
+    "endingAya": 103
+  },
+  {
+    "index": 248,
+    "startingSura": 12,
+    "startingAya": 104,
+    "endingSura": 12,
+    "endingAya": 111
+  },
+  {
+    "index": 249,
+    "startingSura": 13,
+    "startingAya": 1,
+    "endingSura": 13,
+    "endingAya": 5
+  },
+  {
+    "index": 250,
+    "startingSura": 13,
+    "startingAya": 6,
+    "endingSura": 13,
+    "endingAya": 13
+  },
+  {
+    "index": 251,
+    "startingSura": 13,
+    "startingAya": 14,
+    "endingSura": 13,
+    "endingAya": 18
+  },
+  {
+    "index": 252,
+    "startingSura": 13,
+    "startingAya": 19,
+    "endingSura": 13,
+    "endingAya": 28
+  },
+  {
+    "index": 253,
+    "startingSura": 13,
+    "startingAya": 29,
+    "endingSura": 13,
+    "endingAya": 34
+  },
+  {
+    "index": 254,
+    "startingSura": 13,
+    "startingAya": 35,
+    "endingSura": 13,
+    "endingAya": 42
+  },
+  {
+    "index": 255,
+    "startingSura": 13,
+    "startingAya": 43,
+    "endingSura": 14,
+    "endingAya": 5
+  },
+  {
+    "index": 256,
+    "startingSura": 14,
+    "startingAya": 6,
+    "endingSura": 14,
+    "endingAya": 10
+  },
+  {
+    "index": 257,
+    "startingSura": 14,
+    "startingAya": 11,
+    "endingSura": 14,
+    "endingAya": 18
+  },
+  {
+    "index": 258,
+    "startingSura": 14,
+    "startingAya": 19,
+    "endingSura": 14,
+    "endingAya": 24
+  },
+  {
+    "index": 259,
+    "startingSura": 14,
+    "startingAya": 25,
+    "endingSura": 14,
+    "endingAya": 33
+  },
+  {
+    "index": 260,
+    "startingSura": 14,
+    "startingAya": 34,
+    "endingSura": 14,
+    "endingAya": 42
+  },
+  {
+    "index": 261,
+    "startingSura": 14,
+    "startingAya": 43,
+    "endingSura": 14,
+    "endingAya": 52
+  },
+  {
+    "index": 262,
+    "startingSura": 15,
+    "startingAya": 1,
+    "endingSura": 15,
+    "endingAya": 15
+  },
+  {
+    "index": 263,
+    "startingSura": 15,
+    "startingAya": 16,
+    "endingSura": 15,
+    "endingAya": 31
+  },
+  {
+    "index": 264,
+    "startingSura": 15,
+    "startingAya": 32,
+    "endingSura": 15,
+    "endingAya": 51
+  },
+  {
+    "index": 265,
+    "startingSura": 15,
+    "startingAya": 52,
+    "endingSura": 15,
+    "endingAya": 70
+  },
+  {
+    "index": 266,
+    "startingSura": 15,
+    "startingAya": 71,
+    "endingSura": 15,
+    "endingAya": 90
+  },
+  {
+    "index": 267,
+    "startingSura": 15,
+    "startingAya": 91,
+    "endingSura": 16,
+    "endingAya": 6
+  },
+  {
+    "index": 268,
+    "startingSura": 16,
+    "startingAya": 7,
+    "endingSura": 16,
+    "endingAya": 14
+  },
+  {
+    "index": 269,
+    "startingSura": 16,
+    "startingAya": 15,
+    "endingSura": 16,
+    "endingAya": 26
+  },
+  {
+    "index": 270,
+    "startingSura": 16,
+    "startingAya": 27,
+    "endingSura": 16,
+    "endingAya": 34
+  },
+  {
+    "index": 271,
+    "startingSura": 16,
+    "startingAya": 35,
+    "endingSura": 16,
+    "endingAya": 42
+  },
+  {
+    "index": 272,
+    "startingSura": 16,
+    "startingAya": 43,
+    "endingSura": 16,
+    "endingAya": 54
+  },
+  {
+    "index": 273,
+    "startingSura": 16,
+    "startingAya": 55,
+    "endingSura": 16,
+    "endingAya": 64
+  },
+  {
+    "index": 274,
+    "startingSura": 16,
+    "startingAya": 65,
+    "endingSura": 16,
+    "endingAya": 72
+  },
+  {
+    "index": 275,
+    "startingSura": 16,
+    "startingAya": 73,
+    "endingSura": 16,
+    "endingAya": 79
+  },
+  {
+    "index": 276,
+    "startingSura": 16,
+    "startingAya": 80,
+    "endingSura": 16,
+    "endingAya": 87
+  },
+  {
+    "index": 277,
+    "startingSura": 16,
+    "startingAya": 88,
+    "endingSura": 16,
+    "endingAya": 93
+  },
+  {
+    "index": 278,
+    "startingSura": 16,
+    "startingAya": 94,
+    "endingSura": 16,
+    "endingAya": 102
+  },
+  {
+    "index": 279,
+    "startingSura": 16,
+    "startingAya": 103,
+    "endingSura": 16,
+    "endingAya": 110
+  },
+  {
+    "index": 280,
+    "startingSura": 16,
+    "startingAya": 111,
+    "endingSura": 16,
+    "endingAya": 118
+  },
+  {
+    "index": 281,
+    "startingSura": 16,
+    "startingAya": 119,
+    "endingSura": 16,
+    "endingAya": 128
+  },
+  {
+    "index": 282,
+    "startingSura": 17,
+    "startingAya": 1,
+    "endingSura": 17,
+    "endingAya": 7
+  },
+  {
+    "index": 283,
+    "startingSura": 17,
+    "startingAya": 8,
+    "endingSura": 17,
+    "endingAya": 17
+  },
+  {
+    "index": 284,
+    "startingSura": 17,
+    "startingAya": 18,
+    "endingSura": 17,
+    "endingAya": 27
+  },
+  {
+    "index": 285,
+    "startingSura": 17,
+    "startingAya": 28,
+    "endingSura": 17,
+    "endingAya": 38
+  },
+  {
+    "index": 286,
+    "startingSura": 17,
+    "startingAya": 39,
+    "endingSura": 17,
+    "endingAya": 49
+  },
+  {
+    "index": 287,
+    "startingSura": 17,
+    "startingAya": 50,
+    "endingSura": 17,
+    "endingAya": 58
+  },
+  {
+    "index": 288,
+    "startingSura": 17,
+    "startingAya": 59,
+    "endingSura": 17,
+    "endingAya": 66
+  },
+  {
+    "index": 289,
+    "startingSura": 17,
+    "startingAya": 67,
+    "endingSura": 17,
+    "endingAya": 75
+  },
+  {
+    "index": 290,
+    "startingSura": 17,
+    "startingAya": 76,
+    "endingSura": 17,
+    "endingAya": 86
+  },
+  {
+    "index": 291,
+    "startingSura": 17,
+    "startingAya": 87,
+    "endingSura": 17,
+    "endingAya": 96
+  },
+  {
+    "index": 292,
+    "startingSura": 17,
+    "startingAya": 97,
+    "endingSura": 17,
+    "endingAya": 104
+  },
+  {
+    "index": 293,
+    "startingSura": 17,
+    "startingAya": 105,
+    "endingSura": 18,
+    "endingAya": 4
+  },
+  {
+    "index": 294,
+    "startingSura": 18,
+    "startingAya": 5,
+    "endingSura": 18,
+    "endingAya": 15
+  },
+  {
+    "index": 295,
+    "startingSura": 18,
+    "startingAya": 16,
+    "endingSura": 18,
+    "endingAya": 20
+  },
+  {
+    "index": 296,
+    "startingSura": 18,
+    "startingAya": 21,
+    "endingSura": 18,
+    "endingAya": 27
+  },
+  {
+    "index": 297,
+    "startingSura": 18,
+    "startingAya": 28,
+    "endingSura": 18,
+    "endingAya": 34
+  },
+  {
+    "index": 298,
+    "startingSura": 18,
+    "startingAya": 35,
+    "endingSura": 18,
+    "endingAya": 45
+  },
+  {
+    "index": 299,
+    "startingSura": 18,
+    "startingAya": 46,
+    "endingSura": 18,
+    "endingAya": 53
+  },
+  {
+    "index": 300,
+    "startingSura": 18,
+    "startingAya": 54,
+    "endingSura": 18,
+    "endingAya": 61
+  },
+  {
+    "index": 301,
+    "startingSura": 18,
+    "startingAya": 62,
+    "endingSura": 18,
+    "endingAya": 74
+  },
+  {
+    "index": 302,
+    "startingSura": 18,
+    "startingAya": 75,
+    "endingSura": 18,
+    "endingAya": 83
+  },
+  {
+    "index": 303,
+    "startingSura": 18,
+    "startingAya": 84,
+    "endingSura": 18,
+    "endingAya": 97
+  },
+  {
+    "index": 304,
+    "startingSura": 18,
+    "startingAya": 98,
+    "endingSura": 18,
+    "endingAya": 110
+  },
+  {
+    "index": 305,
+    "startingSura": 19,
+    "startingAya": 1,
+    "endingSura": 19,
+    "endingAya": 11
+  },
+  {
+    "index": 306,
+    "startingSura": 19,
+    "startingAya": 12,
+    "endingSura": 19,
+    "endingAya": 25
+  },
+  {
+    "index": 307,
+    "startingSura": 19,
+    "startingAya": 26,
+    "endingSura": 19,
+    "endingAya": 38
+  },
+  {
+    "index": 308,
+    "startingSura": 19,
+    "startingAya": 39,
+    "endingSura": 19,
+    "endingAya": 51
+  },
+  {
+    "index": 309,
+    "startingSura": 19,
+    "startingAya": 52,
+    "endingSura": 19,
+    "endingAya": 64
+  },
+  {
+    "index": 310,
+    "startingSura": 19,
+    "startingAya": 65,
+    "endingSura": 19,
+    "endingAya": 76
+  },
+  {
+    "index": 311,
+    "startingSura": 19,
+    "startingAya": 77,
+    "endingSura": 19,
+    "endingAya": 95
+  },
+  {
+    "index": 312,
+    "startingSura": 19,
+    "startingAya": 96,
+    "endingSura": 20,
+    "endingAya": 12
+  },
+  {
+    "index": 313,
+    "startingSura": 20,
+    "startingAya": 13,
+    "endingSura": 20,
+    "endingAya": 37
+  },
+  {
+    "index": 314,
+    "startingSura": 20,
+    "startingAya": 38,
+    "endingSura": 20,
+    "endingAya": 51
+  },
+  {
+    "index": 315,
+    "startingSura": 20,
+    "startingAya": 52,
+    "endingSura": 20,
+    "endingAya": 64
+  },
+  {
+    "index": 316,
+    "startingSura": 20,
+    "startingAya": 65,
+    "endingSura": 20,
+    "endingAya": 76
+  },
+  {
+    "index": 317,
+    "startingSura": 20,
+    "startingAya": 77,
+    "endingSura": 20,
+    "endingAya": 87
+  },
+  {
+    "index": 318,
+    "startingSura": 20,
+    "startingAya": 88,
+    "endingSura": 20,
+    "endingAya": 98
+  },
+  {
+    "index": 319,
+    "startingSura": 20,
+    "startingAya": 99,
+    "endingSura": 20,
+    "endingAya": 113
+  },
+  {
+    "index": 320,
+    "startingSura": 20,
+    "startingAya": 114,
+    "endingSura": 20,
+    "endingAya": 125
+  },
+  {
+    "index": 321,
+    "startingSura": 20,
+    "startingAya": 126,
+    "endingSura": 20,
+    "endingAya": 135
+  },
+  {
+    "index": 322,
+    "startingSura": 21,
+    "startingAya": 1,
+    "endingSura": 21,
+    "endingAya": 10
+  },
+  {
+    "index": 323,
+    "startingSura": 21,
+    "startingAya": 11,
+    "endingSura": 21,
+    "endingAya": 24
+  },
+  {
+    "index": 324,
+    "startingSura": 21,
+    "startingAya": 25,
+    "endingSura": 21,
+    "endingAya": 35
+  },
+  {
+    "index": 325,
+    "startingSura": 21,
+    "startingAya": 36,
+    "endingSura": 21,
+    "endingAya": 44
+  },
+  {
+    "index": 326,
+    "startingSura": 21,
+    "startingAya": 45,
+    "endingSura": 21,
+    "endingAya": 57
+  },
+  {
+    "index": 327,
+    "startingSura": 21,
+    "startingAya": 58,
+    "endingSura": 21,
+    "endingAya": 72
+  },
+  {
+    "index": 328,
+    "startingSura": 21,
+    "startingAya": 73,
+    "endingSura": 21,
+    "endingAya": 81
+  },
+  {
+    "index": 329,
+    "startingSura": 21,
+    "startingAya": 82,
+    "endingSura": 21,
+    "endingAya": 90
+  },
+  {
+    "index": 330,
+    "startingSura": 21,
+    "startingAya": 91,
+    "endingSura": 21,
+    "endingAya": 101
+  },
+  {
+    "index": 331,
+    "startingSura": 21,
+    "startingAya": 102,
+    "endingSura": 21,
+    "endingAya": 112
+  },
+  {
+    "index": 332,
+    "startingSura": 22,
+    "startingAya": 1,
+    "endingSura": 22,
+    "endingAya": 5
+  },
+  {
+    "index": 333,
+    "startingSura": 22,
+    "startingAya": 6,
+    "endingSura": 22,
+    "endingAya": 15
+  },
+  {
+    "index": 334,
+    "startingSura": 22,
+    "startingAya": 16,
+    "endingSura": 22,
+    "endingAya": 23
+  },
+  {
+    "index": 335,
+    "startingSura": 22,
+    "startingAya": 24,
+    "endingSura": 22,
+    "endingAya": 30
+  },
+  {
+    "index": 336,
+    "startingSura": 22,
+    "startingAya": 31,
+    "endingSura": 22,
+    "endingAya": 38
+  },
+  {
+    "index": 337,
+    "startingSura": 22,
+    "startingAya": 39,
+    "endingSura": 22,
+    "endingAya": 46
+  },
+  {
+    "index": 338,
+    "startingSura": 22,
+    "startingAya": 47,
+    "endingSura": 22,
+    "endingAya": 55
+  },
+  {
+    "index": 339,
+    "startingSura": 22,
+    "startingAya": 56,
+    "endingSura": 22,
+    "endingAya": 64
+  },
+  {
+    "index": 340,
+    "startingSura": 22,
+    "startingAya": 65,
+    "endingSura": 22,
+    "endingAya": 72
+  },
+  {
+    "index": 341,
+    "startingSura": 22,
+    "startingAya": 73,
+    "endingSura": 22,
+    "endingAya": 78
+  },
+  {
+    "index": 342,
+    "startingSura": 23,
+    "startingAya": 1,
+    "endingSura": 23,
+    "endingAya": 17
+  },
+  {
+    "index": 343,
+    "startingSura": 23,
+    "startingAya": 18,
+    "endingSura": 23,
+    "endingAya": 27
+  },
+  {
+    "index": 344,
+    "startingSura": 23,
+    "startingAya": 28,
+    "endingSura": 23,
+    "endingAya": 42
+  },
+  {
+    "index": 345,
+    "startingSura": 23,
+    "startingAya": 43,
+    "endingSura": 23,
+    "endingAya": 59
+  },
+  {
+    "index": 346,
+    "startingSura": 23,
+    "startingAya": 60,
+    "endingSura": 23,
+    "endingAya": 74
+  },
+  {
+    "index": 347,
+    "startingSura": 23,
+    "startingAya": 75,
+    "endingSura": 23,
+    "endingAya": 89
+  },
+  {
+    "index": 348,
+    "startingSura": 23,
+    "startingAya": 90,
+    "endingSura": 23,
+    "endingAya": 104
+  },
+  {
+    "index": 349,
+    "startingSura": 23,
+    "startingAya": 105,
+    "endingSura": 23,
+    "endingAya": 118
+  },
+  {
+    "index": 350,
+    "startingSura": 24,
+    "startingAya": 1,
+    "endingSura": 24,
+    "endingAya": 10
+  },
+  {
+    "index": 351,
+    "startingSura": 24,
+    "startingAya": 11,
+    "endingSura": 24,
+    "endingAya": 20
+  },
+  {
+    "index": 352,
+    "startingSura": 24,
+    "startingAya": 21,
+    "endingSura": 24,
+    "endingAya": 27
+  },
+  {
+    "index": 353,
+    "startingSura": 24,
+    "startingAya": 28,
+    "endingSura": 24,
+    "endingAya": 31
+  },
+  {
+    "index": 354,
+    "startingSura": 24,
+    "startingAya": 32,
+    "endingSura": 24,
+    "endingAya": 36
+  },
+  {
+    "index": 355,
+    "startingSura": 24,
+    "startingAya": 37,
+    "endingSura": 24,
+    "endingAya": 43
+  },
+  {
+    "index": 356,
+    "startingSura": 24,
+    "startingAya": 44,
+    "endingSura": 24,
+    "endingAya": 53
+  },
+  {
+    "index": 357,
+    "startingSura": 24,
+    "startingAya": 54,
+    "endingSura": 24,
+    "endingAya": 58
+  },
+  {
+    "index": 358,
+    "startingSura": 24,
+    "startingAya": 59,
+    "endingSura": 24,
+    "endingAya": 61
+  },
+  {
+    "index": 359,
+    "startingSura": 24,
+    "startingAya": 62,
+    "endingSura": 25,
+    "endingAya": 2
+  },
+  {
+    "index": 360,
+    "startingSura": 25,
+    "startingAya": 3,
+    "endingSura": 25,
+    "endingAya": 11
+  },
+  {
+    "index": 361,
+    "startingSura": 25,
+    "startingAya": 12,
+    "endingSura": 25,
+    "endingAya": 20
+  },
+  {
+    "index": 362,
+    "startingSura": 25,
+    "startingAya": 21,
+    "endingSura": 25,
+    "endingAya": 32
+  },
+  {
+    "index": 363,
+    "startingSura": 25,
+    "startingAya": 33,
+    "endingSura": 25,
+    "endingAya": 43
+  },
+  {
+    "index": 364,
+    "startingSura": 25,
+    "startingAya": 44,
+    "endingSura": 25,
+    "endingAya": 55
+  },
+  {
+    "index": 365,
+    "startingSura": 25,
+    "startingAya": 56,
+    "endingSura": 25,
+    "endingAya": 67
+  },
+  {
+    "index": 366,
+    "startingSura": 25,
+    "startingAya": 68,
+    "endingSura": 25,
+    "endingAya": 77
+  },
+  {
+    "index": 367,
+    "startingSura": 26,
+    "startingAya": 1,
+    "endingSura": 26,
+    "endingAya": 19
+  },
+  {
+    "index": 368,
+    "startingSura": 26,
+    "startingAya": 20,
+    "endingSura": 26,
+    "endingAya": 39
+  },
+  {
+    "index": 369,
+    "startingSura": 26,
+    "startingAya": 40,
+    "endingSura": 26,
+    "endingAya": 60
+  },
+  {
+    "index": 370,
+    "startingSura": 26,
+    "startingAya": 61,
+    "endingSura": 26,
+    "endingAya": 83
+  },
+  {
+    "index": 371,
+    "startingSura": 26,
+    "startingAya": 84,
+    "endingSura": 26,
+    "endingAya": 111
+  },
+  {
+    "index": 372,
+    "startingSura": 26,
+    "startingAya": 112,
+    "endingSura": 26,
+    "endingAya": 136
+  },
+  {
+    "index": 373,
+    "startingSura": 26,
+    "startingAya": 137,
+    "endingSura": 26,
+    "endingAya": 159
+  },
+  {
+    "index": 374,
+    "startingSura": 26,
+    "startingAya": 160,
+    "endingSura": 26,
+    "endingAya": 183
+  },
+  {
+    "index": 375,
+    "startingSura": 26,
+    "startingAya": 184,
+    "endingSura": 26,
+    "endingAya": 206
+  },
+  {
+    "index": 376,
+    "startingSura": 26,
+    "startingAya": 207,
+    "endingSura": 26,
+    "endingAya": 227
+  },
+  {
+    "index": 377,
+    "startingSura": 27,
+    "startingAya": 1,
+    "endingSura": 27,
+    "endingAya": 13
+  },
+  {
+    "index": 378,
+    "startingSura": 27,
+    "startingAya": 14,
+    "endingSura": 27,
+    "endingAya": 22
+  },
+  {
+    "index": 379,
+    "startingSura": 27,
+    "startingAya": 23,
+    "endingSura": 27,
+    "endingAya": 35
+  },
+  {
+    "index": 380,
+    "startingSura": 27,
+    "startingAya": 36,
+    "endingSura": 27,
+    "endingAya": 44
+  },
+  {
+    "index": 381,
+    "startingSura": 27,
+    "startingAya": 45,
+    "endingSura": 27,
+    "endingAya": 55
+  },
+  {
+    "index": 382,
+    "startingSura": 27,
+    "startingAya": 56,
+    "endingSura": 27,
+    "endingAya": 63
+  },
+  {
+    "index": 383,
+    "startingSura": 27,
+    "startingAya": 64,
+    "endingSura": 27,
+    "endingAya": 76
+  },
+  {
+    "index": 384,
+    "startingSura": 27,
+    "startingAya": 77,
+    "endingSura": 27,
+    "endingAya": 88
+  },
+  {
+    "index": 385,
+    "startingSura": 27,
+    "startingAya": 89,
+    "endingSura": 28,
+    "endingAya": 5
+  },
+  {
+    "index": 386,
+    "startingSura": 28,
+    "startingAya": 6,
+    "endingSura": 28,
+    "endingAya": 13
+  },
+  {
+    "index": 387,
+    "startingSura": 28,
+    "startingAya": 14,
+    "endingSura": 28,
+    "endingAya": 21
+  },
+  {
+    "index": 388,
+    "startingSura": 28,
+    "startingAya": 22,
+    "endingSura": 28,
+    "endingAya": 28
+  },
+  {
+    "index": 389,
+    "startingSura": 28,
+    "startingAya": 29,
+    "endingSura": 28,
+    "endingAya": 35
+  },
+  {
+    "index": 390,
+    "startingSura": 28,
+    "startingAya": 36,
+    "endingSura": 28,
+    "endingAya": 43
+  },
+  {
+    "index": 391,
+    "startingSura": 28,
+    "startingAya": 44,
+    "endingSura": 28,
+    "endingAya": 50
+  },
+  {
+    "index": 392,
+    "startingSura": 28,
+    "startingAya": 51,
+    "endingSura": 28,
+    "endingAya": 59
+  },
+  {
+    "index": 393,
+    "startingSura": 28,
+    "startingAya": 60,
+    "endingSura": 28,
+    "endingAya": 70
+  },
+  {
+    "index": 394,
+    "startingSura": 28,
+    "startingAya": 71,
+    "endingSura": 28,
+    "endingAya": 77
+  },
+  {
+    "index": 395,
+    "startingSura": 28,
+    "startingAya": 78,
+    "endingSura": 28,
+    "endingAya": 84
+  },
+  {
+    "index": 396,
+    "startingSura": 28,
+    "startingAya": 85,
+    "endingSura": 29,
+    "endingAya": 6
+  },
+  {
+    "index": 397,
+    "startingSura": 29,
+    "startingAya": 7,
+    "endingSura": 29,
+    "endingAya": 14
+  },
+  {
+    "index": 398,
+    "startingSura": 29,
+    "startingAya": 15,
+    "endingSura": 29,
+    "endingAya": 23
+  },
+  {
+    "index": 399,
+    "startingSura": 29,
+    "startingAya": 24,
+    "endingSura": 29,
+    "endingAya": 30
+  },
+  {
+    "index": 400,
+    "startingSura": 29,
+    "startingAya": 31,
+    "endingSura": 29,
+    "endingAya": 38
+  },
+  {
+    "index": 401,
+    "startingSura": 29,
+    "startingAya": 39,
+    "endingSura": 29,
+    "endingAya": 45
+  },
+  {
+    "index": 402,
+    "startingSura": 29,
+    "startingAya": 46,
+    "endingSura": 29,
+    "endingAya": 52
+  },
+  {
+    "index": 403,
+    "startingSura": 29,
+    "startingAya": 53,
+    "endingSura": 29,
+    "endingAya": 63
+  },
+  {
+    "index": 404,
+    "startingSura": 29,
+    "startingAya": 64,
+    "endingSura": 30,
+    "endingAya": 5
+  },
+  {
+    "index": 405,
+    "startingSura": 30,
+    "startingAya": 6,
+    "endingSura": 30,
+    "endingAya": 15
+  },
+  {
+    "index": 406,
+    "startingSura": 30,
+    "startingAya": 16,
+    "endingSura": 30,
+    "endingAya": 24
+  },
+  {
+    "index": 407,
+    "startingSura": 30,
+    "startingAya": 25,
+    "endingSura": 30,
+    "endingAya": 32
+  },
+  {
+    "index": 408,
+    "startingSura": 30,
+    "startingAya": 33,
+    "endingSura": 30,
+    "endingAya": 41
+  },
+  {
+    "index": 409,
+    "startingSura": 30,
+    "startingAya": 42,
+    "endingSura": 30,
+    "endingAya": 50
+  },
+  {
+    "index": 410,
+    "startingSura": 30,
+    "startingAya": 51,
+    "endingSura": 30,
+    "endingAya": 60
+  },
+  {
+    "index": 411,
+    "startingSura": 31,
+    "startingAya": 1,
+    "endingSura": 31,
+    "endingAya": 11
+  },
+  {
+    "index": 412,
+    "startingSura": 31,
+    "startingAya": 12,
+    "endingSura": 31,
+    "endingAya": 19
+  },
+  {
+    "index": 413,
+    "startingSura": 31,
+    "startingAya": 20,
+    "endingSura": 31,
+    "endingAya": 28
+  },
+  {
+    "index": 414,
+    "startingSura": 31,
+    "startingAya": 29,
+    "endingSura": 31,
+    "endingAya": 34
+  },
+  {
+    "index": 415,
+    "startingSura": 32,
+    "startingAya": 1,
+    "endingSura": 32,
+    "endingAya": 11
+  },
+  {
+    "index": 416,
+    "startingSura": 32,
+    "startingAya": 12,
+    "endingSura": 32,
+    "endingAya": 20
+  },
+  {
+    "index": 417,
+    "startingSura": 32,
+    "startingAya": 21,
+    "endingSura": 32,
+    "endingAya": 30
+  },
+  {
+    "index": 418,
+    "startingSura": 33,
+    "startingAya": 1,
+    "endingSura": 33,
+    "endingAya": 6
+  },
+  {
+    "index": 419,
+    "startingSura": 33,
+    "startingAya": 7,
+    "endingSura": 33,
+    "endingAya": 15
+  },
+  {
+    "index": 420,
+    "startingSura": 33,
+    "startingAya": 16,
+    "endingSura": 33,
+    "endingAya": 22
+  },
+  {
+    "index": 421,
+    "startingSura": 33,
+    "startingAya": 23,
+    "endingSura": 33,
+    "endingAya": 30
+  },
+  {
+    "index": 422,
+    "startingSura": 33,
+    "startingAya": 31,
+    "endingSura": 33,
+    "endingAya": 35
+  },
+  {
+    "index": 423,
+    "startingSura": 33,
+    "startingAya": 36,
+    "endingSura": 33,
+    "endingAya": 43
+  },
+  {
+    "index": 424,
+    "startingSura": 33,
+    "startingAya": 44,
+    "endingSura": 33,
+    "endingAya": 50
+  },
+  {
+    "index": 425,
+    "startingSura": 33,
+    "startingAya": 51,
+    "endingSura": 33,
+    "endingAya": 54
+  },
+  {
+    "index": 426,
+    "startingSura": 33,
+    "startingAya": 55,
+    "endingSura": 33,
+    "endingAya": 62
+  },
+  {
+    "index": 427,
+    "startingSura": 33,
+    "startingAya": 63,
+    "endingSura": 33,
+    "endingAya": 73
+  },
+  {
+    "index": 428,
+    "startingSura": 34,
+    "startingAya": 1,
+    "endingSura": 34,
+    "endingAya": 7
+  },
+  {
+    "index": 429,
+    "startingSura": 34,
+    "startingAya": 8,
+    "endingSura": 34,
+    "endingAya": 14
+  },
+  {
+    "index": 430,
+    "startingSura": 34,
+    "startingAya": 15,
+    "endingSura": 34,
+    "endingAya": 22
+  },
+  {
+    "index": 431,
+    "startingSura": 34,
+    "startingAya": 23,
+    "endingSura": 34,
+    "endingAya": 31
+  },
+  {
+    "index": 432,
+    "startingSura": 34,
+    "startingAya": 32,
+    "endingSura": 34,
+    "endingAya": 39
+  },
+  {
+    "index": 433,
+    "startingSura": 34,
+    "startingAya": 40,
+    "endingSura": 34,
+    "endingAya": 48
+  },
+  {
+    "index": 434,
+    "startingSura": 34,
+    "startingAya": 49,
+    "endingSura": 35,
+    "endingAya": 3
+  },
+  {
+    "index": 435,
+    "startingSura": 35,
+    "startingAya": 4,
+    "endingSura": 35,
+    "endingAya": 11
+  },
+  {
+    "index": 436,
+    "startingSura": 35,
+    "startingAya": 12,
+    "endingSura": 35,
+    "endingAya": 18
+  },
+  {
+    "index": 437,
+    "startingSura": 35,
+    "startingAya": 19,
+    "endingSura": 35,
+    "endingAya": 30
+  },
+  {
+    "index": 438,
+    "startingSura": 35,
+    "startingAya": 31,
+    "endingSura": 35,
+    "endingAya": 38
+  },
+  {
+    "index": 439,
+    "startingSura": 35,
+    "startingAya": 39,
+    "endingSura": 35,
+    "endingAya": 44
+  },
+  {
+    "index": 440,
+    "startingSura": 35,
+    "startingAya": 45,
+    "endingSura": 36,
+    "endingAya": 12
+  },
+  {
+    "index": 441,
+    "startingSura": 36,
+    "startingAya": 13,
+    "endingSura": 36,
+    "endingAya": 27
+  },
+  {
+    "index": 442,
+    "startingSura": 36,
+    "startingAya": 28,
+    "endingSura": 36,
+    "endingAya": 40
+  },
+  {
+    "index": 443,
+    "startingSura": 36,
+    "startingAya": 41,
+    "endingSura": 36,
+    "endingAya": 54
+  },
+  {
+    "index": 444,
+    "startingSura": 36,
+    "startingAya": 55,
+    "endingSura": 36,
+    "endingAya": 70
+  },
+  {
+    "index": 445,
+    "startingSura": 36,
+    "startingAya": 71,
+    "endingSura": 36,
+    "endingAya": 83
+  },
+  {
+    "index": 446,
+    "startingSura": 37,
+    "startingAya": 1,
+    "endingSura": 37,
+    "endingAya": 24
+  },
+  {
+    "index": 447,
+    "startingSura": 37,
+    "startingAya": 25,
+    "endingSura": 37,
+    "endingAya": 51
+  },
+  {
+    "index": 448,
+    "startingSura": 37,
+    "startingAya": 52,
+    "endingSura": 37,
+    "endingAya": 76
+  },
+  {
+    "index": 449,
+    "startingSura": 37,
+    "startingAya": 77,
+    "endingSura": 37,
+    "endingAya": 102
+  },
+  {
+    "index": 450,
+    "startingSura": 37,
+    "startingAya": 103,
+    "endingSura": 37,
+    "endingAya": 126
+  },
+  {
+    "index": 451,
+    "startingSura": 37,
+    "startingAya": 127,
+    "endingSura": 37,
+    "endingAya": 153
+  },
+  {
+    "index": 452,
+    "startingSura": 37,
+    "startingAya": 154,
+    "endingSura": 37,
+    "endingAya": 182
+  },
+  {
+    "index": 453,
+    "startingSura": 38,
+    "startingAya": 1,
+    "endingSura": 38,
+    "endingAya": 16
+  },
+  {
+    "index": 454,
+    "startingSura": 38,
+    "startingAya": 17,
+    "endingSura": 38,
+    "endingAya": 26
+  },
+  {
+    "index": 455,
+    "startingSura": 38,
+    "startingAya": 27,
+    "endingSura": 38,
+    "endingAya": 42
+  },
+  {
+    "index": 456,
+    "startingSura": 38,
+    "startingAya": 43,
+    "endingSura": 38,
+    "endingAya": 61
+  },
+  {
+    "index": 457,
+    "startingSura": 38,
+    "startingAya": 62,
+    "endingSura": 38,
+    "endingAya": 83
+  },
+  {
+    "index": 458,
+    "startingSura": 38,
+    "startingAya": 84,
+    "endingSura": 39,
+    "endingAya": 5
+  },
+  {
+    "index": 459,
+    "startingSura": 39,
+    "startingAya": 6,
+    "endingSura": 39,
+    "endingAya": 10
+  },
+  {
+    "index": 460,
+    "startingSura": 39,
+    "startingAya": 11,
+    "endingSura": 39,
+    "endingAya": 21
+  },
+  {
+    "index": 461,
+    "startingSura": 39,
+    "startingAya": 22,
+    "endingSura": 39,
+    "endingAya": 31
+  },
+  {
+    "index": 462,
+    "startingSura": 39,
+    "startingAya": 32,
+    "endingSura": 39,
+    "endingAya": 40
+  },
+  {
+    "index": 463,
+    "startingSura": 39,
+    "startingAya": 41,
+    "endingSura": 39,
+    "endingAya": 47
+  },
+  {
+    "index": 464,
+    "startingSura": 39,
+    "startingAya": 48,
+    "endingSura": 39,
+    "endingAya": 56
+  },
+  {
+    "index": 465,
+    "startingSura": 39,
+    "startingAya": 57,
+    "endingSura": 39,
+    "endingAya": 67
+  },
+  {
+    "index": 466,
+    "startingSura": 39,
+    "startingAya": 68,
+    "endingSura": 39,
+    "endingAya": 74
+  },
+  {
+    "index": 467,
+    "startingSura": 39,
+    "startingAya": 75,
+    "endingSura": 40,
+    "endingAya": 7
+  },
+  {
+    "index": 468,
+    "startingSura": 40,
+    "startingAya": 8,
+    "endingSura": 40,
+    "endingAya": 16
+  },
+  {
+    "index": 469,
+    "startingSura": 40,
+    "startingAya": 17,
+    "endingSura": 40,
+    "endingAya": 25
+  },
+  {
+    "index": 470,
+    "startingSura": 40,
+    "startingAya": 26,
+    "endingSura": 40,
+    "endingAya": 33
+  },
+  {
+    "index": 471,
+    "startingSura": 40,
+    "startingAya": 34,
+    "endingSura": 40,
+    "endingAya": 40
+  },
+  {
+    "index": 472,
+    "startingSura": 40,
+    "startingAya": 41,
+    "endingSura": 40,
+    "endingAya": 49
+  },
+  {
+    "index": 473,
+    "startingSura": 40,
+    "startingAya": 50,
+    "endingSura": 40,
+    "endingAya": 58
+  },
+  {
+    "index": 474,
+    "startingSura": 40,
+    "startingAya": 59,
+    "endingSura": 40,
+    "endingAya": 66
+  },
+  {
+    "index": 475,
+    "startingSura": 40,
+    "startingAya": 67,
+    "endingSura": 40,
+    "endingAya": 77
+  },
+  {
+    "index": 476,
+    "startingSura": 40,
+    "startingAya": 78,
+    "endingSura": 40,
+    "endingAya": 85
+  },
+  {
+    "index": 477,
+    "startingSura": 41,
+    "startingAya": 1,
+    "endingSura": 41,
+    "endingAya": 11
+  },
+  {
+    "index": 478,
+    "startingSura": 41,
+    "startingAya": 12,
+    "endingSura": 41,
+    "endingAya": 20
+  },
+  {
+    "index": 479,
+    "startingSura": 41,
+    "startingAya": 21,
+    "endingSura": 41,
+    "endingAya": 29
+  },
+  {
+    "index": 480,
+    "startingSura": 41,
+    "startingAya": 30,
+    "endingSura": 41,
+    "endingAya": 38
+  },
+  {
+    "index": 481,
+    "startingSura": 41,
+    "startingAya": 39,
+    "endingSura": 41,
+    "endingAya": 46
+  },
+  {
+    "index": 482,
+    "startingSura": 41,
+    "startingAya": 47,
+    "endingSura": 41,
+    "endingAya": 54
+  },
+  {
+    "index": 483,
+    "startingSura": 42,
+    "startingAya": 1,
+    "endingSura": 42,
+    "endingAya": 10
+  },
+  {
+    "index": 484,
+    "startingSura": 42,
+    "startingAya": 11,
+    "endingSura": 42,
+    "endingAya": 15
+  },
+  {
+    "index": 485,
+    "startingSura": 42,
+    "startingAya": 16,
+    "endingSura": 42,
+    "endingAya": 22
+  },
+  {
+    "index": 486,
+    "startingSura": 42,
+    "startingAya": 23,
+    "endingSura": 42,
+    "endingAya": 31
+  },
+  {
+    "index": 487,
+    "startingSura": 42,
+    "startingAya": 32,
+    "endingSura": 42,
+    "endingAya": 44
+  },
+  {
+    "index": 488,
+    "startingSura": 42,
+    "startingAya": 45,
+    "endingSura": 42,
+    "endingAya": 51
+  },
+  {
+    "index": 489,
+    "startingSura": 42,
+    "startingAya": 52,
+    "endingSura": 43,
+    "endingAya": 10
+  },
+  {
+    "index": 490,
+    "startingSura": 43,
+    "startingAya": 11,
+    "endingSura": 43,
+    "endingAya": 22
+  },
+  {
+    "index": 491,
+    "startingSura": 43,
+    "startingAya": 23,
+    "endingSura": 43,
+    "endingAya": 33
+  },
+  {
+    "index": 492,
+    "startingSura": 43,
+    "startingAya": 34,
+    "endingSura": 43,
+    "endingAya": 47
+  },
+  {
+    "index": 493,
+    "startingSura": 43,
+    "startingAya": 48,
+    "endingSura": 43,
+    "endingAya": 60
+  },
+  {
+    "index": 494,
+    "startingSura": 43,
+    "startingAya": 61,
+    "endingSura": 43,
+    "endingAya": 73
+  },
+  {
+    "index": 495,
+    "startingSura": 43,
+    "startingAya": 74,
+    "endingSura": 43,
+    "endingAya": 89
+  },
+  {
+    "index": 496,
+    "startingSura": 44,
+    "startingAya": 1,
+    "endingSura": 44,
+    "endingAya": 18
+  },
+  {
+    "index": 497,
+    "startingSura": 44,
+    "startingAya": 19,
+    "endingSura": 44,
+    "endingAya": 39
+  },
+  {
+    "index": 498,
+    "startingSura": 44,
+    "startingAya": 40,
+    "endingSura": 44,
+    "endingAya": 59
+  },
+  {
+    "index": 499,
+    "startingSura": 45,
+    "startingAya": 1,
+    "endingSura": 45,
+    "endingAya": 13
+  },
+  {
+    "index": 500,
+    "startingSura": 45,
+    "startingAya": 14,
+    "endingSura": 45,
+    "endingAya": 22
+  },
+  {
+    "index": 501,
+    "startingSura": 45,
+    "startingAya": 23,
+    "endingSura": 45,
+    "endingAya": 32
+  },
+  {
+    "index": 502,
+    "startingSura": 45,
+    "startingAya": 33,
+    "endingSura": 46,
+    "endingAya": 5
+  },
+  {
+    "index": 503,
+    "startingSura": 46,
+    "startingAya": 6,
+    "endingSura": 46,
+    "endingAya": 14
+  },
+  {
+    "index": 504,
+    "startingSura": 46,
+    "startingAya": 15,
+    "endingSura": 46,
+    "endingAya": 20
+  },
+  {
+    "index": 505,
+    "startingSura": 46,
+    "startingAya": 21,
+    "endingSura": 46,
+    "endingAya": 28
+  },
+  {
+    "index": 506,
+    "startingSura": 46,
+    "startingAya": 29,
+    "endingSura": 46,
+    "endingAya": 35
+  },
+  {
+    "index": 507,
+    "startingSura": 47,
+    "startingAya": 1,
+    "endingSura": 47,
+    "endingAya": 11
+  },
+  {
+    "index": 508,
+    "startingSura": 47,
+    "startingAya": 12,
+    "endingSura": 47,
+    "endingAya": 19
+  },
+  {
+    "index": 509,
+    "startingSura": 47,
+    "startingAya": 20,
+    "endingSura": 47,
+    "endingAya": 29
+  },
+  {
+    "index": 510,
+    "startingSura": 47,
+    "startingAya": 30,
+    "endingSura": 47,
+    "endingAya": 38
+  },
+  {
+    "index": 511,
+    "startingSura": 48,
+    "startingAya": 1,
+    "endingSura": 48,
+    "endingAya": 9
+  },
+  {
+    "index": 512,
+    "startingSura": 48,
+    "startingAya": 10,
+    "endingSura": 48,
+    "endingAya": 15
+  },
+  {
+    "index": 513,
+    "startingSura": 48,
+    "startingAya": 16,
+    "endingSura": 48,
+    "endingAya": 23
+  },
+  {
+    "index": 514,
+    "startingSura": 48,
+    "startingAya": 24,
+    "endingSura": 48,
+    "endingAya": 28
+  },
+  {
+    "index": 515,
+    "startingSura": 48,
+    "startingAya": 29,
+    "endingSura": 49,
+    "endingAya": 4
+  },
+  {
+    "index": 516,
+    "startingSura": 49,
+    "startingAya": 5,
+    "endingSura": 49,
+    "endingAya": 11
+  },
+  {
+    "index": 517,
+    "startingSura": 49,
+    "startingAya": 12,
+    "endingSura": 49,
+    "endingAya": 18
+  },
+  {
+    "index": 518,
+    "startingSura": 50,
+    "startingAya": 1,
+    "endingSura": 50,
+    "endingAya": 15
+  },
+  {
+    "index": 519,
+    "startingSura": 50,
+    "startingAya": 16,
+    "endingSura": 50,
+    "endingAya": 35
+  },
+  {
+    "index": 520,
+    "startingSura": 50,
+    "startingAya": 36,
+    "endingSura": 51,
+    "endingAya": 6
+  },
+  {
+    "index": 521,
+    "startingSura": 51,
+    "startingAya": 7,
+    "endingSura": 51,
+    "endingAya": 30
+  },
+  {
+    "index": 522,
+    "startingSura": 51,
+    "startingAya": 31,
+    "endingSura": 51,
+    "endingAya": 51
+  },
+  {
+    "index": 523,
+    "startingSura": 51,
+    "startingAya": 52,
+    "endingSura": 52,
+    "endingAya": 14
+  },
+  {
+    "index": 524,
+    "startingSura": 52,
+    "startingAya": 15,
+    "endingSura": 52,
+    "endingAya": 31
+  },
+  {
+    "index": 525,
+    "startingSura": 52,
+    "startingAya": 32,
+    "endingSura": 52,
+    "endingAya": 49
+  },
+  {
+    "index": 526,
+    "startingSura": 53,
+    "startingAya": 1,
+    "endingSura": 53,
+    "endingAya": 26
+  },
+  {
+    "index": 527,
+    "startingSura": 53,
+    "startingAya": 27,
+    "endingSura": 53,
+    "endingAya": 44
+  },
+  {
+    "index": 528,
+    "startingSura": 53,
+    "startingAya": 45,
+    "endingSura": 54,
+    "endingAya": 6
+  },
+  {
+    "index": 529,
+    "startingSura": 54,
+    "startingAya": 7,
+    "endingSura": 54,
+    "endingAya": 27
+  },
+  {
+    "index": 530,
+    "startingSura": 54,
+    "startingAya": 28,
+    "endingSura": 54,
+    "endingAya": 49
+  },
+  {
+    "index": 531,
+    "startingSura": 54,
+    "startingAya": 50,
+    "endingSura": 55,
+    "endingAya": 16
+  },
+  {
+    "index": 532,
+    "startingSura": 55,
+    "startingAya": 17,
+    "endingSura": 55,
+    "endingAya": 40
+  },
+  {
+    "index": 533,
+    "startingSura": 55,
+    "startingAya": 41,
+    "endingSura": 55,
+    "endingAya": 67
+  },
+  {
+    "index": 534,
+    "startingSura": 55,
+    "startingAya": 68,
+    "endingSura": 56,
+    "endingAya": 16
+  },
+  {
+    "index": 535,
+    "startingSura": 56,
+    "startingAya": 17,
+    "endingSura": 56,
+    "endingAya": 50
+  },
+  {
+    "index": 536,
+    "startingSura": 56,
+    "startingAya": 51,
+    "endingSura": 56,
+    "endingAya": 76
+  },
+  {
+    "index": 537,
+    "startingSura": 56,
+    "startingAya": 77,
+    "endingSura": 57,
+    "endingAya": 3
+  },
+  {
+    "index": 538,
+    "startingSura": 57,
+    "startingAya": 4,
+    "endingSura": 57,
+    "endingAya": 11
+  },
+  {
+    "index": 539,
+    "startingSura": 57,
+    "startingAya": 12,
+    "endingSura": 57,
+    "endingAya": 18
+  },
+  {
+    "index": 540,
+    "startingSura": 57,
+    "startingAya": 19,
+    "endingSura": 57,
+    "endingAya": 24
+  },
+  {
+    "index": 541,
+    "startingSura": 57,
+    "startingAya": 25,
+    "endingSura": 57,
+    "endingAya": 29
+  },
+  {
+    "index": 542,
+    "startingSura": 58,
+    "startingAya": 1,
+    "endingSura": 58,
+    "endingAya": 6
+  },
+  {
+    "index": 543,
+    "startingSura": 58,
+    "startingAya": 7,
+    "endingSura": 58,
+    "endingAya": 11
+  },
+  {
+    "index": 544,
+    "startingSura": 58,
+    "startingAya": 12,
+    "endingSura": 58,
+    "endingAya": 21
+  },
+  {
+    "index": 545,
+    "startingSura": 58,
+    "startingAya": 22,
+    "endingSura": 59,
+    "endingAya": 3
+  },
+  {
+    "index": 546,
+    "startingSura": 59,
+    "startingAya": 4,
+    "endingSura": 59,
+    "endingAya": 9
+  },
+  {
+    "index": 547,
+    "startingSura": 59,
+    "startingAya": 10,
+    "endingSura": 59,
+    "endingAya": 16
+  },
+  {
+    "index": 548,
+    "startingSura": 59,
+    "startingAya": 17,
+    "endingSura": 59,
+    "endingAya": 24
+  },
+  {
+    "index": 549,
+    "startingSura": 60,
+    "startingAya": 1,
+    "endingSura": 60,
+    "endingAya": 5
+  },
+  {
+    "index": 550,
+    "startingSura": 60,
+    "startingAya": 6,
+    "endingSura": 60,
+    "endingAya": 11
+  },
+  {
+    "index": 551,
+    "startingSura": 60,
+    "startingAya": 12,
+    "endingSura": 61,
+    "endingAya": 5
+  },
+  {
+    "index": 552,
+    "startingSura": 61,
+    "startingAya": 6,
+    "endingSura": 61,
+    "endingAya": 14
+  },
+  {
+    "index": 553,
+    "startingSura": 62,
+    "startingAya": 1,
+    "endingSura": 62,
+    "endingAya": 8
+  },
+  {
+    "index": 554,
+    "startingSura": 62,
+    "startingAya": 9,
+    "endingSura": 63,
+    "endingAya": 4
+  },
+  {
+    "index": 555,
+    "startingSura": 63,
+    "startingAya": 5,
+    "endingSura": 63,
+    "endingAya": 11
+  },
+  {
+    "index": 556,
+    "startingSura": 64,
+    "startingAya": 1,
+    "endingSura": 64,
+    "endingAya": 9
+  },
+  {
+    "index": 557,
+    "startingSura": 64,
+    "startingAya": 10,
+    "endingSura": 64,
+    "endingAya": 18
+  },
+  {
+    "index": 558,
+    "startingSura": 65,
+    "startingAya": 1,
+    "endingSura": 65,
+    "endingAya": 5
+  },
+  {
+    "index": 559,
+    "startingSura": 65,
+    "startingAya": 6,
+    "endingSura": 65,
+    "endingAya": 12
+  },
+  {
+    "index": 560,
+    "startingSura": 66,
+    "startingAya": 1,
+    "endingSura": 66,
+    "endingAya": 7
+  },
+  {
+    "index": 561,
+    "startingSura": 66,
+    "startingAya": 8,
+    "endingSura": 66,
+    "endingAya": 12
+  },
+  {
+    "index": 562,
+    "startingSura": 67,
+    "startingAya": 1,
+    "endingSura": 67,
+    "endingAya": 12
+  },
+  {
+    "index": 563,
+    "startingSura": 67,
+    "startingAya": 13,
+    "endingSura": 67,
+    "endingAya": 26
+  },
+  {
+    "index": 564,
+    "startingSura": 67,
+    "startingAya": 27,
+    "endingSura": 68,
+    "endingAya": 15
+  },
+  {
+    "index": 565,
+    "startingSura": 68,
+    "startingAya": 16,
+    "endingSura": 68,
+    "endingAya": 42
+  },
+  {
+    "index": 566,
+    "startingSura": 68,
+    "startingAya": 43,
+    "endingSura": 69,
+    "endingAya": 8
+  },
+  {
+    "index": 567,
+    "startingSura": 69,
+    "startingAya": 9,
+    "endingSura": 69,
+    "endingAya": 34
+  },
+  {
+    "index": 568,
+    "startingSura": 69,
+    "startingAya": 35,
+    "endingSura": 70,
+    "endingAya": 10
+  },
+  {
+    "index": 569,
+    "startingSura": 70,
+    "startingAya": 11,
+    "endingSura": 70,
+    "endingAya": 39
+  },
+  {
+    "index": 570,
+    "startingSura": 70,
+    "startingAya": 40,
+    "endingSura": 71,
+    "endingAya": 10
+  },
+  {
+    "index": 571,
+    "startingSura": 71,
+    "startingAya": 11,
+    "endingSura": 71,
+    "endingAya": 28
+  },
+  {
+    "index": 572,
+    "startingSura": 72,
+    "startingAya": 1,
+    "endingSura": 72,
+    "endingAya": 13
+  },
+  {
+    "index": 573,
+    "startingSura": 72,
+    "startingAya": 14,
+    "endingSura": 72,
+    "endingAya": 28
+  },
+  {
+    "index": 574,
+    "startingSura": 73,
+    "startingAya": 1,
+    "endingSura": 73,
+    "endingAya": 19
+  },
+  {
+    "index": 575,
+    "startingSura": 73,
+    "startingAya": 20,
+    "endingSura": 74,
+    "endingAya": 17
+  },
+  {
+    "index": 576,
+    "startingSura": 74,
+    "startingAya": 18,
+    "endingSura": 74,
+    "endingAya": 47
+  },
+  {
+    "index": 577,
+    "startingSura": 74,
+    "startingAya": 48,
+    "endingSura": 75,
+    "endingAya": 19
+  },
+  {
+    "index": 578,
+    "startingSura": 75,
+    "startingAya": 20,
+    "endingSura": 76,
+    "endingAya": 5
+  },
+  {
+    "index": 579,
+    "startingSura": 76,
+    "startingAya": 6,
+    "endingSura": 76,
+    "endingAya": 25
+  },
+  {
+    "index": 580,
+    "startingSura": 76,
+    "startingAya": 26,
+    "endingSura": 77,
+    "endingAya": 19
+  },
+  {
+    "index": 581,
+    "startingSura": 77,
+    "startingAya": 20,
+    "endingSura": 77,
+    "endingAya": 50
+  },
+  {
+    "index": 582,
+    "startingSura": 78,
+    "startingAya": 1,
+    "endingSura": 78,
+    "endingAya": 30
+  },
+  {
+    "index": 583,
+    "startingSura": 78,
+    "startingAya": 31,
+    "endingSura": 79,
+    "endingAya": 15
+  },
+  {
+    "index": 584,
+    "startingSura": 79,
+    "startingAya": 16,
+    "endingSura": 79,
+    "endingAya": 46
+  },
+  {
+    "index": 585,
+    "startingSura": 80,
+    "startingAya": 1,
+    "endingSura": 80,
+    "endingAya": 42
+  },
+  {
+    "index": 586,
+    "startingSura": 81,
+    "startingAya": 1,
+    "endingSura": 81,
+    "endingAya": 29
+  },
+  {
+    "index": 587,
+    "startingSura": 82,
+    "startingAya": 1,
+    "endingSura": 83,
+    "endingAya": 6
+  },
+  {
+    "index": 588,
+    "startingSura": 83,
+    "startingAya": 7,
+    "endingSura": 83,
+    "endingAya": 34
+  },
+  {
+    "index": 589,
+    "startingSura": 83,
+    "startingAya": 35,
+    "endingSura": 84,
+    "endingAya": 25
+  },
+  {
+    "index": 590,
+    "startingSura": 85,
+    "startingAya": 1,
+    "endingSura": 85,
+    "endingAya": 22
+  },
+  {
+    "index": 591,
+    "startingSura": 86,
+    "startingAya": 1,
+    "endingSura": 87,
+    "endingAya": 15
+  },
+  {
+    "index": 592,
+    "startingSura": 87,
+    "startingAya": 16,
+    "endingSura": 88,
+    "endingAya": 26
+  },
+  {
+    "index": 593,
+    "startingSura": 89,
+    "startingAya": 1,
+    "endingSura": 89,
+    "endingAya": 23
+  },
+  {
+    "index": 594,
+    "startingSura": 89,
+    "startingAya": 24,
+    "endingSura": 90,
+    "endingAya": 20
+  },
+  {
+    "index": 595,
+    "startingSura": 91,
+    "startingAya": 1,
+    "endingSura": 92,
+    "endingAya": 14
+  },
+  {
+    "index": 596,
+    "startingSura": 92,
+    "startingAya": 15,
+    "endingSura": 94,
+    "endingAya": 8
+  },
+  {
+    "index": 597,
+    "startingSura": 95,
+    "startingAya": 1,
+    "endingSura": 96,
+    "endingAya": 19
+  },
+  {
+    "index": 598,
+    "startingSura": 97,
+    "startingAya": 1,
+    "endingSura": 98,
+    "endingAya": 7
+  },
+  {
+    "index": 599,
+    "startingSura": 98,
+    "startingAya": 8,
+    "endingSura": 100,
+    "endingAya": 9
+  },
+  {
+    "index": 600,
+    "startingSura": 100,
+    "startingAya": 10,
+    "endingSura": 102,
+    "endingAya": 8
+  },
+  {
+    "index": 601,
+    "startingSura": 103,
+    "startingAya": 1,
+    "endingSura": 105,
+    "endingAya": 5
+  },
+  {
+    "index": 602,
+    "startingSura": 106,
+    "startingAya": 1,
+    "endingSura": 108,
+    "endingAya": 3
+  },
+  {
+    "index": 603,
+    "startingSura": 109,
+    "startingAya": 1,
+    "endingSura": 111,
+    "endingAya": 5
+  },
+  {
+    "index": 604,
+    "sura": 112,
+    "aya": 1,
+    "startingSura": 112,
+    "startingAya": 1,
+    "endingSura": 114,
+    "endingAya": 6
+  }
+]

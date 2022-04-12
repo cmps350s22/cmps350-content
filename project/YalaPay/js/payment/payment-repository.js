@@ -134,11 +134,10 @@ class PaymentRepository {
         return db.collection(cheques).add(cheque);
     }
 
-    updateCheque(updatedCheque, chequeNo) {
-        return db
-            .collection(cheques)
-            .doc({ chequeNo: chequeNo })
-            .update(updatedCheque);
+    updateCheque(cheque, chequeNo) {
+        return db.collection(cheques)
+                 .doc({ chequeNo: chequeNo })
+                 .update(cheque);
     }
 
     deleteCheque(chequeNo) {

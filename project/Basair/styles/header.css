@@ -1,0 +1,663 @@
+@import url('https://fonts.googleapis.com/css2?family=Amiri&display=swap');
+
+:root {
+    --lighter-grey: rgba(32, 106, 93, 0.05);
+    --light-grey: rgba(32, 106, 93, 0.15);
+    --grey: rgba(32, 106, 93, 0.25);
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    height: var(--header-min-height);
+
+    padding: var(--header-vertical-padding) var(--header-sides-padding);
+    gap: 50px;
+    background-color: var(--header-background-color);
+    box-shadow: var(--header-shadow);
+    border-bottom: 2px solid var(--bottom-yellow-border);
+}
+
+/*Mobile View template*/
+.header-nav-button {
+    background-color: var(--light-green);
+
+    border: none;
+    border-radius: 15%;
+
+    padding: 0.5rem 0.35rem;
+}
+
+.header-nav-button .fa-bars {
+    color: white;
+}
+
+.header-images-link {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: var(--header-vertical-padding);
+    height: 100%;
+}
+
+.header-nav-button:hover,
+.header-images-link:hover,
+.search-button:hover {
+    cursor: pointer;
+}
+
+.header-link-logo {
+    height: 100%;
+}
+
+.header-link-descriptive-logo {
+    height: 65%;
+}
+
+.phone-view {
+    display: block;
+}
+
+.big-screen-items {
+    display: none;
+}
+
+.image-slider {
+    display: grid;
+    overflow: hidden;
+}
+
+.image-slider > * {
+    grid-column-start: 1;
+    grid-row-start: 1;
+}
+
+.image-slider-dark-film {
+    background-color: var(--dark-film);
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.slider-figures {
+    position: relative;
+    width: 300%;
+    margin: 0;
+    right: 0;
+
+    animation: 15s slider infinite;
+}
+
+.slider-element {
+    position: relative;
+    width: calc(100% / 3);
+    max-height: calc(100vh - var(--header-part-height));
+    aspect-ratio: 16 / 9;
+    float: right;
+
+    background-size: cover;
+    background-position: center;
+}
+
+.image-slider:hover {
+    cursor: pointer;
+}
+
+@keyframes slider {
+    0%, 30% {
+        right: 0;
+    }
+    40%, 80% {
+        right: 100%;
+    }
+    90%, 100% {
+        right: 200%;
+    }
+}
+
+.main {
+    margin: 2rem 0;
+    max-height: 100vh;
+    height: 100%;
+
+}
+
+.quran-view {
+    display: grid;
+}
+
+.quran-navigation-container {
+    position: relative;
+    margin: 0 var(--global-sides-padding);
+    margin-top: var(--global-sides-padding);
+    height: 100%;
+    transition: 1s ease-in-out;
+}
+
+.quran-nav-options {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+
+    width: 100%;
+}
+
+.quran-navigation-option {
+    text-decoration: none;
+    text-align: center;
+
+    display: block;
+    width: 100%;
+    height: 100%;
+    line-height: 2.25rem;
+
+    font-size: 1.25rem;
+    font-weight: bold;
+    padding: 0.5rem;
+
+    color: var(--basaer-green);
+    background-color: var(--lighter-grey);
+}
+
+.quran-navigation-option.chosen {
+    background-color: var(--light-grey);
+    box-shadow: rgba(100, 100, 111, 0.2) 0 7px 29px 0;
+}
+
+/*Toggle*/
+.juz-sowar-toggle {
+    display: flex;
+    align-items: center;
+    width: fit-content;
+
+    --width: 6rem;
+    --height: calc(var(--width) / 4);
+    --border-radius: calc(var(--height) / 2);
+
+    cursor: pointer;
+}
+
+.juz-sowar-toggle__input {
+    display: none;
+    position: absolute;
+}
+
+.toggle-fill {
+    position: relative;
+    width: var(--width);
+    height: var(--height);
+    border-radius: var(--border-radius);
+    background: white;
+    border: 1px dashed var(--light-green);
+
+    transition: background-color 0.2s ease-in-out;
+}
+
+.toggle-fill::before {
+    top: calc(var(--height) / -4);
+}
+
+.toggle-fill::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    height: calc(var(--height) * 0.85);
+    width: calc(var(--height) * 0.85);
+
+    border: 1px solid white;
+    background: var(--light-green);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+    border-radius: var(--border-radius);
+
+    transition: transform 0.2s;
+}
+
+.juz-sowar-toggle__input ~ .toggle-fill::before {
+    position: absolute;
+    display: inline;
+
+    content: "سور";
+    font-weight: bold;
+    color: var(--light-green);
+
+    right: 7px;
+}
+
+.juz-sowar-toggle__input:checked ~ .toggle-fill {
+    background: var(--light-green);
+}
+
+.juz-sowar-toggle__input:checked ~ .toggle-fill::after {
+    transform: translateX(calc(var(--width) - var(--height)));
+    background: white;
+    border: 1px solid var(--basaer-green);
+}
+
+.juz-sowar-toggle__input:checked ~ .toggle-fill::before {
+    position: absolute;
+    display: inline;
+
+    content: "جزء";
+    color: white;
+
+    left: 7px;
+}
+
+.toggle-search-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/*Search  bar*/
+.page-search-bar {
+    position: relative;
+}
+
+::placeholder {
+    color: white;
+}
+
+.page-search-button {
+    position: absolute;
+    transform: translate(-2rem, 3px);
+    border: none;
+    background: transparent;
+    color: var(--basaer-green);
+}
+
+.page-search-button:hover {
+    color: var(--basaer-orange);
+}
+
+.page-search-button:active {
+    cursor: wait;
+}
+
+.page-search-bar-txt {
+    direction: rtl;
+    border: 1px solid var(--basaer-green);
+    border-radius: 1rem;
+
+    --width: 7rem;
+    width: var(--width);
+    height: calc(var(--width) / 4);
+    padding: 0 0.5rem;
+    font-weight: bold;
+    font-size: 0.95rem;
+    color: var(--basaer-green);
+}
+
+/*Sliding Juzs*/
+.sliding-cards-container {
+    position: relative;
+
+    display: flex;
+    flex-direction: row-reverse;
+    flex-wrap: wrap;
+    gap: 1rem;
+
+    margin-top: 1rem;
+    padding: 1rem;
+
+    background-color: var(--light-grey);
+    box-shadow: rgb(204, 219, 232) 3px 3px 6px 0 inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
+
+    max-height: 70vh;
+    border-radius: 1rem;
+
+    overflow-y: auto;
+    overscroll-behavior-y: contain;
+
+    scroll-snap-type: y mandatory;
+    scroll-padding: 1rem 0;
+
+    transition: 2s ease-in-out;
+}
+
+.card {
+    display: flex;
+    justify-content: space-between;
+    flex-grow: 1;
+
+    border-radius: 1rem;
+    background: linear-gradient(var(--light-green), var(--light-green));
+    box-shadow: rgba(0, 0, 0, 0.1) 0 1px 3px 0, rgba(0, 0, 0, 0.06) 0 1px 2px 0;
+    color: white;
+
+    padding: 1rem;
+
+    transition: .3s ease-in-out;
+}
+
+.juz-card {
+    flex-direction: column;
+    min-width: 300px;
+}
+
+.card:hover {
+    cursor: grab;
+    transform: scale(1.05);
+    box-shadow: rgba(0, 0, 0, 0.35) 0 5px 15px;
+    background: linear-gradient(var(--light-green), var(--basaer-green) 30%);
+}
+
+.card-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card hr {
+    margin: 1rem 0;
+    color: inherit;
+}
+
+.card-content {
+    display: grid;
+    gap: 1rem;
+}
+
+.hizb-list {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+
+    row-gap: 0.5rem;
+    font-size: 1rem;
+
+    list-style: none;
+}
+
+.hizb-list li {
+    margin: 0.2rem 0;
+}
+
+.hizb-list a {
+    border-radius: 1rem;
+    border: 1px solid white;
+
+    padding: 0.05rem 1rem;
+
+    text-decoration: none;
+    color: inherit;
+}
+
+.hizb-list a:hover {
+    transition: all 0.5s ease-in-out;
+    color: var(--light-green);
+    background-color: white;
+}
+
+.arabic-juz-number {
+    font-family: 'Amiri', serif;
+}
+
+.card.juz-header {
+    background: transparent;
+    box-shadow: none;
+
+    color: var(--basaer-green);
+
+    width: 100%;
+    margin: 1rem -1rem -0.5rem -1rem;
+    padding: 0.5rem 1.25rem 0.1rem 1.25rem;
+
+    border-top: 1px dashed var(--basaer-green);
+    border-radius: 0;
+}
+
+.card.juz-header:first-of-type {
+    margin-top: -0.5rem;
+    border-top: none;
+}
+
+.card.juz-header:hover {
+    transform: none;
+    box-shadow: none;
+    cursor: auto;
+}
+
+.surah-card {
+    gap: 1rem;
+    width: max(350px, 40%);
+    flex-grow: 1;
+}
+
+.surah-card:hover {
+    cursor: grab;
+    transform: scale(1.01);
+}
+
+.mahawer-icon {
+    position: marker;
+    z-index: 1000;
+}
+
+.mahawer-icon:hover {
+    cursor: pointer;
+}
+
+.surah-card-number {
+    padding: 0 1rem;
+    border-right: 1px dashed white;
+}
+
+.surah-card-names {
+    display: flex;
+    justify-content: space-between;
+    width: 70%;
+}
+
+/*Screen view template*/
+@media screen and (min-width: 51rem) {
+    .phone-view {
+        display: none;
+    }
+
+    .big-screen-items {
+        display: inherit;
+        width: 100%;
+
+        gap: max(20px, 5%);
+
+        font-size: 1rem;
+    }
+
+    .header {
+        height: var(--header-max-height);
+    }
+
+    .header-socials-list {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        gap: 10px;
+    }
+
+    .social-list-item {
+        list-style: none;
+    }
+
+    .social-list-item-link {
+        color: var(--light-green);
+    }
+
+    .fa-envelope {
+        margin-left: 0.5rem;
+        align-self: center;
+    }
+
+    .contact-us-link {
+        display: flex;
+        justify-content: center;
+        align-content: center;
+
+        box-shadow: var(--header-shadow);
+        background-color: var(--basaer-orange);
+
+        min-width: 150px;
+        height: fit-content;
+
+        border: 1px solid white;
+        border-radius: 1rem;
+
+        text-decoration: none;
+        color: white;
+    }
+
+    .contact-us-link:hover {
+        transition: 0.3s ease-in-out;
+
+        border: none;
+        border-radius: 0.5rem;
+
+        box-shadow: rgba(0, 0, 0, 0.35) 0 5px 15px;
+        background-color: var(--basaer-green);
+    }
+
+    .search-form {
+        display: flex;
+        width: 100%;
+    }
+
+    .search-button {
+        border: none;
+        transform: translateX(25px);
+
+
+        background-color: white;
+        color: var(--light-green);
+    }
+
+    .search-text-area {
+        direction: rtl;
+        font-size: 1rem;
+
+        border-radius: 1rem;
+        border: none;
+
+        padding: var(--text-paddings);
+
+        width: 100%;
+        max-width: 600px;
+
+        box-shadow: var(--header-shadow);
+
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .header-icon {
+        font-size: 1.2rem;
+    }
+
+    .nav {
+        max-width: 100%;
+        padding: calc(var(--header-vertical-padding) / 2) var(--nav-sides-padding);
+
+
+        height: var(--nav-height);
+    }
+
+    .nav, .aside-marque-container {
+        font-size: 0.88rem;
+    }
+
+    .nav-list {
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: space-between;
+        align-items: center;
+
+        height: 100%;
+        list-style: none;
+    }
+
+    .nav-list-item-link {
+        text-decoration: none;
+        color: var(--basaer-green);
+    }
+
+    .nav-list-item-link:hover {
+        cursor: pointer;
+        color: var(--neon-green);
+    }
+
+    .nav-icon {
+        margin-left: 0.3rem;
+    }
+
+    .aside-marque-container {
+        display: grid;
+
+        background-color: var(--basaer-green);
+        color: white;
+    }
+
+    .aside-marque-container > * {
+        grid-column-start: 1;
+        grid-row-start: 1;
+    }
+
+    .aside-marquee {
+        marquee-loop: infinite;
+        padding: calc(var(--header-vertical-padding) / 5) calc(var(--header-sides-padding) / 2);
+    }
+
+    .marquee-text {
+        white-space: break-spaces;
+    }
+
+    .marquee-cover {
+        position: relative;
+        width: 100%;
+        background: linear-gradient(90deg,
+        var(--basaer-green),
+        transparent 15% 85%,
+        var(--basaer-green));
+    }
+
+    /*toggle*/
+    .juz-sowar-toggle {
+        --width: 7rem;
+        width: fit-content;
+    }
+
+    .toggle-fill::before {
+        top: calc(var(--height) / -6);
+    }
+
+    /*pge search*/
+    .page-search-bar-txt {
+        width: 7rem;
+        height: 2rem;
+    }
+
+    .page-search-button {
+        transform: translate(-2rem, 3px);
+    }
+}
+
+@media screen and (max-width: 40rem) {
+    .card {
+        scroll-snap-align: start;
+    }
+
+    .card:hover {
+        transform: none;
+        cursor: pointer;
+    }
+}

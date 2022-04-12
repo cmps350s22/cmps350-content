@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link href="styles/global.css" rel="stylesheet">
+    <link href="styles/quran-viewer.css" rel="stylesheet">
+    <link href="styles/mahawer.css" rel="stylesheet">
+    <link href="styles/header.css" rel="stylesheet">
+
+    <script crossorigin="anonymous" src="https://kit.fontawesome.com/3d3f81f5ae.js"></script>
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
+    <link href="https://fonts.googleapis.com/css2?family=Amiri&display=swap" rel="stylesheet">
+    <!--Font-->
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300&family=Hind:wght@300&display=swap"
+          rel="stylesheet">
+
+</head>
+<body>
+
+<!--Main-->
+<main class="main">
+    <!--quran navigator-->
+    <nav class="quran-navigator">
+        <ul class="quran-nav-options">
+            <!--Bahth View-->
+            <li><a class="quran-navigation-option" href="#quran-view" id="quran-nav-button">فهرس</a></li>
+            <!--Quran View-->
+            <li><a class="quran-navigation-option chosen" href="#quran-view" id="quran-view-button">قرآن</a></li>
+        </ul>
+    </nav>
+
+    <section class="quran-view" id="quran-view">
+        <!--quran navigator-->
+
+    </section>
+</main>
+
+
+<script src="js/navigator-index.js" type="module"></script>
+<script src="js/viewer-index.js" type="module"></script>
+<script src="https://unpkg.com/localbase/dist/localbase.dev.js"></script>
+</body>
+</html>

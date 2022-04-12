@@ -1,0 +1,272 @@
+[
+  {
+    "index": 1,
+    "sura": 1,
+    "aya": 1,
+    "name": {
+      "arabic": "الجزء الأول",
+      "english": "Juz 1"
+    }
+  },
+  {
+    "index": 2,
+    "sura": 2,
+    "aya": 142,
+    "name": {
+      "arabic": "الجزء الثاني",
+      "english": "Juz 2"
+    }
+  },
+  {
+    "index": 3,
+    "sura": 2,
+    "aya": 253,
+    "name": {
+      "arabic": " الجزء الثالث",
+      "english": "Juz 3"
+    }
+  },
+  {
+    "index": 4,
+    "sura": 3,
+    "aya": 93,
+    "name": {
+      "arabic": "الجزء الرابع",
+      "english": "Juz 4"
+    }
+  },
+  {
+    "index": 5,
+    "sura": 4,
+    "aya": 24,
+    "name": {
+      "arabic": "الجزء الخامس",
+      "english": "Juz 5"
+    }
+  },
+  {
+    "index": 6,
+    "sura": 4,
+    "aya": 148,
+    "name": {
+      "arabic": "الجزء السادس",
+      "english": "Juz 6"
+    }
+  },
+  {
+    "index": 7,
+    "sura": 5,
+    "aya": 82,
+    "name": {
+      "arabic": "الجزء السابع",
+      "english": "Juz 7"
+    }
+  },
+  {
+    "index": 8,
+    "sura": 6,
+    "aya": 111,
+    "name": {
+      "arabic": "الجزء الثامن",
+      "english": "Juz 8"
+    }
+  },
+  {
+    "index": 9,
+    "sura": 7,
+    "aya": 88,
+    "name": {
+      "arabic": "الجزء التاسع",
+      "english": "Juz 9"
+    }
+  },
+  {
+    "index": 10,
+    "sura": 8,
+    "aya": 41,
+    "name": {
+      "arabic": "الجزء العاشر",
+      "english": "Juz 10"
+    }
+  },
+  {
+    "index": 11,
+    "sura": 9,
+    "aya": 93,
+    "name": {
+      "arabic": "الجزء الحادي عشر",
+      "english": "Juz 11"
+    }
+  },
+  {
+    "index": 12,
+    "sura": 11,
+    "aya": 6,
+    "name": {
+      "arabic": "الجزء الثاني عشر",
+      "english": "Juz 12"
+    }
+  },
+  {
+    "index": 13,
+    "sura": 12,
+    "aya": 53,
+    "name": {
+      "arabic": "الجزء الثالث عشر",
+      "english": "Juz 13"
+    }
+  },
+  {
+    "index": 14,
+    "sura": 15,
+    "aya": 1,
+    "name": {
+      "arabic": "الجزء الرابع عشر",
+      "english": "Juz 14"
+    }
+  },
+  {
+    "index": 15,
+    "sura": 17,
+    "aya": 1,
+    "name": {
+      "arabic": "الجزء الخامس عشر",
+      "english": "Juz 15"
+    }
+  },
+  {
+    "index": 16,
+    "sura": 18,
+    "aya": 75,
+    "name": {
+      "arabic": "الجزء السادس عشر",
+      "english": "Juz 16"
+    }
+  },
+  {
+    "index": 17,
+    "sura": 21,
+    "aya": 1,
+    "name": {
+      "arabic": "الجزء السابع عشر",
+      "english": "Juz 17"
+    }
+  },
+  {
+    "index": 18,
+    "sura": 23,
+    "aya": 1,
+    "name": {
+      "arabic": "الجزء الثامن عشر",
+      "english": "Juz 18"
+    }
+  },
+  {
+    "index": 19,
+    "sura": 25,
+    "aya": 21,
+    "name": {
+      "arabic": "الجزء التاسع عشر",
+      "english": "Juz 19"
+    }
+  },
+  {
+    "index": 20,
+    "sura": 27,
+    "aya": 56,
+    "name": {
+      "arabic": "الجزء العشرون",
+      "english": "Juz 20"
+    }
+  },
+  {
+    "index": 21,
+    "sura": 29,
+    "aya": 46,
+    "name": {
+      "arabic": "الجزء الحادي والعشرون",
+      "english": "Juz 21"
+    }
+  },
+  {
+    "index": 22,
+    "sura": 33,
+    "aya": 31,
+    "name": {
+      "arabic": "الجزء الثاني والعشرون",
+      "english": "Juz 22"
+    }
+  },
+  {
+    "index": 23,
+    "sura": 36,
+    "aya": 28,
+    "name": {
+      "arabic": "الجزء الثالث والعشرون",
+      "english": "Juz 23"
+    }
+  },
+  {
+    "index": 24,
+    "sura": 39,
+    "aya": 32,
+    "name": {
+      "arabic": "الجزء الرابع والعشرون",
+      "english": "Juz 24"
+    }
+  },
+  {
+    "index": 25,
+    "sura": 41,
+    "aya": 47,
+    "name": {
+      "arabic": "الجزء الخامس والعشرون",
+      "english": "Juz 25"
+    }
+  },
+  {
+    "index": 26,
+    "sura": 46,
+    "aya": 1,
+    "name": {
+      "arabic": "الجزء السادس والعشرون",
+      "english": "Juz 26"
+    }
+  },
+  {
+    "index": 27,
+    "sura": 51,
+    "aya": 31,
+    "name": {
+      "arabic": "الجزء السابع والعشرون",
+      "english": "Juz 27"
+    }
+  },
+  {
+    "index": 28,
+    "sura": 58,
+    "aya": 1,
+    "name": {
+      "arabic": "الجزء الثامن والعشرون",
+      "english": "Juz 28"
+    }
+  },
+  {
+    "index": 29,
+    "sura": 67,
+    "aya": 1,
+    "name": {
+      "arabic": "الجزء التاسع والعشرون",
+      "english": "Juz 29"
+    }
+  },
+  {
+    "index": 30,
+    "sura": 78,
+    "aya": 1,
+    "name": {
+      "arabic": "الجزء الثلاثون",
+      "english": "Juz 30"
+    }
+  }
+]
