@@ -19,6 +19,11 @@ export async function fetchJson(url) {
     return await response.json();
 }
 
+export async function fetchHtml(url) {
+    const response = await fetch(url);
+    return await response.text();
+}
+
 export function formToObject(form) {
     const formData = new FormData(form);
     const formObject = {};
@@ -26,11 +31,6 @@ export function formToObject(form) {
         formObject[key] = value;
     }
     return formObject;
-}
-
-export async function fetchHtml(url) {
-    const response = await fetch(url);
-    return await response.text();
 }
 
 export function getHeader(moduleTitle, moduleLogo) {

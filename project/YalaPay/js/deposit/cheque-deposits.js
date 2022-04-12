@@ -13,8 +13,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     await displayChequeDeposits();
     await fillBankAccountsDD();
     await fillDepositStatusDD();
-    depositCheques = await paymentRepo.getCheques("Awaiting");
-    await displayDepositCheques(depositCheques);
+
     window.onIncludeChequeChange = onIncludeChequeChange;
     window.onReturnChequeChange = onReturnChequeChange;
     window.onReturnReasonChange = onReturnReasonChange;
@@ -26,11 +25,16 @@ document.addEventListener("DOMContentLoaded", async () => {
     document.querySelector("#depositDate").value = new Date().toJSON().slice(0,10);
     const popupForm = document.querySelector(".popup-form");
     const searchForm = document.querySelector(".search-form");
-    const statusDD = document.querySelector("#status");
 
     popupForm.addEventListener("submit", onSubmitDeposit);
     //statusDD.addEventListener("change", displayReasonSelect);
     searchForm.addEventListener("submit", searchDeposits);
+
+    document.querySelector(".add-btn").addEventListener("click", async (event) => {
+        depositCheques = await paymentRepo.getCheques("Awaiting");
+        await displayDepositCheques(depositCheques);
+        document.querySelector("#status").disabled = true;
+    });
 });
 
 async function displayDepositCheques(depositCheques) {
@@ -50,17 +54,17 @@ function chequeToForm(cheque) {
             <p>Amount: ${cheque.amount}</p>
             <p>Status : ${cheque.status}</p>
             <p>Due Date : ${cheque.dueDate} <span class="daydiff">(${dateDifference(cheque.dueDate)})</span></p>
-            <p>Include? 
-                <input type="checkbox" class="cbox" 
-                    checked=${cheque.status !== "Awaiting" ? true : false}
+            <label>Include 
+                <input type="checkbox" 
+                    ${cheque.status !== "Awaiting" ? 'checked' : ''}
                     onclick="onIncludeChequeChange(this, ${cheque.chequeNo})" >
-            </p>
+            </label>
             <span class="return-cheque-panel">            
-                <p>Returned?
-                    <input class="cbox" type="checkbox"
-                        checked=${cheque.status === "Returned" ? true : false}
+                <label>Returned
+                    <input type="checkbox"
+                        ${cheque.status === "Returned" ? 'checked' : ''}
                         onclick="onReturnChequeChange(this, ${cheque.chequeNo})"> 
-                </p>
+                </label>
                 <select class="returnReasonDD"
                     value="${cheque.returnReason}"
                     onchange="onReturnReasonChange(this, ${cheque.chequeNo})" 
@@ -71,14 +75,14 @@ function chequeToForm(cheque) {
 }
 
 function onIncludeChequeChange(cb, chequeNo) {
-    const index = depositCheques.indexOf(c => c.chequeNo == chequeNo);
+    const index = depositCheques.findIndex(c => c.chequeNo == chequeNo);
     const status = cb.checked === true ? "Deposited" : "Awaiting";
     depositCheques[index].status = status;
     depositCheques[index].hasChanged = true;
 }
 
 function onReturnChequeChange(cb, chequeNo) {
-    const index = depositCheques.indexOf(c => c.chequeNo == chequeNo);
+    const index = depositCheques.findIndex(c => c.chequeNo == chequeNo);
     console.log("index", index);
     const status = cb.checked === true ? "Returned" : "Cashed";
     depositCheques[index].status = status;
@@ -92,7 +96,7 @@ function onReturnChequeChange(cb, chequeNo) {
 }
 
 function onReturnReasonChange(dd, chequeNo) {
-    const index = depositCheques.indexOf(c => c.chequeNo == chequeNo);
+    const index = depositCheques.findIndex(c => c.chequeNo == chequeNo);
     depositCheques[index].returnReason = dd.value;
     depositCheques[index].hasChanged = true;
 }
@@ -157,25 +161,9 @@ async function fillDepositStatusDD() {
     statusDD.innerHTML = statusOptions;
 }
 
-/*function displayReasonSelect() {
-    const statusDD = document.querySelector("#status");
-    const returnArea = document.querySelectorAll(".returns");
-    if (statusDD.value == "Cashed with Returns") {
-        [].slice.call(returnArea).forEach(function (area) {
-            area.innerHTML = `
-            <p>Returned? </p>
-            <input class="cbox" type="checkbox" onclick="fillReturnReasonsDD(this)">
-            `;
-        });
-    } else {
-        [].slice.call(returnArea).forEach(function (area) {
-            area.innerHTML = ``;
-        });
-    }
-}*/
-
 async function fillReturnReasonDDs() {
     const data = await lookupDataRepository.getLookupData("returnReasons");
+    data.returnReasons.unshift("");
     const returnReasonDDs = document.querySelectorAll(".returnReasonDD");
     for (const reasonsDD of returnReasonDDs) {
         const reasonOptions = data.returnReasons.map(reason =>
@@ -221,7 +209,7 @@ async function onSubmitDeposit(e) {
     for (const cheque of depositCheques) {
         if (cheque.hasChanged) {
             delete cheque.hasChanged;
-            await paymentRepo.updateCheque(cheque, parseInt(cheque));
+            await paymentRepo.updateCheque(cheque, cheque.chequeNo);
         }
     }
     if (isEdit) {
@@ -249,6 +237,7 @@ async function updateDeposit(depositId) {
     document.querySelector("#depositDate").value = deposit.depositDate;
     document.querySelector("#bankAccountNo").value = deposit.bankAccountNo;
     document.querySelector("#status").value = deposit.status;
+    document.querySelector("#status").disabled = false;
 
     depositCheques = await Promise.all( deposit.chequeNos.map(async chequeNo =>
         await paymentRepo.getCheque(chequeNo)
