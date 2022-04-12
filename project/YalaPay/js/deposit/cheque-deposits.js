@@ -210,6 +210,14 @@ async function onSubmitDeposit(e) {
         if (cheque.hasChanged) {
             delete cheque.hasChanged;
             await paymentRepo.updateCheque(cheque, cheque.chequeNo);
+        } else {
+            if (deposit.chequeNos.includes(cheque.chequeNo) &&
+                deposit.status != "Deposited"
+                ) {
+                delete cheque.hasChanged;
+                cheque.status = "Cashed";
+                await paymentRepo.updateCheque(cheque, cheque.chequeNo);
+            }
         }
     }
     if (isEdit) {
