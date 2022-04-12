@@ -5,7 +5,6 @@ import {addCommonUIFragments, formToObject} from "../common/common.js";
 
 let isEdit = false;
 let depositCheques = [];
-
 let depositStatusDD;
 
 document.addEventListener("DOMContentLoaded", async () => {
@@ -24,8 +23,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     window.onReturnChequeChange = onReturnChequeChange;
     window.onReturnReasonChange = onReturnReasonChange;
 
-    window.deleteDeposit = deleteDeposit;
-    window.updateDeposit = updateDeposit;
+    window.onDeleteDeposit = onDeleteDeposit;
+    window.onUpdateDeposit = onUpdateDeposit;
 
     document.querySelector("#depositDate").value = new Date().toJSON().slice(0, 10);
 
@@ -35,63 +34,59 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     document.querySelector(".add-btn").addEventListener("click", async (event) => {
         depositCheques = await paymentRepo.getCheques("Awaiting");
-        await displayDepositCheques(depositCheques);
+        await displayDepositCheques(depositCheques,false);
         depositStatusDD.disabled = true;
     });
 
-    depositStatusDD.addEventListener("change", (event) => {
+    depositStatusDD.addEventListener("change", async (event) => {
         const depositStatus = depositStatusDD.value;
         const chequeStatus = depositStatus === "Cashed with Returns" ? "Cashed" : depositStatus;
         // Set the status of cheques every time the deposit status change
-        for (let i=0; i++; i< depositCheques.length) {
+        for (let i = 0; i++; i < depositCheques.length) {
             depositCheques[i].status = chequeStatus;
             depositStatus[i].hasChanged = true;
             delete depositStatus[i].returnReason;
         }
 
-        const returnChequeVisibility = (depositStatus === "Cashed with Returns") ? "" : "none";
-        const returnChequeSections = document.querySelectorAll(".return-cheque-section");
-        for (const returnChequeSection of returnChequeSections) {
-            returnChequeSection.style.display = returnChequeVisibility;
-        }
-
+        const showReturnChequeSection = (depositStatus === "Cashed with Returns");
+        await displayDepositCheques(depositCheques, showReturnChequeSection);
     });
 });
 
-async function displayDepositCheques(depositCheques) {
+async function displayDepositCheques(depositCheques, showReturnChequeSection) {
     const chequesList = document.querySelector(".cheques-list");
     //console.log("depositCheques", depositCheques);
     const chequeForms = depositCheques
-                            .map(c => chequeToForm(c, true))
+                            .map(c => chequeToForm(c, showReturnChequeSection))
                             .join("");
     chequesList.innerHTML = `${chequeForms}`;
-    await fillReturnReasonDDs();
+    if (showReturnChequeSection) {
+        await fillReturnReasonDDs();
+    }
 }
 
-function chequeToForm(cheque) {
+function chequeToForm(cheque, showReturnChequeSection) {
     return `
     <div class="cheque-card">
             <p for="chequeNo">Cheque No: ${cheque.chequeNo}</p>
             <p>Amount: ${cheque.amount}</p>
             <p>Status : ${cheque.status}</p>
             <p>Due Date : ${cheque.dueDate} <span class="daydiff">(${dateDifference(cheque.dueDate)})</span></p>
-            <label>Include 
-                <input type="checkbox" 
+            <label style="display: flex">Include 
+                <input type="checkbox"
                     ${cheque.status !== "Awaiting" ? 'checked' : ''}
                     onclick="onIncludeChequeChange(this, ${cheque.chequeNo})" >
             </label>
-            <section class="return-cheque-section">            
-                <label>Returned
-                    <input type="checkbox"
-                        ${cheque.status === "Returned" ? 'checked' : ''}
-                        onclick="onReturnChequeChange(this, ${cheque.chequeNo})"> 
-                </label>
-                <select class="returnReasonDD"
-                    value="${cheque.returnReason}"
-                    onchange="onReturnReasonChange(this, ${cheque.chequeNo})" 
-                >          
-                </select>
-            </section>
+            ${showReturnChequeSection ?
+            `<label style="display: flex">Returned
+                <input type="checkbox"
+                    ${cheque.status === "Returned" ? 'checked' : ''}
+                    onclick="onReturnChequeChange(this, ${cheque.chequeNo})"> 
+            </label>
+            <select class="returnReasonDD"
+                value="${cheque.returnReason}"
+                onchange="onReturnReasonChange(this, ${cheque.chequeNo})">
+            </select>`: '' }
     </div>`;
 }
 
@@ -107,12 +102,6 @@ function onReturnChequeChange(cb, chequeNo) {
     console.log("index", index);
     const status = cb.checked === true ? "Returned" : "Cashed";
     depositCheques[index].status = status;
-    /*if (status !== "Returned") {
-        cb.nextElementSibling.style.display = "none";
-        delete depositCheques[index].returnReason;
-    } else {
-        cb.nextElementSibling.style.display = "";
-    }*/
     depositCheques[index].hasChanged = true;
 }
 
@@ -130,8 +119,7 @@ async function displayChequeDeposits() {
 function depositsToHtmlTable(deposits) {
     const mainContent = document.querySelector(".main-content");
     const depositRows =
-        deposits.map(deposit => depositToHtmlRow(deposit))
-                .join(" ");
+        deposits.map(deposit => depositToHtmlRow(deposit)).join(" ");
     
     mainContent.innerHTML = `
        <table class="table">
@@ -158,12 +146,12 @@ function depositToHtmlRow(deposit) {
         <td class=editing-btns>
             ${deposit.status === "Deposited" ?
             `<img class="edit-btn" src="img/pen.svg" 
-                onclick="updateDeposit('${deposit.id}')"/>
+                onclick="onUpdateDeposit('${deposit.id}')"/>
             <img class="delete-btn" src="img/trash.svg" 
-                onclick="deleteDeposit('${deposit.id}')"/>`
+                onclick="onDeleteDeposit('${deposit.id}')"/>`
             :
             `<img class="edit-btn" src="img/view.svg" 
-                onclick="updateDeposit('${deposit.id}', true)"/>`
+                onclick="onUpdateDeposit('${deposit.id}', true)"/>`
             }
         </td>
     </tr>`;
@@ -198,26 +186,6 @@ async function fillReturnReasonDDs() {
     }
 }
 
-/*
-async function fillReturnReasonsDD2(cb) {
-    if (cb.checked) {
-        const reasonDiv = document.createElement("div");
-        reasonDiv.className = "reasons";
-        reasonDiv.innerHTML = `<select id="returnReason" name="returnReason"></select>`;
-        cb.insertAdjacentElement("afterend", reasonDiv);
-        const reasonSelect = reasonDiv.firstChild;
-        console.log(reasonDiv);
-        const data = await lookupDataRepository.getLookupData("returnReasons")
-        const reasonOptions = data.returnReasons.map(reason =>
-            `<option value="${reason}">${reason}</option>`
-        );
-        reasonSelect.innerHTML = reasonOptions.join(" ");
-    } else {
-        cb.nextElementSibling.remove();
-    }
-}
-*/
-
 async function onSubmitDeposit(e) {
     e.preventDefault();
     const formData = formToObject(e.target);
@@ -235,15 +203,7 @@ async function onSubmitDeposit(e) {
         if (cheque.hasChanged) {
             delete cheque.hasChanged;
             await paymentRepo.updateCheque(cheque, cheque.chequeNo);
-        } /*else {
-            if (deposit.chequeNos.includes(cheque.chequeNo) &&
-                deposit.status != "Deposited"
-                ) {
-                delete cheque.hasChanged;
-                cheque.status = "Cashed";
-                await paymentRepo.updateCheque(cheque, cheque.chequeNo);
-            }
-        }*/
+        }
     }
     if (isEdit) {
         await chequeDepositsRepo.updateDeposit(deposit);
@@ -256,7 +216,7 @@ async function onSubmitDeposit(e) {
     e.target.reset();
 }
 
-async function deleteDeposit(depositId) {
+async function onDeleteDeposit(depositId) {
     const confirmed = confirm(`Are you sure you want to delete deposit #${depositId}?`);
     if (confirmed) {
         await chequeDepositsRepo.deleteDeposit(depositId);
@@ -264,7 +224,7 @@ async function deleteDeposit(depositId) {
     }
 }
 
-async function updateDeposit(depositId, viewMode) {
+async function onUpdateDeposit(depositId, viewMode) {
     const deposit = await chequeDepositsRepo.getDeposit(depositId);
     document.querySelector("#id").value = deposit.id;
     document.querySelector("#depositDate").value = deposit.depositDate;
@@ -275,7 +235,8 @@ async function updateDeposit(depositId, viewMode) {
     depositCheques = await Promise.all( deposit.chequeNos.map(async chequeNo =>
         await paymentRepo.getCheque(chequeNo)
     ));
-    await displayDepositCheques(depositCheques);
+    const showReturnChequeSection = (deposit.status === "Cashed with Returns");
+    await displayDepositCheques(depositCheques, showReturnChequeSection);
     isEdit = true;
 
     if (viewMode) {
