@@ -216,6 +216,7 @@ async function onSubmitDeposit(e) {
         await chequeDepositsRepo.updateDeposit(deposit);
         isEdit = false;
     } else {
+        deposit.status = "Deposited";
         await chequeDepositsRepo.addDeposit(deposit);
     }
     depositCheques = [];
