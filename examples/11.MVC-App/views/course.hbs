@@ -1,14 +1,39 @@
 <br>
+{{#if user}}
+    {{#with user}}
+        <p>Welcome {{firstname}} {{lastname}}</p>
+    {{/with}}
+    {{else}}
+        Please <a href="/login">Login</a>
+{{/if}}
+
 <caption for="programsDD">Select a program:</caption>
-<select id="programsDD">
-    <option value=""></option>
-    {{#programs}}
-        <option value="{{code}}">{{name}}</option>
-    {{/programs}}
-</select>
+<form action="/courses" method="post">
+    <label for="studentId">StudentId</label>
+    <input id="studentId" name="studentId">
+    <br>
+    <label for="programsDD">Program</label>
+    <select id="programsDD" name="program">
+        <option value=""></option>
+        {{#programs}}
+            <option value="{{code}}"> {{name}} </option>
+        {{/programs}}
+    </select>
+    <input type="submit" value="Go SSR">
+</form>
+<br>
 
-<br><br>
+<div id="courses-list">
+    {{#if selectedProgram}}
+        <h4>StudentId: {{studentId}}</h4>
+        <h4>Courses for: {{selectedProgram}}</h4>
+        <ul>
+            {{#each courses}}
+                <li>{{code}} - {{name}}</li>
+            {{/each}}
+        </ul>
+    {{/if}}
+</div>
 
-<div id="courses-list"></div>
 
 <script src="/views/js/course.js"></script>

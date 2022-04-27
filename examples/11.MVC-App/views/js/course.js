@@ -12,9 +12,9 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 async function getCouses(programCode) {
-    const url = `/api/courses/${programCode}`
-    const response = await fetch(url)
-    return await response.json()
+    const url = `/api/courses/${programCode}`;
+    const response = await fetch(url);
+    return await response.json();
 }
 
 async function onProgramChange() {
